@@ -16,7 +16,10 @@ setopt extended_glob # Use '#', '~', and '^'
 setopt nomatch       # Print error when no match is found
 
 # History
-setopt append_history # Append history, don't replace
+setopt append_history          # Append history, don't replace
+setopt extended_history        # Also save command timestamp
+setopt hist_find_no_dups       # Don't scroll through duplicates
+setopt inc_append_history_time # Append history as soon as command exits
 
 # Initialisation
 
