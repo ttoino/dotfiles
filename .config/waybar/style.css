@@ -1,0 +1,105 @@
+* {
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+tooltip {
+    background-color: #222d32;
+    color: #ffffff;
+    font-family: "Material Design Icons", "Roboto", sans-serif;
+    font-size: 12px;
+    border-radius: 12px;
+    min-height: 24px;
+    padding: 4px 8px;
+}
+
+window#waybar {
+    background-color: #222d32;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    border-radius: 50000px;
+    font-family: "Material Design Icons", "Roboto", sans-serif;
+    font-size: 24px;
+}
+
+window#waybar > * {
+    margin: 4px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3f3f3f;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+widget > *,
+#workspaces button {
+    border-radius: 50000px;
+    min-width: 32px;
+}
+
+#workspaces button {
+    margin-right: 4px;
+    transition: background 200ms ease;
+}
+
+#workspaces button:last-child {
+    margin: 0;
+}
+
+/* This doesn't work right now, https://github.com/Alexays/Waybar/pull/1120 fixes it */
+widget > label:hover,
+#workspaces button:hover {
+    background-color: alpha(currentColor, 0.08);
+}
+
+#workspaces button:focus {
+    background-color: alpha(currentColor, 0.16);
+}
+
+#workspaces button:active {
+    background-color: alpha(currentColor, 0.24);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    padding: 0 4px;
+}
+
+label:focus {
+    background-color: #000000;
+}

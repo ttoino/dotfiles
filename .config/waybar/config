@@ -1,0 +1,127 @@
+{
+    // Waybar position
+    "position": "top",
+    // Waybar height
+    "height": 40,
+    // Gaps between modules
+    "spacing": 4,
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-left": 8,
+    "margin-bottom": 0,
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "custom/media",
+        // "idle_inhibitor",
+        "pulseaudio",
+        "backlight",
+        "bluetooth",
+        "network",
+        // "cpu",
+        // "memory",
+        // "temperature",
+        // "keyboard-state",
+        // "sway/language",
+        "battery",
+        "clock"
+        // "tray"
+    ],
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "format-icons": {
+            "focused": "󰐾",
+            "default": "󰐽"
+        }
+    },
+    // Doesn't seem to do anything for me
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 24,
+        "spacing": 4
+    },
+    "custom/media": {
+        "format": "{icon}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "default": "󰎇"
+        },
+        "tooltip": true,
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰸈",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip-format": "{desc} • {volume}%",
+        "tooltip-format-muted": "{desc} • Muted"
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        // FIXME: Doesn't work for now
+        "tooltip": true,
+        "tooltip-format": "{percent}%"
+    },
+    "bluetooth": {
+        "format-disabled": "",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱",
+        "tooltip-format-off": "Disabled",
+        "tooltip-format-on": "Enabled",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} • {device_battery_percentage}%"
+    },
+    "network": {
+        "format-icons": {
+            "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+            "ethernet": "󰈀",
+            "disconnected": "󰪎"
+        },
+        "format": "{icon}",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} • {signalStrength}%"
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-full": "",
+        "format-icons": {
+            "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+            "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+        },
+        "tooltip-format": "{capacity}%",
+        "tooltip-format-charging": "{capacity}% • Charging"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M • %d-%m-%Y}",
+        "locale": "C"
+    }
+}
