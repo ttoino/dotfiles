@@ -1,0 +1,21 @@
+### Output configuration
+output {
+    * bg ~/Pictures/Wallpapers/Hollow\ Knight.png fill
+
+    eDP-1 resolution 1920x1080 position 1920,0
+    DP-1 resolution 1920x1080 position 0,0
+}
+
+### Input configuration
+input {
+    * {
+        # KEYBOARD
+        xkb_layout "us,pt"
+        xkb_options "grp:caps_toggle"
+
+        # TOUCHPAD
+        tap enabled
+        tap_button_map lrm
+        dwt disabled
+    }
+}

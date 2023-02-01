@@ -1,0 +1,7 @@
+image=~/Pictures/Wallpapers/Hollow\ Knight.png
+font=Roboto
+effect-blur=16x4
+fade-in=0.2
+clock
+datestr=%d-%m-%Y
+timestr=%H:%M

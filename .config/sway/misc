@@ -1,0 +1,29 @@
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Notifications daemon
+exec swaync
+
+### Status Bar
+bar swaybar_command waybar
+
+### Visual
+default_border pixel 2
+titlebar_border_thickness 2
+titlebar_padding 8 4
+gaps inner 8
+font Roboto 12
+
+client.focused #D9D7D6 #0D181C #E5E5E5 #E5E5E5 #D9D7D6
+client.unfocused #484E5B #0D181C #E5E5E5 #E5E5E5 #484E5B
+client.focused_inactive #484E5B #0D181C #E5E5E5 #E5E5E5 #484E5B

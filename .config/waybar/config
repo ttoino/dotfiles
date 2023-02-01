@@ -97,7 +97,8 @@
         "tooltip-format-on": "Enabled",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias} • {device_battery_percentage}%"
+        "tooltip-format-enumerate-connected-battery": "{device_alias} • {device_battery_percentage}%",
+        "on-click": "blueberry"
     },
     "network": {
         "format-icons": {
@@ -107,7 +108,8 @@
         },
         "format": "{icon}",
         "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} • {signalStrength}%"
+        "tooltip-format-wifi": "{essid} • {signalStrength}%",
+        "on-click": "nm-connection-editor"
     },
     "battery": {
         "format": "{icon}",

@@ -1,0 +1,14 @@
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Catppuccin-Mocha-Standard-Blue-Dark'
+    gsettings set $gnome-schema icon-theme 'Paper'
+    gsettings set $gnome-schema font-name 'Roboto 11'
+    gsettings set $gnome-schema cursor-theme 'oreo_spark_lite_cursors'
+    gsettings set $gnome-schema cursor-size '24'
+    gsettings set $gnome-schema toolbar-style 'GTK_TOOLBAR_BOTH_HORIZ'
+    gsettings set $gnome-schema toolbar-icons-size 'GTK_ICON_SIZE_LARGE_TOOLBAR'
+    gsettings set $gnome-schema font-antialiasing '1'
+    gsettings set $gnome-schema font-hinting '1'
+    gsettings set $gnome-schema font-rgba-order 'rgb'
+}
+
+seat seat0 xcursor_theme oreo_white_cursors
