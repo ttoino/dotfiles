@@ -52,3 +52,7 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+
+# Limits Ctrl+Backspace to alphanumeric chars
+autoload -U select-word-style
+select-word-style bash

@@ -34,7 +34,7 @@ function zsh_update_plugins() {
         fi
     done
 
-    reload_prompt
+    source "$ZDOTDIR/rc.zsh"
 }
 
 # Start ssh agent

@@ -1,5 +1,3 @@
-alias reload_prompt="source $ZDOTDIR/prompt.zsh"
-
 # Add gitstatus to right prompt
 zsh_add_plugin "romkatv/gitstatus" "gitstatus.prompt"
 RPROMPT='$GITSTATUS_PROMPT'
