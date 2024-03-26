@@ -1,0 +1,1672 @@
+#audio button,
+.audio button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #f5c2e7;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#audio button.filled,
+.audio button.filled {
+  background-color: #f5c2e7;
+  color: #1e1e2e;
+}
+#audio button.outlined,
+.audio button.outlined {
+  border: 1px solid #f5c2e7;
+  min-height: 38px;
+}
+#audio button.icon,
+.audio button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#audio button:hover,
+.audio button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#audio button:focus,
+.audio button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#audio button:active,
+.audio button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#battery button,
+.battery button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #a6e3a1;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery button.filled,
+.battery button.filled {
+  background-color: #a6e3a1;
+  color: #1e1e2e;
+}
+#battery button.outlined,
+.battery button.outlined {
+  border: 1px solid #a6e3a1;
+  min-height: 38px;
+}
+#battery button.icon,
+.battery button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#battery button:hover,
+.battery button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery button:focus,
+.battery button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#battery button:active,
+.battery button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#battery.discharging button,
+.battery.discharging button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #fab387;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery.discharging button.filled,
+.battery.discharging button.filled {
+  background-color: #fab387;
+  color: #1e1e2e;
+}
+#battery.discharging button.outlined,
+.battery.discharging button.outlined {
+  border: 1px solid #fab387;
+  min-height: 38px;
+}
+#battery.discharging button.icon,
+.battery.discharging button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#battery.discharging button:hover,
+.battery.discharging button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery.discharging button:focus,
+.battery.discharging button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#battery.discharging button:active,
+.battery.discharging button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#battery.critical button,
+.battery.critical button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #f38ba8;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery.critical button.filled,
+.battery.critical button.filled {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+}
+#battery.critical button.outlined,
+.battery.critical button.outlined {
+  border: 1px solid #f38ba8;
+  min-height: 38px;
+}
+#battery.critical button.icon,
+.battery.critical button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#battery.critical button:hover,
+.battery.critical button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery.critical button:focus,
+.battery.critical button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#battery.critical button:active,
+.battery.critical button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#bluetooth button,
+.bluetooth button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #89b4fa;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#bluetooth button.filled,
+.bluetooth button.filled {
+  background-color: #89b4fa;
+  color: #1e1e2e;
+}
+#bluetooth button.outlined,
+.bluetooth button.outlined {
+  border: 1px solid #89b4fa;
+  min-height: 38px;
+}
+#bluetooth button.icon,
+.bluetooth button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#bluetooth button:hover,
+.bluetooth button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#bluetooth button:focus,
+.bluetooth button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#bluetooth button:active,
+.bluetooth button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#brightness button,
+.brightness button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #f9e2af;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#brightness button.filled,
+.brightness button.filled {
+  background-color: #f9e2af;
+  color: #1e1e2e;
+}
+#brightness button.outlined,
+.brightness button.outlined {
+  border: 1px solid #f9e2af;
+  min-height: 38px;
+}
+#brightness button.icon,
+.brightness button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#brightness button:hover,
+.brightness button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#brightness button:focus,
+.brightness button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#brightness button:active,
+.brightness button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+#network button,
+.network button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #74c7ec;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+#network button.filled,
+.network button.filled {
+  background-color: #74c7ec;
+  color: #1e1e2e;
+}
+#network button.outlined,
+.network button.outlined {
+  border: 1px solid #74c7ec;
+  min-height: 38px;
+}
+#network button.icon,
+.network button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+#network button:hover,
+.network button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#network button:focus,
+.network button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+#network button:active,
+.network button:active {
+  animation: forwards 0.3s ripple;
+}
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+
+button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.0071428571rem;
+  min-width: 48px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 20px;
+  color: #cdd6f4;
+  transition-property: background-color, background-image, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+}
+button.filled {
+  background-color: #cdd6f4;
+  color: #1e1e2e;
+}
+button.outlined {
+  border: 1px solid #cdd6f4;
+  min-height: 38px;
+}
+button.icon {
+  min-width: 0;
+  min-height: 0;
+  font-size: 24px;
+  font-weight: unset;
+  padding: 4px;
+  border-radius: 16px;
+}
+button:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+button:focus {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.1199999973);
+}
+button:active {
+  animation: forwards 0.3s ripple;
+}
+
+@keyframes ripple {
+  from {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 0%, transparent 0%);
+  }
+  to {
+    background-image: radial-gradient(circle, alpha(currentColor, 0.1199999973) 100%, transparent 100%);
+  }
+}
+#audio scale,
+.audio scale {
+  min-height: 16px;
+}
+#audio scale contents,
+.audio scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #f5c2e7 8px, rgba(245, 194, 231, 0.24) 8px);
+  transition: background 0.3s;
+}
+#audio scale slider,
+.audio scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#audio icon-slider,
+.audio icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#audio icon-slider contents,
+.audio icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #f5c2e7 16px, rgba(245, 194, 231, 0.24) 16px);
+  transition: background 0.3s;
+}
+#audio icon-slider slider,
+.audio icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#audio scale,
+#audio icon-slider,
+.audio scale,
+.audio icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#audio scale trough,
+#audio icon-slider trough,
+.audio scale trough,
+.audio icon-slider trough {
+  background: none;
+}
+#audio scale slider,
+#audio icon-slider slider,
+.audio scale slider,
+.audio icon-slider slider {
+  background-color: #f5c2e7;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#audio scale slider:hover,
+#audio icon-slider slider:hover,
+.audio scale slider:hover,
+.audio icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#audio scale highlight,
+#audio icon-slider highlight,
+.audio scale highlight,
+.audio icon-slider highlight {
+  background: none;
+  background-color: #f5c2e7;
+  transition: background-color 0.3s;
+}
+
+#battery scale,
+.battery scale {
+  min-height: 16px;
+}
+#battery scale contents,
+.battery scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #a6e3a1 8px, rgba(166, 227, 161, 0.24) 8px);
+  transition: background 0.3s;
+}
+#battery scale slider,
+.battery scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#battery icon-slider,
+.battery icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#battery icon-slider contents,
+.battery icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #a6e3a1 16px, rgba(166, 227, 161, 0.24) 16px);
+  transition: background 0.3s;
+}
+#battery icon-slider slider,
+.battery icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#battery scale,
+#battery icon-slider,
+.battery scale,
+.battery icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#battery scale trough,
+#battery icon-slider trough,
+.battery scale trough,
+.battery icon-slider trough {
+  background: none;
+}
+#battery scale slider,
+#battery icon-slider slider,
+.battery scale slider,
+.battery icon-slider slider {
+  background-color: #a6e3a1;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#battery scale slider:hover,
+#battery icon-slider slider:hover,
+.battery scale slider:hover,
+.battery icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery scale highlight,
+#battery icon-slider highlight,
+.battery scale highlight,
+.battery icon-slider highlight {
+  background: none;
+  background-color: #a6e3a1;
+  transition: background-color 0.3s;
+}
+
+#battery.discharging scale,
+.battery.discharging scale {
+  min-height: 16px;
+}
+#battery.discharging scale contents,
+.battery.discharging scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #fab387 8px, rgba(250, 179, 135, 0.24) 8px);
+  transition: background 0.3s;
+}
+#battery.discharging scale slider,
+.battery.discharging scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#battery.discharging icon-slider,
+.battery.discharging icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#battery.discharging icon-slider contents,
+.battery.discharging icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #fab387 16px, rgba(250, 179, 135, 0.24) 16px);
+  transition: background 0.3s;
+}
+#battery.discharging icon-slider slider,
+.battery.discharging icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#battery.discharging scale,
+#battery.discharging icon-slider,
+.battery.discharging scale,
+.battery.discharging icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#battery.discharging scale trough,
+#battery.discharging icon-slider trough,
+.battery.discharging scale trough,
+.battery.discharging icon-slider trough {
+  background: none;
+}
+#battery.discharging scale slider,
+#battery.discharging icon-slider slider,
+.battery.discharging scale slider,
+.battery.discharging icon-slider slider {
+  background-color: #fab387;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#battery.discharging scale slider:hover,
+#battery.discharging icon-slider slider:hover,
+.battery.discharging scale slider:hover,
+.battery.discharging icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery.discharging scale highlight,
+#battery.discharging icon-slider highlight,
+.battery.discharging scale highlight,
+.battery.discharging icon-slider highlight {
+  background: none;
+  background-color: #fab387;
+  transition: background-color 0.3s;
+}
+
+#battery.critical scale,
+.battery.critical scale {
+  min-height: 16px;
+}
+#battery.critical scale contents,
+.battery.critical scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #f38ba8 8px, rgba(243, 139, 168, 0.24) 8px);
+  transition: background 0.3s;
+}
+#battery.critical scale slider,
+.battery.critical scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#battery.critical icon-slider,
+.battery.critical icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#battery.critical icon-slider contents,
+.battery.critical icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #f38ba8 16px, rgba(243, 139, 168, 0.24) 16px);
+  transition: background 0.3s;
+}
+#battery.critical icon-slider slider,
+.battery.critical icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#battery.critical scale,
+#battery.critical icon-slider,
+.battery.critical scale,
+.battery.critical icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#battery.critical scale trough,
+#battery.critical icon-slider trough,
+.battery.critical scale trough,
+.battery.critical icon-slider trough {
+  background: none;
+}
+#battery.critical scale slider,
+#battery.critical icon-slider slider,
+.battery.critical scale slider,
+.battery.critical icon-slider slider {
+  background-color: #f38ba8;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#battery.critical scale slider:hover,
+#battery.critical icon-slider slider:hover,
+.battery.critical scale slider:hover,
+.battery.critical icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#battery.critical scale highlight,
+#battery.critical icon-slider highlight,
+.battery.critical scale highlight,
+.battery.critical icon-slider highlight {
+  background: none;
+  background-color: #f38ba8;
+  transition: background-color 0.3s;
+}
+
+#bluetooth scale,
+.bluetooth scale {
+  min-height: 16px;
+}
+#bluetooth scale contents,
+.bluetooth scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #89b4fa 8px, rgba(137, 180, 250, 0.24) 8px);
+  transition: background 0.3s;
+}
+#bluetooth scale slider,
+.bluetooth scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#bluetooth icon-slider,
+.bluetooth icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#bluetooth icon-slider contents,
+.bluetooth icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #89b4fa 16px, rgba(137, 180, 250, 0.24) 16px);
+  transition: background 0.3s;
+}
+#bluetooth icon-slider slider,
+.bluetooth icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#bluetooth scale,
+#bluetooth icon-slider,
+.bluetooth scale,
+.bluetooth icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#bluetooth scale trough,
+#bluetooth icon-slider trough,
+.bluetooth scale trough,
+.bluetooth icon-slider trough {
+  background: none;
+}
+#bluetooth scale slider,
+#bluetooth icon-slider slider,
+.bluetooth scale slider,
+.bluetooth icon-slider slider {
+  background-color: #89b4fa;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#bluetooth scale slider:hover,
+#bluetooth icon-slider slider:hover,
+.bluetooth scale slider:hover,
+.bluetooth icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#bluetooth scale highlight,
+#bluetooth icon-slider highlight,
+.bluetooth scale highlight,
+.bluetooth icon-slider highlight {
+  background: none;
+  background-color: #89b4fa;
+  transition: background-color 0.3s;
+}
+
+#brightness scale,
+.brightness scale {
+  min-height: 16px;
+}
+#brightness scale contents,
+.brightness scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #f9e2af 8px, rgba(249, 226, 175, 0.24) 8px);
+  transition: background 0.3s;
+}
+#brightness scale slider,
+.brightness scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#brightness icon-slider,
+.brightness icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#brightness icon-slider contents,
+.brightness icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #f9e2af 16px, rgba(249, 226, 175, 0.24) 16px);
+  transition: background 0.3s;
+}
+#brightness icon-slider slider,
+.brightness icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#brightness scale,
+#brightness icon-slider,
+.brightness scale,
+.brightness icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#brightness scale trough,
+#brightness icon-slider trough,
+.brightness scale trough,
+.brightness icon-slider trough {
+  background: none;
+}
+#brightness scale slider,
+#brightness icon-slider slider,
+.brightness scale slider,
+.brightness icon-slider slider {
+  background-color: #f9e2af;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#brightness scale slider:hover,
+#brightness icon-slider slider:hover,
+.brightness scale slider:hover,
+.brightness icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#brightness scale highlight,
+#brightness icon-slider highlight,
+.brightness scale highlight,
+.brightness icon-slider highlight {
+  background: none;
+  background-color: #f9e2af;
+  transition: background-color 0.3s;
+}
+
+#network scale,
+.network scale {
+  min-height: 16px;
+}
+#network scale contents,
+.network scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #74c7ec 8px, rgba(116, 199, 236, 0.24) 8px);
+  transition: background 0.3s;
+}
+#network scale slider,
+.network scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+#network icon-slider,
+.network icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+#network icon-slider contents,
+.network icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #74c7ec 16px, rgba(116, 199, 236, 0.24) 16px);
+  transition: background 0.3s;
+}
+#network icon-slider slider,
+.network icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+#network scale,
+#network icon-slider,
+.network scale,
+.network icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+#network scale trough,
+#network icon-slider trough,
+.network scale trough,
+.network icon-slider trough {
+  background: none;
+}
+#network scale slider,
+#network icon-slider slider,
+.network scale slider,
+.network icon-slider slider {
+  background-color: #74c7ec;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+#network scale slider:hover,
+#network icon-slider slider:hover,
+.network scale slider:hover,
+.network icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+#network scale highlight,
+#network icon-slider highlight,
+.network scale highlight,
+.network icon-slider highlight {
+  background: none;
+  background-color: #74c7ec;
+  transition: background-color 0.3s;
+}
+
+scale {
+  min-height: 16px;
+}
+scale contents {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #cdd6f4 8px, rgba(205, 214, 244, 0.24) 8px);
+  transition: background 0.3s;
+}
+scale slider {
+  min-height: 16px;
+  min-width: 16px;
+}
+
+icon-slider {
+  font-size: 24px;
+  min-height: 32px;
+}
+icon-slider contents {
+  padding: 0 16px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #cdd6f4 16px, rgba(205, 214, 244, 0.24) 16px);
+  transition: background 0.3s;
+}
+icon-slider slider {
+  min-height: 32px;
+  min-width: 32px;
+}
+
+scale,
+icon-slider {
+  padding: 0;
+  color: #1e1e2e;
+}
+scale trough,
+icon-slider trough {
+  background: none;
+}
+scale slider,
+icon-slider slider {
+  background-color: #cdd6f4;
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  transition: background-color 0.3s;
+}
+scale slider:hover,
+icon-slider slider:hover {
+  box-shadow: inset 0 0 0 1000px alpha(currentColor, 0.0799999982);
+}
+scale highlight,
+icon-slider highlight {
+  background: none;
+  background-color: #cdd6f4;
+  transition: background-color 0.3s;
+}
+
+#audio switch,
+.audio switch {
+  background-color: rgba(245, 194, 231, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#audio switch slider,
+.audio switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#audio switch image,
+.audio switch image {
+  -gtk-icon-transform: scale(0);
+}
+#audio switch:checked,
+.audio switch:checked {
+  background-color: #f5c2e7;
+  border-color: #f5c2e7;
+}
+#audio switch:checked slider,
+.audio switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#battery switch,
+.battery switch {
+  background-color: rgba(166, 227, 161, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#battery switch slider,
+.battery switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery switch image,
+.battery switch image {
+  -gtk-icon-transform: scale(0);
+}
+#battery switch:checked,
+.battery switch:checked {
+  background-color: #a6e3a1;
+  border-color: #a6e3a1;
+}
+#battery switch:checked slider,
+.battery switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#battery.discharging switch,
+.battery.discharging switch {
+  background-color: rgba(250, 179, 135, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#battery.discharging switch slider,
+.battery.discharging switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery.discharging switch image,
+.battery.discharging switch image {
+  -gtk-icon-transform: scale(0);
+}
+#battery.discharging switch:checked,
+.battery.discharging switch:checked {
+  background-color: #fab387;
+  border-color: #fab387;
+}
+#battery.discharging switch:checked slider,
+.battery.discharging switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#battery.critical switch,
+.battery.critical switch {
+  background-color: rgba(243, 139, 168, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#battery.critical switch slider,
+.battery.critical switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#battery.critical switch image,
+.battery.critical switch image {
+  -gtk-icon-transform: scale(0);
+}
+#battery.critical switch:checked,
+.battery.critical switch:checked {
+  background-color: #f38ba8;
+  border-color: #f38ba8;
+}
+#battery.critical switch:checked slider,
+.battery.critical switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#bluetooth switch,
+.bluetooth switch {
+  background-color: rgba(137, 180, 250, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#bluetooth switch slider,
+.bluetooth switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#bluetooth switch image,
+.bluetooth switch image {
+  -gtk-icon-transform: scale(0);
+}
+#bluetooth switch:checked,
+.bluetooth switch:checked {
+  background-color: #89b4fa;
+  border-color: #89b4fa;
+}
+#bluetooth switch:checked slider,
+.bluetooth switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#brightness switch,
+.brightness switch {
+  background-color: rgba(249, 226, 175, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#brightness switch slider,
+.brightness switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#brightness switch image,
+.brightness switch image {
+  -gtk-icon-transform: scale(0);
+}
+#brightness switch:checked,
+.brightness switch:checked {
+  background-color: #f9e2af;
+  border-color: #f9e2af;
+}
+#brightness switch:checked slider,
+.brightness switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+#network switch,
+.network switch {
+  background-color: rgba(116, 199, 236, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+#network switch slider,
+.network switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+#network switch image,
+.network switch image {
+  -gtk-icon-transform: scale(0);
+}
+#network switch:checked,
+.network switch:checked {
+  background-color: #74c7ec;
+  border-color: #74c7ec;
+}
+#network switch:checked slider,
+.network switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+switch {
+  background-color: rgba(205, 214, 244, 0.24);
+  min-width: 48px;
+  min-height: 28px;
+  border-radius: 16px;
+  border: solid 2px #585b70;
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+}
+switch slider {
+  background-color: #585b70;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  margin: 6px;
+  box-shadow: #585b70 0 0 0 0;
+  outline: solid red 10px;
+  transition-property: background-color, margin, min-width, min-height, border-radius, outline-width, outline-color, box-shadow;
+  transition-duration: 0.3s;
+}
+switch image {
+  -gtk-icon-transform: scale(0);
+}
+switch:checked {
+  background-color: #cdd6f4;
+  border-color: #cdd6f4;
+}
+switch:checked slider {
+  background-color: #1e1e2e;
+  box-shadow: #1e1e2e 0 0 0 4px;
+}
+* {
+  all: unset;
+}
+
+.background {
+  border-radius: 24px;
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+}
+
+.info-window {
+  min-width: 360px;
+  min-height: 480px;
+}
+.info-window > * {
+  padding: 8px;
+}
+
+.expandable-window {
+  min-width: 360px;
+  transition-property: min-height;
+  transition-duration: 0.3s;
+}
+.expandable-window > * {
+  padding: 8px;
+}
+.expandable-window.expanded {
+  min-height: 480px;
+}
+
+.slider-window {
+  padding: 8px;
+  min-width: 360px;
+}
+
+.bar {
+  border-radius: 24px;
+  padding: 4px;
+}
+
+.popups-window {
+  min-height: 1000px;
+}
+.popups-window > * {
+  min-width: 360px;
+}
+
+.icon,
+.icon-button {
+  font-size: 24px;
+  font-family: "Material Design Icons";
+}
+
+.clock {
+  background-color: transparent;
+  border-radius: 10000px;
+  color: #cdd6f4;
+  min-width: 0;
+  font-size: 20px;
+  padding: 0 8px;
+  min-height: 32px;
+}
+
+.secondary {
+  color: #7f849c;
+}
+
+#audio .device,
+#audio .access-point,
+.audio .device,
+.audio .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#audio .device:hover,
+#audio .access-point:hover,
+.audio .device:hover,
+.audio .access-point:hover {
+  background-color: #45475a;
+}
+#audio .device .pictogram,
+#audio .access-point .strength,
+.audio .device .pictogram,
+.audio .access-point .strength {
+  font-size: 32px;
+}
+#audio .device.connecting,
+.audio .device.connecting {
+  border: solid 2px #f5c2e7;
+  padding: 6px;
+}
+#audio .device.connected,
+#audio .access-point.active,
+.audio .device.connected,
+.audio .access-point.active {
+  background-color: #f5c2e7;
+  color: #1e1e2e;
+}
+#audio .device.connected .secondary,
+#audio .access-point.active .secondary,
+.audio .device.connected .secondary,
+.audio .access-point.active .secondary {
+  color: #585b70;
+}
+
+#battery .device,
+#battery .access-point,
+.battery .device,
+.battery .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#battery .device:hover,
+#battery .access-point:hover,
+.battery .device:hover,
+.battery .access-point:hover {
+  background-color: #45475a;
+}
+#battery .device .pictogram,
+#battery .access-point .strength,
+.battery .device .pictogram,
+.battery .access-point .strength {
+  font-size: 32px;
+}
+#battery .device.connecting,
+.battery .device.connecting {
+  border: solid 2px #a6e3a1;
+  padding: 6px;
+}
+#battery .device.connected,
+#battery .access-point.active,
+.battery .device.connected,
+.battery .access-point.active {
+  background-color: #a6e3a1;
+  color: #1e1e2e;
+}
+#battery .device.connected .secondary,
+#battery .access-point.active .secondary,
+.battery .device.connected .secondary,
+.battery .access-point.active .secondary {
+  color: #585b70;
+}
+
+#battery.discharging .device,
+#battery.discharging .access-point,
+.battery.discharging .device,
+.battery.discharging .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#battery.discharging .device:hover,
+#battery.discharging .access-point:hover,
+.battery.discharging .device:hover,
+.battery.discharging .access-point:hover {
+  background-color: #45475a;
+}
+#battery.discharging .device .pictogram,
+#battery.discharging .access-point .strength,
+.battery.discharging .device .pictogram,
+.battery.discharging .access-point .strength {
+  font-size: 32px;
+}
+#battery.discharging .device.connecting,
+.battery.discharging .device.connecting {
+  border: solid 2px #fab387;
+  padding: 6px;
+}
+#battery.discharging .device.connected,
+#battery.discharging .access-point.active,
+.battery.discharging .device.connected,
+.battery.discharging .access-point.active {
+  background-color: #fab387;
+  color: #1e1e2e;
+}
+#battery.discharging .device.connected .secondary,
+#battery.discharging .access-point.active .secondary,
+.battery.discharging .device.connected .secondary,
+.battery.discharging .access-point.active .secondary {
+  color: #585b70;
+}
+
+#battery.critical .device,
+#battery.critical .access-point,
+.battery.critical .device,
+.battery.critical .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#battery.critical .device:hover,
+#battery.critical .access-point:hover,
+.battery.critical .device:hover,
+.battery.critical .access-point:hover {
+  background-color: #45475a;
+}
+#battery.critical .device .pictogram,
+#battery.critical .access-point .strength,
+.battery.critical .device .pictogram,
+.battery.critical .access-point .strength {
+  font-size: 32px;
+}
+#battery.critical .device.connecting,
+.battery.critical .device.connecting {
+  border: solid 2px #f38ba8;
+  padding: 6px;
+}
+#battery.critical .device.connected,
+#battery.critical .access-point.active,
+.battery.critical .device.connected,
+.battery.critical .access-point.active {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+}
+#battery.critical .device.connected .secondary,
+#battery.critical .access-point.active .secondary,
+.battery.critical .device.connected .secondary,
+.battery.critical .access-point.active .secondary {
+  color: #585b70;
+}
+
+#bluetooth .device,
+#bluetooth .access-point,
+.bluetooth .device,
+.bluetooth .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#bluetooth .device:hover,
+#bluetooth .access-point:hover,
+.bluetooth .device:hover,
+.bluetooth .access-point:hover {
+  background-color: #45475a;
+}
+#bluetooth .device .pictogram,
+#bluetooth .access-point .strength,
+.bluetooth .device .pictogram,
+.bluetooth .access-point .strength {
+  font-size: 32px;
+}
+#bluetooth .device.connecting,
+.bluetooth .device.connecting {
+  border: solid 2px #89b4fa;
+  padding: 6px;
+}
+#bluetooth .device.connected,
+#bluetooth .access-point.active,
+.bluetooth .device.connected,
+.bluetooth .access-point.active {
+  background-color: #89b4fa;
+  color: #1e1e2e;
+}
+#bluetooth .device.connected .secondary,
+#bluetooth .access-point.active .secondary,
+.bluetooth .device.connected .secondary,
+.bluetooth .access-point.active .secondary {
+  color: #585b70;
+}
+
+#brightness .device,
+#brightness .access-point,
+.brightness .device,
+.brightness .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#brightness .device:hover,
+#brightness .access-point:hover,
+.brightness .device:hover,
+.brightness .access-point:hover {
+  background-color: #45475a;
+}
+#brightness .device .pictogram,
+#brightness .access-point .strength,
+.brightness .device .pictogram,
+.brightness .access-point .strength {
+  font-size: 32px;
+}
+#brightness .device.connecting,
+.brightness .device.connecting {
+  border: solid 2px #f9e2af;
+  padding: 6px;
+}
+#brightness .device.connected,
+#brightness .access-point.active,
+.brightness .device.connected,
+.brightness .access-point.active {
+  background-color: #f9e2af;
+  color: #1e1e2e;
+}
+#brightness .device.connected .secondary,
+#brightness .access-point.active .secondary,
+.brightness .device.connected .secondary,
+.brightness .access-point.active .secondary {
+  color: #585b70;
+}
+
+#network .device,
+#network .access-point,
+.network .device,
+.network .access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+#network .device:hover,
+#network .access-point:hover,
+.network .device:hover,
+.network .access-point:hover {
+  background-color: #45475a;
+}
+#network .device .pictogram,
+#network .access-point .strength,
+.network .device .pictogram,
+.network .access-point .strength {
+  font-size: 32px;
+}
+#network .device.connecting,
+.network .device.connecting {
+  border: solid 2px #74c7ec;
+  padding: 6px;
+}
+#network .device.connected,
+#network .access-point.active,
+.network .device.connected,
+.network .access-point.active {
+  background-color: #74c7ec;
+  color: #1e1e2e;
+}
+#network .device.connected .secondary,
+#network .access-point.active .secondary,
+.network .device.connected .secondary,
+.network .access-point.active .secondary {
+  color: #585b70;
+}
+
+.device,
+.access-point {
+  padding: 8px;
+  border-radius: 16px;
+  background-color: #313244;
+  transition-property: background-color, color, border-width, padding;
+  transition-duration: 0.3s;
+}
+
+.device:hover,
+.access-point:hover {
+  background-color: #45475a;
+}
+
+.device .pictogram,
+.access-point .strength {
+  font-size: 32px;
+}
+
+.device.connecting {
+  border: solid 2px #cdd6f4;
+  padding: 6px;
+}
+
+.device.connected,
+.access-point.active {
+  background-color: #cdd6f4;
+  color: #1e1e2e;
+}
+
+.device.connected .secondary,
+.access-point.active .secondary {
+  color: #585b70;
+}
+
+.audio-device {
+  background-color: #313244;
+  border-radius: 24px;
+}
+.audio-device > * {
+  padding: 8px;
+}
+
+.notification {
+  background-color: #313244;
+  border-radius: 16px;
+  padding: 8px;
+}
+.notification .notification-image {
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: 8px;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=style.css.map */

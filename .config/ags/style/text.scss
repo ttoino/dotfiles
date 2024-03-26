@@ -1,0 +1,135 @@
+@use "sass:math";
+
+@function ptToRem($size) {
+    @return $size * 0.0625rem;
+}
+
+@function letterSpacing($tracking, $size) {
+    @return math.div($tracking, $size) * 1rem;
+}
+
+$type-scale: (
+    display-large: (
+        weight: 400,
+        size: 57,
+        letter-spacing: -0.25,
+        line-height: 64,
+    ),
+
+    display-medium: (
+        weight: 400,
+        size: 45,
+        letter-spacing: 0,
+        line-height: 52,
+    ),
+
+    display-small: (
+        weight: 400,
+        size: 36,
+        letter-spacing: 0,
+        line-height: 44,
+    ),
+
+    headline-large: (
+        weight: 400,
+        size: 32,
+        letter-spacing: 0,
+        line-height: 40,
+    ),
+
+    headline-medium: (
+        weight: 400,
+        size: 28,
+        letter-spacing: 0,
+        line-height: 36,
+    ),
+
+    headline-small: (
+        weight: 400,
+        size: 24,
+        letter-spacing: 0,
+        line-height: 32,
+    ),
+
+    title-large: (
+        weight: 400,
+        size: 22,
+        letter-spacing: 0,
+        line-height: 28,
+    ),
+
+    title-medium: (
+        weight: 500,
+        size: 16,
+        letter-spacing: 0.15,
+        line-height: 24,
+    ),
+
+    title-small: (
+        weight: 500,
+        size: 14,
+        letter-spacing: 0.1,
+        line-height: 20,
+    ),
+
+    body-large: (
+        weight: 400,
+        size: 16,
+        letter-spacing: 0.5,
+        line-height: 24,
+    ),
+
+    body-medium: (
+        weight: 400,
+        size: 14,
+        letter-spacing: 0.25,
+        line-height: 20,
+    ),
+
+    body-small: (
+        weight: 400,
+        size: 12,
+        letter-spacing: 0.4,
+        line-height: 16,
+    ),
+
+    label-large: (
+        weight: 500,
+        weight-prominent: 700,
+        size: 14,
+        letter-spacing: 0.1,
+        line-height: 20,
+    ),
+
+    label-medium: (
+        weight: 500,
+        weight-prominent: 700,
+        size: 12,
+        letter-spacing: 0.5,
+        line-height: 16,
+    ),
+
+    label-small: (
+        weight: 500,
+        size: 11,
+        letter-spacing: 0.5,
+        line-height: 16,
+    ),
+);
+
+@mixin type($type, $prominent: false) {
+    $type-scale: map-get($type-scale, $type);
+    $weight: if(
+        $prominent,
+        map-get($type-scale, weight-prominent),
+        map-get($type-scale, weight)
+    );
+
+    font-weight: $weight;
+    font-size: ptToRem(map-get($type-scale, size));
+    letter-spacing: letterSpacing(
+        map-get($type-scale, letter-spacing),
+        map-get($type-scale, size)
+    );
+    // line-height: ptToRem(map-get($type-scale, line-height));
+}

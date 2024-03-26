@@ -3,4 +3,4 @@ include ./misc
 include ./devices
 include ./keybinds
 
-exec swaylock
+# exec swaylock

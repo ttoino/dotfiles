@@ -1,0 +1,81 @@
+@use "sass:color";
+
+@use "../colors.scss" as c;
+@use "../catppuccin.scss" as cp;
+
+@include c.colored using ($main-color) {
+    scale {
+        min-height: 16px;
+
+        contents {
+            padding: 0 8px;
+            border-radius: 8px;
+            background: linear-gradient(
+                to right,
+                $main-color 8px,
+                color.change($main-color, $alpha: 0.24) 8px
+            );
+
+            transition: background 0.3s;
+        }
+
+        slider {
+            min-height: 16px;
+            min-width: 16px;
+        }
+    }
+
+    icon-slider {
+        font-size: 24px;
+        min-height: 32px;
+
+        contents {
+            padding: 0 16px;
+            border-radius: 16px;
+            background: linear-gradient(
+                to right,
+                $main-color 16px,
+                color.change($main-color, $alpha: 0.24) 16px
+            );
+
+            transition: background 0.3s;
+        }
+
+        slider {
+            min-height: 32px;
+            min-width: 32px;
+        }
+    }
+
+    scale,
+    icon-slider {
+        padding: 0;
+        color: cp.$base;
+
+        trough {
+            background: none;
+        }
+
+        slider {
+            background-color: $main-color;
+            border-radius: 50%;
+            border: none;
+            box-shadow: none;
+            margin: 0;
+
+            transition: background-color 0.3s;
+
+            &:hover {
+                box-shadow: inset 0 0 0 1000px
+                    c.alpha(currentColor, $alpha: 0.07999999821186066);
+            }
+        }
+
+        highlight {
+            background: none;
+            background-color: $main-color;
+
+            transition: background-color 0.3s;
+        }
+    }
+}

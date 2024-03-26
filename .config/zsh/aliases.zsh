@@ -6,9 +6,12 @@ alias lla='ls -lhA'
 
 # misc
 alias q='exit'
+alias :q='exit'
+alias quit='exit'
 alias rr='source $ZDOTDIR/rc.zsh'
 alias pd='popd'
 alias aocm='~/Documents/projects/advent-of-code-manager/main.py'
+alias cat='bat'
 
 function mkcd() {
     mkdir $1 && cd $1

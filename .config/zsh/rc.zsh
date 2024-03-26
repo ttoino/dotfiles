@@ -66,7 +66,5 @@ zsh_add_plugin "davidde/git"
 zsh_add_plugin "ael-code/zsh-colored-man-pages" "colored-man-pages"
 # Add syntax highlighting
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-# asdf
-zsh_add_file "/opt/asdf-vm/asdf.sh"
 # fnm
 eval "$(fnm env --use-on-cd)"
