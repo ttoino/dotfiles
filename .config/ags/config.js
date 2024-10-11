@@ -1,13 +1,14 @@
-import Popups from "./windows/popups.js";
-import Bar from "./windows/bar.js";
-import Network from "./windows/network.js";
-import Bluetooth from "./windows/bluetooth.js";
-import Notifications from "./windows/notifications.js";
-import Audio from "./windows/audio.js";
-import Calendar from "./windows/calendar.js";
-import Brightness from "./windows/brightness.js";
-import Battery from "./windows/battery.js";
 import "./services/notifications/index.js";
+import Audio from "./windows/audio.js";
+import Bar from "./windows/bar.js";
+import Battery from "./windows/battery.js";
+import Bluetooth from "./windows/bluetooth.js";
+import Brightness from "./windows/brightness.js";
+import Calendar from "./windows/calendar.js";
+import Media from "./windows/media.js";
+import Network from "./windows/network.js";
+import Notifications from "./windows/notifications.js";
+import Popups from "./windows/popups.js";
 
 /** @type {((monitor: number) => import("types/widgets/window.js").Window)[]} */
 const windows = [Bar, Popups];
@@ -55,6 +56,7 @@ App.config({
         Bluetooth(),
         Brightness(),
         Calendar(),
+        Media(),
         Network(),
         Notifications(),
     ],

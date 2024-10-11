@@ -15,6 +15,7 @@ const Calendar = () =>
                     Widget.Calendar({
                         hexpand: true,
                         vexpand: true,
+                        noMonthChange: true,
                     }),
                 ],
             }),

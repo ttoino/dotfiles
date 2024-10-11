@@ -11,7 +11,7 @@ const label = date
 
 const Clock = () =>
     Widget.Button({
-        className: "clock",
+        name: "clock",
         label,
         onClicked: () => {
             toggleCalendar();

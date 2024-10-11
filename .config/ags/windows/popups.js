@@ -9,9 +9,9 @@ const Popups = (/** @type {number} */ monitor) => {
     /** @type {Record<number, ReturnType<Notification>>} */
     const popups = {};
 
-    notifications.popups.forEach(
-        (notification) => (popups[notification.id] = Notification(notification))
-    );
+    // notifications.popups.forEach(
+    //     (notification) => (popups[notification.id] = Notification(notification))
+    // );
 
     const list = Widget.Box({
         hexpand: true,
@@ -22,12 +22,13 @@ const Popups = (/** @type {number} */ monitor) => {
         .hook(
             notifications,
             (self, /** @type {number} */ notificationId) => {
+                print("New popup", notificationId);
+
                 if (notificationId in popups) {
-                    popups[notificationId].destroy();
-                    delete popups[notificationId];
+                    return;
                 }
 
-                if (monitor !== hyprland.active.monitor.id) return;
+                // if (monitor !== hyprland.active.monitor.id) return;
 
                 const notification = notifications.getPopup(notificationId);
 
@@ -37,16 +38,22 @@ const Popups = (/** @type {number} */ monitor) => {
                 popups[notificationId] = popup;
 
                 self.children = [popup, ...self.children];
+
+                print("Popup added", notificationId, self.children.length);
             },
             "notified"
         )
         .hook(
             notifications,
             (self, /** @type {number} */ notificationId) => {
+                print("Popup dismissed", notificationId);
+
                 if (notificationId in popups) {
                     popups[notificationId].destroy();
                     delete popups[notificationId];
                 }
+
+                print("Popup removed", notificationId, self.children.length);
             },
             "dismissed"
         );

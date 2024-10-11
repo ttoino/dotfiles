@@ -1,10 +1,9 @@
 @use "sass:color";
 
 @use "../colors.scss" as c;
-@use "../catppuccin.scss" as cp;
 @use "../text.scss" as t;
 
-@include c.colored using ($main-color) {
+@mixin button($fg-color, $bg-color) {
     button {
         @include t.type(label-large);
 
@@ -12,19 +11,19 @@
         min-height: 40px;
         padding: 0 12px;
         border-radius: 20px;
-        color: $main-color;
+        color: $fg-color;
 
         transition-property: background-color, background-image, border-color,
             color, box-shadow;
         transition-duration: 0.3s;
 
         &.filled {
-            background-color: $main-color;
-            color: cp.$base;
+            background-color: $fg-color;
+            color: $bg-color;
         }
 
         &.outlined {
-            border: 1px solid $main-color;
+            border: 1px solid $fg-color;
             min-height: 38px;
         }
 
@@ -34,7 +33,17 @@
             font-size: 24px;
             font-weight: unset;
             padding: 4px;
-            border-radius: 16px;
+            border-radius: 10000px;
+
+            &.lg {
+                font-size: 36px;
+                padding: 6px;
+            }
+
+            &.xl {
+                font-size: 48px;
+                padding: 8px;
+            }
         }
 
         &:hover {

@@ -1,9 +1,8 @@
 @use "sass:color";
 
 @use "../colors.scss" as c;
-@use "../catppuccin.scss" as cp;
 
-@include c.colored using ($main-color) {
+@mixin slider($fg-color, $bg-color) {
     scale {
         min-height: 16px;
 
@@ -12,8 +11,8 @@
             border-radius: 8px;
             background: linear-gradient(
                 to right,
-                $main-color 8px,
-                color.change($main-color, $alpha: 0.24) 8px
+                $fg-color 8px,
+                color.change($fg-color, $alpha: 0.24) 8px
             );
 
             transition: background 0.3s;
@@ -34,8 +33,8 @@
             border-radius: 16px;
             background: linear-gradient(
                 to right,
-                $main-color 16px,
-                color.change($main-color, $alpha: 0.24) 16px
+                $fg-color 16px,
+                color.change($fg-color, $alpha: 0.24) 16px
             );
 
             transition: background 0.3s;
@@ -50,14 +49,14 @@
     scale,
     icon-slider {
         padding: 0;
-        color: cp.$base;
+        color: $bg-color;
 
         trough {
             background: none;
         }
 
         slider {
-            background-color: $main-color;
+            background-color: $fg-color;
             border-radius: 50%;
             border: none;
             box-shadow: none;
@@ -73,7 +72,7 @@
 
         highlight {
             background: none;
-            background-color: $main-color;
+            background-color: $fg-color;
 
             transition: background-color 0.3s;
         }

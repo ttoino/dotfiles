@@ -198,6 +198,7 @@ const Notification = (
         classNames,
         vertical: true,
         // vexpand: true,
+        vpack: "start",
         hexpand: true,
         spacing: 8,
         children: [

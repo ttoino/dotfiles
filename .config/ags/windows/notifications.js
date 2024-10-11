@@ -16,6 +16,7 @@ const Notifications = () =>
             child: Widget.Box({
                 vertical: true,
                 spacing: 8,
+                vpack: "start",
                 children: [
                     Widget.Box({
                         spacing: 8,
