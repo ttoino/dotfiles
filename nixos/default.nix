@@ -13,6 +13,8 @@
       ./users.nix
     ];
 
+  nix.settings.experimental-features = "nix-command flakes";
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -42,6 +44,10 @@
 
   programs.firefox.enable = true;
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
+
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -50,6 +56,8 @@
   services.printing.enable = true;
 
   services.upower.enable = true;
+
+  services.fprintd.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

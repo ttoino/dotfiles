@@ -23,6 +23,10 @@
     layout = "dwindle";
   };
 
+  misc = {
+    vrr = "2";
+  };
+
   decoration = {
     rounding = "16";
 
@@ -31,17 +35,17 @@
     fullscreen_opacity = "1";
 
     blur = {
-        enabled = "yes";
-        size = "8";
-        passes = "1";
-        new_optimizations = "on";
+      enabled = "yes";
+      size = "8";
+      passes = "1";
+      new_optimizations = "on";
     };
 
     drop_shadow = "yes";
     shadow_range = "24";
     shadow_render_power = "3";
     "col.shadow" = "rgba(000000aa)";
-    
+
     dim_inactive = "true";
     dim_strength = ".1";
   };

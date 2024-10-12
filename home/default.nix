@@ -7,6 +7,7 @@
     ./git.nix
     ./hyprland
     ./vscode.nix
+    ./zsh
   ];
 
   programs.home-manager.enable = true;
@@ -19,6 +20,7 @@
       dart-sass
       nixpkgs-fmt
       prismlauncher
+      wdisplays
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
