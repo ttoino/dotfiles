@@ -19,7 +19,10 @@
     packages = with pkgs; [
       brightnessctl
       dart-sass
+      grimblast
+      hyprpicker
       nixpkgs-fmt
+      playerctl
       prismlauncher
       wdisplays
     ];

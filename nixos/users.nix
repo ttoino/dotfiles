@@ -1,4 +1,6 @@
 {
+  services.getty.autologinUser = "toino";
+
   users.users.toino = {
     isNormalUser = true;
     description = "Toino";

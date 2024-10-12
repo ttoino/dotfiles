@@ -3,6 +3,7 @@
     enable = true;
     
     settings = ({
+      exec-once = [ "ags" ];
     })
     // (import ./apps.nix)
     // (import ./catppuccin.nix)
