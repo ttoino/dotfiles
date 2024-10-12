@@ -5,6 +5,7 @@
     ./catppuccin.nix
     ./fonts
     ./git.nix
+    ./hypridle.nix
     ./hyprland
     ./hyprlock.nix
     ./hyprpaper.nix
