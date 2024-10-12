@@ -3,7 +3,10 @@
     enable = true;
     
     settings = ({
-      exec-once = [ "ags" ];
+      exec-once = [ 
+        "ags"
+        "hyprlock"
+      ];
     })
     // (import ./apps.nix)
     // (import ./catppuccin.nix)

@@ -6,6 +6,8 @@
     ./fonts
     ./git.nix
     ./hyprland
+    ./hyprlock.nix
+    ./hyprpaper.nix
     ./kitty.nix
     ./vscode.nix
     ./zsh

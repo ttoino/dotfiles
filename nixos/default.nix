@@ -14,6 +14,13 @@
     ];
 
   nix.settings.experimental-features = "nix-command flakes";
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  security.pam.services.hyprlock = {};
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
