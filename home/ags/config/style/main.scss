@@ -1,0 +1,157 @@
+@use "./catppuccin.scss" as cp;
+
+@use "./colors.scss" as c;
+@use "./text.scss" as t;
+
+@use "./components/colored.scss";
+
+@use "./windows/calendar.scss";
+
+* {
+    all: unset;
+}
+
+.background {
+    border-radius: 24px;
+    background-color: cp.$base;
+    color: cp.$text;
+}
+
+.info-window {
+    min-width: 360px;
+    min-height: 480px;
+
+    > * {
+        padding: 8px;
+    }
+}
+
+.expandable-window {
+    min-width: 360px;
+
+    transition-property: min-height;
+    transition-duration: 0.3s;
+
+    > * {
+        padding: 8px;
+    }
+
+    &.expanded {
+        min-height: 480px;
+    }
+}
+
+.slider-window {
+    padding: 8px;
+    min-width: 360px;
+}
+
+.bar {
+    border-radius: 24px;
+    padding: 4px;
+}
+
+.popups-window {
+    min-height: 1000px;
+
+    > * {
+        min-width: 360px;
+    }
+}
+
+.icon,
+.icon-button {
+    font-size: 24px;
+    font-family: "Material Design Icons";
+}
+
+#clock {
+    background-color: transparent;
+    border-radius: 10000px;
+    color: cp.$text;
+    min-width: 0;
+    font-size: 20px;
+    padding: 0 8px;
+    min-height: 32px;
+}
+
+.secondary {
+    color: cp.$overlay1;
+}
+
+// TODO
+// @include c.colored using ($main-color) {
+//     .device,
+//     .access-point {
+//         padding: 8px;
+//         border-radius: 16px;
+//         background-color: cp.$surface0;
+//         transition-property: background-color, color, border-width, padding;
+//         transition-duration: 0.3s;
+//     }
+
+//     .device:hover,
+//     .access-point:hover {
+//         background-color: cp.$surface1;
+//     }
+
+//     .device .pictogram,
+//     .access-point .strength {
+//         font-size: 32px;
+//     }
+
+//     .device.connecting {
+//         border: solid 2px $main-color;
+//         padding: 6px;
+//     }
+
+//     .device.connected,
+//     .access-point.active {
+//         background-color: $main-color;
+//         color: cp.$base;
+//     }
+
+//     .device.connected .secondary,
+//     .access-point.active .secondary {
+//         color: cp.$surface2;
+//     }
+// }
+
+.audio-device {
+    background-color: cp.$surface0;
+    border-radius: 24px;
+
+    > * {
+        padding: 8px;
+    }
+}
+
+.notification {
+    background-color: cp.$surface0;
+    border-radius: 16px;
+    padding: 8px;
+
+    .notification-image {
+        min-width: 64px;
+        min-height: 64px;
+        border-radius: 8px;
+        background-size: cover;
+    }
+}
+
+.media-window {
+    .title {
+        @include t.type("title-large");
+    }
+
+    .artist {
+        @include t.type("body-large");
+    }
+
+    .cover {
+        border-radius: 16px;
+        background-size: cover;
+        min-width: 344px;
+        min-height: 344px;
+    }
+}

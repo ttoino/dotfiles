@@ -1,0 +1,43 @@
+@use "../catppuccin.scss" as cp;
+@use "../text.scss" as t;
+
+.calendar-window {
+    calendar {
+        // Whole calendar
+        &.view {
+            @include t.type("label-medium");
+        }
+
+        // Calendar header (month and year)
+        &.header {
+            @include t.type("title-large");
+            color: cp.$blue;
+        }
+
+        // Month and year change buttons
+        &.button {
+            background-color: lightblue;
+            color: lightblue;
+        }
+
+        // Weekday names
+        &.highlight {
+            color: cp.$teal;
+        }
+
+        // Days from other months, no bg
+        &:inconsistent {
+            color: cp.$overlay1;
+        }
+
+        // Marked days
+        &:active {
+            @include t.type("label-medium", true);
+        }
+
+        // Current day
+        &:selected {
+            color: cp.$green;
+        }
+    }
+}

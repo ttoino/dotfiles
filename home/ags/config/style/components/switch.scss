@@ -1,0 +1,52 @@
+@use "sass:color";
+
+@use "../colors.scss" as c;
+@use "../catppuccin.scss" as cp;
+
+@mixin switch($fg-color, $bg-color) {
+    switch {
+        background-color: color.change($fg-color, $alpha: 0.24);
+        min-width: 48px;
+        min-height: 28px;
+        border-radius: 16px;
+        border: solid 2px cp.$surface2;
+
+        transition-property: background-color, border-color;
+        transition-duration: 0.3s;
+
+        slider {
+            background-color: cp.$surface2;
+            min-width: 16px;
+            min-height: 16px;
+            border-radius: 50%;
+            margin: 6px;
+            box-shadow: cp.$surface2 0 0 0 0;
+
+            transition-property: background-color, margin, min-width, min-height,
+                border-radius, outline-width, outline-color, box-shadow;
+            transition-duration: 0.3s;
+        }
+
+        image {
+            -gtk-icon-transform: scale(0);
+        }
+
+        &:checked {
+            background-color: $fg-color;
+            border-color: $fg-color;
+
+            slider {
+                background-color: cp.$base;
+                // outline-color: cp.$base;
+                box-shadow: cp.$base 0 0 0 4px;
+                // min-width: 24px;
+                // min-height: 24px;
+                // border-radius: 12px;
+                // margin: 2px;
+            }
+        }
+
+        &:active slider {
+        }
+    }
+}

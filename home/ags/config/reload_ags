@@ -1,0 +1,18 @@
+#!/bin/bash
+
+AGS_CONFIG_DIR="$HOME/.config/ags"
+
+function _ags() {
+    killall ags
+    ags "$@" &
+}
+
+_ags "$@"
+
+inotifywait --quiet --monitor --event create,modify,delete --recursive "$AGS_CONFIG_DIR" | while read -r DIRECTORY EVENT FILE; do
+    file_extension=${FILE##*.}
+
+    if [ "$file_extension" = "js" ]; then
+        _ags "$@"
+    fi
+done

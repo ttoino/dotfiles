@@ -1,0 +1,15 @@
+@use "./catppuccin.scss" as c;
+
+$colors: (
+    "audio": c.$pink,
+    "battery": c.$green,
+    "battery.discharging": c.$peach,
+    "battery.critical": c.$red,
+    "bluetooth": c.$blue,
+    "brightness": c.$yellow,
+    "network": c.$sapphire,
+);
+
+@function alpha($color, $alpha) {
+    @return unquote("alpha(#{$color}, #{$alpha})");
+}

@@ -1,0 +1,21 @@
+@use "../colors.scss" as c;
+@use "../catppuccin.scss" as cp;
+
+@use "./button.scss" as button;
+@use "./slider.scss" as slider;
+@use "./switch.scss" as switch;
+
+@mixin colored-components($fg-color, $bg-color: cp.$base) {
+    @include button.button($fg-color, $bg-color);
+    @include slider.slider($fg-color, $bg-color);
+    @include switch.switch($fg-color, $bg-color);
+}
+
+@each $name, $color in c.$colors {
+    ##{$name},
+    .#{$name} {
+        @include colored-components($color);
+    }
+}
+
+@include colored-components(cp.$text);
