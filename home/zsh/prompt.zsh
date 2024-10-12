@@ -1,5 +1,8 @@
+# Add nix-shell info to right prompt
+RPROMPT='%F{teal}$NIX_SHELL_PACKAGES%f '
+
 # Add gitstatus to right prompt
-RPROMPT='$GITSTATUS_PROMPT'
+RPROMPT+='$GITSTATUS_PROMPT'
 
 PROMPT=''
 
