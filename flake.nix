@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware = {
@@ -23,15 +23,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, disko, home-manager, ... }@inputs: 
-  let
-    system = "x86_64-linux";
-  in {
+  outputs = { self, nixpkgs, disko, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
+      system = "x86_64-linux";
       specialArgs = { inherit inputs; };
-      modules = [ 
-        ./nixos 
+      modules = [
+        ./nixos
 
         home-manager.nixosModules.home-manager
         {
@@ -39,7 +36,7 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.toino = import ./home;
-      
+
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
