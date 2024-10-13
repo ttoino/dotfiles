@@ -3,7 +3,8 @@
     (iosevka.override (import ./iosevka.nix))
     noto-fonts
     roboto
-    twemoji-color-font
+    # twitter-color-emoji is the fork of twemoji-color-font
+    twitter-color-emoji
     material-design-icons
   ];
 
@@ -21,6 +22,9 @@
         "Material Design Icons"
         "Roboto Mono"
         "Noto Sans Mono"
+      ];
+      emoji = [
+        "Twitter Color Emoji"
       ];
     };
   };

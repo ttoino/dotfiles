@@ -32,7 +32,7 @@
           owner = "zdharma-continuum";
           repo = "fast-syntax-highlighting";
           rev = "master";
-          sha256 = "RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
+          hash = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
         };
       }
       {
@@ -42,7 +42,7 @@
           owner = "ohmyzsh";
           repo = "ohmyzsh";
           rev = "master";
-          sha256 = "JXEMx8+49xEH6xWRCTBMtwQ5DXhMjkBfzUMHKgr7j78=";
+          hash = "sha256-JXEMx8+49xEH6xWRCTBMtwQ5DXhMjkBfzUMHKgr7j78=";
         };
       }
       {
@@ -52,7 +52,7 @@
           owner = "romkatv";
           repo = "gitstatus";
           rev = "master";
-          sha256 = "MzDtVXnhSshxl+wZZbaq/UevRe6ZQWwkiPBeNqpZGOs=";
+          hash = "sha256-MzDtVXnhSshxl+wZZbaq/UevRe6ZQWwkiPBeNqpZGOs=";
         };
       }
       {
@@ -61,16 +61,15 @@
           owner = "ael-code";
           repo = "zsh-colored-man-pages";
           rev = "master";
-          sha256 = "087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
+          hash = "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
         };
       }
       {
         name = "zsh-fast-alias-tips";
-        src = pkgs.fetchFromGitHub {
-          owner = "decayofmind";
-          repo = "zsh-fast-alias-tips";
-          rev = "master";
-          sha256 = "gXBg9GWgajpj8l63L2S22riGox9gvgZl9qmf+2nKwa4=";
+        src = pkgs.fetchzip {
+          url = "https://github.com/decayofmind/zsh-fast-alias-tips/releases/download/v1.0.0/zsh-fast-alias-tips_1.0.0_linux_amd64.tar.gz";
+          stripRoot = false;
+          hash = "sha256-W6LskHcJojB9eHsVJX4rbx5I9qJ4k0yKJS12FdGdTUg=";
         };
       }
       {
@@ -80,16 +79,22 @@
           owner = "chisui";
           repo = "zsh-nix-shell";
           rev = "master";
-          sha256 = "Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=";
+          hash = "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=";
         };
       }
     ];
 
-    initExtra = ''
-      ${builtins.readFile ./completion.zsh}
+    initExtraFirst = ''
       ${builtins.readFile ./functions.zsh}
       ${builtins.readFile ./keybinds.zsh}
       ${builtins.readFile ./opts.zsh}
+    '';
+
+    completionInit = ''
+      ${builtins.readFile ./completion.zsh}
+    '';
+
+    initExtra = ''
       ${builtins.readFile ./prompt.zsh}
     '';
 

@@ -6,7 +6,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt '%B%p%b'
-zstyle :compinstall filename '/home/toino/.config/zsh/completion.zsh'
+zstyle :compinstall filename '/etc/nixos/home/zsh/completion.zsh'
 
 autoload -Uz compinit
 compinit
