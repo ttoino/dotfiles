@@ -2,6 +2,7 @@
 {
   imports = [
     ./ags
+    ./apps.nix
     ./catppuccin.nix
     ./fonts
     ./git.nix
