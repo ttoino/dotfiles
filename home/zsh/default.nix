@@ -11,18 +11,21 @@
     };
 
     shellAliases = {
-      # ls
-      ls = "ls --color=auto --group-directories-first";
+      # CLI tools
+      cat = "bat";
+
+      ls = "eza --color=auto --group-directories-first";
       ll = "ls -lh";
       la = "ls -A";
       lla = "ls -lhA";
+
+      grep = "rg";
 
       # misc
       q = "exit";
       ":q" = "exit";
       quit = "exit";
       pd = "popd";
-      cat = "bat";
     };
 
     plugins = [
