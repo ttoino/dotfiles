@@ -1,4 +1,12 @@
-{
+{ inputs, pkgs, ... }: {
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
+
+  environment.systemPackages = with pkgs; [
+    sbctl
+  ];
+
   boot = {
     # TODO: Lanzaboote
     loader = {
@@ -6,9 +14,14 @@
       timeout = 0;
 
       systemd-boot = {
-        enable = true;
+        # enable = true;
         editor = false;
       };
+    };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
     };
 
     plymouth = {
