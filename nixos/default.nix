@@ -1,6 +1,7 @@
 { inputs, config, lib, pkgs, ... }: {
   imports = [
     ./boot.nix
+    ./catppuccin.nix
     ./disk.nix
     ./locale.nix
     ./hardware
