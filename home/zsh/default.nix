@@ -14,18 +14,34 @@
       # CLI tools
       cat = "bat";
 
+      diff = "kitten diff";
+
+      less = "bat --paging=always";
+
       ls = "eza --color=auto --group-directories-first";
       ll = "ls -lh";
       la = "ls -A";
       lla = "ls -lhA";
 
-      grep = "rg";
+      grep = "rg --hyperlink-format=kitty";
+
+      icat = "kitten icat";
+
+      ssh = "kitten ssh";
+
+      # nix
+      ns = "nix-shell";
+      nsp = "ns --packages";
+      nr = "sudo nixos-rebuild";
+      nrs = "nr switch";
+      nrsf = "nrs --flake";
 
       # misc
       q = "exit";
       ":q" = "exit";
       quit = "exit";
       pd = "popd";
+      rr = "source ~/.zshrc";
     };
 
     plugins = [
