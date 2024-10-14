@@ -1,4 +1,4 @@
-[
+{
   time.timeZone = "Europe/Amsterdam";
 
   i18n = {
@@ -7,4 +7,4 @@
       # LC_* variables
     };
   };
-]
+}
