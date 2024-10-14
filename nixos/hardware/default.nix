@@ -4,6 +4,8 @@
     ./generated.nix
   ];
 
+  hardware.enableAllFirmware = true;
+
   # Framework tools
   environment.systemPackages = with pkgs; [
     fw-ectool
@@ -15,6 +17,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Color management
+  # TODO: https://github.com/hyprwm/Hyprland/issues/4377
   services.colord.enable = true;
 
   # Fingerprint reader

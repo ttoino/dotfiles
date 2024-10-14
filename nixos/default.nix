@@ -7,6 +7,7 @@
     ./hardware
     ./security.nix
     ./users.nix
+    ./virtualization.nix
     ./zsh.nix
   ];
 
