@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./generated.nix
@@ -19,6 +19,12 @@
   # Color management
   # TODO: https://github.com/hyprwm/Hyprland/issues/4377
   services.colord.enable = true;
+
+  # Control monitors
+  # TODO: https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/issues/47
+  # boot.extraModulePackages = with config.boot.kernelPackages; [
+  #   ddcci-driver
+  # ];
 
   # Fingerprint reader
   services.fprintd.enable = true;

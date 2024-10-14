@@ -11,6 +11,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./kitty.nix
+    ./lsd.nix
     ./vscode.nix
     ./zsh
   ];

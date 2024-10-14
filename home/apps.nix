@@ -6,7 +6,6 @@
 
     # CLI tools
     bat.enable = true;
-    eza.enable = true;
     htop.enable = true;
     ripgrep.enable = true;
   };

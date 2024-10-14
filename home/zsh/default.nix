@@ -18,10 +18,12 @@
 
       less = "bat --paging=always";
 
-      ls = "eza --color=auto --group-directories-first";
+      ls = "lsd";
       ll = "ls -lh";
+      lt = "ls --tree -h";
       la = "ls -A";
-      lla = "ls -lhA";
+      lla = "ll -A";
+      lta = "lt -A";
 
       grep = "rg --hyperlink-format=kitty";
 
