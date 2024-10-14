@@ -12,6 +12,7 @@
     ./hyprpaper.nix
     ./kitty.nix
     ./lsd.nix
+    ./neovim.nix
     ./vscode.nix
     ./zsh
   ];
