@@ -7,7 +7,7 @@
     extraGroups = [
       "config"
       "docker"
-      "networkManager"
+      "networkmanager"
       "wheel"
     ];
   };

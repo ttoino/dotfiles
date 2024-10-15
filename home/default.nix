@@ -29,7 +29,6 @@
       hyprpicker
       nixpkgs-fmt
       playerctl
-      prismlauncher
       wdisplays
     ];
 

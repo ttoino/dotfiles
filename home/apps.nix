@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs = {
     # Browsers
     chromium.enable = true;
@@ -9,4 +9,9 @@
     htop.enable = true;
     ripgrep.enable = true;
   };
+
+  home.packages = with pkgs; [
+    # Gaming
+    prismlauncher
+  ];
 }

@@ -3,8 +3,9 @@
     ./boot.nix
     ./catppuccin.nix
     ./disk.nix
-    ./locale.nix
+    ./gaming.nix
     ./hardware
+    ./locale.nix
     ./security.nix
     ./users.nix
     ./virtualization.nix
