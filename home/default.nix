@@ -23,13 +23,8 @@
 
   home = {
     packages = with pkgs; [
-      brightnessctl
       dart-sass
-      grimblast
-      hyprpicker
       nixpkgs-fmt
-      playerctl
-      wdisplays
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";

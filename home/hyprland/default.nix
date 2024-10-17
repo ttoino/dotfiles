@@ -5,6 +5,7 @@
     settings = ({
       exec-once = [
         "ags"
+        "soteria"
         "hyprlock"
       ];
 

@@ -1,5 +1,16 @@
+{ config, lib, ... }:
+let
+  serviceCmd = builtins.elemAt config.systemd.services."getty@".serviceConfig.ExecStart 1;
+in
 {
-  services.getty.autologinUser = "toino";
+  systemd.services."getty@tty1" = {
+    overrideStrategy = "asDropin";
+    restartIfChanged = false;
+    serviceConfig.ExecStart = [
+      ""
+      "${serviceCmd} --autologin toino"
+    ];
+  };
 
   users.users.toino = {
     isNormalUser = true;
@@ -13,6 +24,6 @@
   };
 
   users.groups = {
-    config = {};
+    config = { };
   };
 }
