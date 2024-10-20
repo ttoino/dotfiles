@@ -24,6 +24,7 @@
     # cmd-polkit # TODO
     grimblast
     hyprpicker
+    libnotify
     playerctl
     soteria # Remove this once cmd-polkit is implemented
     wdisplays

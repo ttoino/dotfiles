@@ -7,7 +7,18 @@
 
     configDir = ./config;
 
-    extraPackages = with pkgs; [
+    systemd.enable = true;
+
+    extraPackages = with inputs.ags.packages.${pkgs.system}; [
+      apps
+      battery
+      bluetooth
+      hyprland
+      mpris
+      network
+      notifd
+      powerprofiles
+      wireplumber
     ];
   };
 }
