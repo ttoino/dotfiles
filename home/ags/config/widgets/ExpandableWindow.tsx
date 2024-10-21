@@ -36,7 +36,7 @@ export default function ExpandableWindow({
                 stack = s;
 
                 bind(stack, "visibleChildName").subscribe((visibleChild) => {
-                    for (const child of stack.children)
+                    for (const child of stack.get_children())
                         stack.toggleClassName(
                             child.name,
                             child.name === visibleChild

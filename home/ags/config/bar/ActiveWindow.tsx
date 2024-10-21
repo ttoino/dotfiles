@@ -14,26 +14,30 @@ const hyprland = Hyprland.get_default();
 export default function ActiveWindow() {
     return (
         <box className="active-window" spacing={8}>
-            <Icon
-                visible={bind(hyprland.focusedClient, "floating")}
-                label={WINDOW_RESTORE}
-            />
-            <Icon
-                visible={bind(hyprland.focusedClient, "fullscreen").as(
-                    (it) => it > Hyprland.Fullscreen.NONE
-                )}
-                label={bind(hyprland.focusedClient, "fullscreen").as((it) =>
-                    it == Hyprland.Fullscreen.FULLSCREEN
-                        ? FULLSCREEN
-                        : FULLSCREEN_EXIT
-                )}
-            />
-            <Icon
-                visible={bind(hyprland.focusedClient, "xwayland")}
-                label={ALPHA_X_CIRCLE}
-            />
-            <Icon visible={bind(hyprland.focusedClient, "pinned")}>{PIN}</Icon>
-            <label truncate label={bind(hyprland.focusedClient, "title")} />
+            {bind(hyprland, "focusedClient").as((client) => (
+                <>
+                    <Icon
+                        visible={bind(client, "floating")}
+                        label={WINDOW_RESTORE}
+                    />
+                    <Icon
+                        visible={bind(client, "fullscreen").as(
+                            (it) => it > Hyprland.Fullscreen.NONE
+                        )}
+                        label={bind(client, "fullscreen").as((it) =>
+                            it == Hyprland.Fullscreen.FULLSCREEN
+                                ? FULLSCREEN
+                                : FULLSCREEN_EXIT
+                        )}
+                    />
+                    <Icon
+                        visible={bind(client, "xwayland")}
+                        label={ALPHA_X_CIRCLE}
+                    />
+                    <Icon visible={bind(client, "pinned")}>{PIN}</Icon>
+                    <label truncate label={bind(client, "title")} />
+                </>
+            ))}
         </box>
     );
 }

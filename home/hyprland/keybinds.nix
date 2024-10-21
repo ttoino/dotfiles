@@ -33,8 +33,8 @@
     "$mainMod SHIFT, V, movewindow, d"
 
     # Logout menu
-    "$mainMod, Escape, exec, wlogout --protocol layer-shell"
-    ", XF86PowerOff, exec, wlogout --protocol layer-shell"
+    "$mainMod, Escape, exec, ags -t power"
+    ", XF86PowerOff, exec, ags -t power"
 
     # Media
     "$mainMod, Period, exec, playerctl next"

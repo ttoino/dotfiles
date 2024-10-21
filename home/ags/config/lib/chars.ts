@@ -103,3 +103,10 @@ export const WIFI_STRENGTH_1_LOCK = "󰤡";
 export const WIFI_STRENGTH_2_LOCK = "󰤤";
 export const WIFI_STRENGTH_3_LOCK = "󰤧";
 export const WIFI_STRENGTH_4_LOCK = "󰤪";
+
+// Power
+export const LOCK = "󰌾";
+export const POWER = "󰐥"
+export const POWER_SLEEP = "󰤄"
+export const RESTART = "󰜉"
+export const SNOWFLAKE = "󰜗"

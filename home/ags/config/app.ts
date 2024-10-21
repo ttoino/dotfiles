@@ -11,6 +11,7 @@ import Network from "./windows/Network";
 import Notifications from "./windows/Notifications";
 import Popups from "./windows/Popups";
 import "./services/notifications";
+import Power from "./windows/Power";
 
 App.start({
     css: style,
@@ -41,6 +42,7 @@ App.start({
         Calendar();
         Media();
         Network();
-        Notifications();
+        // Notifications();
+        Power();
     },
 });

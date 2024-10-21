@@ -7,7 +7,7 @@
 
     configDir = ./config;
 
-    systemd.enable = true;
+    # systemd.enable = true;
 
     extraPackages = with inputs.ags.packages.${pkgs.system}; [
       apps

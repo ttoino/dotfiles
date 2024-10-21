@@ -1,6 +1,7 @@
 @use "./catppuccin.scss" as c;
 
 $colors: (
+    // Info windows
     "audio": c.$pink,
     "battery": c.$green,
     "battery.discharging": c.$peach,
@@ -8,6 +9,13 @@ $colors: (
     "bluetooth": c.$blue,
     "brightness": c.$yellow,
     "network": c.$sapphire,
+
+    // Power
+    "shutdown": c.$red,
+    "restart": c.$green,
+    "sleep": c.$blue,
+    "hibernate": c.$sapphire,
+    "lock": c.$yellow,
 );
 
 @function alpha($color, $alpha) {

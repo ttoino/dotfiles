@@ -18,6 +18,7 @@ const BatterySlider = () => (
     <IconSlider
         hexpand
         drawValue={false}
+        sensitive={false}
         icon={icon()}
         value={bind(battery, "percentage")}
     />
@@ -49,6 +50,7 @@ export default function Battery() {
                                     label="Battery"
                                 />
                             </box>
+                            <box vexpand />
                             <BatterySlider />
                         </box>
                     </scrollable>

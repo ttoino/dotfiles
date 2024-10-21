@@ -6,6 +6,7 @@
 @use "./components/colored.scss";
 
 @use "./windows/calendar.scss";
+@use "./windows/power.scss";
 
 * {
     all: unset;
@@ -43,7 +44,8 @@
 
 .slider-window {
     padding: 8px;
-    min-width: 360px;
+    // 360px would be too much because of the padding
+    min-width: 344px;
 }
 
 .bar {

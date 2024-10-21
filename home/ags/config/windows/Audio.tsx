@@ -105,7 +105,7 @@ const Device = ({
             visibleChildName="volume"
             setup={(s) => (stack = s)}
         >
-            <box name="volume" spacing={8}>
+            <box name="volume" vertical spacing={8}>
                 <Title
                     title={bind(selectedDevice, "description").as(
                         (description) =>
@@ -115,7 +115,7 @@ const Device = ({
                     icon={CHEVRON_DOWN}
                     next="select"
                 />
-                <box vertical spacing={8}>
+                <box spacing={8}>
                     <VolumeSlider
                         device={selectedDevice}
                         isSpeaker={isSpeaker}
@@ -123,7 +123,7 @@ const Device = ({
                     <MuteButton device={selectedDevice} isSpeaker={isSpeaker} />
                 </box>
             </box>
-            <box name="select" spacing={8}>
+            <box name="select" vertical spacing={8}>
                 <Title
                     title={`Default ${isSpeaker ? "Speaker" : "Microphone"}`}
                     icon={CHEVRON_UP}

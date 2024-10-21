@@ -12,4 +12,10 @@
     # Games
     "immediate, class:^steam_app_"
   ];
+
+  layerrule = [
+    # Ags
+    "ignorezero, gtk-layer-shell"
+    "blur, gtk-layer-shell"
+  ];
 }
