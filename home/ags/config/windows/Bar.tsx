@@ -22,8 +22,8 @@ export default function Bar(monitor: Gdk.Monitor) {
                 Astal.WindowAnchor.RIGHT
             }
             marginBottom={16}
-            marginStart={16}
-            marginEnd={16}
+            marginLeft={16}
+            marginRight={16}
             marginTop={0}
         >
             <centerbox className="bar" spacing={8} homogeneous>
