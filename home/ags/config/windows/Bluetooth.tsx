@@ -30,7 +30,7 @@ export default function Bluetooth() {
                         <switch
                             hexpand={false}
                             active={bind(bluetooth, "isPowered")}
-                            onStateSet={() => bluetooth.toggle()}
+                            // onStateSet={() => bluetooth.toggle()}
                         />
                     </box>
                     <box vertical spacing={8}>

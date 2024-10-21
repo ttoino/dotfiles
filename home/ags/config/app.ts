@@ -1,4 +1,5 @@
 import { App, Gdk, Gtk } from "astal/gtk3";
+import "./services/notifications";
 import style from "./style/main.scss";
 import Audio from "./windows/Audio";
 import Bar from "./windows/Bar";
@@ -8,10 +9,9 @@ import Brightness from "./windows/Brightness";
 import Calendar from "./windows/Calendar";
 import Media from "./windows/Media";
 import Network from "./windows/Network";
-import Notifications from "./windows/Notifications";
 import Popups from "./windows/Popups";
-import "./services/notifications";
 import Power from "./windows/Power";
+import Run from "./windows/Run";
 
 App.start({
     css: style,
@@ -44,5 +44,6 @@ App.start({
         Network();
         // Notifications();
         Power();
+        Run();
     },
 });

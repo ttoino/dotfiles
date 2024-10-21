@@ -1,0 +1,18 @@
+@use "sass:color";
+
+@use "../colors.scss" as c;
+@use "../text.scss" as t;
+
+@mixin entry($fg-color, $bg-color) {
+    entry {
+        @include t.type(label-large);
+
+        min-width: 48px;
+        min-height: 40px;
+        padding: 0 12px;
+        border-radius: 20px;
+        color: $bg-color;
+        caret-color: $bg-color;
+        background-color: $fg-color;
+    }
+}

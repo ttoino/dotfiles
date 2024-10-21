@@ -2,11 +2,13 @@
 @use "../catppuccin.scss" as cp;
 
 @use "./button.scss" as button;
+@use "./entry.scss" as entry;
 @use "./slider.scss" as slider;
 @use "./switch.scss" as switch;
 
 @mixin colored-components($fg-color, $bg-color: cp.$base) {
     @include button.button($fg-color, $bg-color);
+    @include entry.entry($fg-color, $bg-color);
     @include slider.slider($fg-color, $bg-color);
     @include switch.switch($fg-color, $bg-color);
 }

@@ -14,7 +14,7 @@
 
     "$mainMod CTRL, C, exec, hyprpicker -a"
 
-    "$mainMod, D, exec, wofi | xargs exec --"
+    "$mainMod, D, exec, ags -t run"
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, J, togglesplit, # dwindle"
 

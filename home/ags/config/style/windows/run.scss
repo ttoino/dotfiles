@@ -1,0 +1,15 @@
+@use "sass:color";
+
+@use "../catppuccin.scss" as cp;
+
+.run-window {
+    background-color: color.change(cp.$crust, $alpha: 0.24);
+
+    .run-prompt {
+        padding: 8px;
+        min-width: 480px;
+        min-height: 480px;
+        background-color: cp.$base;
+        border-radius: 24px;
+    }
+}
