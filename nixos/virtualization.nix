@@ -10,10 +10,11 @@
         dates = "weekly";
       };
 
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      # More trouble than it's worth
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
     };
 
     virtualbox.host.enable = true;
