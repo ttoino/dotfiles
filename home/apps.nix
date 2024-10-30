@@ -12,6 +12,7 @@
 
   services = {
     cliphist.enable = true;
+    mpris-proxy.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -19,9 +20,11 @@
     prismlauncher
 
     # Utils
+    blueberry
     brightnessctl
     cliphist
     # cmd-polkit # TODO
+    d-spy
     grimblast
     hyprpicker
     libnotify
