@@ -5,7 +5,11 @@
 
 @use "./components/colored.scss";
 
+@use "./widgets/notification.scss";
+
+@use "./windows/bar.scss";
 @use "./windows/calendar.scss";
+@use "./windows/media.scss";
 @use "./windows/power.scss";
 @use "./windows/run.scss";
 @use "./windows/scrim.scss";
@@ -50,11 +54,6 @@
     min-width: 344px;
 }
 
-.bar {
-    border-radius: 24px;
-    padding: 4px;
-}
-
 .popups-window {
     min-height: 1000px;
 
@@ -63,20 +62,9 @@
     }
 }
 
-.icon,
-.icon-button {
+.icon {
     font-size: 24px;
     font-family: "Material Design Icons";
-}
-
-#clock {
-    background-color: transparent;
-    border-radius: 10000px;
-    color: cp.$text;
-    min-width: 0;
-    font-size: 20px;
-    padding: 0 8px;
-    min-height: 32px;
 }
 
 .secondary {
@@ -127,35 +115,5 @@
 
     > * {
         padding: 8px;
-    }
-}
-
-.notification {
-    background-color: cp.$surface0;
-    border-radius: 16px;
-    padding: 8px;
-
-    .notification-image {
-        min-width: 64px;
-        min-height: 64px;
-        border-radius: 8px;
-        background-size: cover;
-    }
-}
-
-.media-window {
-    .title {
-        @include t.type("title-large");
-    }
-
-    .artist {
-        @include t.type("body-large");
-    }
-
-    .cover {
-        border-radius: 16px;
-        background-size: cover;
-        min-width: 344px;
-        min-height: 344px;
     }
 }

@@ -1,0 +1,18 @@
+@use "./text.scss" as t;
+
+.media-window {
+    .title {
+        @include t.type("title-large");
+    }
+
+    .artist {
+        @include t.type("body-large");
+    }
+
+    .cover {
+        border-radius: 16px;
+        background-size: cover;
+        min-width: 344px;
+        min-height: 344px;
+    }
+}

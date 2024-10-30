@@ -35,6 +35,18 @@ export default function ExpandableWindow({
             setup={(s) => {
                 stack = s;
 
+                // bind(stack, "window").subscribe((window) => {
+                //     print("window", window);
+                //     print("window", stack.get_toplevel());
+                //     if (!window) return;
+                //     bind(window, "visible").subscribe(
+                //         (visible) => {
+                //             if (!visible) stack.visibleChildName = "collapsed";
+                //             print("window visible", visible);
+                //         }
+                //     );
+                // });
+
                 bind(stack, "visibleChildName").subscribe((visibleChild) => {
                     for (const child of stack.get_children())
                         stack.toggleClassName(
