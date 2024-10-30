@@ -14,7 +14,6 @@
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
   # Color management
   # TODO: https://github.com/hyprwm/Hyprland/issues/4377
@@ -31,9 +30,6 @@
 
   # Firmware updates
   services.fwupd.enable = true;
-
-  # Network
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Sound
   services.pipewire = {

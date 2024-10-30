@@ -6,6 +6,7 @@
     ./gaming.nix
     ./hardware
     ./locale.nix
+    ./network.nix
     ./security.nix
     ./users.nix
     ./virtualization.nix
