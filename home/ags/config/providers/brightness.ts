@@ -33,7 +33,7 @@ export default class Brightness extends GObject.Object {
         this.#value = parseInt(value);
         this.#max = parseInt(max);
 
-        monitorFile(`/sys/class/${class_}/${device}/brightness`, async (f) => {
+        monitorFile(`/sys/class/${class_}/${device}/brightness`, (f) => {
             this.#value = parseInt(readFile(f));
             this.notify("percentage");
         });

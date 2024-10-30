@@ -15,7 +15,6 @@
 
   layerrule = [
     # Ags
-    "ignorezero, gtk-layer-shell"
-    "blur, gtk-layer-shell"
+    "blur, ags-scrim"
   ];
 }

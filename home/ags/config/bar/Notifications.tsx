@@ -2,7 +2,7 @@ import { Variable, bind } from "astal";
 import Notifd from "gi://AstalNotifd";
 import { BELL, BELL_BADGE, BELL_OFF } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
-import { toggleNotifications } from "../windows/Notifications";
+import { togglePopup } from "../services/windows";
 
 const notifications = Notifd.get_default();
 
@@ -26,7 +26,7 @@ export default function Notifications() {
         <IconButton
             className="notifications"
             tooltipText={tooltip()}
-            onClicked={toggleNotifications}
+            onClicked={() => togglePopup("notifications")}
         >
             {icon()}
         </IconButton>

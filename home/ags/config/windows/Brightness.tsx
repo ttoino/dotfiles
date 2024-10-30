@@ -28,5 +28,3 @@ export default function Brightness() {
         </window>
     );
 }
-
-export const toggleBrightness = () => App.toggle_window("brightness");

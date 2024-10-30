@@ -1,0 +1,7 @@
+@use "sass:color";
+
+@use "../catppuccin.scss" as cp;
+
+.scrim-window {
+    background-color: color.change(cp.$crust, $alpha: 0.24);
+}

@@ -67,5 +67,3 @@ export default function Notifications() {
         </window>
     );
 }
-
-export const toggleNotifications = () => App.toggle_window("notifications");

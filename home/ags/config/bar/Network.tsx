@@ -3,7 +3,7 @@ import NetworkService from "gi://AstalNetwork";
 import { ETHERNET, SEPARATOR, WEB_OFF } from "../lib/chars";
 import { wifiRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
-import { toggleNetwork } from "../windows/Network";
+import { togglePopup } from "../services/windows";
 
 const network = NetworkService.get_default();
 
@@ -58,7 +58,7 @@ export default function Network() {
         <IconButton
             className="network"
             tooltipText={tooltip()}
-            onClicked={toggleNetwork}
+            onClicked={() => togglePopup("network")}
         >
             <box>{icons()}</box>
         </IconButton>

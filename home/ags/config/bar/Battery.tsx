@@ -3,7 +3,7 @@ import BatteryService from "gi://AstalBattery";
 import { SEPARATOR } from "../lib/chars";
 import { batteryRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
-import { toggleBattery } from "../windows/Battery";
+import { togglePopup } from "../services/windows";
 
 const battery = BatteryService.get_default();
 
@@ -27,7 +27,7 @@ export default function Battery() {
         <IconButton
             className="battery"
             tooltipText={tooltip()}
-            onClicked={toggleBattery}
+            onClicked={() => togglePopup("battery")}
         >
             {icon()}
         </IconButton>

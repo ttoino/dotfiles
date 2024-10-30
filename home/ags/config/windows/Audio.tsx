@@ -210,5 +210,3 @@ export default function Audio() {
         </window>
     );
 }
-
-export const toggleAudio = () => App.toggle_window("audio");

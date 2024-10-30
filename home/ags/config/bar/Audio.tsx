@@ -3,7 +3,7 @@ import Wp from "gi://AstalWp";
 import { SEPARATOR, VOLUME_MUTE } from "../lib/chars";
 import { volumeRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
-import { toggleAudio } from "../windows/Audio";
+import { togglePopup } from "../services/windows";
 
 const audio = Wp.get_default();
 
@@ -40,7 +40,7 @@ export default function Audio() {
         <IconButton
             className="audio"
             tooltipText={tooltip()}
-            onClicked={toggleAudio}
+            onClicked={() => togglePopup("audio")}
         >
             {icon()}
         </IconButton>

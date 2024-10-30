@@ -2,7 +2,7 @@ import { bind } from "astal";
 import { brightnessRange } from "../lib/icons";
 import BrightnessService from "../providers/brightness";
 import IconButton from "../widgets/IconButton";
-import { toggleBrightness } from "../windows/Brightness";
+import { togglePopup } from "../services/windows";
 
 const brightness = BrightnessService.get_default();
 
@@ -13,7 +13,7 @@ export default function Brightness() {
             tooltipText={bind(brightness, "percentage").as(
                 (p) => `${Math.round(p * 100)}%`
             )}
-            onClicked={toggleBrightness}
+            onClicked={() => togglePopup("brightness")}
         >
             {bind(brightness, "percentage").as((p) => brightnessRange(p))}
         </IconButton>

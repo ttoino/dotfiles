@@ -71,5 +71,3 @@ export default function Media() {
         </window>
     );
 }
-
-export const toggleMedia = () => App.toggle_window("media");

@@ -1,6 +1,6 @@
 import { SEPARATOR } from "../lib/chars";
 import date from "../providers/date";
-import { toggleCalendar } from "../windows/Calendar";
+import { togglePopup } from "../services/windows";
 
 const label = date().as(
     (date) =>
@@ -9,7 +9,7 @@ const label = date().as(
 
 export default function Clock() {
     return (
-        <button name="clock" onClicked={toggleCalendar}>
+        <button name="clock" onClicked={() => togglePopup("calendar")}>
             {label}
         </button>
     );

@@ -1,13 +1,10 @@
-@use "sass:color";
-
 @use "../catppuccin.scss" as cp;
 
 .power-window {
-    background-color: color.change(cp.$crust, $alpha: 0.24);
-
     .power-controls {
         background-color: cp.$base;
         padding: 16px;
         border-radius: 48px;
+        box-shadow: cp.$mantle 0px 0px 16px;
     }
 }

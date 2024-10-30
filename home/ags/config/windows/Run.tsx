@@ -1,6 +1,7 @@
+import { Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk3";
-import { bind, Variable } from "astal";
 import Apps from "gi://AstalApps";
+import { dismissPopup } from "../services/windows";
 
 const apps = new Apps.Apps();
 
@@ -25,12 +26,6 @@ export default function Run() {
     let entry: Gtk.Entry;
     const appList = Variable([] as Apps.Application[]);
 
-    const close = () => {
-        toggleRun();
-        entry.set_text("");
-        appList.set([]);
-    };
-
     return (
         <window
             name="run"
@@ -42,15 +37,17 @@ export default function Run() {
                 Astal.WindowAnchor.TOP
             }
             layer={Astal.Layer.OVERLAY}
-            // TODO: This is bugged rn, ON_DEMAND and EXCLUSIVE are swapped
-            keymode={Astal.Keymode.ON_DEMAND}
+            keymode={Astal.Keymode.EXCLUSIVE}
+            exclusivity={Astal.Exclusivity.IGNORE}
             visible={false}
             application={App}
-            onKeyPressEvent={(self, event) => {
-                const [result, keyval] = event.get_keyval();
-                if (!result) return;
-
-                if (keyval == Gdk.KEY_Escape) return close();
+            setup={(self) => {
+                self.connect("notify::visible", () => {
+                    if (!self.visible) {
+                        entry.set_text("");
+                        appList.set([]);
+                    }
+                });
             }}
         >
             <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER}>
@@ -69,7 +66,7 @@ export default function Run() {
                         <box spacing={8} vertical>
                             {appList().as((apps) =>
                                 apps.map((app) => (
-                                    <AppEntry app={app} close={close} />
+                                    <AppEntry app={app} close={dismissPopup} />
                                 ))
                             )}
                         </box>

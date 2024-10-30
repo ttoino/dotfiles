@@ -2,7 +2,7 @@ import { bind } from "astal";
 import Mpris from "gi://AstalMpris";
 import { MUSIC_NOTE, SEPARATOR } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
-import { toggleMedia } from "../windows/Media";
+import { togglePopup } from "../services/windows";
 
 const media = Mpris.get_default();
 
@@ -21,7 +21,7 @@ export default function Media() {
                     )
                     .join("\n")
             )}
-            onClicked={toggleMedia}
+            onClicked={() => togglePopup("media")}
         >
             {MUSIC_NOTE}
         </IconButton>

@@ -59,5 +59,3 @@ export default function Battery() {
         </window>
     );
 }
-
-export const toggleBattery = () => App.toggle_window("battery");

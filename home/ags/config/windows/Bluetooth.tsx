@@ -51,5 +51,3 @@ export default function Bluetooth() {
         </window>
     );
 }
-
-export const toggleBluetooth = () => App.toggle_window("bluetooth");

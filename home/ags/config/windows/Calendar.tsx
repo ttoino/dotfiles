@@ -22,5 +22,3 @@ export default function Calendar() {
         </window>
     );
 }
-
-export const toggleCalendar = () => App.toggle_window("calendar");

@@ -76,5 +76,3 @@ export default function Network() {
         </window>
     );
 }
-
-export const toggleNetwork = () => App.toggle_window("network");

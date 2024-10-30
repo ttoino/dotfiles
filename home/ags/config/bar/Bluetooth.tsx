@@ -7,7 +7,7 @@ import {
     SEPARATOR,
 } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
-import { toggleBluetooth } from "../windows/Bluetooth";
+import { togglePopup } from "../services/windows";
 
 const bluetooth = BluetoothService.get_default();
 
@@ -35,7 +35,7 @@ export default function Bluetooth() {
         <IconButton
             className="bluetooth"
             tooltipText={tooltip()}
-            onClicked={toggleBluetooth}
+            onClicked={() => togglePopup("bluetooth")}
         >
             {icon()}
         </IconButton>

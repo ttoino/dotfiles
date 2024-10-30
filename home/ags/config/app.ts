@@ -1,49 +1,35 @@
-import { App, Gdk, Gtk } from "astal/gtk3";
+import { App } from "astal/gtk3";
 import "./services/notifications";
+import * as windows from "./services/windows";
 import style from "./style/main.scss";
-import Audio from "./windows/Audio";
-import Bar from "./windows/Bar";
-import Battery from "./windows/Battery";
-import Bluetooth from "./windows/Bluetooth";
-import Brightness from "./windows/Brightness";
-import Calendar from "./windows/Calendar";
-import Media from "./windows/Media";
-import Network from "./windows/Network";
-import Popups from "./windows/Popups";
-import Power from "./windows/Power";
-import Run from "./windows/Run";
 
 App.start({
     css: style,
     main() {
-        // Windows with one instance per monitor
-        const windowFunctions = [Bar, Popups] as const;
-        const windows = new Map<Gdk.Monitor, Gtk.Widget[]>();
+        windows.init();
+    },
+    requestHandler(request, res) {
+        const args = request.split(/\s+/);
+        const [action, ...params] = args;
 
-        const createWindows = (monitor: Gdk.Monitor) => {
-            windows.set(
-                monitor,
-                windowFunctions.map((fn) => fn(monitor))
-            );
-        };
+        switch (action.toLowerCase()) {
+            case "popup":
+                const [subaction, ...popup] = params;
 
-        App.get_monitors().forEach(createWindows);
-        App.connect("monitor-added", (_, monitor) => createWindows(monitor));
-        App.connect("monitor-removed", (_, monitor) => {
-            windows.get(monitor)?.forEach((w) => w.destroy());
-            windows.delete(monitor);
-        });
+                switch (subaction.toLowerCase()) {
+                    case "show":
+                        windows.showPopup(popup.join(" "));
+                        return res(`Showed ${popup.join(" ")}`);
+                    case "toggle":
+                        windows.togglePopup(popup.join(" "));
+                        return res(`Toggled ${popup.join(" ")}`);
+                    case "dismiss":
+                        windows.dismissPopup();
+                        return res("Dismissed popups");
+                }
+                return res("Invalid popup action");
+        }
 
-        // Windows with only one instance
-        Audio();
-        Battery();
-        Bluetooth();
-        Brightness();
-        Calendar();
-        Media();
-        Network();
-        // Notifications();
-        Power();
-        Run();
+        res("Invalid action");
     },
 });

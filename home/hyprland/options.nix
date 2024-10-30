@@ -82,4 +82,8 @@
   gestures = {
     workspace_swipe = "true";
   };
+
+  xwayland = {
+    force_zero_scaling = true;
+  };
 }

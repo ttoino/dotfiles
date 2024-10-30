@@ -14,7 +14,7 @@
 
     "$mainMod CTRL, C, exec, hyprpicker -a"
 
-    "$mainMod, D, exec, ags -t run"
+    "$mainMod, D, exec, ags -m 'popup toggle run'"
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, J, togglesplit, # dwindle"
 
@@ -33,8 +33,8 @@
     "$mainMod SHIFT, V, movewindow, d"
 
     # Logout menu
-    "$mainMod, Escape, exec, ags -t power"
-    ", XF86PowerOff, exec, ags -t power"
+    "$mainMod, Escape, exec, ags -m 'popup toggle power'"
+    ", XF86PowerOff, exec, ags -m 'popup toggle power'"
 
     # Media
     "$mainMod, Period, exec, playerctl next"

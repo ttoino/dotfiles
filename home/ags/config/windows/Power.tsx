@@ -1,7 +1,9 @@
 import { App, Astal, Gdk, Gtk } from "astal/gtk3";
+import GtkLayerShell from "gi://GtkLayerShell";
 import { LOCK, POWER, POWER_SLEEP, RESTART, SNOWFLAKE } from "../lib/chars";
 import PowerService from "../providers/power";
 import IconButton from "../widgets/IconButton";
+import { dismissPopup } from "../services/windows";
 
 const power = PowerService.get_default();
 
@@ -45,12 +47,12 @@ const actions = [
     },
 ] as const satisfies Action[];
 
-const ActionButton = ({ name, icon, keybind, action }: Action) => (
+const ActionButton = ({ name, icon, action }: Action) => (
     <box className={name}>
         <IconButton
             className="xl"
             onClicked={() => {
-                togglePower();
+                dismissPopup();
                 action();
             }}
         >
@@ -71,30 +73,37 @@ export default function Power() {
                 Astal.WindowAnchor.TOP
             }
             layer={Astal.Layer.OVERLAY}
-            // TODO: This is bugged rn, ON_DEMAND and EXCLUSIVE are swapped
-            keymode={Astal.Keymode.ON_DEMAND}
+            keymode={Astal.Keymode.EXCLUSIVE}
+            exclusivity={Astal.Exclusivity.IGNORE}
             visible={false}
+            clickThrough
             application={App}
             onKeyPressEvent={(self, event) => {
                 const [result, keyval] = event.get_keyval();
                 if (!result) return;
 
-                if (keyval == Gdk.KEY_Escape) return togglePower();
+                // if (keyval == Gdk.KEY_Escape) return dismissPopup();
 
                 const action = actions.find((a) => a.keybind == keyval);
                 if (action) {
-                    togglePower();
+                    dismissPopup();
                     action?.action();
                 }
             }}
         >
-            <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER}>
-                <box className="power-controls" spacing={16}>
+            <box
+                valign={Gtk.Align.CENTER}
+                halign={Gtk.Align.CENTER}
+                clickThrough
+            >
+                <box
+                    className="power-controls"
+                    spacing={16}
+                    clickThrough={false}
+                >
                     {actions.map(ActionButton)}
                 </box>
             </box>
         </window>
     );
 }
-
-export const togglePower = () => App.toggle_window("power");
