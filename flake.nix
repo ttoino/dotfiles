@@ -4,6 +4,13 @@
 
     ags = {
       url = "github:Aylur/ags/v2";
+      inputs = {
+        astal.follows = "astal";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    astal = {
+      url = "github:Aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
