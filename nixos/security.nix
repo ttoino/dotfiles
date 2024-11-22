@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   security = {
-    pam.services.hyprlock = { };
+    pam.services.hyprlock.text = "auth        include     login";
     polkit.enable = true;
 
     # Allow rootless docker to bind to privileged ports

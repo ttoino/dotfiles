@@ -3,6 +3,10 @@
     enable = true;
 
     settings = {
+      general = {
+        enable_fingerprint = true;
+      };
+
       background = [
         {
           path = "screenshot";
