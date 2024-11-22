@@ -52,13 +52,9 @@ scrimVisible.subscribe((v) => {
     if (!v) scrims.forEach((w) => (w.visible = false));
 });
 
-export const dismissPopup = () => {
-    visible.set(null);
-};
+export const dismissPopup = () => visible.set(null);
 
-export const showPopup = (name: string) => {
-    visible.set(name);
-};
+export const showPopup = (name: string) => visible.set(name);
 
 export const togglePopup = (name: string) => {
     if (visible.get() === name) dismissPopup();

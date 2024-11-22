@@ -1,9 +1,53 @@
 import { bind } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import BluetoothService from "gi://AstalBluetooth";
-import Device from "../widgets/Device";
+import {
+    CAMERA,
+    CELLPHONE,
+    CONTROLLER,
+    HEADPHONES,
+    HEADSET,
+    KEYBOARD,
+    LAPTOP,
+    MOUSE,
+    PRINTER,
+    SCANNER,
+    SPEAKER,
+    VIDEO,
+} from "../lib/chars";
+import BaseDevice from "../widgets/Device";
 
 const bluetooth = BluetoothService.get_default();
+
+const ICONS = {
+    "audio-speakers": SPEAKER,
+    "audio-headset": HEADSET,
+    "audio-headphones": HEADPHONES,
+    "camera-photo": CAMERA,
+    "camera-video": VIDEO,
+    computer: LAPTOP,
+    "input-gaming": CONTROLLER,
+    "input-keyboard": KEYBOARD,
+    "input-mouse": MOUSE,
+    phone: CELLPHONE,
+    printer: PRINTER,
+    scanner: SCANNER,
+    "video-display": VIDEO,
+};
+
+const Device = (device: BluetoothService.Device) => (
+    <BaseDevice
+        title={bind(device, "name")}
+        subtitle={bind(device, "address")}
+        icon={bind(device, "icon").as((icon_name) =>
+            icon_name in ICONS
+                ? ICONS[icon_name as keyof typeof ICONS]
+                : icon_name
+        )}
+        active={bind(device, "connected")}
+        activating={bind(device, "connecting")}
+    />
+);
 
 export default function Bluetooth() {
     return (
@@ -30,7 +74,10 @@ export default function Bluetooth() {
                         <switch
                             hexpand={false}
                             active={bind(bluetooth, "isPowered")}
-                            // onStateSet={() => bluetooth.toggle()}
+                            onStateSet={(self) =>
+                                self.state === bluetooth.isPowered &&
+                                bluetooth.toggle()
+                            }
                         />
                     </box>
                     <box vertical spacing={8}>

@@ -1,9 +1,8 @@
 @use "./catppuccin.scss" as cp;
-
 @use "./colors.scss" as c;
 @use "./text.scss" as t;
 
-@use "./components/colored.scss";
+@use "./colored.scss";
 
 @use "./widgets/notification.scss";
 
@@ -70,44 +69,6 @@
 .secondary {
     color: cp.$overlay1;
 }
-
-// TODO
-// @include c.colored using ($main-color) {
-//     .device,
-//     .access-point {
-//         padding: 8px;
-//         border-radius: 16px;
-//         background-color: cp.$surface0;
-//         transition-property: background-color, color, border-width, padding;
-//         transition-duration: 0.3s;
-//     }
-
-//     .device:hover,
-//     .access-point:hover {
-//         background-color: cp.$surface1;
-//     }
-
-//     .device .pictogram,
-//     .access-point .strength {
-//         font-size: 32px;
-//     }
-
-//     .device.connecting {
-//         border: solid 2px $main-color;
-//         padding: 6px;
-//     }
-
-//     .device.connected,
-//     .access-point.active {
-//         background-color: $main-color;
-//         color: cp.$base;
-//     }
-
-//     .device.connected .secondary,
-//     .access-point.active .secondary {
-//         color: cp.$surface2;
-//     }
-// }
 
 .audio-device {
     background-color: cp.$surface0;

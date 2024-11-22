@@ -1,7 +1,8 @@
-import { bind } from "astal";
+import { bind, Variable } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import NetworkService from "gi://AstalNetwork";
-import AccessPoint from "../widgets/AccessPoint";
+import Device from "../widgets/Device";
+import { wifiRange } from "../lib/icons";
 
 const network = NetworkService.get_default();
 
@@ -23,6 +24,29 @@ const Ethernet = () => (
     </box>
 );
 
+const AccessPoint = (ap: NetworkService.AccessPoint) => {
+    const isActive = bind(network.wifi, "activeAccessPoint").as(
+        (active) => active === ap
+    );
+
+    return (
+        <Device
+            title={bind(ap, "ssid")}
+            icon={bind(ap, "strength").as(wifiRange)}
+            active={Variable.derive(
+                [isActive, bind(network.wifi, "state")],
+                (active, state) =>
+                    active && state === NetworkService.DeviceState.ACTIVATED
+            )()}
+            activating={Variable.derive(
+                [isActive, bind(network.wifi, "state")],
+                (active, state) =>
+                    active && state !== NetworkService.DeviceState.ACTIVATED
+            )()}
+        />
+    );
+};
+
 const Wifi = () => (
     <box vertical spacing={8}>
         <box spacing={16}>
@@ -43,12 +67,7 @@ const Wifi = () => (
                                 Number(a == network.wifi.activeAccessPoint) ||
                             b.strength - a.strength
                     )
-                    .map((ap) => (
-                        <AccessPoint
-                            ap={ap}
-                            active={ap == network.wifi.activeAccessPoint}
-                        />
-                    ))
+                    .map(AccessPoint)
             )}
         </box>
     </box>

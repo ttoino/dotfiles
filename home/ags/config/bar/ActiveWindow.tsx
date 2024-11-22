@@ -36,7 +36,7 @@ export default function ActiveWindow() {
                     visible={bind(client, "xwayland")}
                     label={ALPHA_X_CIRCLE}
                 />,
-                <Icon visible={bind(client, "pinned")}>{PIN}</Icon>,
+                <Icon visible={bind(client, "pinned")} label={PIN} />,
             ])}
         </box>
     );

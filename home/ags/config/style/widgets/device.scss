@@ -1,0 +1,33 @@
+@use "./catppuccin.scss" as cp;
+
+@mixin device($fg-color, $bg-color) {
+    .device {
+        padding: 8px;
+        border-radius: 16px;
+        background-color: cp.$surface0;
+        transition-property: background-color, color, border-width, padding;
+        transition-duration: 0.3s;
+
+        &:hover {
+            background-color: cp.$surface1;
+        }
+
+        &.activating {
+            border: solid 2px $fg-color;
+            padding: 6px;
+        }
+
+        &.active {
+            background-color: $fg-color;
+            color: $bg-color;
+
+            .secondary {
+                color: cp.$surface2;
+            }
+        }
+
+        .icon {
+            font-size: 32px;
+        }
+    }
+}
