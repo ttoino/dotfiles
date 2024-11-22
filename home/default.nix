@@ -21,6 +21,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  gtk.enable = true;
+  qt.enable = true;
+  qt.style.name = "kvantum";
+  qt.platformTheme.name = "kvantum";
+
   home = {
     packages = with pkgs; [
       dart-sass
