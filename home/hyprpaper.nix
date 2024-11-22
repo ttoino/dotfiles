@@ -5,8 +5,8 @@
     enable = true;
 
     settings = {
-      preload = [ (toString ./wallpapers/hollow-knight.png) ];
-      wallpaper = [ ",${toString ./wallpapers/hollow-knight.png}" ];
+      preload = [ (toString ./wallpapers/outer-wilds-color.png) ];
+      wallpaper = [ ",${toString ./wallpapers/outer-wilds-color.png}" ];
     };
   };
 }

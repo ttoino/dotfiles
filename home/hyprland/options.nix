@@ -17,13 +17,16 @@
     gaps_in = "8";
     gaps_out = "16";
     border_size = "2";
-    "col.active_border" = "rgba(89b4faee) rgba(a6e3a1ee) 45deg";
-    "col.inactive_border" = "rgba(595959aa)";
+    "col.active_border" = "$blue $green 45deg";
+    "col.inactive_border" = "$surface2";
 
     layout = "dwindle";
   };
 
   misc = {
+    disable_hyprland_logo = true;
+    disable_splash_rendering = true;
+    background_color = "$surface0";
     vrr = "2";
   };
 
@@ -41,10 +44,12 @@
       new_optimizations = "on";
     };
 
-    drop_shadow = "yes";
-    shadow_range = "24";
-    shadow_render_power = "3";
-    "col.shadow" = "rgba(000000aa)";
+    shadow = {
+      enabled = "yes";
+      range = "24";
+      render_power = "3";
+      color = "$crust";
+    };
 
     dim_inactive = "true";
     dim_strength = ".1";
