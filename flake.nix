@@ -3,7 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     ags = {
-      url = "github:Aylur/ags/v2";
+      url = "github:Aylur/ags";
       inputs = {
         astal.follows = "astal";
         nixpkgs.follows = "nixpkgs";
