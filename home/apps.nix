@@ -8,6 +8,16 @@
     bat.enable = true;
     htop.enable = true;
     ripgrep.enable = true;
+
+    # Messaging
+    discocss = {
+      enable = true;
+      css = "@import url(\"https://catppuccin.github.io/discord/dist/catppuccin-mocha-green.theme.css\");";
+    };
+
+    # Productivity
+    obs-studio.enable = true;
+    zathura.enable = true;
   };
 
   services = {
@@ -19,6 +29,14 @@
     # Gaming
     prismlauncher
 
+    # Productivity
+    blender-hip
+    gimp
+    libreoffice
+    hunspell
+    hunspellDicts.pt_PT
+    vlc
+
     # Utils
     blueberry
     brightnessctl
@@ -28,8 +46,10 @@
     grimblast
     hyprpicker
     libnotify
+    pavucontrol
     playerctl
     soteria # Remove this once cmd-polkit is implemented
+    unzip
     wdisplays
     wl-clipboard
   ];
