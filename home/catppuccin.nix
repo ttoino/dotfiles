@@ -3,6 +3,11 @@
     inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
+  gtk.enable = true;
+  qt.enable = true;
+  qt.style.name = "kvantum";
+  qt.platformTheme.name = "kvantum";
+
   catppuccin = {
     enable = true;
     accent = "green";

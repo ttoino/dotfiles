@@ -2,8 +2,6 @@
   programs.kitty = {
     enable = true;
 
-    themeFile = "Catppuccin-Mocha";
-
     keybindings = {
       "ctrl+shift+v" = "paste_from_clipboard";
       "ctrl+shift+s" = "paste_from_selection";

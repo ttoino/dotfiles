@@ -1,4 +1,13 @@
 { pkgs, ... }: {
+  imports = [
+    ./git.nix
+    ./kitty.nix
+    ./lsd.nix
+    ./neovim.nix
+    ./vscode.nix
+    ./xdg.nix
+  ];
+
   programs = {
     # Browsers
     chromium.enable = true;
@@ -7,17 +16,17 @@
     # CLI tools
     bat.enable = true;
     htop.enable = true;
+    lf.enable = true;
+    pistol.enable = true;
     ripgrep.enable = true;
-
-    # Messaging
-    discocss = {
-      enable = true;
-      css = "@import url(\"https://catppuccin.github.io/discord/dist/catppuccin-mocha-green.theme.css\");";
-    };
 
     # Productivity
     obs-studio.enable = true;
     zathura.enable = true;
+
+    # Utils
+    imv.enable = true;
+    mpv.enable = true;
   };
 
   services = {
@@ -28,6 +37,13 @@
   home.packages = with pkgs; [
     # Gaming
     prismlauncher
+
+    # Messaging
+    vesktop
+    # (discord.override {
+    #     # withOpenASAR = true;
+    # #   css = "@import url(\"https://catppuccin.github.io/discord/dist/catppuccin-mocha-green.theme.css\");";
+    # })
 
     # Productivity
     blender-hip
@@ -46,6 +62,7 @@
     grimblast
     hyprpicker
     libnotify
+    nixpkgs-fmt
     pavucontrol
     playerctl
     soteria # Remove this once cmd-polkit is implemented

@@ -2,7 +2,7 @@
   "$terminal" = "kitty -1";
   "$browser" = "firefox";
   "$secondary_browser" = "chromium";
-  "$file_explorer" = "$terminal ranger";
+  "$file_explorer" = "$terminal lf";
   "$editor" = "$terminal nvim";
-  "$discord" = "discord";
+  "$discord" = "vesktop";
 }
