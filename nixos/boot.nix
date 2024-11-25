@@ -8,7 +8,6 @@
   ];
 
   boot = {
-    # TODO: Lanzaboote
     loader = {
       efi.canTouchEfiVariables = true;
       timeout = 0;

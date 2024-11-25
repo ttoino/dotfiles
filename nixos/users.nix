@@ -1,15 +1,12 @@
 { config, lib, ... }:
-let
-  serviceCmd = builtins.elemAt config.systemd.services."getty@".serviceConfig.ExecStart 1;
-in
 {
-  systemd.services."getty@tty1" = {
-    overrideStrategy = "asDropin";
-    restartIfChanged = false;
-    serviceConfig.ExecStart = [
-      ""
-      "${serviceCmd} --autologin toino"
-    ];
+  services.getty = {
+    autologinUser = "toino";
+    autologinOnce = true;
+  };
+
+  users.groups = {
+    config = { };
   };
 
   users.users.toino = {
@@ -21,9 +18,5 @@ in
       "networkmanager"
       "wheel"
     ];
-  };
-
-  users.groups = {
-    config = { };
   };
 }
