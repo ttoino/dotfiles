@@ -4,70 +4,53 @@
     ./kitty.nix
     ./lsd.nix
     ./neovim.nix
-    ./vscode.nix
     ./xdg.nix
+    ./yazi.nix
   ];
 
   programs = {
-    # Browsers
-    chromium.enable = true;
-    firefox.enable = true;
-
-    # CLI tools
-    bat.enable = true;
-    htop.enable = true;
-    lf.enable = true;
-    pistol.enable = true;
-    ripgrep.enable = true;
-
-    # Productivity
-    obs-studio.enable = true;
-    zathura.enable = true;
-
-    # Utils
-    imv.enable = true;
-    mpv.enable = true;
+    bat.enable = true; # Cat clone
+    chromium.enable = true; # Web browser
+    firefox.enable = true; # Web browser
+    htop.enable = true; # Process manager
+    imv.enable = true; # Image viewer
+    mpv.enable = true; # Video/audio player
+    obs-studio.enable = true; # Screen recording/streaming
+    ripgrep.enable = true; # Grep clone
+    vscode = { enable = true; package = pkgs.vscode.fhs; }; # Code editor
+    zathura.enable = true; # PDF reader
   };
 
   services = {
-    cliphist.enable = true;
-    mpris-proxy.enable = true;
+    cliphist.enable = true; # Clipboard history
+    mpris-proxy.enable = true; # Control media players with headset buttons
   };
 
   home.packages = with pkgs; [
-    # Gaming
-    prismlauncher
-
-    # Messaging
-    vesktop
-    # (discord.override {
-    #     # withOpenASAR = true;
-    # #   css = "@import url(\"https://catppuccin.github.io/discord/dist/catppuccin-mocha-green.theme.css\");";
-    # })
-
-    # Productivity
-    blender-hip
-    gimp
-    libreoffice
-    hunspell
-    hunspellDicts.pt_PT
-    vlc
-
-    # Utils
-    blueberry
-    brightnessctl
-    cliphist
-    # cmd-polkit # TODO
-    d-spy
-    grimblast
-    hyprpicker
-    libnotify
-    nixpkgs-fmt
-    pavucontrol
-    playerctl
-    soteria # Remove this once cmd-polkit is implemented
-    unzip
-    wdisplays
-    wl-clipboard
+    # cmd-polkit # TODO # Polkit agent
+    blender-hip # 3D modeling
+    blueberry # Bluetooth manager
+    brightnessctl # Screen brightness control
+    cliphist # Clipboard history
+    d-spy # D-Bus inspector
+    gimp # Image editor
+    glow # Terminal markdown viewer
+    grimblast # Screenshot tool
+    hunspell # Spell checker
+    hunspellDicts.pt_PT # Portuguese spell checker
+    hyprpicker # Color picker
+    libnotify # Notification daemon
+    libreoffice # Office suite
+    nixpkgs-fmt # Nix formatter
+    pavucontrol # Volume control
+    playerctl # Media player control
+    prismlauncher # Minecraft launcher
+    soteria # Remove this once cmd-polkit is implemented # Polkit agent
+    tdf # Terminal pdf viewer
+    unzip # Unzip files
+    vesktop # Discord client
+    vlc # Video player
+    wdisplays # Display manager
+    wl-clipboard # Clipboard manager
   ];
 }
