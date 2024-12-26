@@ -5,13 +5,14 @@
     settings = ({
       exec-once = [
         "ags run"
-        "soteria"
+        "systemctl --user start hyprpolkitagent"
         "hyprlock"
       ];
 
       monitor = [
         "eDP-2, preferred, auto, 1.60"
         "desc:Hewlett Packard HP P221 3CQ34809BD, preferred, auto-left, 1"
+        "desc:Samsung Electric Company LC32G5xT H4ZR703681, preferred, auto-left, 1"
         ", preferred, auto, 1"
       ];
     })

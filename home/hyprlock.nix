@@ -3,8 +3,8 @@
     enable = true;
 
     settings = {
-      general = {
-        enable_fingerprint = true;
+      auth = {
+        fingerprint.enabled = true;
       };
 
       background = [

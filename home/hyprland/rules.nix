@@ -1,7 +1,7 @@
 {
   windowrulev2 = [
     # Games
-    "tag +game, class:^steam_app_"
+    "tag +game, class:steam_app_.*"
     "tag +game, class:[Mm]inecraft"
 
     "immediate, tag:game"

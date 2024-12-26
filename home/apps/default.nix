@@ -39,18 +39,19 @@
     hunspell # Spell checker
     hunspellDicts.pt_PT # Portuguese spell checker
     hyprpicker # Color picker
+    hyprpolkitagent # Remove this once cmd-polkit is implemented # Polkit agent
     libnotify # Notification daemon
     libreoffice # Office suite
     nixpkgs-fmt # Nix formatter
     pavucontrol # Volume control
     playerctl # Media player control
     prismlauncher # Minecraft launcher
-    soteria # Remove this once cmd-polkit is implemented # Polkit agent
     tdf # Terminal pdf viewer
     unzip # Unzip files
     vesktop # Discord client
     vlc # Video player
     wdisplays # Display manager
     wl-clipboard # Clipboard manager
+    zip # Zip files
   ];
 }
