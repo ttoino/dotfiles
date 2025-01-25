@@ -42,8 +42,9 @@
     "$mainMod, Comma, exec, playerctl previous"
     ", XF86AudioPrev, exec, playerctl previous"
     "$mainMod, Space, exec, playerctl play-pause"
-    ", XF86AudioPlay, exec, playerctl play"
-    ", XF86AudioPause, exec, playerctl pause"
+    # These should be different, but keyboards with both are rare
+    ", XF86AudioPlay, exec, playerctl play-pause"
+    ", XF86AudioPause, exec, playerctl play-pause"
 
     # Move focus with $mainMod + arrow keys
     "$mainMod, left, movefocus, l"

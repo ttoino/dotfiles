@@ -1,5 +1,8 @@
 {
-  time.timeZone = "Europe/Amsterdam";
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "Europe/Amsterdam";
+  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

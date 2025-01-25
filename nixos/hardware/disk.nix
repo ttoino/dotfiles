@@ -7,7 +7,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {
@@ -20,7 +20,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["fmask=0077" "dmask=0077"];
+                mountOptions = [ "fmask=0077" "dmask=0077" ];
               };
             };
             swap = {
@@ -39,14 +39,14 @@
               content = {
                 type = "btrfs";
                 mountpoint = "/";
-                extraArgs = ["-f"];
+                extraArgs = [ "-f" ];
                 subvolumes = {
                   "/home" = {
-                    mountOptions = ["compress=zstd:2"];
+                    mountOptions = [ "compress=zstd:2" ];
                     mountpoint = "/home";
                   };
                   "/nix" = {
-                    mountOptions = ["compress=zstd:2" "noatime"];
+                    mountOptions = [ "compress=zstd:2" "noatime" ];
                     mountpoint = "/nix";
                   };
                 };

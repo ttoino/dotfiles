@@ -1,7 +1,9 @@
 { config, pkgs, inputs, ... }: {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    ./disk.nix
     ./generated.nix
+    ./network.nix
   ];
 
   hardware.enableAllFirmware = true;

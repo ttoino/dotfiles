@@ -38,6 +38,7 @@
     grimblast # Screenshot tool
     hunspell # Spell checker
     hunspellDicts.pt_PT # Portuguese spell checker
+    hyprland-qtutils # Needed by hyprland
     hyprpicker # Color picker
     hyprpolkitagent # Remove this once cmd-polkit is implemented # Polkit agent
     libnotify # Notification daemon
