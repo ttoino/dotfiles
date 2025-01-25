@@ -11,8 +11,11 @@ import { togglePopup } from "../services/windows";
 
 const bluetooth = BluetoothService.get_default();
 
+const connected = bind(bluetooth, "devices").as((devices) =>
+    devices.filter((d) => d.connected)
+);
 const icon = Variable.derive(
-    [bind(bluetooth, "isPowered"), bind(bluetooth, "devices")],
+    [bind(bluetooth, "isPowered"), connected],
     (isPowered, devices) =>
         isPowered
             ? devices.length > 0
@@ -21,7 +24,7 @@ const icon = Variable.derive(
             : BLUETOOTH_OFF
 );
 const tooltip = Variable.derive(
-    [bind(bluetooth, "isPowered"), bind(bluetooth, "devices")],
+    [bind(bluetooth, "isPowered"), connected],
     (isPowered, devices) =>
         isPowered
             ? devices.length > 0

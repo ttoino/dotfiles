@@ -61,6 +61,7 @@ const Wifi = () => (
         <box vertical spacing={8}>
             {bind(network.wifi, "access_points").as((aps) =>
                 aps
+                    .filter((ap) => ap.ssid)
                     .sort(
                         (a, b) =>
                             Number(b == network.wifi.activeAccessPoint) -

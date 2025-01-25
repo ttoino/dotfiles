@@ -14,6 +14,7 @@ import Popups from "../windows/Popups";
 import Power from "../windows/Power";
 import Run from "../windows/Run";
 import Scrim from "../windows/Scrim";
+import Notifications from "../windows/Notifications";
 
 const WINDOWS = [Bar, Popups] as const;
 
@@ -25,7 +26,7 @@ const POPUP_WINDOWS = [
     Calendar,
     Media,
     Network,
-    // Notifications,
+    Notifications,
 ] as const;
 
 const SCRIMMED_POPUP_WINDOWS = [Power, Run] as const;
@@ -88,37 +89,46 @@ export const init = () => {
     });
 
     POPUP_WINDOWS.forEach((fn) => {
-        const popup = fn() as Window;
-        popups.set(popup.name, popup);
-        visible().subscribe((v) => {
-            const visible = v === popup.name;
+        try {
+            const popup = fn() as Window;
+            popups.set(popup.name, popup);
+            visible().subscribe((v) => {
+                const visible = v === popup.name;
 
-            if (visible) dismissers.forEach((w) => (w.visible = true));
+                if (visible) dismissers.forEach((w) => (w.visible = true));
 
-            popup.visible = visible;
-        });
-        popup.connect("notify::visible", () => {
-            if (popup.visible) visible.set(popup.name);
-            else if (visible.get() === popup.name) visible.set(null);
-        });
+                popup.visible = visible;
+            });
+            popup.connect("notify::visible", () => {
+                if (popup.visible) visible.set(popup.name);
+                else if (visible.get() === popup.name) visible.set(null);
+            });
+        } catch (e) {
+            print(e);
+            throw e;
+        }
     });
 
     SCRIMMED_POPUP_WINDOWS.forEach((fn) => {
-        const popup = fn() as Window;
-        scrimmedPopups.set(popup.name, popup);
-        visible().subscribe((v) => {
-            const visible = v === popup.name;
+        try {
+            const popup = fn() as Window;
+            scrimmedPopups.set(popup.name, popup);
+            visible().subscribe((v) => {
+                const visible = v === popup.name;
 
-            if (visible) {
-                dismissers.forEach((w) => (w.visible = true));
-                scrims.forEach((w) => (w.visible = true));
-            }
+                if (visible) {
+                    dismissers.forEach((w) => (w.visible = true));
+                    scrims.forEach((w) => (w.visible = true));
+                }
 
-            popup.visible = visible;
-        });
-        popup.connect("notify::visible", () => {
-            if (popup.visible) visible.set(popup.name);
-            else if (visible.get() === popup.name) visible.set(null);
-        });
+                popup.visible = visible;
+            });
+            popup.connect("notify::visible", () => {
+                if (popup.visible) visible.set(popup.name);
+                else if (visible.get() === popup.name) visible.set(null);
+            });
+        } catch (e) {
+            print(e);
+        }
     });
 };

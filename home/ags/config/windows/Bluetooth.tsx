@@ -2,6 +2,7 @@ import { bind } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import BluetoothService from "gi://AstalBluetooth";
 import {
+    BLUETOOTH,
     CAMERA,
     CELLPHONE,
     CONTROLLER,
@@ -42,10 +43,16 @@ const Device = (device: BluetoothService.Device) => (
         icon={bind(device, "icon").as((icon_name) =>
             icon_name in ICONS
                 ? ICONS[icon_name as keyof typeof ICONS]
-                : icon_name
+                : BLUETOOTH
         )}
+        iconTooltip={bind(device, "icon")}
         active={bind(device, "connected")}
         activating={bind(device, "connecting")}
+        onPrimaryClick={() =>
+            device.connected
+                ? device.disconnect_device(null)
+                : device.connect_device(null)
+        }
     />
 );
 
@@ -88,7 +95,8 @@ export default function Bluetooth() {
                                         Number(b.connected) -
                                             Number(a.connected) ||
                                         Number(b.paired) - Number(a.paired) ||
-                                        a.name.localeCompare(b.name)
+                                        a.name?.localeCompare(b.name) ||
+                                        a.address?.localeCompare(b.address)
                                 )
                                 .map(Device)
                         )}

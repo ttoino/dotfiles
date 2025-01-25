@@ -4,7 +4,9 @@ import GtkLayerShell from "gi://GtkLayerShell";
 export default function Scrim(monitor: Gdk.Monitor) {
     return (
         <window
+            gdkmonitor={monitor}
             name={`scrim-${monitor.model}`}
+            namespace="ags-scrim"
             className="scrim-window"
             anchor={
                 Astal.WindowAnchor.BOTTOM |
@@ -17,9 +19,6 @@ export default function Scrim(monitor: Gdk.Monitor) {
             visible={false}
             clickThrough
             application={App}
-            setup={(self) => {
-                GtkLayerShell.set_namespace(self, "ags-scrim");
-            }}
         />
     );
 }

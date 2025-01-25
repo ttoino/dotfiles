@@ -15,7 +15,7 @@ export default function ScrollText({
 }: ScrollTextProps) {
     return (
         <scrollable
-            className={`scroll-text ${className}`}
+            className={`scroll-text ${className ?? ""}`}
             hexpand
             hscroll={Gtk.PolicyType.AUTOMATIC}
             vscroll={Gtk.PolicyType.NEVER}

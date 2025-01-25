@@ -5,7 +5,9 @@ import GtkLayerShell from "gi://GtkLayerShell";
 export default function Dismisser(monitor: Gdk.Monitor) {
     return (
         <window
+            gdkmonitor={monitor}
             name={`dismisser-${monitor.model}`}
+            namespace="ags-dismisser"
             className="dismisser-window"
             anchor={
                 Astal.WindowAnchor.BOTTOM |
@@ -25,9 +27,6 @@ export default function Dismisser(monitor: Gdk.Monitor) {
                 if (keyval == Gdk.KEY_Escape) return dismissPopup();
             }}
             application={App}
-            setup={(self) => {
-                GtkLayerShell.set_namespace(self, "ags-dismisser");
-            }}
         />
     );
 }
