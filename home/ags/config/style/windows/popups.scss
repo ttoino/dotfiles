@@ -1,0 +1,10 @@
+@use "../catppuccin.scss" as cp;
+
+.popups {
+    background: transparent;
+    color: cp.$text;
+
+    & > * {
+        min-width: 360px;
+    }
+}

@@ -17,10 +17,11 @@ audio?.defaultSpeaker.connect(
                 value: speaker.volume * 100,
                 icon: volumeRange(speaker.volume),
             },
-            className: "audio",
+            className: "audio round",
             id: speakerId,
             hideBody: true,
             hideHeader: true,
+            transient: true,
         });
 
         if (!speakerId) speakerId = out.trim();

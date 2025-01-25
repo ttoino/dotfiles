@@ -1,19 +1,34 @@
 import Notification from "../widgets/Notification";
-import Notifd from "gi://AstalNotifd";
 import Hyprland from "gi://AstalHyprland";
 import { Astal, Gdk } from "astal/gtk3";
+import Notifications from "../providers/notifications";
+import Renderer from "../lib/Renderer";
+import { bind } from "astal";
 
-const notifications = Notifd.get_default();
+const notifications = Notifications.get_default();
 const hyprland = Hyprland.get_default();
 
 export default function Popups(monitor: Gdk.Monitor) {
-    const popups = new Map<Number, JSX.Element>();
+    const renderer = new Renderer<number>((id) => {
+        const notification = notifications.get(id);
+        if (notification) return Notification(notification, () => notifications.dismiss(id), true);
+    });
+
+    notifications.connect("notified", (_, id) => {
+        if (hyprland.focusedMonitor.model === monitor.model)
+            renderer.add(id)
+        else
+            renderer.delete(id);
+    });
+    notifications.connect("timed-out", (_, id) => renderer.delete(id));
+    notifications.connect("dismissed", (_, id) => renderer.delete(id));
 
     return (
         <window
             gdkmonitor={monitor}
-            name={`popups-${monitor.model}`}
-            exclusivity={Astal.Exclusivity.IGNORE}
+            name={`popups-${monitor.model.replace(/\s/g, "-").toLowerCase()}`}
+            className={"popups"}
+            exclusivity={Astal.Exclusivity.EXCLUSIVE}
             anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
             margin={16}
         >
@@ -21,36 +36,9 @@ export default function Popups(monitor: Gdk.Monitor) {
                 hexpand
                 vertical
                 spacing={8}
-                setup={(list) =>
-                    list.hook(
-                        notifications,
-                        "notified",
-                        (list, id: number, replaced: boolean) => {
-                            if (
-                                replaced ||
-                                hyprland.focusedMonitor.model !== monitor.model
-                            )
-                                return;
-
-                            const notification =
-                                notifications.get_notification(id);
-                            if (!notification) return;
-
-                            const notificationWidget =
-                                Notification(notification);
-                            list.children.unshift(notificationWidget);
-                            popups.set(id, notificationWidget);
-                            notification.connect(
-                                "dismissed",
-                                (notification) => {
-                                    popups.get(notification.id)?.destroy();
-                                    popups.delete(notification.id);
-                                }
-                            );
-                        }
-                    )
-                }
-            />
+            >
+                {bind(renderer)}
+            </box>
         </window>
     );
 }

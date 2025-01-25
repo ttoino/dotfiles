@@ -6,6 +6,8 @@ export const CHEVRON_LEFT = "󰅁";
 export const CHEVRON_RIGHT = "󰅂";
 export const CHEVRON_UP = "󰅃";
 
+export const CLOSE = "󰅖";
+
 // Window attributes
 export const ALPHA_X_CIRCLE = "󰰱";
 export const FULLSCREEN = "󰊓";

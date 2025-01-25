@@ -6,7 +6,7 @@ import { notify } from "../../lib/notifications";
 const brightness = Brightness.get_default();
 
 let brightnessId: string | undefined;
-brightness.connect("notify::screen-value", async () => {
+brightness.connect("notify::percentage", async () => {
     if (App.get_window("brightness")?.visible) return;
 
     const out = await notify({
@@ -15,10 +15,11 @@ brightness.connect("notify::screen-value", async () => {
             value: brightness.percentage * 100,
             icon: brightnessRange(brightness.percentage),
         },
-        className: "brightness",
+        className: "brightness round",
         id: brightnessId,
         hideBody: true,
         hideHeader: true,
+        transient: true,
     });
 
     if (!brightnessId) brightnessId = out.trim();

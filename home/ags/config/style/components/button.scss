@@ -35,6 +35,11 @@
             padding: 4px;
             border-radius: 10000px;
 
+            &.sm {
+                font-size: 18px;
+                padding: 3px;
+            }
+
             &.lg {
                 font-size: 36px;
                 padding: 6px;

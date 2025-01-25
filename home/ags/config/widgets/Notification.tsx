@@ -1,13 +1,15 @@
 import { Gtk } from "astal/gtk3";
-import Notifd from "gi://AstalNotifd";
 import { urgencyToString } from "../lib/notifications";
 import { relativeTime } from "../lib/time";
 import date from "../providers/date";
 import IconSlider from "./IconSlider";
 import ScrollText from "./ScrollText";
+import IconButton from "./IconButton";
+import { CLOSE } from "../lib/chars";
+import {Notification as NotificationObject} from "../providers/notifications";
 
-const NotificationHeader = (notification: Notifd.Notification) =>
-    !notification.get_bool_hint("hide-header") && (
+const NotificationHeader = (notification: NotificationObject, onDismiss: () => void, popup: boolean) =>
+    !notification.hideHeader && (
         <box className="notification-app" vexpand hexpand spacing={4}>
             {notification.appIcon && <icon icon={notification.appIcon} />}
             {notification.appName && (
@@ -19,21 +21,29 @@ const NotificationHeader = (notification: Notifd.Notification) =>
                     wrap={false}
                 />
             )}
-            <label
-                label={date().as((date) =>
-                    relativeTime(new Date(notification.time * 1000), date.date)
-                )}
-                tooltipText={notification.time.toString()}
-                halign={Gtk.Align.END}
-                hexpand
-                lines={1}
-                wrap={false}
-            />
+            {!popup && <> 
+                <label
+                    label={date().as((date) =>
+                        relativeTime(new Date(notification.time * 1000), date.date)
+                    )}
+                    tooltipText={new Date(notification.time).toString()}
+                    halign={Gtk.Align.END}
+                    hexpand
+                    lines={1}
+                    wrap={false}
+                />
+                <IconButton
+                    label={CLOSE}
+                    onClicked={onDismiss}
+                    tooltipText="Dismiss"
+                    className="sm"
+                />
+            </>}
         </box>
     );
 
-const NotificationBody = (notification: Notifd.Notification) =>
-    !notification.get_bool_hint("hide-body") && (
+const NotificationBody = (notification: NotificationObject) =>
+    !notification.hideBody && (
         <box className="notification-body" vexpand hexpand spacing={8}>
             {notification.image && (
                 <box
@@ -46,7 +56,10 @@ const NotificationBody = (notification: Notifd.Notification) =>
             )}
             <box vertical vexpand hexpand spacing={8}>
                 {notification.summary && (
-                    <ScrollText label={notification.summary} />
+                    <ScrollText
+                        labelProps={{halign: Gtk.Align.START}}
+                        label={notification.summary}
+                    />
                 )}
                 {notification.body && (
                     <label
@@ -61,11 +74,11 @@ const NotificationBody = (notification: Notifd.Notification) =>
         </box>
     );
 
-const NotificationSlider = (notification: Notifd.Notification) => {
-    const value = notification.get_int_hint("value");
+const NotificationSlider = (notification: NotificationObject) => {
+    const value = notification.sliderValue
     if (value == undefined) return;
 
-    const icon = notification.get_str_hint("value-icon");
+    const icon = notification.sliderIcon
 
     return icon && icon.length > 0 ? (
         <IconSlider
@@ -89,9 +102,9 @@ const NotificationSlider = (notification: Notifd.Notification) => {
     );
 };
 
-const NotificationActions = (notification: Notifd.Notification) => {
+const NotificationActions = (notification: NotificationObject) => {
     return (
-        notification.actions && (
+        notification.actions?.length > 0 && (
             <box className="notification-actions" spacing={8}>
                 {notification.actions.map((action) => (
                     <button
@@ -104,23 +117,16 @@ const NotificationActions = (notification: Notifd.Notification) => {
     );
 };
 
-export default function Notification(notification: Notifd.Notification) {
-    const classNames = notification.get_hint("classes")?.get_strv() ?? [];
-
-    const className = notification.get_str_hint("class");
-    if (className) classNames.push(className);
-
-    classNames.push(urgencyToString[notification.urgency], "notification");
-
+export default function Notification(notification: NotificationObject, onDismiss: () => void, popup = false) {
     return (
         <box
-            className={classNames.join(" ")}
+            className={`${notification.className} ${urgencyToString[notification.urgency]} notification`}
             vertical
             valign={Gtk.Align.START}
             hexpand
             spacing={8}
         >
-            {NotificationHeader(notification)}
+            {NotificationHeader(notification, onDismiss, popup)}
             {NotificationBody(notification)}
             {NotificationSlider(notification)}
             {NotificationActions(notification)}
