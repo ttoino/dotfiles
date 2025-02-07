@@ -1,26 +1,17 @@
 { inputs, pkgs, ... }: {
-  imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
-  ];
-
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = 0;
 
       systemd-boot = {
-        # enable = true;
+        enable = true;
         editor = false;
+        edk2-uefi-shell.enable = true;
+        windows.windows = {
+          title = "Windows";
+          efiDeviceHandle = "FS0";
+        };
       };
-    };
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
     };
 
     plymouth = {

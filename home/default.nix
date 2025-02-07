@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
+    ./accounts.nix
     ./ags
     ./apps
     ./catppuccin.nix
@@ -9,6 +10,7 @@
     ./hyprland
     ./hyprlock.nix
     ./hyprpaper.nix
+    ./secrets
     ./zsh
   ];
 

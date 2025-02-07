@@ -1,12 +1,10 @@
-{ inputs, config, lib, pkgs, ... }: {
+{ inputs, outputs, config, lib, pkgs, ... }: {
   imports = [
     ./boot.nix
     ./catppuccin.nix
-    ./disk.nix
     ./gaming.nix
     ./hardware
     ./locale.nix
-    ./network.nix
     ./security.nix
     ./users.nix
     ./virtualization.nix
@@ -23,6 +21,7 @@
     options = "--delete-older-than 7d";
   };
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = outputs.overlays;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -30,6 +29,7 @@
   ];
 
   programs.hyprland.enable = true;
+  services.gvfs.enable = true;
 
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "24.05"; # Did you read the comment?
