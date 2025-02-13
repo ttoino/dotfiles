@@ -55,6 +55,32 @@
           };
         };
       };
+      secondary = {
+        type = "disk";
+        device = "/dev/nvme0n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            # There are more, but we only care about these
+            windows = {
+              label = "windows";
+              content = {
+                type = "filesystem";
+                format = "ntfs";
+                mountpoint = "/windows";
+              };
+            };
+            data = {
+              label = "data";
+              content = {
+                type = "filesystem";
+                format = "ntfs";
+                mountpoint = "/data";
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
