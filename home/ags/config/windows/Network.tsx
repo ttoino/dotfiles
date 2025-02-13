@@ -3,6 +3,7 @@ import { App, Astal, Gtk } from "astal/gtk3";
 import NetworkService from "gi://AstalNetwork";
 import Device from "../widgets/Device";
 import { wifiRange } from "../lib/icons";
+import Renderer from "../lib/Renderer";
 
 const network = NetworkService.get_default();
 
@@ -47,32 +48,35 @@ const AccessPoint = (ap: NetworkService.AccessPoint) => {
     );
 };
 
-const Wifi = () => (
-    <box vertical spacing={8}>
-        <box spacing={16}>
-            <label
-                hexpand
-                halign={Gtk.Align.START}
-                justify={Gtk.Justification.LEFT}
-                label="Wifi"
-            />
-            <switch hexpand={false} active={bind(network.wifi, "enabled")} />
-        </box>
+const Wifi = () => {
+    const renderer = new Renderer<NetworkService.AccessPoint>((ap) => AccessPoint(ap), {
+        initial: network.wifi.access_points,
+        sort: (a, b) =>
+            Number(b === network.wifi.activeAccessPoint) -
+                Number(a === network.wifi.activeAccessPoint) ||
+            b.strength - a.strength,
+    });
+
+    network.wifi.connect("access-point-added", (_, ap) => renderer.add(ap));
+    network.wifi.connect("access-point-removed", (_, ap) => renderer.delete(ap));
+
+    return (
         <box vertical spacing={8}>
-            {bind(network.wifi, "access_points").as((aps) =>
-                aps
-                    .filter((ap) => ap.ssid)
-                    .sort(
-                        (a, b) =>
-                            Number(b == network.wifi.activeAccessPoint) -
-                                Number(a == network.wifi.activeAccessPoint) ||
-                            b.strength - a.strength
-                    )
-                    .map(AccessPoint)
-            )}
+            <box spacing={16}>
+                <label
+                    hexpand
+                    halign={Gtk.Align.START}
+                    justify={Gtk.Justification.LEFT}
+                    label="Wifi"
+                />
+                <switch hexpand={false} active={bind(network.wifi, "enabled")} />
+            </box>
+            <box vertical spacing={8}>
+                {bind(renderer)}
+            </box>
         </box>
-    </box>
-);
+    );
+}
 
 export default function Network() {
     return (

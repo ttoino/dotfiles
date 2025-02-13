@@ -10,7 +10,7 @@ export interface ExpandableWindowProps extends Omit<StackProps, "children"> {
 }
 
 export default function ExpandableWindow({
-    className,
+    className = "",
     collapsed,
     expanded,
     ...rest

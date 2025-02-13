@@ -1,11 +1,4 @@
-import {
-    GObject,
-    property,
-    register,
-    signal,
-    Time,
-    timeout,
-} from "astal";
+import { GObject, property, register, signal, Time, timeout } from "astal";
 import Notifd from "gi://AstalNotifd";
 
 @register()
@@ -81,19 +74,15 @@ export default class Notifications extends GObject.Object {
 
     // Getters
     get all() {
-        return [...this._notifications.values()];
+        return [...this._notifications.keys()];
     }
 
     get popups() {
-        return [...this._popups.values()].map(
-            (id) => this._notifications.get(id)!
-        );
+        return [...this._popups];
     }
 
     get storage() {
-        return [...this._stored.values()].map(
-            (id) => this._notifications.get(id)!
-        );
+        return [...this._stored];
     }
 
     get(id: number) {

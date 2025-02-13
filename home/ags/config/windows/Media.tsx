@@ -1,15 +1,19 @@
-import { bind } from "astal";
+import { bind, Variable } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import Mpris from "gi://AstalMpris";
 import { PAUSE, PLAY, SKIP_NEXT, SKIP_PREVIOUS } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
 import ScrollText from "../widgets/ScrollText";
+import Renderer from "../lib/Renderer";
 
 const mpris = Mpris.get_default();
 
-const Player = (player: Mpris.Player) => (
-    <box name={bind(player, "busName")} vertical spacing={8}>
-        <ScrollText label={bind(player, "identity")} />
+const Player = (player: Mpris.Player, onChoose: () => void) => (
+    // Can't bind to busName because the widget name should not change
+    <box name={player.busName} vertical spacing={8}>
+        <button onClicked={onChoose}>
+            <ScrollText label={bind(player, "identity")} />
+        </button>
         <box
             className="cover"
             visible={bind(player, "coverArt").as((image) => !!image)}
@@ -25,6 +29,7 @@ const Player = (player: Mpris.Player) => (
             <IconButton
                 className="lg"
                 label={SKIP_PREVIOUS}
+                valign={Gtk.Align.CENTER}
                 onClicked={() => player.previous()}
             />
             <IconButton
@@ -37,6 +42,7 @@ const Player = (player: Mpris.Player) => (
             <IconButton
                 className="lg"
                 label={SKIP_NEXT}
+                valign={Gtk.Align.CENTER}
                 onClicked={() => player.next()}
             />
         </box>
@@ -50,6 +56,25 @@ const Player = (player: Mpris.Player) => (
 );
 
 export default function Media() {
+    const visible = new Variable("choose");
+
+    const choiceRenderer = new Renderer<Mpris.Player>((player) => (
+        <button
+            label={bind(player, "identity")}
+            onClicked={() => visible.set(player.busName)}
+        />
+    ), {initial: mpris.players});
+    const playerRenderer = new Renderer<Mpris.Player>((player) => Player(player, () => visible.set("choose")), {initial: mpris.players});
+
+    mpris.connect("player-added", (_, player) => {
+        choiceRenderer.add(player);
+        playerRenderer.add(player);
+    });
+    mpris.connect("player-closed", (_, player) => {
+        choiceRenderer.delete(player);
+        playerRenderer.delete(player);
+    });
+
     return (
         <window
             name="media"
@@ -58,9 +83,19 @@ export default function Media() {
             visible={false}
             application={App}
         >
-            <box className="media-window info-window" vertical>
-                {bind(mpris, "players").as((players) => players.map(Player))}
-            </box>
+            <stack 
+                className="media-window info-window"
+                transitionType={Gtk.StackTransitionType.CROSSFADE}
+                visibleChildName={visible()}
+            >
+                {bind(playerRenderer).as((renderer) => [
+                    (<box name="choose" vertical spacing={8}>
+                        <label label="Choose a player" />
+                        {bind(choiceRenderer)}
+                    </box>),
+                    ...renderer
+                ])}
+            </stack>
         </window>
     );
 }

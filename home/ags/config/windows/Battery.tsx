@@ -5,6 +5,7 @@ import PowerProfiles from "gi://AstalPowerProfiles";
 import { batteryRange } from "../lib/icons";
 import ExpandableWindow from "../widgets/ExpandableWindow";
 import IconSlider from "../widgets/IconSlider";
+import ToggleButton from "../widgets/ToggleButton";
 
 const battery = BatteryService.get_default();
 const powerProfiles = PowerProfiles.get_default();
@@ -49,6 +50,11 @@ export default function Battery() {
                                     justify={Gtk.Justification.LEFT}
                                     label="Battery"
                                 />
+                            </box>
+                            <box homogeneous hexpand>
+                                {powerProfiles.get_profiles().map((profile) => (
+                                    <ToggleButton active={bind(powerProfiles, "activeProfile").as((p) => p === profile.profile)}>{profile.profile}</ToggleButton>
+                                ))}
                             </box>
                             <box vexpand />
                             <BatterySlider />

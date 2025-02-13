@@ -1,6 +1,10 @@
 @use "./text.scss" as t;
 
 .media-window {
+    &.info-window {
+        min-height: 0;
+    }
+
     .title {
         @include t.type("title-large");
     }

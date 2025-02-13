@@ -2,13 +2,19 @@ import { Subscribable } from "astal/binding";
 import { Gtk } from "astal/gtk3";
 
 type Callback = (widgets: Gtk.Widget[]) => void;
+type OptionalArgs<T> = {
+    initial?: readonly (readonly [T, Gtk.Widget])[];
+    sort?: (a: T, b: T) => number;
+};
 
 export default class WidgetMap<K> implements Subscribable<Gtk.Widget[]> {
     #map: Map<K, Gtk.Widget>;
     #callbacks: Set<Callback> = new Set();
+    #sort?: (a: K, b: K) => number;
 
-    constructor(entries?: readonly (readonly [K, Gtk.Widget])[]) {
-        this.#map = new Map(entries);
+    constructor({ initial, sort }: OptionalArgs<K> = {}) {
+        this.#map = new Map(initial);
+        this.#sort = sort;
     }
 
     #notify() {
@@ -34,6 +40,11 @@ export default class WidgetMap<K> implements Subscribable<Gtk.Widget[]> {
     }
 
     get() {
+        if (this.#sort) {
+            return [...this.#map.entries()]
+                .sort(([a], [b]) => this.#sort!(a, b))
+                .map(([, value]) => value);
+        }
         return [...this.#map.values()];
     }
 

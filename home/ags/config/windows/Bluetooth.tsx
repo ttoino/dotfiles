@@ -17,6 +17,7 @@ import {
     VIDEO,
 } from "../lib/chars";
 import BaseDevice from "../widgets/Device";
+import Renderer from "../lib/Renderer";
 
 const bluetooth = BluetoothService.get_default();
 
@@ -57,6 +58,18 @@ const Device = (device: BluetoothService.Device) => (
 );
 
 export default function Bluetooth() {
+    const renderer = new Renderer<BluetoothService.Device>((device) => Device(device), {
+        initial: bluetooth.devices,
+        sort: (a, b) =>
+            Number(b.connected) - Number(a.connected) ||
+            Number(b.paired) - Number(a.paired) ||
+            a.name?.localeCompare(b.name) ||
+            a.address?.localeCompare(b.address),
+    });
+
+    bluetooth.connect("device-added", (_, device) => renderer.add(device));
+    bluetooth.connect("device-removed", (_, device) => renderer.delete(device));
+
     return (
         <window
             name="bluetooth"
@@ -88,18 +101,7 @@ export default function Bluetooth() {
                         />
                     </box>
                     <box vertical spacing={8}>
-                        {bind(bluetooth, "devices").as((devices) =>
-                            devices
-                                .sort(
-                                    (a, b) =>
-                                        Number(b.connected) -
-                                            Number(a.connected) ||
-                                        Number(b.paired) - Number(a.paired) ||
-                                        a.name?.localeCompare(b.name) ||
-                                        a.address?.localeCompare(b.address)
-                                )
-                                .map(Device)
-                        )}
+                        {bind(renderer)}
                     </box>
                 </box>
             </scrollable>

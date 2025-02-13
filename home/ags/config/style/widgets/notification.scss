@@ -11,4 +11,8 @@
         border-radius: 8px;
         background-size: cover;
     }
+
+    &.round {
+        border-radius: 10000px;
+    }
 }

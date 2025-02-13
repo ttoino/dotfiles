@@ -12,7 +12,7 @@ export default function Popups(monitor: Gdk.Monitor) {
     const renderer = new Renderer<number>((id) => {
         const notification = notifications.get(id);
         if (notification) return Notification(notification, () => notifications.dismiss(id), true);
-    });
+    }, {initial: notifications.popups});
 
     notifications.connect("notified", (_, id) => {
         if (hyprland.focusedMonitor.model === monitor.model)

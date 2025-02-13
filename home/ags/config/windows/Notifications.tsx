@@ -13,9 +13,7 @@ export default function Notifications() {
     const renderer = new Renderer<number>((id) => {
         const notification = notifications.get(id);
         if (notification) return Notification(notification, () => notifications.dismiss(id));
-    });
-
-    notifications.storage.forEach((notification) => renderer.add(notification.id));
+    }, {initial: notifications.storage});
 
     notifications.connect("stored", (_, id) => renderer.add(id));
     notifications.connect("dismissed", (_, id) => renderer.delete(id));

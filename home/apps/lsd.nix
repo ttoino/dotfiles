@@ -389,7 +389,7 @@ in
       [ "󰝚" [ "ape" "cue" "flac" "m4a" "mp3" "ogg" "opus" "wav" "wma" ] ] # Audio
       [ "󰁯" [ "bak" "old" "orig" ] ] # Backup
       [ "󰂫" [ "blend" "blend1" ] ] # Blender
-      [ "󰂽" [ "ebook" "epub" ] ] # Book
+      [ "󰂽" [ "ebook" "epub" "mobi" ] ] # Book
       [ "󰙱" [ "c" "h" ] ] # C
       [ "󰙲" [ "cc" "cpp" "cp" "c++" "cxx" "hh" "hpp" "hxx" ] ] # C++
       [ "󰌛" [ "csproj" "cs" "csx" ] ] # C#
@@ -416,6 +416,7 @@ in
       [ "󰅶" [ "class" "coffee" "jar" "java" ] ] # Java/Coffee
       [ "󰌞" [ "cjs" "js" "mjs" ] ] # JavaScript
       [ "󰘦" [ "avro" "jsonc" "json" "toml" "yaml" "yml" ] ] # JSON/YAML/TOML
+      [ "󰌆" [ "asc" "key" ] ] # Key
       [ "󱈙" [ "kt" "kts" ] ] # Kotlin
       [ "󰌾" [ "lock" ] ] # Lock
       [ "󰢱" [ "lua" ] ] # Lua
@@ -442,12 +443,12 @@ in
       [ "󰎁" [ "avi" "flv" "m4v" "mkv" "mov" "mp4" "ogv" "video" "webm" "wmv" ] ] # Video
       [ "󰨞" [ ] ] # VSCode
       [ "󰡄" [ "vue" ] ] # Vue
+      [ "󰖳" [ "windows" ] ] # Windows
       [ "󰗀" [ "asp" "ejs" "xml" ] ] # XML
 
       [
         "󰋖"
         [
-          "asc"
           "asm"
           "bin"
           "bio"
@@ -487,7 +488,6 @@ in
           "j2"
           "jinja"
           "jl"
-          "key"
           "kusto"
           "ldb"
           "ld"
@@ -506,7 +506,6 @@ in
           "mli"
           "mll"
           "mly"
-          "mobi"
           "mustache"
           "nim"
           "nimble"
@@ -572,7 +571,6 @@ in
           "vim"
           "vlc"
           "whl"
-          "windows"
           "wpl"
           "xbps"
           "xul"

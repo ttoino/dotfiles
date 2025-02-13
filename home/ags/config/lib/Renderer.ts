@@ -3,13 +3,26 @@ import WidgetMap from "./WidgetMap";
 import { Gtk } from "astal/gtk3";
 
 type RendererFn<T> = (key: T) => Gtk.Widget | undefined;
+type OptionalArgs<T> = {
+    initial?: T[];
+    sort?: (a: T, b: T) => number;
+};
 
 export default class Renderer<T> implements Subscribable<Gtk.Widget[]> {
-    #map: WidgetMap<T> = new WidgetMap();
+    #map: WidgetMap<T>;
     #renderer: RendererFn<T>;
 
-    constructor(renderer: RendererFn<T>, empty?: Gtk.Widget) {
+    constructor(
+        renderer: RendererFn<T>,
+        { initial, sort }: OptionalArgs<T> = {}
+    ) {
         this.#renderer = renderer;
+        this.#map = new WidgetMap({
+            initial: initial
+                ?.map((key) => [key, renderer(key)])
+                .filter(([, widget]) => !!widget) as [T, Gtk.Widget][],
+            sort,
+        });
     }
 
     add(key: T) {
