@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, osConfig, lib, pkgs, ... }:
 {
   services.mopidy = {
     enable = true;
@@ -6,7 +6,24 @@
     extensionPackages = with pkgs; [
       mopidy-mpris
       mopidy-iris
-      mopidy-ytmusic
+      (mopidy-ytmusic.overrideAttrs (old: {
+        src = pkgs.fetchFromGitHub {
+          owner = "LittleFox94";
+          repo = "mopidy-ytmusic";
+          rev = "random-fixes";
+          sha256 = "sha256-U4HNY5CNXs0yQ2fklVisOCIQAbF1fabD/yptEU0Joz4=";
+        };
+
+        postPatch = "";
+
+        nativeBuildInputs = old.nativeBuildInputs ++ [
+          pkgs.python3.pkgs.poetry-core
+        ];
+
+        propagatedBuildInputs = old.propagatedBuildInputs ++ [
+          pkgs.python3.pkgs.pytubefix
+        ];
+      }))
     ];
 
     settings = {
@@ -25,7 +42,9 @@
     id=$(cat "${config.age.secrets.mopidy-google-client-id.path}")
     secret=$(cat "${config.age.secrets.mopidy-google-client-secret.path}")
     config_file="''${XDG_CONFIG_HOME:-${config.xdg.configHome}}/mopidy/mopidy.conf"
-    ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
-    ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
+    backup_file="$config_file.${osConfig.home-manager.backupFileExtension}"
+    run rm -f "$backup_file"
+    run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
+    run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
   '';
 }
