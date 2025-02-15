@@ -32,6 +32,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,7 +79,8 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             agenix-rekey.packages.${system}.default
-            nixfmt
+            nixfmt-rfc-style
+            nodePackages.prettier
           ];
         };
       });
