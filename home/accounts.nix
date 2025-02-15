@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   accounts = {
     calendar = {
       basePath = "Calendar";
@@ -9,11 +8,13 @@
 
         vdirsyncer = {
           enable = true;
-          collections = ["from a"];
+          collections = [ "from a" ];
 
           tokenFile = "~/.config/vdirsyncer/google_calendar_token";
-          clientIdCommand = ["cat" config.age.secrets.vdirsyncer-google-client-id.path];
-          clientSecretCommand = ["cat" config.age.secrets.vdirsyncer-google-client-secret.path];
+          clientIdCommand =
+            [ "cat" config.age.secrets.vdirsyncer-google-client-id.path ];
+          clientSecretCommand =
+            [ "cat" config.age.secrets.vdirsyncer-google-client-secret.path ];
         };
 
         khal = {
@@ -36,11 +37,13 @@
 
         vdirsyncer = {
           enable = true;
-          collections = ["from a"];
+          collections = [ "from a" ];
 
           tokenFile = "~/.config/vdirsyncer/google_contacts_token";
-          clientIdCommand = ["cat" config.age.secrets.vdirsyncer-google-client-id.path];
-          clientSecretCommand = ["cat" config.age.secrets.vdirsyncer-google-client-secret.path];
+          clientIdCommand =
+            [ "cat" config.age.secrets.vdirsyncer-google-client-id.path ];
+          clientSecretCommand =
+            [ "cat" config.age.secrets.vdirsyncer-google-client-secret.path ];
         };
 
         khard = {
@@ -54,11 +57,6 @@
     # email.accounts = { };
   };
 
-  programs.vdirsyncer = {
-    enable = true;
-  };
-
-  services.vdirsyncer = {
-    enable = true;
-  };
+  programs.vdirsyncer.enable = true;
+  services.vdirsyncer.enable = true;
 }

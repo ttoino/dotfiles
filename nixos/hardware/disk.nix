@@ -1,7 +1,5 @@
 { inputs, ... }: {
-  imports = [
-    inputs.disko.nixosModules.disko
-  ];
+  imports = [ inputs.disko.nixosModules.disko ];
 
   disko.devices = {
     disk = {
@@ -12,7 +10,6 @@
           type = "gpt";
           partitions = {
             ESP = {
-              priority = 1;
               label = "efi";
               type = "EF00";
               size = "500M";
@@ -24,7 +21,6 @@
               };
             };
             swap = {
-              priority = 2;
               label = "swap";
               size = "64G";
               content = {
@@ -33,7 +29,6 @@
               };
             };
             nixos = {
-              priority = 3;
               label = "nixos";
               size = "100%";
               content = {

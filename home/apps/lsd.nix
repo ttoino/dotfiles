@@ -1,23 +1,15 @@
 { lib, ... }:
 let
-  mkIcons = icons: (lib.lists.fold (a: b: a // b) { }
-    (lib.lists.forEach icons
-      (arg: lib.attrsets.genAttrs (builtins.elemAt arg 1) (_: (builtins.elemAt arg 0)))));
-in
-{
+  mkIcons = icons:
+    (lib.lists.fold (a: b: a // b) { } (lib.lists.forEach icons (arg:
+      lib.attrsets.genAttrs (builtins.elemAt arg 1)
+      (_: (builtins.elemAt arg 0)))));
+in {
   programs.lsd = {
     enable = true;
 
     settings = {
-      blocks = [
-        "permission"
-        "user"
-        "group"
-        "size"
-        "date"
-        "name"
-        "git"
-      ];
+      blocks = [ "permission" "user" "group" "size" "date" "name" "git" ];
 
       icons.separator = "  ";
 
@@ -385,15 +377,53 @@ in
     extension = mkIcons [
       [ "󰀲" [ "apk" ] ] # Android
       [ "󰀵" [ "ds_store" ] ] # Apple
-      [ "󰛫" [ "7z" "ar" "bz2" "gz" "lz" "rar" "tar" "taz" "tbz" "tbz2" "tgz" "xz" "zip" "zst" ] ] # Archive
-      [ "󰝚" [ "ape" "cue" "flac" "m4a" "mp3" "ogg" "opus" "wav" "wma" ] ] # Audio
+      [
+        "󰛫"
+        [
+          "7z"
+          "ar"
+          "bz2"
+          "gz"
+          "lz"
+          "rar"
+          "tar"
+          "taz"
+          "tbz"
+          "tbz2"
+          "tgz"
+          "xz"
+          "zip"
+          "zst"
+        ]
+      ] # Archive
+      [
+        "󰝚"
+        [ "ape" "cue" "flac" "m4a" "mp3" "ogg" "opus" "wav" "wma" ]
+      ] # Audio
       [ "󰁯" [ "bak" "old" "orig" ] ] # Backup
       [ "󰂫" [ "blend" "blend1" ] ] # Blender
       [ "󰂽" [ "ebook" "epub" "mobi" ] ] # Book
       [ "󰙱" [ "c" "h" ] ] # C
       [ "󰙲" [ "cc" "cpp" "cp" "c++" "cxx" "hh" "hpp" "hxx" ] ] # C++
       [ "󰌛" [ "csproj" "cs" "csx" ] ] # C#
-      [ "󰆍" [ "awk" "bashrc" "bash" "bat" "csh" "fish" "ksh" "ps1" "shell" "sh" "zshrc" "zsh-theme" "zsh" ] ] # Console
+      [
+        "󰆍"
+        [
+          "awk"
+          "bashrc"
+          "bash"
+          "bat"
+          "csh"
+          "fish"
+          "ksh"
+          "ps1"
+          "shell"
+          "sh"
+          "zshrc"
+          "zsh-theme"
+          "zsh"
+        ]
+      ] # Console
       [ "󰒓" [ "bash_profile" "cfg" "conf" "editorconfig" "ini" ] ] # Config
       [ "󰌜" [ "css" ] ] # CSS
       [ "󰆼" [ "db" "sqlite3" "sql" ] ] # Database
@@ -412,7 +442,27 @@ in
       [ "󰲒" [ "hs" "lhs" ] ] # Haskell
       [ "󰋚" [ "bash_history" ] ] # History
       [ "󰌝" [ "html" "htm" ] ] # HTML
-      [ "󰋩" [ "apng" "avif" "bmp" "gif" "heic" "heif" "heix" "ico" "image" "jpeg" "jpg" "png" "psd" "tiff" "webp" "xcf" ] ] # Images
+      [
+        "󰋩"
+        [
+          "apng"
+          "avif"
+          "bmp"
+          "gif"
+          "heic"
+          "heif"
+          "heix"
+          "ico"
+          "image"
+          "jpeg"
+          "jpg"
+          "png"
+          "psd"
+          "tiff"
+          "webp"
+          "xcf"
+        ]
+      ] # Images
       [ "󰅶" [ "class" "coffee" "jar" "java" ] ] # Java/Coffee
       [ "󰌞" [ "cjs" "js" "mjs" ] ] # JavaScript
       [ "󰘦" [ "avro" "jsonc" "json" "toml" "yaml" "yml" ] ] # JSON/YAML/TOML
@@ -440,7 +490,10 @@ in
       [ "󰛦" [ "cts" "mts" "ts" ] ] # TypeScript
       [ "󰚯" [ "unity" "unity32" ] ] # Unity
       [ "󰜡" [ "ai" "svg" ] ] # Vector images
-      [ "󰎁" [ "avi" "flv" "m4v" "mkv" "mov" "mp4" "ogv" "video" "webm" "wmv" ] ] # Video
+      [
+        "󰎁"
+        [ "avi" "flv" "m4v" "mkv" "mov" "mp4" "ogv" "video" "webm" "wmv" ]
+      ] # Video
       [ "󰨞" [ ] ] # VSCode
       [ "󰡄" [ "vue" ] ] # Vue
       [ "󰖳" [ "windows" ] ] # Windows

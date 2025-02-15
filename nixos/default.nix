@@ -23,10 +23,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = outputs.overlays;
 
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ vim wget ];
 
   programs.hyprland.enable = true;
   services.gvfs.enable = true;

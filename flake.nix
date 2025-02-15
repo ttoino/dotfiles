@@ -39,32 +39,47 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, agenix-rekey, home-manager, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; inherit (self) outputs; };
-      modules = [
-        ./nixos
+  outputs =
+    { self, nixpkgs, agenix-rekey, flake-utils, home-manager, ... }@inputs:
+    let lib = import ./lib { inherit inputs; };
+    in {
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
+      };
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.backupFileExtension = "backup";
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          inherit (self) outputs;
+        };
+        modules = [
+          ./nixos
 
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.backupFileExtension = "backup";
 
-          home-manager.users.toino = import ./home;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = { inherit inputs; };
-        }
-      ];
-    };
+            home-manager.users.toino = import ./home;
 
-    agenix-rekey = agenix-rekey.configure {
-      userFlake = self;
-      nixosConfigurations = self.nixosConfigurations;
-    };
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+        ];
+      };
 
-    overlays = import ./overlays;
-  };
+      overlays = import ./overlays;
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = import nixpkgs { inherit system; };
+      in {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            agenix-rekey.packages.${system}.default
+            nixfmt
+          ];
+        };
+      });
 }

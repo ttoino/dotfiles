@@ -14,9 +14,7 @@
       };
     };
 
-    plymouth = {
-      enable = true;
-    };
+    plymouth = { enable = true; };
 
     consoleLogLevel = 0;
     initrd.verbose = false;

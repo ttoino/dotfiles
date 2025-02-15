@@ -1,6 +1,4 @@
 {
   # TODO: Icons (merge with lsd)
-  programs.yazi = {
-    enable = true;
-  };
+  programs.yazi = { enable = true; };
 }

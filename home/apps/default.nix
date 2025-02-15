@@ -20,7 +20,10 @@
     mpv.enable = true; # Video/audio player
     obs-studio.enable = true; # Screen recording/streaming
     ripgrep.enable = true; # Grep clone
-    vscode = { enable = true; package = pkgs.vscode.fhs; }; # Code editor
+    vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    }; # Code editor
     zathura.enable = true; # PDF reader
   };
 

@@ -20,9 +20,7 @@
         prompt = false;
         trustExitCode = true;
 
-        kitty = {
-          cmd = "kitten diff $LOCAL $REMOTE";
-        };
+        kitty = { cmd = "kitten diff $LOCAL $REMOTE"; };
       };
     };
   };

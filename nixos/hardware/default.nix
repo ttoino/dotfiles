@@ -9,10 +9,7 @@
   hardware.enableAllFirmware = true;
 
   # Framework tools
-  environment.systemPackages = with pkgs; [
-    fw-ectool
-    framework-tool
-  ];
+  environment.systemPackages = with pkgs; [ fw-ectool framework-tool ];
 
   # Bluetooth
   hardware.bluetooth.enable = true;

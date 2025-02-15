@@ -8,9 +8,7 @@
 
     follow_mouse = "1";
 
-    touchpad = {
-      natural_scroll = "no";
-    };
+    touchpad = { natural_scroll = "no"; };
   };
 
   general = {
@@ -58,10 +56,7 @@
   animations = {
     enabled = "yes";
 
-    bezier = [
-      "myBezier, 0.05, 0.9, 0.1, 1.05"
-      "linear, 0, 0, 1, 1"
-    ];
+    bezier = [ "myBezier, 0.05, 0.9, 0.1, 1.05" "linear, 0, 0, 1, 1" ];
 
     animation = [
       "windows, 1, 7, myBezier"
@@ -75,7 +70,8 @@
 
   dwindle = {
     # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-    pseudotile = "yes"; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    pseudotile =
+      "yes"; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = "yes"; # you probably want this
   };
 
@@ -84,13 +80,9 @@
     new_status = "master";
   };
 
-  gestures = {
-    workspace_swipe = "true";
-  };
+  gestures = { workspace_swipe = "true"; };
 
-  xwayland = {
-    force_zero_scaling = true;
-  };
+  xwayland = { force_zero_scaling = true; };
 
   ecosystem = {
     no_update_news = true;

@@ -12,22 +12,15 @@
 
   fonts.fontconfig = {
     defaultFonts = {
-      sansSerif = [
-        "Roboto"
-        "Noto Sans"
-      ];
-      serif = [
-        "Noto Serif"
-      ];
+      sansSerif = [ "Roboto" "Noto Sans" ];
+      serif = [ "Noto Serif" ];
       monospace = [
         "Iosevka Custom Extended"
         "Material Design Icons"
         "Roboto Mono"
         "Noto Sans Mono"
       ];
-      emoji = [
-        "Twitter Color Emoji"
-      ];
+      emoji = [ "Twitter Color Emoji" ];
     };
   };
 }

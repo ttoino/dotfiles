@@ -1,5 +1,4 @@
-{ config, osConfig, lib, pkgs, ... }:
-{
+{ config, osConfig, lib, pkgs, ... }: {
   services.mopidy = {
     enable = true;
 
@@ -16,13 +15,11 @@
 
         postPatch = "";
 
-        nativeBuildInputs = old.nativeBuildInputs ++ [
-          pkgs.python3.pkgs.poetry-core
-        ];
+        nativeBuildInputs = old.nativeBuildInputs
+          ++ [ pkgs.python3.pkgs.poetry-core ];
 
-        propagatedBuildInputs = old.propagatedBuildInputs ++ [
-          pkgs.python3.pkgs.pytubefix
-        ];
+        propagatedBuildInputs = old.propagatedBuildInputs
+          ++ [ pkgs.python3.pkgs.pytubefix ];
       }))
     ];
 
@@ -38,13 +35,14 @@
     };
   };
 
-  home.activation.mopidy-ytmusic-credentials = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    id=$(cat "${config.age.secrets.mopidy-google-client-id.path}")
-    secret=$(cat "${config.age.secrets.mopidy-google-client-secret.path}")
-    config_file="''${XDG_CONFIG_HOME:-${config.xdg.configHome}}/mopidy/mopidy.conf"
-    backup_file="$config_file.${osConfig.home-manager.backupFileExtension}"
-    run rm -f "$backup_file"
-    run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
-    run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
-  '';
+  home.activation.mopidy-ytmusic-credentials =
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      id=$(cat "${config.age.secrets.mopidy-google-client-id.path}")
+      secret=$(cat "${config.age.secrets.mopidy-google-client-secret.path}")
+      config_file="''${XDG_CONFIG_HOME:-${config.xdg.configHome}}/mopidy/mopidy.conf"
+      backup_file="$config_file.${osConfig.home-manager.backupFileExtension}"
+      run rm -f "$backup_file"
+      run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
+      run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
+    '';
 }
