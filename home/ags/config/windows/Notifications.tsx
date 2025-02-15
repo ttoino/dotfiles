@@ -6,6 +6,7 @@ import ToggleButton from "../widgets/ToggleButton";
 import NotificationsProvider from "../providers/notifications";
 import Renderer from "../lib/Renderer";
 import IconButton from "../widgets/IconButton";
+import { ascending } from "../lib/sorting";
 
 const notifications = NotificationsProvider.get_default();
 
@@ -13,7 +14,10 @@ export default function Notifications() {
     const renderer = new Renderer<number>((id) => {
         const notification = notifications.get(id);
         if (notification) return Notification(notification, () => notifications.dismiss(id));
-    }, {initial: notifications.storage});
+    }, {
+        initial: notifications.storage,
+        sort: (a, b) => ascending(notifications.get(a)?.time ?? 0, notifications.get(b)?.time ?? 0),
+    });
 
     notifications.connect("stored", (_, id) => renderer.add(id));
     notifications.connect("dismissed", (_, id) => renderer.delete(id));

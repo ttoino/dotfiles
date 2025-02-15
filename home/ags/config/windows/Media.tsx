@@ -5,6 +5,7 @@ import { PAUSE, PLAY, SKIP_NEXT, SKIP_PREVIOUS } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
 import ScrollText from "../widgets/ScrollText";
 import Renderer from "../lib/Renderer";
+import { ascending } from "../lib/sorting";
 
 const mpris = Mpris.get_default();
 
@@ -63,8 +64,14 @@ export default function Media() {
             label={bind(player, "identity")}
             onClicked={() => visible.set(player.busName)}
         />
-    ), {initial: mpris.players});
-    const playerRenderer = new Renderer<Mpris.Player>((player) => Player(player, () => visible.set("choose")), {initial: mpris.players});
+    ), {
+        initial: mpris.players,
+        sort: (a, b) => ascending(a.identity, b.identity),
+    });
+    const playerRenderer = new Renderer<Mpris.Player>((player) => Player(player, () => visible.set("choose")), {
+        initial: mpris.players,
+        sort: (a, b) => ascending(a.identity, b.identity),
+    });
 
     mpris.connect("player-added", (_, player) => {
         choiceRenderer.add(player);

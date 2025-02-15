@@ -18,6 +18,7 @@ import {
 } from "../lib/chars";
 import BaseDevice from "../widgets/Device";
 import Renderer from "../lib/Renderer";
+import { ascending, descending } from "../lib/sorting";
 
 const bluetooth = BluetoothService.get_default();
 
@@ -61,10 +62,9 @@ export default function Bluetooth() {
     const renderer = new Renderer<BluetoothService.Device>((device) => Device(device), {
         initial: bluetooth.devices,
         sort: (a, b) =>
-            Number(b.connected) - Number(a.connected) ||
-            Number(b.paired) - Number(a.paired) ||
-            a.name?.localeCompare(b.name) ||
-            a.address?.localeCompare(b.address),
+            descending(a.connected, b.connected) ||
+            descending(a.paired, b.paired) ||
+            ascending(a.name ?? a.address ?? "", b.name ?? b.address ?? ""),
     });
 
     bluetooth.connect("device-added", (_, device) => renderer.add(device));

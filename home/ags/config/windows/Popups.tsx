@@ -4,6 +4,7 @@ import { Astal, Gdk } from "astal/gtk3";
 import Notifications from "../providers/notifications";
 import Renderer from "../lib/Renderer";
 import { bind } from "astal";
+import { ascending } from "../lib/sorting";
 
 const notifications = Notifications.get_default();
 const hyprland = Hyprland.get_default();
@@ -12,7 +13,10 @@ export default function Popups(monitor: Gdk.Monitor) {
     const renderer = new Renderer<number>((id) => {
         const notification = notifications.get(id);
         if (notification) return Notification(notification, () => notifications.dismiss(id), true);
-    }, {initial: notifications.popups});
+    }, {
+        initial: notifications.popups,
+        sort: (a, b) => ascending(notifications.get(a)?.time ?? 0, notifications.get(b)?.time ?? 0),
+    });
 
     notifications.connect("notified", (_, id) => {
         if (hyprland.focusedMonitor.model === monitor.model)
