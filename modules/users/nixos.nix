@@ -1,10 +1,5 @@
 { ... }:
 {
-  services.getty = {
-    autologinUser = "toino";
-    autologinOnce = true;
-  };
-
   users.groups = {
     config = { };
   };

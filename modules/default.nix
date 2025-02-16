@@ -1,7 +1,9 @@
 { lib, ... }:
 lib.importAll [
   ./ags
+  ./autologin
   ./base
+  ./boot
   ./calendar
   ./catppuccin
   ./contacts
@@ -17,6 +19,7 @@ lib.importAll [
   ./mopidy
   ./secrets
   ./steam
+  ./users
   ./yazi
   ./zsh
 ]

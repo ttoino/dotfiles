@@ -1,5 +1,5 @@
 { ... }:
 {
-  home = [ ./common.nix ];
-  nixos = [ ./common.nix ];
+  home = [ ./common.nix ./home.nix ];
+  nixos = [ ./common.nix ./nixos.nix ];
 }
