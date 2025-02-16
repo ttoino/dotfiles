@@ -41,47 +41,52 @@
   };
 
   outputs =
-    { self, nixpkgs, agenix-rekey, flake-utils, home-manager, ... }@inputs:
-    let lib = import ./lib { inherit inputs; };
-    in {
+    {
+      self,
+      nixpkgs,
+      agenix-rekey,
+      flake-utils,
+      home-manager,
+      ...
+    }@inputs:
+    with rec {
+      args = {
+        inherit
+          inputs
+          lib
+          modules
+          overlays
+          traits
+          ;
+      };
+      hosts = import ./hosts args;
+      modules = import ./modules args;
+      lib = import ./lib args;
+      overlays = import ./overlays args;
+      traits = import ./traits args;
+    };
+    {
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nixosConfigurations = self.nixosConfigurations;
       };
 
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit (self) outputs;
-        };
-        modules = [
-          ./nixos
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.backupFileExtension = "backup";
-
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.toino = import ./home;
-
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
-        ];
-      };
-
-      overlays = import ./overlays;
-    } // flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
-      in {
+      nixosConfigurations = lib.makeHosts hosts;
+    }
+    // (flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             agenix-rekey.packages.${system}.default
+            nil
             nixfmt-rfc-style
             nodePackages.prettier
           ];
         };
-      });
+      }
+    ));
 }

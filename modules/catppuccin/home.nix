@@ -2,9 +2,12 @@
   imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
 
   gtk.enable = true;
-  qt.enable = true;
-  qt.style.name = "kvantum";
-  qt.platformTheme.name = "kvantum";
+
+  qt = {
+    enable = true;
+    style.name = "kvantum";
+    platformTheme.name = "kvantum";
+  };
 
   catppuccin = {
     enable = true;
