@@ -37,7 +37,14 @@
     name: host:
     let
       trait = lib.joinTraits host.traits;
-      module = lib.joinModules (trait.modules ++ [ trait ] ++ host.modules);
+      module = lib.joinModules (
+        [
+          trait
+          host
+        ]
+        ++ trait.modules
+        ++ host.modules
+      );
     in
     (lib.nixosSystem {
       system = host.system;

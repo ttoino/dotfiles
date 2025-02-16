@@ -1,4 +1,4 @@
-{ inputs, outputs, config, lib, pkgs, ... }: {
+{ outputs, pkgs, ... }: {
   imports = [
     ./boot.nix
     ./catppuccin.nix
@@ -24,10 +24,4 @@
   nixpkgs.overlays = outputs.overlays;
 
   environment.systemPackages = with pkgs; [ vim wget ];
-
-  programs.hyprland.enable = true;
-  services.gvfs.enable = true;
-
-  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "24.05"; # Did you read the comment?
 }

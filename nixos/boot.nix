@@ -7,14 +7,10 @@
         enable = true;
         editor = false;
         edk2-uefi-shell.enable = true;
-        windows.windows = {
-          title = "Windows";
-          efiDeviceHandle = "FS0";
-        };
       };
     };
 
-    plymouth = { enable = true; };
+    plymouth.enable = true;
 
     consoleLogLevel = 0;
     initrd.verbose = false;

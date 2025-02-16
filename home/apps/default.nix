@@ -1,12 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ./git.nix
-    ./kitty.nix
-    ./lsd.nix
-    ./mopidy.nix
     ./neovim.nix
     ./xdg.nix
-    ./yazi.nix
   ];
 
   programs = {
@@ -15,8 +10,6 @@
     firefox.enable = true; # Web browser
     htop.enable = true; # Process manager
     imv.enable = true; # Image viewer
-    khal.enable = true; # Calendar
-    khard.enable = true; # Contacts
     mpv.enable = true; # Video/audio player
     obs-studio.enable = true; # Screen recording/streaming
     ripgrep.enable = true; # Grep clone

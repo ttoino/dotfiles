@@ -1,6 +1,13 @@
 { modules, ... }:
 {
-  modules = with modules; [ catppuccin ];
+  modules = with modules; [
+    base
+    catppuccin
+    lsd
+    secrets
+    yazi
+    zsh
+  ];
 
   home = [ ];
 

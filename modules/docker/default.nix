@@ -1,0 +1,4 @@
+{...}: {
+  home = [ ];
+  nixos = [ ./nixos.nix ];
+}

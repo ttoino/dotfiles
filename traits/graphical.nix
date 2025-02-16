@@ -1,14 +1,10 @@
 { modules, ... }:
 {
   modules = with modules; [
-    ags
-    hypridle
-    hyprland
-    hyprlock
-    hyprpaper
+    fonts
+    kitty
+    mopidy
   ];
-
   home = [ ];
-
   nixos = [ ];
 }

@@ -5,11 +5,14 @@
   traits = with traits; [
     base
     cake
+    dev
+    gaming
+    graphical
   ];
 
   modules = [ ];
 
-  nixos = [ ];
+  nixos = [ ./nixos.nix ];
 
-  home = [ ];
+  home = [ ./home.nix ];
 }
