@@ -10,8 +10,4 @@
     yazi
     zsh
   ];
-
-  home = [ ];
-
-  nixos = [ ];
 }

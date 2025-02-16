@@ -8,8 +8,4 @@
     hyprlock
     hyprpaper
   ];
-
-  home = [ ];
-
-  nixos = [ ];
 }

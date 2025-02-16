@@ -11,14 +11,4 @@
   ];
 
   modules = [ ];
-
-  nixos = [
-    ./common.nix
-    ./nixos.nix
-  ];
-
-  home = [
-    ./common.nix
-    ./home.nix
-  ];
 }

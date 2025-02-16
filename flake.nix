@@ -59,11 +59,11 @@
           traits
           ;
       };
-      hosts = import ./hosts args;
-      modules = import ./modules args;
+      hosts = lib.debug.traceValSeq (lib.getModules ./hosts);
+      modules = lib.debug.traceValSeq (lib.getModules ./modules);
       lib = import ./lib args;
       overlays = import ./overlays args;
-      traits = import ./traits args;
+      traits = lib.debug.traceValSeq (lib.getModules ./traits);
     };
     {
       agenix-rekey = agenix-rekey.configure {

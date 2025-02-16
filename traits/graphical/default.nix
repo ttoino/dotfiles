@@ -1,9 +1,8 @@
 { modules, ... }:
 {
   modules = with modules; [
-    docker
-    git
+    fonts
+    kitty
+    mopidy
   ];
-  home = [ ];
-  nixos = [ ];
 }

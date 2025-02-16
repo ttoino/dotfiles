@@ -1,6 +1,4 @@
 { ... }:
 {
   modules = [ ];
-  home = [ ];
-  nixos = [ ];
 }

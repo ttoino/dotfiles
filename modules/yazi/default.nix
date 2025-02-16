@@ -1,4 +1,0 @@
-{...}: {
-  home = [ ./home.nix ];
-  nixos = [ ];
-}
