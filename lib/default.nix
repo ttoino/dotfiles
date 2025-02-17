@@ -91,7 +91,7 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = args;
+            extraSpecialArgs = builtins.removeAttrs args [ "lib" ];
             users.toino.imports = module.home;
           };
         }
@@ -100,4 +100,3 @@
   );
 }
 // inputs.nixpkgs.lib
-// inputs.home-manager.lib

@@ -1,4 +1,7 @@
 { modules, ... }:
 {
-  modules = with modules; [ steam ];
+  modules = with modules; [
+    minecraft
+    steam
+  ];
 }

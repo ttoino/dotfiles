@@ -1,15 +1,27 @@
 { lib, ... }:
 let
-  mkIcons = icons:
-    (lib.lists.fold (a: b: a // b) { } (lib.lists.forEach icons (arg:
-      lib.attrsets.genAttrs (builtins.elemAt arg 1)
-      (_: (builtins.elemAt arg 0)))));
-in {
+  mkIcons =
+    icons:
+    (lib.lists.fold (a: b: a // b) { } (
+      lib.lists.forEach icons (
+        arg: lib.attrsets.genAttrs (builtins.elemAt arg 1) (_: (builtins.elemAt arg 0))
+      )
+    ));
+in
+{
   programs.lsd = {
     enable = true;
 
     settings = {
-      blocks = [ "permission" "user" "group" "size" "date" "name" "git" ];
+      blocks = [
+        "permission"
+        "user"
+        "group"
+        "size"
+        "date"
+        "name"
+        "git"
+      ];
 
       icons.separator = "  ";
 
@@ -18,6 +30,12 @@ in {
       total-size = true;
       hyperlink = "auto";
     };
+  };
+
+  programs.zsh.shellAliases = {
+    ls = "lsd";
+    lt = "ls --tree -h";
+    lta = "lt -A";
   };
 
   xdg.configFile."lsd/icons.yaml".text = lib.generators.toYAML { } {
@@ -36,66 +54,246 @@ in {
 
     # TODO
     name = mkIcons [
-      [ "󰀲" [ ] ] # Android
-      [ "󰀵" [ ] ] # Apple
-      [ "󰛫" [ ] ] # Archive
-      [ "󰝚" [ ] ] # Audio
-      [ "󰁯" [ ] ] # Backup
-      [ "󰂫" [ ] ] # Blender
-      [ "󰂽" [ ] ] # Book
-      [ "󰙱" [ ] ] # C
-      [ "󰙲" [ ] ] # C++
-      [ "󰌛" [ ] ] # C#
-      [ "󰆍" [ ] ] # Console
-      [ "󰒓" [ ] ] # Config
-      [ "󰌜" [ ] ] # CSS
-      [ "󰆼" [ ] ] # Database
-      [ "󰦓" [ ] ] # Diff
-      [ "󰗮" [ ] ] # Disc image
-      [ "󰡨" [ ] ] # Docker
-      [ "󰂺" [ ] ] # Docs
-      [ "󰈙" [ ] ] # Document
-      [ "󰇚" [ ] ] # Download
-      [ "󰘮" [ ] ] # Environment
-      [ "󰣖" [ ] ] # Executable
-      [ "󰛖" [ ] ] # Font
-      [ "󰊢" [ ] ] # Git
-      [ "󰟓" [ ] ] # Go
-      [ "󰟆" [ ] ] # Gradle
-      [ "󰲒" [ ] ] # Haskell
-      [ "󰋚" [ ] ] # History
-      [ "󰌝" [ ] ] # HTML
-      [ "󰋩" [ ] ] # Images
-      [ "󰅶" [ ] ] # Java/Coffee
-      [ "󰌞" [ ] ] # JavaScript
-      [ "󰘦" [ ] ] # JSON/YAML/TOML
-      [ "󱈙" [ ] ] # Kotlin
-      [ "󰌾" [ ] ] # Lock
-      [ "󰢱" [ ] ] # Lua
-      [ "󰍇" [ ] ] # Magnet
-      [ "󰍔" [ ] ] # Markdown
-      [ "󰿉" [ ] ] # Math
-      [ "󱄅" [ ] ] # Nix
-      [ "󰏓" [ ] ] # Package/Library
-      [ "󰌟" [ ] ] # PHP
-      [ "󰌠" [ ] ] # Python
-      [ "󰜈" [ ] ] # React
-      [ "󰴭" [ ] ] # Ruby
-      [ "󰫏" [ ] ] # Ruby on rails
-      [ "󱘗" [ ] ] # Rust
-      [ "󰟬" [ ] ] # Sass
-      [ "󰐨" [ ] ] # Slides
-      [ "󰓫" [ ] ] # Spreadsheet
-      [ "󰅞" [ ] ] # Subtitles
-      [ "󰛥" [ ] ] # Swift
-      [ "󰈚" [ ] ] # Text
-      [ "󰛦" [ ] ] # TypeScript
-      [ "󰚯" [ ] ] # Unity
-      [ "󰜡" [ ] ] # Vector images
-      [ "󰎁" [ ] ] # Video
-      [ "󰨞" [ ] ] # VSCode
-      [ "󰡄" [ ] ] # Vue
-      [ "󰗀" [ ] ] # XML
+      [
+        "󰀲"
+        [ ]
+      ] # Android
+      [
+        "󰀵"
+        [ ]
+      ] # Apple
+      [
+        "󰛫"
+        [ ]
+      ] # Archive
+      [
+        "󰝚"
+        [ ]
+      ] # Audio
+      [
+        "󰁯"
+        [ ]
+      ] # Backup
+      [
+        "󰂫"
+        [ ]
+      ] # Blender
+      [
+        "󰂽"
+        [ ]
+      ] # Book
+      [
+        "󰙱"
+        [ ]
+      ] # C
+      [
+        "󰙲"
+        [ ]
+      ] # C++
+      [
+        "󰌛"
+        [ ]
+      ] # C#
+      [
+        "󰆍"
+        [ ]
+      ] # Console
+      [
+        "󰒓"
+        [ ]
+      ] # Config
+      [
+        "󰌜"
+        [ ]
+      ] # CSS
+      [
+        "󰆼"
+        [ ]
+      ] # Database
+      [
+        "󰦓"
+        [ ]
+      ] # Diff
+      [
+        "󰗮"
+        [ ]
+      ] # Disc image
+      [
+        "󰡨"
+        [ ]
+      ] # Docker
+      [
+        "󰂺"
+        [ ]
+      ] # Docs
+      [
+        "󰈙"
+        [ ]
+      ] # Document
+      [
+        "󰇚"
+        [ ]
+      ] # Download
+      [
+        "󰘮"
+        [ ]
+      ] # Environment
+      [
+        "󰣖"
+        [ ]
+      ] # Executable
+      [
+        "󰛖"
+        [ ]
+      ] # Font
+      [
+        "󰊢"
+        [ ]
+      ] # Git
+      [
+        "󰟓"
+        [ ]
+      ] # Go
+      [
+        "󰟆"
+        [ ]
+      ] # Gradle
+      [
+        "󰲒"
+        [ ]
+      ] # Haskell
+      [
+        "󰋚"
+        [ ]
+      ] # History
+      [
+        "󰌝"
+        [ ]
+      ] # HTML
+      [
+        "󰋩"
+        [ ]
+      ] # Images
+      [
+        "󰅶"
+        [ ]
+      ] # Java/Coffee
+      [
+        "󰌞"
+        [ ]
+      ] # JavaScript
+      [
+        "󰘦"
+        [ ]
+      ] # JSON/YAML/TOML
+      [
+        "󱈙"
+        [ ]
+      ] # Kotlin
+      [
+        "󰌾"
+        [ ]
+      ] # Lock
+      [
+        "󰢱"
+        [ ]
+      ] # Lua
+      [
+        "󰍇"
+        [ ]
+      ] # Magnet
+      [
+        "󰍔"
+        [ ]
+      ] # Markdown
+      [
+        "󰿉"
+        [ ]
+      ] # Math
+      [
+        "󱄅"
+        [ ]
+      ] # Nix
+      [
+        "󰏓"
+        [ ]
+      ] # Package/Library
+      [
+        "󰌟"
+        [ ]
+      ] # PHP
+      [
+        "󰌠"
+        [ ]
+      ] # Python
+      [
+        "󰜈"
+        [ ]
+      ] # React
+      [
+        "󰴭"
+        [ ]
+      ] # Ruby
+      [
+        "󰫏"
+        [ ]
+      ] # Ruby on rails
+      [
+        "󱘗"
+        [ ]
+      ] # Rust
+      [
+        "󰟬"
+        [ ]
+      ] # Sass
+      [
+        "󰐨"
+        [ ]
+      ] # Slides
+      [
+        "󰓫"
+        [ ]
+      ] # Spreadsheet
+      [
+        "󰅞"
+        [ ]
+      ] # Subtitles
+      [
+        "󰛥"
+        [ ]
+      ] # Swift
+      [
+        "󰈚"
+        [ ]
+      ] # Text
+      [
+        "󰛦"
+        [ ]
+      ] # TypeScript
+      [
+        "󰚯"
+        [ ]
+      ] # Unity
+      [
+        "󰜡"
+        [ ]
+      ] # Vector images
+      [
+        "󰎁"
+        [ ]
+      ] # Video
+      [
+        "󰨞"
+        [ ]
+      ] # VSCode
+      [
+        "󰡄"
+        [ ]
+      ] # Vue
+      [
+        "󰗀"
+        [ ]
+      ] # XML
 
       [
         "󰋖"
@@ -375,8 +573,14 @@ in {
 
     # TODO
     extension = mkIcons [
-      [ "󰀲" [ "apk" ] ] # Android
-      [ "󰀵" [ "ds_store" ] ] # Apple
+      [
+        "󰀲"
+        [ "apk" ]
+      ] # Android
+      [
+        "󰀵"
+        [ "ds_store" ]
+      ] # Apple
       [
         "󰛫"
         [
@@ -398,14 +602,69 @@ in {
       ] # Archive
       [
         "󰝚"
-        [ "ape" "cue" "flac" "m4a" "mp3" "ogg" "opus" "wav" "wma" ]
+        [
+          "ape"
+          "cue"
+          "flac"
+          "m4a"
+          "mp3"
+          "ogg"
+          "opus"
+          "wav"
+          "wma"
+        ]
       ] # Audio
-      [ "󰁯" [ "bak" "old" "orig" ] ] # Backup
-      [ "󰂫" [ "blend" "blend1" ] ] # Blender
-      [ "󰂽" [ "ebook" "epub" "mobi" ] ] # Book
-      [ "󰙱" [ "c" "h" ] ] # C
-      [ "󰙲" [ "cc" "cpp" "cp" "c++" "cxx" "hh" "hpp" "hxx" ] ] # C++
-      [ "󰌛" [ "csproj" "cs" "csx" ] ] # C#
+      [
+        "󰁯"
+        [
+          "bak"
+          "old"
+          "orig"
+        ]
+      ] # Backup
+      [
+        "󰂫"
+        [
+          "blend"
+          "blend1"
+        ]
+      ] # Blender
+      [
+        "󰂽"
+        [
+          "ebook"
+          "epub"
+          "mobi"
+        ]
+      ] # Book
+      [
+        "󰙱"
+        [
+          "c"
+          "h"
+        ]
+      ] # C
+      [
+        "󰙲"
+        [
+          "cc"
+          "cpp"
+          "cp"
+          "c++"
+          "cxx"
+          "hh"
+          "hpp"
+          "hxx"
+        ]
+      ] # C++
+      [
+        "󰌛"
+        [
+          "csproj"
+          "cs"
+          "csx"
+        ]
+      ] # C#
       [
         "󰆍"
         [
@@ -424,24 +683,128 @@ in {
           "zsh"
         ]
       ] # Console
-      [ "󰒓" [ "bash_profile" "cfg" "conf" "editorconfig" "ini" ] ] # Config
-      [ "󰌜" [ "css" ] ] # CSS
-      [ "󰆼" [ "db" "sqlite3" "sql" ] ] # Database
-      [ "󰦓" [ "diff" "patch" ] ] # Diff
-      [ "󰗮" [ "iso" ] ] # Disc image
-      [ "󰡨" [ "dockerfile" ] ] # Docker
-      [ "󰂺" [ "1" "2" "3" "4" "5" "6" "7" "8" "man" ] ] # Docs
-      [ "󰈙" [ "doc" "docx" "gdoc" "odt" "pdf" ] ] # Document
-      [ "󰇚" [ "download" "part" ] ] # Download
-      [ "󰘮" [ "env" ] ] # Environment
-      [ "󰣖" [ "elf" "exe" "msi" ] ] # Executable
-      [ "󰛖" [ "eot" "font" "otf" "ttc" "ttf" "woff2" "woff" ] ] # Font
-      [ "󰊢" [ "git" ] ] # Git
-      [ "󰟓" [ "go" ] ] # Go
-      [ "󰟆" [ "gradle" ] ] # Gradle
-      [ "󰲒" [ "hs" "lhs" ] ] # Haskell
-      [ "󰋚" [ "bash_history" ] ] # History
-      [ "󰌝" [ "html" "htm" ] ] # HTML
+      [
+        "󰒓"
+        [
+          "bash_profile"
+          "cfg"
+          "conf"
+          "editorconfig"
+          "ini"
+        ]
+      ] # Config
+      [
+        "󰌜"
+        [ "css" ]
+      ] # CSS
+      [
+        "󰆼"
+        [
+          "db"
+          "sqlite3"
+          "sql"
+        ]
+      ] # Database
+      [
+        "󰦓"
+        [
+          "diff"
+          "patch"
+        ]
+      ] # Diff
+      [
+        "󰗮"
+        [ "iso" ]
+      ] # Disc image
+      [
+        "󰡨"
+        [ "dockerfile" ]
+      ] # Docker
+      [
+        "󰂺"
+        [
+          "1"
+          "2"
+          "3"
+          "4"
+          "5"
+          "6"
+          "7"
+          "8"
+          "man"
+        ]
+      ] # Docs
+      [
+        "󰈙"
+        [
+          "doc"
+          "docx"
+          "gdoc"
+          "odt"
+          "pdf"
+        ]
+      ] # Document
+      [
+        "󰇚"
+        [
+          "download"
+          "part"
+        ]
+      ] # Download
+      [
+        "󰘮"
+        [ "env" ]
+      ] # Environment
+      [
+        "󰣖"
+        [
+          "elf"
+          "exe"
+          "msi"
+        ]
+      ] # Executable
+      [
+        "󰛖"
+        [
+          "eot"
+          "font"
+          "otf"
+          "ttc"
+          "ttf"
+          "woff2"
+          "woff"
+        ]
+      ] # Font
+      [
+        "󰊢"
+        [ "git" ]
+      ] # Git
+      [
+        "󰟓"
+        [ "go" ]
+      ] # Go
+      [
+        "󰟆"
+        [ "gradle" ]
+      ] # Gradle
+      [
+        "󰲒"
+        [
+          "hs"
+          "lhs"
+        ]
+      ] # Haskell
+      [
+        "󰋚"
+        [ "bash_history" ]
+      ] # History
+      [
+        "󰌝"
+        [
+          "html"
+          "htm"
+        ]
+      ] # HTML
       [
         "󰋩"
         [
@@ -463,41 +826,230 @@ in {
           "xcf"
         ]
       ] # Images
-      [ "󰅶" [ "class" "coffee" "jar" "java" ] ] # Java/Coffee
-      [ "󰌞" [ "cjs" "js" "mjs" ] ] # JavaScript
-      [ "󰘦" [ "avro" "jsonc" "json" "toml" "yaml" "yml" ] ] # JSON/YAML/TOML
-      [ "󰌆" [ "asc" "key" ] ] # Key
-      [ "󱈙" [ "kt" "kts" ] ] # Kotlin
-      [ "󰌾" [ "lock" ] ] # Lock
-      [ "󰢱" [ "lua" ] ] # Lua
-      [ "󰍇" [ "magnet" ] ] # Magnet
-      [ "󰍔" [ "markdown" "md" "mkd" ] ] # Markdown
-      [ "󰿉" [ "tex" ] ] # Math
-      [ "󱄅" [ "nix" ] ] # Nix
-      [ "󰏓" [ "a" "deb" "dll" "pkg" "rpm" "so" ] ] # Package/Library
-      [ "󰌟" [ "php" ] ] # PHP
-      [ "󰌠" [ "egg-info" "ipynb" "pyc" "py" ] ] # Python
-      [ "󰜈" [ "jsx" "tsx" ] ] # React
-      [ "󰴭" [ "rb" ] ] # Ruby
-      [ "󰫏" [ "erb" ] ] # Ruby on rails
-      [ "󱘗" [ "rlib" "rmeta" ] ] # Rust
-      [ "󰟬" [ "sass" "scss" ] ] # Sass
-      [ "󰐨" [ "gslides" "odp" "ppt" "pptx" ] ] # Slides
-      [ "󰓫" [ "csv" "gsheet" "ods" "tsv" "xls" "xlsx" ] ] # Spreadsheet
-      [ "󰅞" [ "890" "cip" "sbv" "scc" "smi" "srt" "sub" "vtt" ] ] # Subtitles
-      [ "󰛥" [ "swift" ] ] # Swift
-      [ "󰈚" [ "log" "txt" ] ] # Text
-      [ "󰛦" [ "cts" "mts" "ts" ] ] # TypeScript
-      [ "󰚯" [ "unity" "unity32" ] ] # Unity
-      [ "󰜡" [ "ai" "svg" ] ] # Vector images
+      [
+        "󰅶"
+        [
+          "class"
+          "coffee"
+          "jar"
+          "java"
+        ]
+      ] # Java/Coffee
+      [
+        "󰌞"
+        [
+          "cjs"
+          "js"
+          "mjs"
+        ]
+      ] # JavaScript
+      [
+        "󰘦"
+        [
+          "avro"
+          "jsonc"
+          "json"
+          "toml"
+          "yaml"
+          "yml"
+        ]
+      ] # JSON/YAML/TOML
+      [
+        "󰌆"
+        [
+          "asc"
+          "key"
+        ]
+      ] # Key
+      [
+        "󱈙"
+        [
+          "kt"
+          "kts"
+        ]
+      ] # Kotlin
+      [
+        "󰌾"
+        [ "lock" ]
+      ] # Lock
+      [
+        "󰢱"
+        [ "lua" ]
+      ] # Lua
+      [
+        "󰍇"
+        [ "magnet" ]
+      ] # Magnet
+      [
+        "󰍔"
+        [
+          "markdown"
+          "md"
+          "mkd"
+        ]
+      ] # Markdown
+      [
+        "󰿉"
+        [ "tex" ]
+      ] # Math
+      [
+        "󱄅"
+        [ "nix" ]
+      ] # Nix
+      [
+        "󰏓"
+        [
+          "a"
+          "deb"
+          "dll"
+          "pkg"
+          "rpm"
+          "so"
+        ]
+      ] # Package/Library
+      [
+        "󰌟"
+        [ "php" ]
+      ] # PHP
+      [
+        "󰌠"
+        [
+          "egg-info"
+          "ipynb"
+          "pyc"
+          "py"
+        ]
+      ] # Python
+      [
+        "󰜈"
+        [
+          "jsx"
+          "tsx"
+        ]
+      ] # React
+      [
+        "󰴭"
+        [ "rb" ]
+      ] # Ruby
+      [
+        "󰫏"
+        [ "erb" ]
+      ] # Ruby on rails
+      [
+        "󱘗"
+        [
+          "rlib"
+          "rmeta"
+        ]
+      ] # Rust
+      [
+        "󰟬"
+        [
+          "sass"
+          "scss"
+        ]
+      ] # Sass
+      [
+        "󰐨"
+        [
+          "gslides"
+          "odp"
+          "ppt"
+          "pptx"
+        ]
+      ] # Slides
+      [
+        "󰓫"
+        [
+          "csv"
+          "gsheet"
+          "ods"
+          "tsv"
+          "xls"
+          "xlsx"
+        ]
+      ] # Spreadsheet
+      [
+        "󰅞"
+        [
+          "890"
+          "cip"
+          "sbv"
+          "scc"
+          "smi"
+          "srt"
+          "sub"
+          "vtt"
+        ]
+      ] # Subtitles
+      [
+        "󰛥"
+        [ "swift" ]
+      ] # Swift
+      [
+        "󰈚"
+        [
+          "log"
+          "txt"
+        ]
+      ] # Text
+      [
+        "󰛦"
+        [
+          "cts"
+          "mts"
+          "ts"
+        ]
+      ] # TypeScript
+      [
+        "󰚯"
+        [
+          "unity"
+          "unity32"
+        ]
+      ] # Unity
+      [
+        "󰜡"
+        [
+          "ai"
+          "svg"
+        ]
+      ] # Vector images
       [
         "󰎁"
-        [ "avi" "flv" "m4v" "mkv" "mov" "mp4" "ogv" "video" "webm" "wmv" ]
+        [
+          "avi"
+          "flv"
+          "m4v"
+          "mkv"
+          "mov"
+          "mp4"
+          "ogv"
+          "video"
+          "webm"
+          "wmv"
+        ]
       ] # Video
-      [ "󰨞" [ ] ] # VSCode
-      [ "󰡄" [ "vue" ] ] # Vue
-      [ "󰖳" [ "windows" ] ] # Windows
-      [ "󰗀" [ "asp" "ejs" "xml" ] ] # XML
+      [
+        "󰨞"
+        [ ]
+      ] # VSCode
+      [
+        "󰡄"
+        [ "vue" ]
+      ] # Vue
+      [
+        "󰖳"
+        [ "windows" ]
+      ] # Windows
+      [
+        "󰗀"
+        [
+          "asp"
+          "ejs"
+          "xml"
+        ]
+      ] # XML
 
       [
         "󰋖"

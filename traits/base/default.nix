@@ -4,6 +4,7 @@
     base
     boot
     catppuccin
+    cli-apps
     lsd
     secrets
     users

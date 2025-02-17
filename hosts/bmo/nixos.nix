@@ -12,6 +12,9 @@
     framework-tool
   ];
 
+  # Firmware updates
+  services.fwupd.enable = true;
+
   # Dual boot
   boot.loader.systemd-boot.windows.windows = {
     title = "Windows";

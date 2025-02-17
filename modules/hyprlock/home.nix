@@ -3,8 +3,6 @@
     enable = true;
 
     settings = {
-      auth = { fingerprint.enabled = true; };
-
       background = [{
         path = "screenshot";
         blur_size = 8;
@@ -49,4 +47,6 @@
       }];
     };
   };
+
+  wayland.windowManager.hyprland.settings.exec-once = [ "hyprlock" ];
 }

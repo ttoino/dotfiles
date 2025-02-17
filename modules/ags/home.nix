@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   imports = [ inputs.ags.homeManagerModules.default ];
 
   programs.ags = {
@@ -20,4 +21,13 @@
       wireplumber
     ];
   };
+
+  wayland.windowManager.hyprland.settings.exec-once = [ "ags run" ];
+
+  home.packages = with pkgs; [
+    cliphist
+    libnotify
+  ];
+
+  services.cliphist.enable = true;
 }

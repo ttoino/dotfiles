@@ -1,7 +1,8 @@
 { modules, ... }:
 {
   modules = with modules; [
-    media
-    proxy
+    calendar
+    contacts
+    email
   ];
 }

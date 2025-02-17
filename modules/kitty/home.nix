@@ -127,4 +127,12 @@
       "term" = "xterm-kitty";
     };
   };
+
+  programs.zsh.shellAliases = {
+    diff = "kitten diff";
+
+    icat = "kitten icat";
+
+    ssh = "kitten ssh";
+  };
 }

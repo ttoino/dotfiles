@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ ... }:
 {
   # TODO: Almost works
   #   systemd.services = {

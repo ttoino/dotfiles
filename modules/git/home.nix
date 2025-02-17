@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -20,8 +21,33 @@
         prompt = false;
         trustExitCode = true;
 
-        kitty = { cmd = "kitten diff $LOCAL $REMOTE"; };
+        kitty = {
+          cmd = "kitten diff $LOCAL $REMOTE";
+        };
       };
     };
   };
+
+  programs.zsh.plugins = [
+    {
+      name = "git-aliases";
+      file = "plugins/git/git.plugin.zsh";
+      src = pkgs.fetchFromGitHub {
+        owner = "ohmyzsh";
+        repo = "ohmyzsh";
+        rev = "master";
+        hash = "sha256-JXEMx8+49xEH6xWRCTBMtwQ5DXhMjkBfzUMHKgr7j78=";
+      };
+    }
+    {
+      name = "gitstatus";
+      file = "gitstatus.prompt.zsh";
+      src = pkgs.fetchFromGitHub {
+        owner = "romkatv";
+        repo = "gitstatus";
+        rev = "master";
+        hash = "sha256-MzDtVXnhSshxl+wZZbaq/UevRe6ZQWwkiPBeNqpZGOs=";
+      };
+    }
+  ];
 }

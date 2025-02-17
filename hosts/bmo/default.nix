@@ -1,4 +1,4 @@
-{ traits, ... }:
+{ modules, traits, ... }:
 {
   system = "x86_64-linux";
 
@@ -10,5 +10,8 @@
     graphical
   ];
 
-  modules = [ ];
+  modules = with modules; [
+    battery
+    fprint
+  ];
 }
