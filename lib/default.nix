@@ -87,6 +87,8 @@
       modules = module.nixos ++ [
         inputs.home-manager.nixosModules.home-manager
         {
+          system.name = name;
+
           home-manager = {
             backupFileExtension = "backup";
             useGlobalPkgs = true;

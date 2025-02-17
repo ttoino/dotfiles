@@ -1,5 +1,16 @@
+# If in tty, don't use icons
+if [[ $tty == '/dev/tty'* ]]; then
+    BRACKET='%(#.».>)'
+    NIX='nix'
+    GIT='git'
+else
+    BRACKET='%(#.⟫.⟩)'
+    NIX='󱄅'
+    GIT='󰘬'
+fi
+
 # Add nix-shell info to right prompt
-RPROMPT='${IN_NIX_SHELL:+ %F{cyan\}󱄅 ${NIX_SHELL_PACKAGES:+ $NIX_SHELL_PACKAGES}%f}'
+RPROMPT='${IN_NIX_SHELL:+ %F{cyan\}'$NIX' ${NIX_SHELL_PACKAGES:+ $NIX_SHELL_PACKAGES}%f}'
 
 # Add gitstatus to right prompt
 GITSTATUS='GITSTATUS_PROMPT'
@@ -10,7 +21,7 @@ GITSTATUS='${'$GITSTATUS'//\%76F/%F{green\}}'
 GITSTATUS='${'$GITSTATUS'//\%178F/%F{yellow\}}'
 GITSTATUS='${'$GITSTATUS'//\%39F/%F{blue\}}'
 GITSTATUS='${'$GITSTATUS'//\%196F/%F{red\}}'
-RPROMPT+='${GITSTATUS_PROMPT:+ %F{magenta\}󰘬  '$GITSTATUS'}'
+RPROMPT+='${GITSTATUS_PROMPT:+ %F{magenta\}'$GIT'  '$GITSTATUS'}'
 
 PROMPT=''
 
@@ -19,7 +30,7 @@ PROMPT+='%F{blue}%~ '
 
 # Show '⟩' for normal users, '⟫' for root
 # Show in green when last command was successful, red otherwise
-SIMPLE_PROMPT='%(?.%F{green}.%F{red}%?)%(#.⟫.⟩) '
+SIMPLE_PROMPT='%(?.%F{green}.%F{red}%?)'$BRACKET' '
 PROMPT+="$SIMPLE_PROMPT"
 
 # Reset color

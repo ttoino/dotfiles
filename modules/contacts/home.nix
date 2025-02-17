@@ -18,11 +18,11 @@
         tokenFile = "~/.config/vdirsyncer/google_contacts_token";
         clientIdCommand = [
           "cat"
-          config.age.secrets.vdirsyncer-google-client-id.path
+          config.age.secrets.contacts-google-client-id.path
         ];
         clientSecretCommand = [
           "cat"
-          config.age.secrets.vdirsyncer-google-client-secret.path
+          config.age.secrets.contacts-google-client-secret.path
         ];
       };
 
@@ -38,7 +38,7 @@
   services.vdirsyncer.enable = true;
 
   age.secrets = {
-    vdirsyncer-google-client-id.rekeyFile = ./vdirsyncer_google_client_id.age;
-    vdirsyncer-google-client-secret.rekeyFile = ./vdirsyncer_google_client_secret.age;
+    contacts-google-client-id.rekeyFile = ./google_client_id.age;
+    contacts-google-client-secret.rekeyFile = ./google_client_secret.age;
   };
 }

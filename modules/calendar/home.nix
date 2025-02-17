@@ -13,11 +13,11 @@
         tokenFile = "~/.config/vdirsyncer/google_calendar_token";
         clientIdCommand = [
           "cat"
-          config.age.secrets.vdirsyncer-google-client-id.path
+          config.age.secrets.calendar-google-client-id.path
         ];
         clientSecretCommand = [
           "cat"
-          config.age.secrets.vdirsyncer-google-client-secret.path
+          config.age.secrets.calendar-google-client-secret.path
         ];
       };
 
@@ -33,7 +33,7 @@
   services.vdirsyncer.enable = true;
 
   age.secrets = {
-    vdirsyncer-google-client-id.rekeyFile = ./vdirsyncer_google_client_id.age;
-    vdirsyncer-google-client-secret.rekeyFile = ./vdirsyncer_google_client_secret.age;
+    calendar-google-client-id.rekeyFile = ./google_client_id.age;
+    calendar-google-client-secret.rekeyFile = ./google_client_secret.age;
   };
 }

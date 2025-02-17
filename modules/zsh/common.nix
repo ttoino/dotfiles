@@ -1,0 +1,26 @@
+{ ... }:
+{
+  programs.zsh = {
+    enable = true;
+
+    shellAliases = {
+      # CLI tools
+      ll = "ls -lh";
+      la = "ls -A";
+      lla = "ll -A";
+
+      # nix
+      ns = "nix-shell";
+      nsp = "ns --packages";
+      nr = "sudo nixos-rebuild";
+      nrs = "nr switch";
+      nrsf = "nrs --flake";
+
+      # misc
+      q = "exit";
+      ":q" = "exit";
+      quit = "exit";
+      pd = "popd";
+    };
+  };
+}

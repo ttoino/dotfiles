@@ -11,6 +11,10 @@
       "listen.local"
     ];
 
-    extraConfig = "reverse_proxy * localhost:6680/iris";
+    # https://github.com/jaedb/Iris/wiki/Advanced#encryption-httpswss
+    extraConfig = ''
+      reverse_proxy * localhost:6680
+      redir / /iris
+    '';
   };
 }

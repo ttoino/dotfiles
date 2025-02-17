@@ -3,8 +3,6 @@
   home.shell.enableZshIntegration = true;
 
   programs.zsh = {
-    enable = true;
-
     history = {
       append = true;
       extended = true;
@@ -14,23 +12,7 @@
     };
 
     shellAliases = {
-      # CLI tools
-      ll = "ls -lh";
-      la = "ls -A";
-      lla = "ll -A";
-
-      # nix
-      ns = "nix-shell";
-      nsp = "ns --packages";
-      nr = "sudo nixos-rebuild";
-      nrs = "nr switch";
-      nrsf = "nrs --flake";
-
-      # misc
-      q = "exit";
-      ":q" = "exit";
-      quit = "exit";
-      pd = "popd";
+      # Doesn't make sense in common.nix
       rr = "source ~/.zshrc";
     };
 
