@@ -9,6 +9,7 @@ import { ascending } from "../lib/sorting";
 const network = NetworkService.get_default();
 
 const Ethernet = () => (
+    network.wired &&
     <box spacing={16}>
         <label
             hexpand
