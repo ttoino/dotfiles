@@ -1,10 +1,10 @@
-import { bind, Variable } from "astal";
+import { bind, timeout, Variable } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import NetworkService from "gi://AstalNetwork";
 import Device from "../widgets/Device";
 import { wifiRange } from "../lib/icons";
 import Renderer from "../lib/Renderer";
-import { ascending } from "../lib/sorting";
+import { ascending, descending } from "../lib/sorting";
 
 const network = NetworkService.get_default();
 
@@ -52,9 +52,10 @@ const AccessPoint = (ap: NetworkService.AccessPoint) => {
 
 const Wifi = () => {
     const renderer = new Renderer<NetworkService.AccessPoint>((ap) => AccessPoint(ap), {
-        initial: network.wifi.access_points,
+        initial: network.wifi.accessPoints,
         sort: (a, b) =>
-            ascending(a.strength, b.strength) || ascending(a.ssid, b.ssid),
+            descending(a === network.wifi.activeAccessPoint, b === network.wifi.activeAccessPoint) ||
+            descending(a.strength, b.strength) || ascending(a.ssid ?? "", b.ssid ?? ""),
     });
 
     network.wifi.connect("access-point-added", (_, ap) => renderer.add(ap));

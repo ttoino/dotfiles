@@ -1,6 +1,7 @@
 { modules, ... }:
 {
   modules = with modules; [
+    direnv
     docker
     docs
     git

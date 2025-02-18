@@ -1,5 +1,5 @@
 # If in tty, don't use icons
-if [[ $tty == '/dev/tty'* ]]; then
+if [[ $TTY == '/dev/tty'* ]]; then
     BRACKET='%(#.».>)'
     NIX='nix'
     GIT='git'

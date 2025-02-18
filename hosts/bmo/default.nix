@@ -14,5 +14,6 @@
   modules = with modules; [
     battery
     fprint
+    mullvad
   ];
 }

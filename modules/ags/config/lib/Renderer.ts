@@ -20,7 +20,7 @@ export default class Renderer<T> implements Subscribable<Gtk.Widget[]> {
         this.#map = new WidgetMap({
             initial: initial
                 ?.map((key) => [key, renderer(key)])
-                .filter(([, widget]) => !!widget) as [T, Gtk.Widget][],
+                .filter(([key, widget]) => !!widget) as [T, Gtk.Widget][],
             sort,
         });
     }
