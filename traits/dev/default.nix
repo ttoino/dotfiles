@@ -6,5 +6,6 @@
     git
     neovim
     vscode
+    ssh
   ];
 }
