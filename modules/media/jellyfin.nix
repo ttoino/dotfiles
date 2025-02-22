@@ -4,8 +4,8 @@
 
   services.caddy.virtualHosts.jellyfin = {
     serverAliases = [
-      "jellyfin.local"
-      "watch.local"
+      "http://jellyfin.local"
+      "http://watch.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8096";

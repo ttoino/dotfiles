@@ -4,9 +4,9 @@
 
   services.caddy.virtualHosts.lidarr = {
     serverAliases = [
-      "lidarr.local"
-      "music.local"
-      "songs.local"
+      "http://lidarr.local"
+      "http://music.local"
+      "http://songs.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:6767";

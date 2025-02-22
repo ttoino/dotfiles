@@ -7,8 +7,8 @@
 
   services.caddy.virtualHosts.mopidy = {
     serverAliases = [
-      "mopidy.local"
-      "listen.local"
+      "http://mopidy.local"
+      "http://listen.local"
     ];
 
     # https://github.com/jaedb/Iris/wiki/Advanced#encryption-httpswss

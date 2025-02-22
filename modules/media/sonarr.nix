@@ -4,10 +4,10 @@
 
   services.caddy.virtualHosts.sonarr = {
     serverAliases = [
-      "sonarr.local"
-      "tv.local"
-      "shows.local"
-      "series.local"
+      "http://sonarr.local"
+      "http://tv.local"
+      "http://shows.local"
+      "http://series.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8989";

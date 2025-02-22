@@ -4,9 +4,9 @@
 
   services.caddy.virtualHosts.readarr = {
     serverAliases = [
-      "readarr.local"
-      "library.local"
-      "books.local"
+      "http://readarr.local"
+      "http://library.local"
+      "http://books.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8787";

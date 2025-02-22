@@ -4,9 +4,9 @@
 
   services.caddy.virtualHosts.radarr = {
     serverAliases = [
-      "radarr.local"
-      "cinema.local"
-      "movies.local"
+      "http://radarr.local"
+      "http://cinema.local"
+      "http://movies.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:7878";

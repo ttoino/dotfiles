@@ -1,11 +1,11 @@
-{ modules, traits, ... }:
+{ traits, ... }:
 {
   system = "x86_64-linux";
 
   traits = with traits; [
     base
-    media
+    server
   ];
 
-  modules = with modules; [ ssh ];
+  modules = [ ];
 }

@@ -87,7 +87,7 @@
       modules = module.nixos ++ [
         inputs.home-manager.nixosModules.home-manager
         {
-          system.name = name;
+          networking.hostName = name;
 
           home-manager = {
             backupFileExtension = "backup";

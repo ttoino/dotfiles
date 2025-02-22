@@ -4,9 +4,9 @@
 
   services.caddy.virtualHosts.bazarr = {
     serverAliases = [
-      "bazarr.local"
-      "captions.local"
-      "subtitles.local"
+      "http://bazarr.local"
+      "http://captions.local"
+      "http://subtitles.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:6767";
