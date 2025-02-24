@@ -93,4 +93,10 @@
       wg1.configFile = config.age.secrets.mullvad-config.path;
     };
   };
+
+  # Use mullvad in deluge
+  services.deluge.config = {
+    listen_interface = "10.73.3.79";
+    outgoing_interface = "wg1";
+  };
 }

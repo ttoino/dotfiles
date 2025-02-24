@@ -1,20 +1,10 @@
 { ... }:
 {
-  networking.hosts."127.0.0.1" = [
-    "mopidy.local"
-    "listen.local"
-  ];
+  networking.hosts."127.0.0.1" = [ "listen.toino.pt" ];
 
-  services.caddy.virtualHosts.mopidy = {
-    serverAliases = [
-      "https://mopidy.local"
-      "https://listen.local"
-    ];
-
-    # https://github.com/jaedb/Iris/wiki/Advanced#encryption-httpswss
-    extraConfig = ''
-      reverse_proxy * localhost:6680
-      redir / /iris
-    '';
-  };
+  # https://github.com/jaedb/Iris/wiki/Advanced#encryption-httpswss
+  services.caddy.virtualHosts."listen.toino.pt".extraConfig = ''
+    reverse_proxy * localhost:6680
+    redir / /iris
+  '';
 }

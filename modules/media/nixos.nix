@@ -36,23 +36,23 @@
       group = "media";
       mode = "0775";
     };
+    "/data/media/books".d = {
+      user = "readarr";
+      group = "media";
+      mode = "0775";
+    };
     "/data/media/movies".d = {
       user = "radarr";
       group = "media";
       mode = "0775";
     };
-    "/data/media/shows".d = {
-      user = "sonarr";
-      group = "media";
-      mode = "0775";
-    };
-    "/data/media/songs".d = {
+    "/data/media/music".d = {
       user = "lidarr";
       group = "media";
       mode = "0775";
     };
-    "/data/media/books".d = {
-      user = "readarr";
+    "/data/media/shows".d = {
+      user = "sonarr";
       group = "media";
       mode = "0775";
     };

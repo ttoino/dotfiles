@@ -5,19 +5,8 @@
     group = "media";
   };
 
-  services.caddy.virtualHosts.radarr = {
-    serverAliases = [
-      "https://radarr.local"
-      "https://cinema.local"
-      "https://movies.local"
-    ];
+  services.caddy.virtualHosts."movies.toino.pt".extraConfig =
+    "reverse_proxy * localhost:7878";
 
-    extraConfig = "reverse_proxy * localhost:7878";
-  };
-
-  networking.hosts."127.0.0.1" = [
-    "radarr.local"
-    "cinema.local"
-    "movies.local"
-  ];
+  networking.hosts."127.0.0.1" = [ "movies.toino.pt" ];
 }

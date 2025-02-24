@@ -5,19 +5,8 @@
     group = "media";
   };
 
-  services.caddy.virtualHosts.bazarr = {
-    serverAliases = [
-      "https://bazarr.local"
-      "https://captions.local"
-      "https://subtitles.local"
-    ];
+  services.caddy.virtualHosts."captions.toino.pt".extraConfig =
+    "reverse_proxy * localhost:6767";
 
-    extraConfig = "reverse_proxy * localhost:6767";
-  };
-
-  networking.hosts."127.0.0.1" = [
-    "bazarr.local"
-    "captions.local"
-    "subtitles.local"
-  ];
+  networking.hosts."127.0.0.1" = [ "captions.toino.pt" ];
 }
