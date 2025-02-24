@@ -1,15 +1,18 @@
 { ... }:
 {
-  services.lidarr.enable = true;
+  services.lidarr = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.lidarr = {
     serverAliases = [
-      "http://lidarr.local"
-      "http://music.local"
-      "http://songs.local"
+      "https://lidarr.local"
+      "https://music.local"
+      "https://songs.local"
     ];
 
-    extraConfig = "reverse_proxy * localhost:6767";
+    extraConfig = "reverse_proxy * localhost:8686";
   };
 
   networking.hosts."127.0.0.1" = [

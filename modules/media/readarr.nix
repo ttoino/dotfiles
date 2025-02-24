@@ -1,12 +1,15 @@
 { ... }:
 {
-  services.readarr.enable = true;
+  services.readarr = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.readarr = {
     serverAliases = [
-      "http://readarr.local"
-      "http://library.local"
-      "http://books.local"
+      "https://readarr.local"
+      "https://library.local"
+      "https://books.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8787";

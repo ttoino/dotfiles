@@ -4,8 +4,8 @@
 
   services.caddy.virtualHosts.prowlarr = {
     serverAliases = [
-      "http://prowlarr.local"
-      "http://trackers.local"
+      "https://prowlarr.local"
+      "https://trackers.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:9696";

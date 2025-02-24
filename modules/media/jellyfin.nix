@@ -1,11 +1,14 @@
 { ... }:
 {
-  services.jellyfin.enable = true;
+  services.jellyfin = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.jellyfin = {
     serverAliases = [
-      "http://jellyfin.local"
-      "http://watch.local"
+      "https://jellyfin.local"
+      "https://watch.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8096";

@@ -1,13 +1,16 @@
 { ... }:
 {
-  services.sonarr.enable = true;
+  services.sonarr = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.sonarr = {
     serverAliases = [
-      "http://sonarr.local"
-      "http://tv.local"
-      "http://shows.local"
-      "http://series.local"
+      "https://sonarr.local"
+      "https://tv.local"
+      "https://shows.local"
+      "https://series.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8989";

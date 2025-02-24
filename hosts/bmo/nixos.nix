@@ -33,21 +33,17 @@
 
   # Wireguard
   age.secrets = {
-    wireguard-private-key = {
-      rekeyFile = ../../secrets/wireguard_bmo_private_key.age;
-      group = "systemd-network";
-      mode = "0440";
-    };
-    wireguard-prismo-preshared-key = {
-      rekeyFile = ../../secrets/wireguard_bmo_prismo_preshared_key.age;
-      group = "systemd-network";
-      mode = "0440";
-    };
+    wireguard-private-key.rekeyFile = ../../secrets/wireguard_bmo_private_key.age;
+    wireguard-prismo-preshared-key.rekeyFile = ../../secrets/wireguard_bmo_prismo_preshared_key.age;
   };
 
   networking.wg-quick.interfaces.wg0 = {
     address = [ "10.0.0.2/24" ];
-    dns = [ "10.0.0.1" ];
+    dns = [
+      "10.0.0.1"
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     privateKeyFile = config.age.secrets.wireguard-private-key.path;
     peers = [
       {

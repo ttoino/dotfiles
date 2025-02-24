@@ -1,12 +1,15 @@
 { ... }:
 {
-  services.radarr.enable = true;
+  services.radarr = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.radarr = {
     serverAliases = [
-      "http://radarr.local"
-      "http://cinema.local"
-      "http://movies.local"
+      "https://radarr.local"
+      "https://cinema.local"
+      "https://movies.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:7878";

@@ -10,4 +10,51 @@
     ./readarr.nix
     ./sonarr.nix
   ];
+
+  users = {
+    users.media = {
+      isSystemUser = true;
+      group = "media";
+    };
+    groups.media = { };
+  };
+
+  systemd.tmpfiles.settings."10-media" = {
+    "/data/downloads".d = {
+      user = "media";
+      group = "media";
+      mode = "0775";
+    };
+    "/data/downloads/torrents".d = {
+      user = "deluge";
+      group = "media";
+      mode = "0775";
+    };
+
+    "/data/media".d = {
+      user = "media";
+      group = "media";
+      mode = "0775";
+    };
+    "/data/media/movies".d = {
+      user = "radarr";
+      group = "media";
+      mode = "0775";
+    };
+    "/data/media/shows".d = {
+      user = "sonarr";
+      group = "media";
+      mode = "0775";
+    };
+    "/data/media/songs".d = {
+      user = "lidarr";
+      group = "media";
+      mode = "0775";
+    };
+    "/data/media/books".d = {
+      user = "readarr";
+      group = "media";
+      mode = "0775";
+    };
+  };
 }

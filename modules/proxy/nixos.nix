@@ -1,6 +1,12 @@
 { ... }:
 {
-  services.caddy.enable = true;
+  services.caddy = {
+    enable = true;
+    extraConfig = "certIssuer internal";
+  };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

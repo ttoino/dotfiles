@@ -2,6 +2,7 @@
 {
   services.deluge = {
     enable = true;
+    group = "media";
 
     web.enable = true;
     declarative = true;
@@ -11,8 +12,8 @@
 
   services.caddy.virtualHosts.deluge = {
     serverAliases = [
-      "http://deluge.local"
-      "http://torrent.local"
+      "https://deluge.local"
+      "https://torrent.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:8112";

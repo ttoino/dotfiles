@@ -1,12 +1,15 @@
 { ... }:
 {
-  services.bazarr.enable = true;
+  services.bazarr = {
+    enable = true;
+    group = "media";
+  };
 
   services.caddy.virtualHosts.bazarr = {
     serverAliases = [
-      "http://bazarr.local"
-      "http://captions.local"
-      "http://subtitles.local"
+      "https://bazarr.local"
+      "https://captions.local"
+      "https://subtitles.local"
     ];
 
     extraConfig = "reverse_proxy * localhost:6767";
