@@ -5,6 +5,9 @@
     group = "media";
   };
 
+  # Hardware acceleration
+  hardware.graphics.enable = true;
+
   services.caddy.virtualHosts."watch.toino.pt".extraConfig =
     "reverse_proxy * localhost:8096";
 
