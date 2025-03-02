@@ -8,5 +8,6 @@
     neovim
     vscode
     ssh
+    wireshark
   ];
 }
