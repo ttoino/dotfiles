@@ -21,17 +21,17 @@ export default class Notifications extends GObject.Object {
 
         this._notifd.ignoreTimeout = true;
         this._notifd.connect("notified", (_, id, replaced) =>
-            this.#onNotified(id, replaced)
+            this.#onNotified(id, replaced),
         );
         this._notifd.connect("resolved", (_, id, reason) =>
-            this.#onResolved(id, reason)
+            this.#onResolved(id, reason),
         );
 
         this._notifd.notifications.forEach((notification) =>
             this._notifications.set(
                 notification.id,
-                new Notification(notification)
-            )
+                new Notification(notification),
+            ),
         );
     }
 
@@ -40,7 +40,7 @@ export default class Notifications extends GObject.Object {
         print(`Notification ${id} notified (replaced: ${replaced})`);
 
         const notification = new Notification(
-            this._notifd.get_notification(id)
+            this._notifd.get_notification(id),
         );
         this._notifications.set(id, notification);
 
@@ -110,7 +110,7 @@ export default class Notifications extends GObject.Object {
         print(`Notification ${id} timeout: ${timeoutMs}`);
         this._timeouts.set(
             id,
-            timeout(timeoutMs, () => this.timedOut(id))
+            timeout(timeoutMs, () => this.timedOut(id)),
         );
     }
 

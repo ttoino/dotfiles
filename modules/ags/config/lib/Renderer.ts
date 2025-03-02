@@ -14,7 +14,7 @@ export default class Renderer<T> implements Subscribable<Gtk.Widget[]> {
 
     constructor(
         renderer: RendererFn<T>,
-        { initial, sort }: OptionalArgs<T> = {}
+        { initial, sort }: OptionalArgs<T> = {},
     ) {
         this.#renderer = renderer;
         this.#map = new WidgetMap({

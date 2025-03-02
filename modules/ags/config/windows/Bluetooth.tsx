@@ -45,7 +45,7 @@ const Device = (device: BluetoothService.Device) => (
         icon={bind(device, "icon").as((icon_name) =>
             icon_name in ICONS
                 ? ICONS[icon_name as keyof typeof ICONS]
-                : BLUETOOTH
+                : BLUETOOTH,
         )}
         iconTooltip={bind(device, "icon")}
         active={bind(device, "connected")}
@@ -59,13 +59,16 @@ const Device = (device: BluetoothService.Device) => (
 );
 
 export default function Bluetooth() {
-    const renderer = new Renderer<BluetoothService.Device>((device) => Device(device), {
-        initial: bluetooth.devices,
-        sort: (a, b) =>
-            descending(a.connected, b.connected) ||
-            descending(a.paired, b.paired) ||
-            ascending(a.name ?? a.address ?? "", b.name ?? b.address ?? ""),
-    });
+    const renderer = new Renderer<BluetoothService.Device>(
+        (device) => Device(device),
+        {
+            initial: bluetooth.devices,
+            sort: (a, b) =>
+                descending(a.connected, b.connected) ||
+                descending(a.paired, b.paired) ||
+                ascending(a.name ?? a.address ?? "", b.name ?? b.address ?? ""),
+        },
+    );
 
     bluetooth.connect("device-added", (_, device) => renderer.add(device));
     bluetooth.connect("device-removed", (_, device) => renderer.delete(device));
@@ -100,7 +103,7 @@ export default function Bluetooth() {
                             }
                         />
                     </box>
-                    <box vertical spacing={8}>
+                    <box vertical spacing={8} noImplicitDestroy>
                         {bind(renderer)}
                     </box>
                 </box>

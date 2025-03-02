@@ -23,7 +23,7 @@ export default function ExpandableWindow({
             onClicked={() => (stack.visibleChildName = "collapsed")}
         >
             {CHEVRON_LEFT}
-        </IconButton>
+        </IconButton>,
     );
     expandedChild.name = "expanded";
 
@@ -51,7 +51,7 @@ export default function ExpandableWindow({
                     for (const child of stack.get_children())
                         stack.toggleClassName(
                             child.name,
-                            child.name === visibleChild
+                            child.name === visibleChild,
                         );
                 });
             }}

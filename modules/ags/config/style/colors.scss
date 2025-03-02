@@ -17,7 +17,7 @@ $colors: (
     "restart": c.$green,
     "sleep": c.$blue,
     "hibernate": c.$sapphire,
-    "lock": c.$yellow,
+    "lock": c.$yellow
 );
 
 @function alpha($color, $alpha) {

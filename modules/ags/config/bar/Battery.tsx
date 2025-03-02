@@ -9,7 +9,7 @@ const battery = BatteryService.get_default();
 
 const icon = Variable.derive(
     [bind(battery, "charging"), bind(battery, "percentage")],
-    (charging, percent) => batteryRange(charging, percent)
+    (charging, percent) => batteryRange(charging, percent),
 );
 const tooltip = Variable.derive(
     [bind(battery, "charging"), bind(battery, "percentage")],
@@ -19,7 +19,7 @@ const tooltip = Variable.derive(
         if (charging) parts.push("Charging");
 
         return parts.join(` ${SEPARATOR} `);
-    }
+    },
 );
 
 export default function Battery() {

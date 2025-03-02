@@ -6,9 +6,13 @@ import IconSlider from "./IconSlider";
 import ScrollText from "./ScrollText";
 import IconButton from "./IconButton";
 import { CLOSE } from "../lib/chars";
-import {Notification as NotificationObject} from "../providers/notifications";
+import { Notification as NotificationObject } from "../providers/notifications";
 
-const NotificationHeader = (notification: NotificationObject, onDismiss: () => void, popup: boolean) =>
+const NotificationHeader = (
+    notification: NotificationObject,
+    onDismiss: () => void,
+    popup: boolean,
+) =>
     !notification.hideHeader && (
         <box className="notification-app" vexpand hexpand spacing={4}>
             {notification.appIcon && <icon icon={notification.appIcon} />}
@@ -21,24 +25,29 @@ const NotificationHeader = (notification: NotificationObject, onDismiss: () => v
                     wrap={false}
                 />
             )}
-            {!popup && <> 
-                <label
-                    label={date().as((date) =>
-                        relativeTime(new Date(notification.time * 1000), date.date)
-                    )}
-                    tooltipText={new Date(notification.time).toString()}
-                    halign={Gtk.Align.END}
-                    hexpand
-                    lines={1}
-                    wrap={false}
-                />
-                <IconButton
-                    label={CLOSE}
-                    onClicked={onDismiss}
-                    tooltipText="Dismiss"
-                    className="sm"
-                />
-            </>}
+            {!popup && (
+                <>
+                    <label
+                        label={date().as((date) =>
+                            relativeTime(
+                                new Date(notification.time * 1000),
+                                date.date,
+                            ),
+                        )}
+                        tooltipText={new Date(notification.time).toString()}
+                        halign={Gtk.Align.END}
+                        hexpand
+                        lines={1}
+                        wrap={false}
+                    />
+                    <IconButton
+                        label={CLOSE}
+                        onClicked={onDismiss}
+                        tooltipText="Dismiss"
+                        className="sm"
+                    />
+                </>
+            )}
         </box>
     );
 
@@ -57,7 +66,7 @@ const NotificationBody = (notification: NotificationObject) =>
             <box vertical vexpand hexpand spacing={8}>
                 {notification.summary && (
                     <ScrollText
-                        labelProps={{halign: Gtk.Align.START}}
+                        labelProps={{ halign: Gtk.Align.START }}
                         label={notification.summary}
                     />
                 )}
@@ -75,10 +84,10 @@ const NotificationBody = (notification: NotificationObject) =>
     );
 
 const NotificationSlider = (notification: NotificationObject) => {
-    const value = notification.sliderValue
+    const value = notification.sliderValue;
     if (value == undefined) return;
 
-    const icon = notification.sliderIcon
+    const icon = notification.sliderIcon;
 
     return icon && icon.length > 0 ? (
         <IconSlider
@@ -117,7 +126,11 @@ const NotificationActions = (notification: NotificationObject) => {
     );
 };
 
-export default function Notification(notification: NotificationObject, onDismiss: () => void, popup = false) {
+export default function Notification(
+    notification: NotificationObject,
+    onDismiss: () => void,
+    popup = false,
+) {
     return (
         <box
             className={`${notification.className} ${urgencyToString[notification.urgency]} notification`}

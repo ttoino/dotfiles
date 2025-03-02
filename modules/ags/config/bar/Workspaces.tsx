@@ -18,8 +18,8 @@ const workspaces = Variable.derive(
             { length: WORKSPACE_COUNT },
             (_, i) =>
                 wss.find((ws) => ws.id === i + 1) ??
-                Hyprland.Workspace.dummy(i + 1, monitor)
-        )
+                Hyprland.Workspace.dummy(i + 1, monitor),
+        ),
 );
 
 export default function Workspaces() {
@@ -41,11 +41,11 @@ export default function Workspaces() {
                                 fw.id === ws.id
                                     ? RADIOBOX_MARKED
                                     : clients.length > 0
-                                    ? RADIOBOX_INDETERMINATE
-                                    : RADIOBOX_BLANK
+                                      ? RADIOBOX_INDETERMINATE
+                                      : RADIOBOX_BLANK,
                         )()}
                     </IconButton>
-                ))
+                )),
             )}
         </box>
     );

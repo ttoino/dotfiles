@@ -12,7 +12,7 @@ const powerProfiles = PowerProfiles.get_default();
 
 const icon = Variable.derive(
     [bind(battery, "charging"), bind(battery, "percentage")],
-    (charging, percent) => batteryRange(charging, percent)
+    (charging, percent) => batteryRange(charging, percent),
 );
 
 const BatterySlider = () => (
@@ -53,7 +53,14 @@ export default function Battery() {
                             </box>
                             <box homogeneous hexpand>
                                 {powerProfiles.get_profiles().map((profile) => (
-                                    <ToggleButton active={bind(powerProfiles, "activeProfile").as((p) => p === profile.profile)}>{profile.profile}</ToggleButton>
+                                    <ToggleButton
+                                        active={bind(
+                                            powerProfiles,
+                                            "activeProfile",
+                                        ).as((p) => p === profile.profile)}
+                                    >
+                                        {profile.profile}
+                                    </ToggleButton>
                                 ))}
                             </box>
                             <box vexpand />

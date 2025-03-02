@@ -51,7 +51,7 @@ export const wifiIcons = [
 export const iconRange = (icons: readonly string[], value: number) => {
     const index = Math.min(
         Math.max(0, Math.floor(value * icons.length)),
-        icons.length - 1
+        icons.length - 1,
     );
     return icons[index];
 };

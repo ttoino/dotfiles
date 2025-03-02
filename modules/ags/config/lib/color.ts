@@ -37,7 +37,7 @@ const _group = (value: number, group: number) =>
 
 export const prominentColors = (
     image: string,
-    { sample = 10, group = 16, amount = 3 } = {}
+    { sample = 10, group = 16, amount = 3 } = {},
 ): Triplet[] => {
     const pixbuf = GdkPixbuf.Pixbuf.new_from_file(image);
 
@@ -60,7 +60,7 @@ export const prominentColors = (
         .sort(([_keyA, valA], [_keyB, valB]) => (valA > valB ? -1 : 1))
         .slice(0, amount)
         .map(([rgb]) =>
-            rgb.split(",").map((v) => parseInt(v, 10))
+            rgb.split(",").map((v) => parseInt(v, 10)),
         ) as Triplet[];
 };
 

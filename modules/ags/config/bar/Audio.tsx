@@ -14,7 +14,7 @@ const icon =
             bind(audio.default_speaker, "mute"),
             bind(audio.defaultSpeaker, "volume"),
         ],
-        (mute, volume) => (mute ? VOLUME_MUTE : volumeRange(volume))
+        (mute, volume) => (mute ? VOLUME_MUTE : volumeRange(volume)),
     );
 const tooltip =
     audio &&
@@ -30,7 +30,7 @@ const tooltip =
             if (mute) parts.push("Muted");
 
             return parts.join(` ${SEPARATOR} `);
-        }
+        },
     );
 
 export default function Audio() {

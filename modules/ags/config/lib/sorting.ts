@@ -1,6 +1,6 @@
 export const ascending = <T extends string | number | boolean | Date>(
     a: T,
-    b: T
+    b: T,
 ) => {
     switch (typeof a) {
         case "string":
@@ -16,5 +16,5 @@ export const ascending = <T extends string | number | boolean | Date>(
 
 export const descending = <T extends string | number | boolean | Date>(
     a: T,
-    b: T
+    b: T,
 ) => ascending(b, a);

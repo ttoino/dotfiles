@@ -19,7 +19,7 @@ const Player = (player: Mpris.Player, onChoose: () => void) => (
             className="cover"
             visible={bind(player, "coverArt").as((image) => !!image)}
             css={bind(player, "coverArt").as(
-                (image) => `background-image: url("${image}")`
+                (image) => `background-image: url("${image}")`,
             )}
         />
         <box vertical>
@@ -36,7 +36,7 @@ const Player = (player: Mpris.Player, onChoose: () => void) => (
             <IconButton
                 className="xl"
                 label={bind(player, "playbackStatus").as((status) =>
-                    status === Mpris.PlaybackStatus.PLAYING ? PAUSE : PLAY
+                    status === Mpris.PlaybackStatus.PLAYING ? PAUSE : PLAY,
                 )}
                 onClicked={() => player.play_pause()}
             />
@@ -59,19 +59,25 @@ const Player = (player: Mpris.Player, onChoose: () => void) => (
 export default function Media() {
     const visible = new Variable("choose");
 
-    const choiceRenderer = new Renderer<Mpris.Player>((player) => (
-        <button
-            label={bind(player, "identity")}
-            onClicked={() => visible.set(player.busName)}
-        />
-    ), {
-        initial: mpris.players,
-        sort: (a, b) => ascending(a.identity, b.identity),
-    });
-    const playerRenderer = new Renderer<Mpris.Player>((player) => Player(player, () => visible.set("choose")), {
-        initial: mpris.players,
-        sort: (a, b) => ascending(a.identity, b.identity),
-    });
+    const choiceRenderer = new Renderer<Mpris.Player>(
+        (player) => (
+            <button
+                label={bind(player, "identity")}
+                onClicked={() => visible.set(player.busName)}
+            />
+        ),
+        {
+            initial: mpris.players,
+            sort: (a, b) => ascending(a.identity, b.identity),
+        },
+    );
+    const playerRenderer = new Renderer<Mpris.Player>(
+        (player) => Player(player, () => visible.set("choose")),
+        {
+            initial: mpris.players,
+            sort: (a, b) => ascending(a.identity, b.identity),
+        },
+    );
 
     mpris.connect("player-added", (_, player) => {
         choiceRenderer.add(player);
@@ -90,18 +96,17 @@ export default function Media() {
             visible={false}
             application={App}
         >
-            <stack 
+            <stack
                 className="media-window info-window"
                 transitionType={Gtk.StackTransitionType.CROSSFADE}
                 visibleChildName={visible()}
+                noImplicitDestroy
             >
-                {bind(playerRenderer).as((renderer) => [
-                    (<box name="choose" vertical spacing={8}>
-                        <label label="Choose a player" />
-                        {bind(choiceRenderer)}
-                    </box>),
-                    ...renderer
-                ])}
+                <box name="choose" vertical spacing={8} noImplicitDestroy>
+                    <label label="Choose a player" />
+                    {bind(choiceRenderer)}
+                </box>
+                {bind(playerRenderer)}
             </stack>
         </window>
     );

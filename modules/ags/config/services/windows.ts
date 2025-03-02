@@ -43,7 +43,7 @@ const visible = Variable<string | null>(null);
 const dismisserVisible = Variable.derive([visible], (v) => !!v);
 const scrimVisible = Variable.derive(
     [visible],
-    (v) => !!(v && scrimmedPopups.has(v))
+    (v) => !!(v && scrimmedPopups.has(v)),
 );
 
 dismisserVisible.subscribe((v) => {

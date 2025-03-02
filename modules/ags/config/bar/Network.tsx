@@ -14,8 +14,10 @@ const icons = Variable.derive(
         bind(network.wifi, "strength"),
     ],
     (
-        // wired, 
-        wifi, wifiStrength) => {
+        // wired,
+        wifi,
+        wifiStrength,
+    ) => {
         const icons = [];
 
         // if (wired == NetworkService.DeviceState.ACTIVATED) icons.push(ETHERNET);
@@ -24,7 +26,7 @@ const icons = Variable.derive(
         if (icons.length === 0) icons.push(WEB_OFF);
 
         return icons;
-    }
+    },
 );
 const tooltip = Variable.derive(
     [
@@ -34,18 +36,21 @@ const tooltip = Variable.derive(
         bind(network.wifi, "strength"),
     ],
     (
-        // wired, 
-        wifi, ssid, strength) => {
+        // wired,
+        wifi,
+        ssid,
+        strength,
+    ) => {
         const parts = [];
 
         // if (wired == NetworkService.DeviceState.ACTIVATED)
-            // parts.push("Ethernet");
+        // parts.push("Ethernet");
         if (wifi == NetworkService.DeviceState.ACTIVATED)
             parts.push(ssid, strength + "%");
         if (parts.length === 0) parts.push("No network");
 
         return parts.join(` ${SEPARATOR} `);
-    }
+    },
 );
 
 export default function Network() {

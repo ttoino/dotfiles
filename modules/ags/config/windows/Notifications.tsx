@@ -11,13 +11,23 @@ import { ascending } from "../lib/sorting";
 const notifications = NotificationsProvider.get_default();
 
 export default function Notifications() {
-    const renderer = new Renderer<number>((id) => {
-        const notification = notifications.get(id);
-        if (notification) return Notification(notification, () => notifications.dismiss(id));
-    }, {
-        initial: notifications.storage,
-        sort: (a, b) => ascending(notifications.get(a)?.time ?? 0, notifications.get(b)?.time ?? 0),
-    });
+    const renderer = new Renderer<number>(
+        (id) => {
+            const notification = notifications.get(id);
+            if (notification)
+                return Notification(notification, () =>
+                    notifications.dismiss(id),
+                );
+        },
+        {
+            initial: notifications.storage,
+            sort: (a, b) =>
+                ascending(
+                    notifications.get(a)?.time ?? 0,
+                    notifications.get(b)?.time ?? 0,
+                ),
+        },
+    );
 
     notifications.connect("stored", (_, id) => renderer.add(id));
     notifications.connect("dismissed", (_, id) => renderer.delete(id));
@@ -50,19 +60,22 @@ export default function Notifications() {
                         <ToggleButton
                             className="icon"
                             active={bind(notifications, "dnd")}
-                            label={bind(notifications, "dnd").as(
-                                (dnd) => (dnd ? BELL_OFF : BELL)
+                            label={bind(notifications, "dnd").as((dnd) =>
+                                dnd ? BELL_OFF : BELL,
                             )}
                             onToggled={({ active }) =>
                                 (notifications.dnd = active)
                             }
                         />
                     </box>
-                    <box 
-                        vertical
-                        spacing={8}
-                    >
-                        {bind(renderer).as((v) => v.length > 0 ? v : <label label="No notifications" />)}
+                    <box vertical spacing={8} noImplicitDestroy>
+                        {bind(renderer).as((v) =>
+                            v.length > 0 ? (
+                                v
+                            ) : (
+                                <label label="No notifications" />
+                            ),
+                        )}
                     </box>
                 </box>
             </scrollable>

@@ -67,7 +67,7 @@ export default function Run() {
                             {appList().as((apps) =>
                                 apps.map((app) => (
                                     <AppEntry app={app} close={dismissPopup} />
-                                ))
+                                )),
                             )}
                         </box>
                     </scrollable>

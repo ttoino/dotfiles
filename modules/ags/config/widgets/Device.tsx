@@ -35,7 +35,7 @@ export default function Device({
     const className = Variable.derive(
         [activeB, activatingB],
         (active, activating) =>
-            `device ${active ? "active" : ""} ${activating ? "activating" : ""}`
+            `device ${active ? "active" : ""} ${activating ? "activating" : ""}`,
     );
 
     return (
@@ -45,8 +45,8 @@ export default function Device({
                 event.button === Astal.MouseButton.PRIMARY
                     ? onPrimaryClick()
                     : event.button === Astal.MouseButton.SECONDARY
-                    ? onSecondaryClick()
-                    : undefined
+                      ? onSecondaryClick()
+                      : undefined
             }
         >
             <box className={className()} spacing={16}>

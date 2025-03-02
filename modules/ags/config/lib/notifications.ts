@@ -75,7 +75,7 @@ export const notify = ({
         args.push(
             `--category=${
                 Array.isArray(category) ? category.join(",") : category
-            }`
+            }`,
         );
     if (transient) args.push("--transient");
     args.push(
@@ -83,14 +83,14 @@ export const notify = ({
             ([key, value]) =>
                 `--hint=${
                     typeToHintType[typeof value as keyof typeof typeToHintType]
-                }:${key}:${value}`
-        )
+                }:${key}:${value}`,
+        ),
     );
     if (id) args.push(`--replace-id=${id}`);
     args.push(
         ...Object.entries(action).map(
-            ([key, value]) => `--action=${key}=${value}`
-        )
+            ([key, value]) => `--action=${key}=${value}`,
+        ),
     );
 
     args.push(title);

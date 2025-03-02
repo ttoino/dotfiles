@@ -10,12 +10,8 @@
         "jsx": "react-jsx",
         "jsxImportSource": "/home/toino/.local/share/ags/gtk3",
         "paths": {
-            "astal": [
-                "/home/toino/.local/share/ags"
-            ],
-            "astal/*": [
-                "/home/toino/.local/share/ags/*"
-            ]
-        },
+            "astal": ["/home/toino/.local/share/ags"],
+            "astal/*": ["/home/toino/.local/share/ags/*"]
+        }
     }
 }

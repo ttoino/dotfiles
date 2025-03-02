@@ -25,7 +25,7 @@ audio?.defaultSpeaker.connect(
         });
 
         if (!speakerId) speakerId = out.trim();
-    }
+    },
 );
 
 export {};

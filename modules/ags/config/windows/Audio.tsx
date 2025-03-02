@@ -56,8 +56,8 @@ const MuteButton = ({
                         ? VOLUME_MUTE
                         : volumeRange(volume)
                     : mute
-                    ? MICROPHONE_OFF
-                    : MICROPHONE
+                      ? MICROPHONE_OFF
+                      : MICROPHONE,
         )()}
     </ToggleButton>
 );
@@ -110,7 +110,7 @@ const Device = ({
                     title={bind(selectedDevice, "description").as(
                         (description) =>
                             description ??
-                            (isSpeaker ? "Speaker" : "Microphone")
+                            (isSpeaker ? "Speaker" : "Microphone"),
                     )}
                     icon={CHEVRON_DOWN}
                     next="select"
@@ -137,7 +137,7 @@ const Device = ({
                                     <ScrollText
                                         label={bind(device, "description").as(
                                             (description) =>
-                                                description ?? "Unknown"
+                                                description ?? "Unknown",
                                         )}
                                     />
                                 }
@@ -146,7 +146,7 @@ const Device = ({
                                     stack.visibleChildName = "volume";
                                 }}
                             />
-                        ))
+                        )),
                     )}
                 </box>
             </box>

@@ -14,30 +14,36 @@ const hyprland = Hyprland.get_default();
 export default function ActiveWindow() {
     return (
         <box className="active-window" spacing={8}>
-            {bind(hyprland, "focusedClient").as((client) => [
-                <label truncate label={bind(client, "title")} />,
-                <Icon
-                    visible={bind(client, "floating")}
-                    label={WINDOW_RESTORE}
-                />,
-                <Icon
-                    visible={bind(client, "fullscreen").as(
-                        (it) => !!(it & Hyprland.Fullscreen.MAXIMIZED)
-                    )}
-                    label={FULLSCREEN_EXIT}
-                />,
-                <Icon
-                    visible={bind(client, "fullscreen").as(
-                        (it) => !!(it & Hyprland.Fullscreen.FULLSCREEN)
-                    )}
-                    label={FULLSCREEN}
-                />,
-                <Icon
-                    visible={bind(client, "xwayland")}
-                    label={ALPHA_X_CIRCLE}
-                />,
-                <Icon visible={bind(client, "pinned")} label={PIN} />,
-            ])}
+            {bind(hyprland, "focusedClient").as((client) =>
+                client
+                    ? [
+                          <label truncate label={bind(client, "title")} />,
+                          <Icon
+                              visible={bind(client, "floating")}
+                              label={WINDOW_RESTORE}
+                          />,
+                          <Icon
+                              visible={bind(client, "fullscreen").as(
+                                  (it) =>
+                                      !!(it & Hyprland.Fullscreen.MAXIMIZED),
+                              )}
+                              label={FULLSCREEN_EXIT}
+                          />,
+                          <Icon
+                              visible={bind(client, "fullscreen").as(
+                                  (it) =>
+                                      !!(it & Hyprland.Fullscreen.FULLSCREEN),
+                              )}
+                              label={FULLSCREEN}
+                          />,
+                          <Icon
+                              visible={bind(client, "xwayland")}
+                              label={ALPHA_X_CIRCLE}
+                          />,
+                          <Icon visible={bind(client, "pinned")} label={PIN} />,
+                      ]
+                    : [],
+            )}
         </box>
     );
 }

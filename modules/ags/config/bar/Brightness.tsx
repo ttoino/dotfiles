@@ -11,7 +11,7 @@ export default function Brightness() {
         <IconButton
             className="brightness"
             tooltipText={bind(brightness, "percentage").as(
-                (p) => `${Math.round(p * 100)}%`
+                (p) => `${Math.round(p * 100)}%`,
             )}
             onClicked={() => togglePopup("brightness")}
         >

@@ -66,7 +66,7 @@ export default class IconSlider extends Slider {
             context,
             (sliderStart + sliderEnd) / 2,
             rect.y + (rect.height - layoutHeight) / 2,
-            this.#iconLayout
+            this.#iconLayout,
         );
 
         return false;

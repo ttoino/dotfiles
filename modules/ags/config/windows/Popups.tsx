@@ -10,19 +10,29 @@ const notifications = Notifications.get_default();
 const hyprland = Hyprland.get_default();
 
 export default function Popups(monitor: Gdk.Monitor) {
-    const renderer = new Renderer<number>((id) => {
-        const notification = notifications.get(id);
-        if (notification) return Notification(notification, () => notifications.dismiss(id), true);
-    }, {
-        initial: notifications.popups,
-        sort: (a, b) => ascending(notifications.get(a)?.time ?? 0, notifications.get(b)?.time ?? 0),
-    });
+    const renderer = new Renderer<number>(
+        (id) => {
+            const notification = notifications.get(id);
+            if (notification)
+                return Notification(
+                    notification,
+                    () => notifications.dismiss(id),
+                    true,
+                );
+        },
+        {
+            initial: notifications.popups,
+            sort: (a, b) =>
+                ascending(
+                    notifications.get(a)?.time ?? 0,
+                    notifications.get(b)?.time ?? 0,
+                ),
+        },
+    );
 
     notifications.connect("notified", (_, id) => {
-        if (hyprland.focusedMonitor.model === monitor.model)
-            renderer.add(id)
-        else
-            renderer.delete(id);
+        if (hyprland.focusedMonitor.model === monitor.model) renderer.add(id);
+        else renderer.delete(id);
     });
     notifications.connect("timed-out", (_, id) => renderer.delete(id));
     notifications.connect("dismissed", (_, id) => renderer.delete(id));
@@ -36,11 +46,7 @@ export default function Popups(monitor: Gdk.Monitor) {
             anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
             margin={16}
         >
-            <box
-                hexpand
-                vertical
-                spacing={8}
-            >
+            <box hexpand vertical spacing={8} noImplicitDestroy>
                 {bind(renderer)}
             </box>
         </window>

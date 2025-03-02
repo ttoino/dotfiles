@@ -17,9 +17,9 @@ export default function Media() {
                         (player) =>
                             `${player.title} ${SEPARATOR} ${
                                 player.artist || player.albumArtist
-                            }`
+                            }`,
                     )
-                    .join("\n")
+                    .join("\n"),
             )}
             onClicked={() => togglePopup("media")}
         >

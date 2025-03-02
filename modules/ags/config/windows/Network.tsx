@@ -8,28 +8,28 @@ import { ascending, descending } from "../lib/sorting";
 
 const network = NetworkService.get_default();
 
-const Ethernet = () => (
-    network.wired &&
-    <box spacing={16}>
-        <label
-            hexpand
-            halign={Gtk.Align.START}
-            justify={Gtk.Justification.LEFT}
-            label="Ethernet"
-        />
-        <switch
-            hexpand={false}
-            active={bind(network.wired, "state").as(
-                (state) => state === NetworkService.DeviceState.ACTIVATED
-            )}
-            sensitive={false}
-        />
-    </box>
-);
+const Ethernet = () =>
+    network.wired && (
+        <box spacing={16}>
+            <label
+                hexpand
+                halign={Gtk.Align.START}
+                justify={Gtk.Justification.LEFT}
+                label="Ethernet"
+            />
+            <switch
+                hexpand={false}
+                active={bind(network.wired, "state").as(
+                    (state) => state === NetworkService.DeviceState.ACTIVATED,
+                )}
+                sensitive={false}
+            />
+        </box>
+    );
 
 const AccessPoint = (ap: NetworkService.AccessPoint) => {
     const isActive = bind(network.wifi, "activeAccessPoint").as(
-        (active) => active === ap
+        (active) => active === ap,
     );
 
     return (
@@ -39,27 +39,36 @@ const AccessPoint = (ap: NetworkService.AccessPoint) => {
             active={Variable.derive(
                 [isActive, bind(network.wifi, "state")],
                 (active, state) =>
-                    active && state === NetworkService.DeviceState.ACTIVATED
+                    active && state === NetworkService.DeviceState.ACTIVATED,
             )()}
             activating={Variable.derive(
                 [isActive, bind(network.wifi, "state")],
                 (active, state) =>
-                    active && state !== NetworkService.DeviceState.ACTIVATED
+                    active && state !== NetworkService.DeviceState.ACTIVATED,
             )()}
         />
     );
 };
 
 const Wifi = () => {
-    const renderer = new Renderer<NetworkService.AccessPoint>((ap) => AccessPoint(ap), {
-        initial: network.wifi.accessPoints,
-        sort: (a, b) =>
-            descending(a === network.wifi.activeAccessPoint, b === network.wifi.activeAccessPoint) ||
-            descending(a.strength, b.strength) || ascending(a.ssid ?? "", b.ssid ?? ""),
-    });
+    const renderer = new Renderer<NetworkService.AccessPoint>(
+        (ap) => AccessPoint(ap),
+        {
+            initial: network.wifi.accessPoints,
+            sort: (a, b) =>
+                descending(
+                    a === network.wifi.activeAccessPoint,
+                    b === network.wifi.activeAccessPoint,
+                ) ||
+                descending(a.strength, b.strength) ||
+                ascending(a.ssid ?? "", b.ssid ?? ""),
+        },
+    );
 
     network.wifi.connect("access-point-added", (_, ap) => renderer.add(ap));
-    network.wifi.connect("access-point-removed", (_, ap) => renderer.delete(ap));
+    network.wifi.connect("access-point-removed", (_, ap) =>
+        renderer.delete(ap),
+    );
 
     return (
         <box vertical spacing={8}>
@@ -70,14 +79,17 @@ const Wifi = () => {
                     justify={Gtk.Justification.LEFT}
                     label="Wifi"
                 />
-                <switch hexpand={false} active={bind(network.wifi, "enabled")} />
+                <switch
+                    hexpand={false}
+                    active={bind(network.wifi, "enabled")}
+                />
             </box>
-            <box vertical spacing={8}>
+            <box vertical spacing={8} noImplicitDestroy>
                 {bind(renderer)}
             </box>
         </box>
     );
-}
+};
 
 export default function Network() {
     return (

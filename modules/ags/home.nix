@@ -22,7 +22,18 @@
     ];
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "ags run" ];
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [ "ags run" ];
+
+    bind = [
+      # Run menu
+      "$mainMod, D, exec, ags request 'popup toggle run'"
+
+      # Logout menu
+      "$mainMod, Escape, exec, ags request 'popup toggle power'"
+      ", XF86PowerOff, exec, ags request 'popup toggle power'"
+    ];
+  };
 
   home.packages = with pkgs; [
     cliphist
