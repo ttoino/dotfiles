@@ -48,14 +48,21 @@
   };
 
   home.activation.mopidy-ytmusic-credentials =
-    lib.hm.dag.entryAfter [ "writeBoundary" ]
-      ''
-        id=$(cat "${config.age.secrets.mopidy-google-client-id.path}")
-        secret=$(cat "${config.age.secrets.mopidy-google-client-secret.path}")
-        config_file="''${XDG_CONFIG_HOME:-${config.xdg.configHome}}/mopidy/mopidy.conf"
-        backup_file="$config_file.${osConfig.home-manager.backupFileExtension}"
-        run rm -f "$backup_file"
-        run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
-        run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
-      '';
+    let
+      replaceRun =
+        path:
+        builtins.replaceStrings
+          [ "XDG_RUNTIME_DIR" ]
+          [ "XDG_RUNTIME_DIR:-/run/user/1000" ]
+          path;
+    in
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      id=$(cat "${replaceRun config.age.secrets.mopidy-google-client-id.path}")
+      secret=$(cat "${replaceRun config.age.secrets.mopidy-google-client-secret.path}")
+      config_file="''${XDG_CONFIG_HOME:-${config.xdg.configHome}}/mopidy/mopidy.conf"
+      backup_file="$config_file.${osConfig.home-manager.backupFileExtension}"
+      run rm -f "$backup_file"
+      run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-id@/$id/" "$config_file"
+      run ${pkgs.gnused}/bin/sed -i "s/@mopidy-google-client-secret@/$secret/" "$config_file"
+    '';
 }
