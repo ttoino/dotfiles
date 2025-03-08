@@ -12,12 +12,14 @@
 
         tokenFile = "~/.config/vdirsyncer/google_calendar_token";
         clientIdCommand = [
-          "cat"
-          config.age.secrets.calendar-google-client-id.path
+          "sh"
+          "-c"
+          "cat ${config.age.secrets.calendar-google-client-id.path}"
         ];
         clientSecretCommand = [
-          "cat"
-          config.age.secrets.calendar-google-client-secret.path
+          "sh"
+          "-c"
+          "cat ${config.age.secrets.calendar-google-client-secret.path}"
         ];
       };
 
@@ -28,7 +30,18 @@
     };
   };
 
-  programs.khal.enable = true;
+  programs.khal = {
+    enable = true;
+
+    locale = {
+      dateformat = "%Y-%m-%d";
+      longdateformat = "%Y-%m-%d";
+      timeformat = "%H:%M:%S";
+      datetimeformat = "%Y-%m-%dT%H:%M:%S";
+      longdatetimeformat = "%Y-%m-%dT%H:%M:%S";
+    };
+  };
+
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
 

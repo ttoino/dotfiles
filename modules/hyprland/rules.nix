@@ -29,11 +29,4 @@
     "noshadow, tag:shimeji"
     "noborder, tag:shimeji"
   ];
-
-  layerrule = [
-    # Ags
-    "blur, ags-scrim"
-    "order 1, ags-scrim"
-    "order 1, ags-dismisser"
-  ];
 }

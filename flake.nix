@@ -21,7 +21,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     astal = {
-      url = "github:Aylur/astal";
+      url = "github:ttoino/astal/wifi_accesspoint_signals";
+      # url = "github:Aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {

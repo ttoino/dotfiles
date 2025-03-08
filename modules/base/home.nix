@@ -1,6 +1,5 @@
-{ ... }:
 {
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nix.gc.frequency = "daily";
 }

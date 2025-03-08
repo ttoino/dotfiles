@@ -57,13 +57,13 @@ const Player = (player: Mpris.Player, onChoose: () => void) => (
 );
 
 export default function Media() {
-    const visible = new Variable("choose");
+    let setVisible: (visible: string) => void;
 
     const choiceRenderer = new Renderer<Mpris.Player>(
         (player) => (
             <button
                 label={bind(player, "identity")}
-                onClicked={() => visible.set(player.busName)}
+                onClicked={() => setVisible(player.busName)}
             />
         ),
         {
@@ -72,7 +72,7 @@ export default function Media() {
         },
     );
     const playerRenderer = new Renderer<Mpris.Player>(
-        (player) => Player(player, () => visible.set("choose")),
+        (player) => Player(player, () => setVisible("_choose")),
         {
             initial: mpris.players,
             sort: (a, b) => ascending(a.identity, b.identity),
@@ -99,10 +99,13 @@ export default function Media() {
             <stack
                 className="media-window info-window"
                 transitionType={Gtk.StackTransitionType.CROSSFADE}
-                visibleChildName={visible()}
                 noImplicitDestroy
+                setup={(stack) =>
+                    (setVisible = (visible) =>
+                        stack.set_visible_child_name(visible))
+                }
             >
-                <box name="choose" vertical spacing={8} noImplicitDestroy>
+                <box name="_choose" vertical spacing={8} noImplicitDestroy>
                     <label label="Choose a player" />
                     {bind(choiceRenderer)}
                 </box>

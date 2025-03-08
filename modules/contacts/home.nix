@@ -17,12 +17,14 @@
 
         tokenFile = "~/.config/vdirsyncer/google_contacts_token";
         clientIdCommand = [
-          "cat"
-          config.age.secrets.contacts-google-client-id.path
+          "sh"
+          "-c"
+          "cat ${config.age.secrets.calendar-google-client-id.path}"
         ];
         clientSecretCommand = [
-          "cat"
-          config.age.secrets.contacts-google-client-secret.path
+          "sh"
+          "-c"
+          "cat ${config.age.secrets.calendar-google-client-secret.path}"
         ];
       };
 

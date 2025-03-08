@@ -33,6 +33,12 @@
       "$mainMod, Escape, exec, ags request 'popup toggle power'"
       ", XF86PowerOff, exec, ags request 'popup toggle power'"
     ];
+
+    layerrule = [
+      "blur, ags-scrim"
+      "order 1, ags-scrim"
+      "order 1, ags-dismisser"
+    ];
   };
 
   home.packages = with pkgs; [

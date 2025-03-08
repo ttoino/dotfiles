@@ -18,6 +18,8 @@
     "col.active_border" = "$blue $green 45deg";
     "col.inactive_border" = "$surface2";
 
+    allow_tearing = true;
+
     layout = "dwindle";
   };
 
