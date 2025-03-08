@@ -15,6 +15,7 @@ const AppEntry = ({
     <button
         onClicked={() => {
             close();
+            // TODO: Use UWSM?
             app.launch();
         }}
     >

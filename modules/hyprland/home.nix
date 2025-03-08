@@ -3,9 +3,12 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    # Not needed because of UWSM
+    systemd.enable = false;
+
     settings =
       ({
-        exec-once = [ "systemctl --user start hyprpolkitagent" ];
+        # exec-once = [ "systemctl --user start hyprpolkitagent" ];
 
         monitor = [
           "eDP-2, preferred, auto, 1.60"
@@ -32,14 +35,8 @@
     wl-clipboard # Clipboard manager
   ];
 
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-  };
-
-  programs.zsh.profileExtra = ''
-    if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-      exec Hyprland
-    fi
+  xdg.configFile."uwsm/env".text = ''
+    export NIXOS_OZONE_WL=1
+    export ELECTRON_OZONE_PLATFORM_HINT=wayland
   '';
 }

@@ -7,7 +7,7 @@
 
     configDir = ./config;
 
-    # systemd.enable = true;
+    systemd.enable = true;
 
     extraPackages = with inputs.ags.packages.${pkgs.system}; [
       apps
@@ -23,8 +23,8 @@
   };
 
   wayland.windowManager.hyprland.settings = {
-    exec-once = [ "ags run" ];
-
+    # It's okay to not use UWSM because these are just quickly interacting
+    # with the ags daemon and not long-lived
     bind = [
       # Run menu
       "$mainMod, D, exec, ags request 'popup toggle run'"

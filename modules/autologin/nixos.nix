@@ -1,7 +1,11 @@
 { ... }:
 {
-  services.getty = {
-    autologinUser = "toino";
-    autologinOnce = true;
+  services = {
+    displayManager.autoLogin.user = "toino";
+
+    getty = {
+      autologinUser = "toino";
+      autologinOnce = true;
+    };
   };
 }
