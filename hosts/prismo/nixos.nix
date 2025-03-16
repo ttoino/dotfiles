@@ -15,6 +15,8 @@
     ./hardware.nix
   ];
 
+  age.rekey.localStorageDir = ./secrets/nixos;
+
   # The open source driver does not support Maxwell GPUs.
   hardware.nvidia.open = false;
 
@@ -102,4 +104,7 @@
     listen_interface = "10.73.3.79";
     outgoing_interface = "wg1";
   };
+
+  # Dynamic DNS
+  services.cloudflare-dyndns.domains = [ "prismo.toino.pt" ];
 }

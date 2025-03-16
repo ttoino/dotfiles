@@ -39,11 +39,7 @@
 
   networking.wg-quick.interfaces.wg0 = {
     address = [ "10.0.0.2/24" ];
-    dns = [
-      "10.0.0.1"
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
+    dns = [ "10.0.0.1" ];
     privateKeyFile = config.age.secrets.wireguard-private-key.path;
     peers = [
       {
@@ -52,6 +48,7 @@
         presharedKeyFile = config.age.secrets.wireguard-prismo-preshared-key.path;
         allowedIPs = [ "10.0.0.1/24" ];
         persistentKeepalive = 60;
+        endpoint = "prismo.toino.pt:51820";
       }
     ];
   };

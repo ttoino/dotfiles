@@ -14,6 +14,8 @@
     accent = "green";
     flavor = "mocha";
 
+    gtk.enable = true;
+
     cursors = {
       enable = true;
       accent = "light";
