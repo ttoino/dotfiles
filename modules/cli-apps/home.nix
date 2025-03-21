@@ -3,7 +3,6 @@
   programs = {
     bat.enable = true; # Cat clone
     htop.enable = true; # Process manager
-    obs-studio.enable = true; # Screen recording/streaming
     ripgrep.enable = true; # Grep clone
 
     zsh.shellAliases = {

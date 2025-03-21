@@ -5,6 +5,7 @@
     firefox.enable = true; # Web browser
     imv.enable = true; # Image viewer
     mpv.enable = true; # Video/audio player
+    obs-studio.enable = true; # Screen recording/streaming
     zathura.enable = true; # PDF reader
   };
 
