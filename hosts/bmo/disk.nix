@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [ inputs.disko.nixosModules.disko ];
 
   disko.devices = {
@@ -17,7 +18,10 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "fmask=0077" "dmask=0077" ];
+                mountOptions = [
+                  "fmask=0077"
+                  "dmask=0077"
+                ];
               };
             };
             swap = {
@@ -41,7 +45,10 @@
                     mountpoint = "/home";
                   };
                   "/nix" = {
-                    mountOptions = [ "compress=zstd:2" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd:2"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                 };

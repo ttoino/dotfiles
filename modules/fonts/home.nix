@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     (iosevka.override (import ./iosevka.nix))
     noto-fonts
@@ -12,7 +13,10 @@
 
   fonts.fontconfig = {
     defaultFonts = {
-      sansSerif = [ "Roboto" "Noto Sans" ];
+      sansSerif = [
+        "Roboto"
+        "Noto Sans"
+      ];
       serif = [ "Noto Serif" ];
       monospace = [
         "Iosevka Custom Extended"

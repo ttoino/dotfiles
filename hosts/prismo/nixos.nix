@@ -46,9 +46,7 @@
   # Local DNS to eth0 and wg0
   services.dnsmasq.settings.host-record =
     let
-      transform =
-        ip:
-        "${lib.strings.concatStringsSep "," config.networking.hosts."127.0.0.1"},${ip}";
+      transform = ip: "${lib.strings.concatStringsSep "," config.networking.hosts."127.0.0.1"},${ip}";
     in
     [
       (transform "192.168.1.1")
