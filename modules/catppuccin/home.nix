@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
 
   gtk.enable = true;
@@ -21,5 +22,11 @@
       accent = "light";
       flavor = "mocha";
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    hyprcursor.enable = true;
+    x11.enable = true;
   };
 }

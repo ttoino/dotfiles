@@ -11,7 +11,7 @@
     "tag +pip, title:Picture-in-Picture"
 
     "float, tag:pip"
-    "move 100%-w-16 100%-w-16, tag:pip"
+    "move 100%-w-16 100%-w-72, tag:pip"
     "size 25% 25%, tag:pip"
     "noinitialfocus, tag:pip"
     "pin, tag:pip"
