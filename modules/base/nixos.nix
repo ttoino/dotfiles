@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ overlays, pkgs, ... }:
 {
   # Use most recent kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -8,7 +8,10 @@
     settings.experimental-features = "nix-command flakes";
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = overlays;
+  };
 
   hardware.enableAllFirmware = true;
 
