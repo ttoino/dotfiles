@@ -3,7 +3,7 @@
     gytmdl = prev.python3Packages.buildPythonApplication rec {
       pname = "gytmdl";
       version = "2.1.4";
-      format = "pyproject";
+      pyproject = true;
 
       src = prev.fetchFromGitHub {
         owner = "glomatico";
@@ -40,5 +40,51 @@
         sha256 = "sha256-Em7Kk815lJqPrA8hFGc/q+WYA9b4XBqA6wQNO34M3C4=";
       };
     });
+  })
+
+  (final: prev: {
+    python3Packages = prev.python3Packages.overrideScope (final': prev': {
+      slskd-api = prev'.buildPythonPackage rec {
+        pname = "slskd-api";
+        version = "0.1.5";
+        pyproject = true;
+
+        src = prev.fetchFromGitHub {
+          owner = "bigoulours";
+          repo = pname;
+          rev = "v${version}";
+          sha256 = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
+        };
+
+        nativeBuildInputs = with prev'; [ setuptools-git-versioning ];
+
+        propagatedBuildInputs = with prev'; [ requests ];
+      };
+    });
+  })
+
+  (final: prev: {
+    soularr = prev.python3Packages.buildPythonApplication rec {
+      pname = "soularr";
+      version = "main";
+      pyproject = false;
+
+      src = prev.fetchFromGitHub {
+        owner = "mrusse";
+        repo = pname;
+        rev = version;
+        sha256 = "sha256-S+kcWKcUxvvvAv6BtWDwmeoJyN1GosFsLzOnuIg+i2k=";
+      };
+
+      propagatedBuildInputs = with prev.python3Packages; [
+        music-tag
+        pyarr
+        slskd-api
+      ];
+
+      installPhase = ''
+        install -Dm755 ${pname}.py $out/bin/${pname}
+      '';
+    };
   })
 ]

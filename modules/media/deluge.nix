@@ -22,7 +22,6 @@
   services.caddy.virtualHosts."torrents.toino.pt".extraConfig = "reverse_proxy * localhost:8112";
 
   networking.hosts."127.0.0.1" = [
-    "deluge.local"
     "torrents.toino.pt"
   ];
 
