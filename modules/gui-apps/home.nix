@@ -16,6 +16,7 @@
     gimp # Image editor
     hunspell # Spell checker
     hunspellDicts.pt_PT # Portuguese spell checker
+    jellyfin-media-player # Jellyfin media player
     libreoffice # Office suite
     pavucontrol # Volume control
     vesktop # Discord client
