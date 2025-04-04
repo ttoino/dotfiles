@@ -6,10 +6,6 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    gytmdl
-  ];
-
   services.mopidy = {
     enable = true;
 
@@ -23,11 +19,13 @@
       file.enabled = false;
 
       http = {
-        allowed_origins = ["localhost:5173"];
+        allowed_origins = [ "localhost:5173" ];
         default_app = "iris";
       };
 
       local.media_dir = "~/Music";
+      
+      logging.verbosity = 3;
     };
   };
 }
