@@ -1,6 +1,7 @@
 { modules, ... }:
 {
   modules = with modules; [
+    android
     direnv
     docker
     docs
