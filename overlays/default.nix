@@ -1,37 +1,5 @@
 {...}:[
   (final: prev: {
-    gytmdl = prev.python3Packages.buildPythonApplication rec {
-      pname = "gytmdl";
-      version = "2.1.4";
-      pyproject = true;
-
-      src = prev.fetchFromGitHub {
-        owner = "glomatico";
-        repo = pname;
-        rev = version;
-        sha256 = "sha256-TnXuIz3UbUOqjUPRC7iZ+PgKcStOZ7OWKWiIvuj1ZfE=";
-      };
-
-      buildInputs = with prev.python3Packages; [
-        flit
-      ];
-
-      propagatedBuildInputs = (with prev.python3Packages; [
-        click
-        colorama
-        inquirerpy
-        mutagen
-        pillow
-        yt-dlp
-        ytmusicapi
-      ]) ++ (with prev; [
-        ffmpeg
-        aria2
-      ]);
-    };
-  })
-
-  (final: prev: {
     mopidy-local = prev.mopidy-local.overrideAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
         owner = "ttoino";
@@ -73,7 +41,7 @@
         owner = "mrusse";
         repo = pname;
         rev = version;
-        sha256 = "sha256-S+kcWKcUxvvvAv6BtWDwmeoJyN1GosFsLzOnuIg+i2k=";
+        sha256 = "sha256-6qdkuB0JqleTq0I67UbsOdpoa8zcpD0PDiTISYQvcLQ=";
       };
 
       propagatedBuildInputs = with prev.python3Packages; [

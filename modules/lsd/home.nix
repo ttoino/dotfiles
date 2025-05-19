@@ -33,9 +33,9 @@ in
   };
 
   programs.zsh.shellAliases = {
-    ls = "lsd";
-    lt = "ls --tree -h";
-    lta = "lt -A";
+    ls = lib.mkForce "lsd";
+    lt = lib.mkForce "ls --tree -h";
+    lta = lib.mkForce "lt -A";
   };
 
   xdg.configFile."lsd/icons.yaml".text = lib.generators.toYAML { } {
