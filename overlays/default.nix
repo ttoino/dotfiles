@@ -9,6 +9,39 @@
       };
     });
   })
+  
+  (final: prev: {
+    mopidy-mpris = prev.mopidy-mpris.overrideAttrs (oldAttrs: {
+      src = prev.fetchFromGitHub {
+        owner = "ttoino";
+        repo = "mopidy-mpris";
+        rev = "image-uri";
+        sha256 = "sha256-QYHbfDCMr+La1eVncw+etgW3xTB1irmX5wQj33yBLWY=";
+      };
+    });
+  })
+
+  (final: prev: {
+    mopidy-marceline = prev.python3Packages.buildPythonPackage rec {
+      pname = "mopidy-marceline";
+      version = "0.0.2";
+      format = "wheel";
+
+      src = prev.fetchurl {
+        url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
+        hash = "sha256-c+xkFjm3bbMx0QebEJhH5aA1qvknx30soEkERDqlRKY=";
+      };
+
+      propagatedBuildInputs = with prev; [
+        mopidy
+        python3Packages.pykka
+      ];
+
+      pythonImportsCheck = ["mopidy_marceline"];
+
+      doCheck = false;
+    };
+  })
 
   (final: prev: {
     python3Packages = prev.python3Packages.overrideScope (final': prev': {
