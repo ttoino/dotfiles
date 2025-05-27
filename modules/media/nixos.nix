@@ -2,6 +2,7 @@
 {
   imports = [
     ./bazarr.nix
+    ./beets.nix
     ./deluge.nix
     ./jellyfin.nix
     ./lidarr.nix

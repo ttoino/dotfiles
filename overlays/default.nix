@@ -24,12 +24,12 @@
   (final: prev: {
     mopidy-marceline = prev.python3Packages.buildPythonPackage rec {
       pname = "mopidy-marceline";
-      version = "0.0.2";
+      version = "0.0.3";
       format = "wheel";
 
       src = prev.fetchurl {
         url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
-        hash = "sha256-c+xkFjm3bbMx0QebEJhH5aA1qvknx30soEkERDqlRKY=";
+        hash = "sha256-6gwS4/8c5y3fIEev4UDMPFrotSobJ0asv3VAI2tYp0Y=";
       };
 
       propagatedBuildInputs = with prev; [
