@@ -17,6 +17,8 @@
     ];
 
     settings = {
+      core.restore_state = true;
+
       file.enabled = false;
 
       http = {

@@ -16,7 +16,7 @@
         owner = "ttoino";
         repo = "mopidy-mpris";
         rev = "image-uri";
-        sha256 = "sha256-QYHbfDCMr+La1eVncw+etgW3xTB1irmX5wQj33yBLWY=";
+        sha256 = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
       };
     });
   })

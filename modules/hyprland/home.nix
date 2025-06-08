@@ -37,5 +37,7 @@
   xdg.configFile."uwsm/env".text = ''
     export NIXOS_OZONE_WL=1
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
+    export PROTON_ENABLE_HDR=1
+    export PROTON_ENABLE_WAYLAND=1
   '';
 }
