@@ -60,7 +60,7 @@
         mode = "0775";
       };
       "/data/media/music".d = {
-        user = "lidarr";
+        user = "media";
         group = "media";
         mode = "0775";
       };
@@ -79,6 +79,17 @@
       };
       "/data/downloads/soulseek/complete".d = {
         user = "slskd";
+        group = "media";
+        mode = "0775";
+      };
+
+      "/data/media/music/untagged".d = {
+        user = "lidarr";
+        group = "media";
+        mode = "0775";
+      };
+      "/data/media/music/tagged".d = {
+        user = "beets";
         group = "media";
         mode = "0775";
       };

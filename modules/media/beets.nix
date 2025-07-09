@@ -16,7 +16,7 @@
         User = "beets";
         Group = "media";
         UMask = "0002";
-        ExecStart = "${pkgs.beets}/bin/beet import /data/media/music";
+        ExecStart = "${pkgs.beets}/bin/beet import /data/media/music/untagged";
         Restart = "on-failure";
       };
     };
@@ -35,7 +35,8 @@
   system.activationScripts.beets =
     let
       cfg = lib.generators.toYAML { } {
-        directory = "/data/media/music";
+        directory = "/data/media/music/tagged";
+
         plugins = [
           "embedart"
           "fetchart"
@@ -44,16 +45,20 @@
 
         import = {
           write = true;
-          copy = false;
+          copy = true;
           resume = true;
           incremental = true;
-          from_scratch = true;
+          from_scratch = false;
           quiet = true;
           log = "/var/lib/beets/log.log";
         };
 
         embedart = {
           remove_art_file = true;
+        };
+
+        fetchart = {
+          enforce_ratio = true;
         };
 
         lastgenre = {
