@@ -1,17 +1,17 @@
-import { bind, Variable } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
 import BatteryService from "gi://AstalBattery";
 import PowerProfiles from "gi://AstalPowerProfiles";
 import { batteryRange } from "../lib/icons";
 import ExpandableWindow from "../widgets/ExpandableWindow";
 import IconSlider from "../widgets/IconSlider";
-import ToggleButton from "../widgets/ToggleButton";
+import { Astal, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
+import { createBinding, createComputed } from "ags";
 
 const battery = BatteryService.get_default();
 const powerProfiles = PowerProfiles.get_default();
 
-const icon = Variable.derive(
-    [bind(battery, "charging"), bind(battery, "percentage")],
+const icon = createComputed(
+    [createBinding(battery, "charging"), createBinding(battery, "percentage")],
     (charging, percent) => batteryRange(charging, percent),
 );
 
@@ -20,28 +20,34 @@ const BatterySlider = () => (
         hexpand
         drawValue={false}
         sensitive={false}
-        icon={icon()}
-        value={bind(battery, "percentage")}
+        icon={icon}
+        value={createBinding(battery, "percentage")}
     />
 );
 
-export default function Battery() {
+export default function Battery(
+    props: Partial<JSX.IntrinsicElements["window"]>,
+) {
     return (
         <window
             name="battery"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
             <ExpandableWindow
                 collapsed={<BatterySlider />}
-                expanded={(collapseButton) => (
-                    <scrollable
-                        vscroll={Gtk.PolicyType.AUTOMATIC}
-                        hscroll={Gtk.PolicyType.NEVER}
+                expanded={({collapseButton, ...props}) => (
+                    <scrolledwindow
+                        vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+                        hscrollbarPolicy={Gtk.PolicyType.NEVER}
+                        {...props}
                     >
-                        <box vertical spacing={16}>
+                        <box
+                            orientation={Gtk.Orientation.VERTICAL}
+                            spacing={16}
+                        >
                             <box spacing={16}>
                                 {collapseButton}
                                 <label
@@ -53,20 +59,20 @@ export default function Battery() {
                             </box>
                             <box homogeneous hexpand>
                                 {powerProfiles.get_profiles().map((profile) => (
-                                    <ToggleButton
-                                        active={bind(
+                                    <togglebutton
+                                        active={createBinding(
                                             powerProfiles,
                                             "activeProfile",
                                         ).as((p) => p === profile.profile)}
                                     >
                                         {profile.profile}
-                                    </ToggleButton>
+                                    </togglebutton>
                                 ))}
                             </box>
                             <box vexpand />
                             <BatterySlider />
                         </box>
-                    </scrollable>
+                    </scrolledwindow>
                 )}
             />
         </window>

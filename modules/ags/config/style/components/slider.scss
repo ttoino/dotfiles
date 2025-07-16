@@ -6,16 +6,9 @@
     scale {
         min-height: 16px;
 
-        contents {
-            padding: 0 8px;
+        trough {
             border-radius: 8px;
-            background: linear-gradient(
-                to right,
-                $fg-color 8px,
-                color.change($fg-color, $alpha: 0.24) 8px
-            );
-
-            transition: background 0.3s;
+            background-color: color.change($fg-color, $alpha: 0.24) 8px;
         }
 
         slider {
@@ -28,16 +21,15 @@
         font-size: 24px;
         min-height: 32px;
 
-        contents {
-            padding: 0 16px;
+        trough {
             border-radius: 16px;
-            background: linear-gradient(
-                to right,
-                $fg-color 16px,
-                color.change($fg-color, $alpha: 0.24) 16px
-            );
+            background-color: color.change($fg-color, $alpha: 0.24) 16px;
+        }
 
-            transition: background 0.3s;
+        highlight {
+            background-color: $fg-color;
+
+            transform: scale(50%);
         }
 
         slider {
@@ -48,11 +40,10 @@
 
     scale,
     icon-slider {
-        padding: 0;
         color: $bg-color;
 
-        trough {
-            background: none;
+        trough, highlight, slider {
+            transition: background-color 0.3s;
         }
 
         slider {
@@ -62,19 +53,10 @@
             box-shadow: none;
             margin: 0;
 
-            transition: background-color 0.3s;
-
             &:hover {
                 box-shadow: inset 0 0 0 1000px
                     c.alpha(currentColor, $alpha: 0.07999999821186066);
             }
-        }
-
-        highlight {
-            background: none;
-            background-color: $fg-color;
-
-            transition: background-color 0.3s;
         }
     }
 }

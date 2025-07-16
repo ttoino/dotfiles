@@ -1,53 +1,51 @@
 import Notification from "../widgets/Notification";
-import Hyprland from "gi://AstalHyprland";
-import { Astal, Gdk } from "astal/gtk3";
 import Notifications from "../providers/notifications";
-import Renderer from "../lib/Renderer";
-import { bind } from "astal";
 import { ascending } from "../lib/sorting";
+import { Astal, Gtk } from "ags/gtk4";
+import { createBinding, For } from "ags";
+import { accessor } from "../lib/vars";
 
 const notifications = Notifications.get_default();
-const hyprland = Hyprland.get_default();
 
-export default function Popups(monitor: Gdk.Monitor) {
-    const renderer = new Renderer<number>(
-        (id) => {
-            const notification = notifications.get(id);
-            if (notification)
-                return Notification(
-                    notification,
-                    () => notifications.dismiss(id),
-                    true,
-                );
-        },
-        {
-            initial: notifications.popups,
-            sort: (a, b) =>
-                ascending(
-                    notifications.get(a)?.time ?? 0,
-                    notifications.get(b)?.time ?? 0,
-                ),
-        },
+export default function Popups(
+    props: Partial<Omit<JSX.IntrinsicElements["window"], "gdkmonitor">> &
+        Required<Pick<JSX.IntrinsicElements["window"], "gdkmonitor">>,
+) {
+    const popups = createBinding(notifications, "popups").as((ids) =>
+        ids.toSorted((a, b) =>
+            ascending(
+                notifications.get(a)?.time ?? 0,
+                notifications.get(b)?.time ?? 0,
+            ),
+        ),
     );
-
-    notifications.connect("notified", (_, id) => {
-        if (hyprland.focusedMonitor.model === monitor.model) renderer.add(id);
-        else renderer.delete(id);
-    });
-    notifications.connect("timed-out", (_, id) => renderer.delete(id));
-    notifications.connect("dismissed", (_, id) => renderer.delete(id));
 
     return (
         <window
-            gdkmonitor={monitor}
-            name={`popups-${monitor.model.replace(/\s/g, "-").toLowerCase()}`}
-            className={"popups"}
+            name={accessor(props.gdkmonitor).as(
+                (monitor) =>
+                    `popups-${monitor.model.replace(/\s/g, "-").toLowerCase()}`,
+            )}
+            class={"popups"}
             exclusivity={Astal.Exclusivity.EXCLUSIVE}
             anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
             margin={16}
+            {...props}
         >
-            <box hexpand vertical spacing={8} noImplicitDestroy>
-                {bind(renderer)}
+            <box hexpand orientation={Gtk.Orientation.VERTICAL} spacing={8}>
+                <For each={popups}>
+                    {(id) => {
+                        const notification = notifications.get(id);
+
+                        if (!notification) return <></>;
+
+                        return Notification(
+                            notification,
+                            () => notifications.dismiss(id),
+                            true,
+                        );
+                    }}
+                </For>
             </box>
         </window>
     );

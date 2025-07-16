@@ -1,5 +1,3 @@
-import { bind } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
 import BluetoothService from "gi://AstalBluetooth";
 import {
     BLUETOOTH,
@@ -17,8 +15,10 @@ import {
     VIDEO,
 } from "../lib/chars";
 import BaseDevice from "../widgets/Device";
-import Renderer from "../lib/Renderer";
 import { ascending, descending } from "../lib/sorting";
+import { createBinding, For } from "ags";
+import { Astal, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
 const bluetooth = BluetoothService.get_default();
 
@@ -40,16 +40,16 @@ const ICONS = {
 
 const Device = (device: BluetoothService.Device) => (
     <BaseDevice
-        title={bind(device, "name")}
-        subtitle={bind(device, "address")}
-        icon={bind(device, "icon").as((icon_name) =>
+        title={createBinding(device, "name")}
+        subtitle={createBinding(device, "address")}
+        icon={createBinding(device, "icon").as((icon_name) =>
             icon_name in ICONS
                 ? ICONS[icon_name as keyof typeof ICONS]
                 : BLUETOOTH,
         )}
-        iconTooltip={bind(device, "icon")}
-        active={bind(device, "connected")}
-        activating={bind(device, "connecting")}
+        iconTooltip={createBinding(device, "icon")}
+        active={createBinding(device, "connected")}
+        activating={createBinding(device, "connecting")}
         onPrimaryClick={() =>
             device.connected
                 ? device.disconnect_device(null)
@@ -58,35 +58,32 @@ const Device = (device: BluetoothService.Device) => (
     />
 );
 
-export default function Bluetooth() {
-    const renderer = new Renderer<BluetoothService.Device>(
-        (device) => Device(device),
-        {
-            initial: bluetooth.devices,
-            sort: (a, b) =>
+export default function Bluetooth(
+    props: Partial<JSX.IntrinsicElements["window"]>,
+) {
+    const devices = createBinding(bluetooth, "devices").as((devices) =>
+        devices.toSorted(
+            (a, b) =>
                 descending(a.connected, b.connected) ||
                 descending(a.paired, b.paired) ||
                 ascending(a.name ?? a.address ?? "", b.name ?? b.address ?? ""),
-        },
+        ),
     );
-
-    bluetooth.connect("device-added", (_, device) => renderer.add(device));
-    bluetooth.connect("device-removed", (_, device) => renderer.delete(device));
 
     return (
         <window
             name="bluetooth"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
-            <scrollable
-                className="bluetooth-window info-window"
-                hscroll={Gtk.PolicyType.NEVER}
-                vscroll={Gtk.PolicyType.AUTOMATIC}
+            <scrolledwindow
+                class="bluetooth-window info-window"
+                hscrollbarPolicy={Gtk.PolicyType.NEVER}
+                vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
             >
-                <box vertical spacing={8}>
+                <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
                     <box spacing={16}>
                         <label
                             hexpand
@@ -96,18 +93,18 @@ export default function Bluetooth() {
                         />
                         <switch
                             hexpand={false}
-                            active={bind(bluetooth, "isPowered")}
+                            active={createBinding(bluetooth, "isPowered")}
                             onStateSet={(self) =>
                                 self.state === bluetooth.isPowered &&
                                 bluetooth.toggle()
                             }
                         />
                     </box>
-                    <box vertical spacing={8} noImplicitDestroy>
-                        {bind(renderer)}
+                    <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
+                        <For each={devices}>{Device}</For>
                     </box>
                 </box>
-            </scrollable>
+            </scrolledwindow>
         </window>
     );
 }

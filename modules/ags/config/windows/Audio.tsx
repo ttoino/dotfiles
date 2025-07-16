@@ -1,6 +1,3 @@
-import { bind, Binding, Variable } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
-import { Stack } from "astal/gtk3/widget";
 import Wp from "gi://AstalWp";
 import {
     CHEVRON_DOWN,
@@ -13,7 +10,9 @@ import { volumeRange } from "../lib/icons";
 import ExpandableWindow from "../widgets/ExpandableWindow";
 import IconSlider from "../widgets/IconSlider";
 import ScrollText from "../widgets/ScrollText";
-import ToggleButton from "../widgets/ToggleButton";
+import { Accessor, createBinding, createComputed, For } from "ags";
+import { Astal, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
 const audio = Wp.get_default()?.audio;
 
@@ -28,9 +27,13 @@ const VolumeSlider = ({
         hexpand
         drawValue={false}
         step={5}
-        icon={isSpeaker ? bind(device, "volume").as(volumeRange) : MICROPHONE}
-        value={bind(device, "volume")}
-        onDragged={({ value }) => (device.volume = value)}
+        icon={
+            isSpeaker
+                ? createBinding(device, "volume").as(volumeRange)
+                : MICROPHONE
+        }
+        value={createBinding(device, "volume")}
+        onNotifyValue={({ value }) => (device.volume = value)}
     />
 );
 
@@ -41,15 +44,14 @@ const MuteButton = ({
     device: Wp.Endpoint;
     isSpeaker: boolean;
 }) => (
-    <ToggleButton
+    <togglebutton
         vexpand={false}
         valign={Gtk.Align.CENTER}
-        className="icon"
-        active={bind(device, "mute")}
+        class="icon"
+        active={createBinding(device, "mute")}
         onToggled={({ active }) => device.set_mute(active)}
-    >
-        {Variable.derive(
-            [bind(device, "mute"), bind(device, "volume")],
+        label={createComputed(
+            [createBinding(device, "mute"), createBinding(device, "volume")],
             (mute, volume) =>
                 isSpeaker
                     ? mute
@@ -58,8 +60,8 @@ const MuteButton = ({
                     : mute
                       ? MICROPHONE_OFF
                       : MICROPHONE,
-        )()}
-    </ToggleButton>
+        )}
+    />
 );
 
 const Device = ({
@@ -68,26 +70,26 @@ const Device = ({
     setSelectedDevice,
     isSpeaker,
 }: {
-    devices: Binding<Wp.Endpoint[]>;
+    devices: Accessor<Wp.Endpoint[]>;
     selectedDevice: Wp.Endpoint;
     setSelectedDevice: (device: Wp.Endpoint) => void;
     isSpeaker: boolean;
 }) => {
-    let stack: Stack;
+    let stack: Gtk.Stack;
 
     const Title = ({
         title,
         icon,
         next,
     }: {
-        title: string | Binding<string>;
+        title: string | Accessor<string>;
         icon: string;
         next: string;
     }) => (
         <box spacing={8}>
             <ScrollText label={title} />
             <button
-                className="icon"
+                class="icon"
                 onClicked={() => (stack.visibleChildName = next)}
             >
                 {icon}
@@ -97,17 +99,22 @@ const Device = ({
 
     return (
         <stack
-            className="audio-device"
+            class="audio-device"
             hexpand
             transitionType={Gtk.StackTransitionType.CROSSFADE}
             interpolateSize
             vhomogeneous={false}
             visibleChildName="volume"
-            setup={(s) => (stack = s)}
+            $={(s) => (stack = s)}
         >
-            <box name="volume" vertical spacing={8}>
+            <box
+                name="volume"
+                orientation={Gtk.Orientation.VERTICAL}
+                spacing={8}
+                $type="named"
+            >
                 <Title
-                    title={bind(selectedDevice, "description").as(
+                    title={createBinding(selectedDevice, "description").as(
                         (description) =>
                             description ??
                             (isSpeaker ? "Speaker" : "Microphone"),
@@ -123,46 +130,62 @@ const Device = ({
                     <MuteButton device={selectedDevice} isSpeaker={isSpeaker} />
                 </box>
             </box>
-            <box name="select" vertical spacing={8}>
+            <box
+                name="select"
+                orientation={Gtk.Orientation.VERTICAL}
+                spacing={8}
+                $type="named"
+            >
                 <Title
                     title={`Default ${isSpeaker ? "Speaker" : "Microphone"}`}
                     icon={CHEVRON_UP}
                     next="volume"
                 />
-                <box vertical spacing={8}>
-                    {devices.as((devices) =>
-                        devices.map((device) => (
+                <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
+                    <For each={devices}>
+                        {(device) => (
                             <button
-                                child={
-                                    <ScrollText
-                                        label={bind(device, "description").as(
-                                            (description) =>
-                                                description ?? "Unknown",
-                                        )}
-                                    />
-                                }
+                                class="device"
                                 onClicked={() => {
                                     setSelectedDevice(device);
                                     stack.visibleChildName = "volume";
                                 }}
-                            />
-                        )),
-                    )}
+                            >
+                                <ScrollText
+                                    label={createBinding(
+                                        device,
+                                        "description",
+                                    ).as(
+                                        (description) =>
+                                            description ?? "Unknown",
+                                    )}
+                                />
+                            </button>
+                        )}
+                    </For>
                 </box>
             </box>
         </stack>
     );
 };
 
-const AudioContent = (collapseButton: JSX.Element) => {
+const AudioContent = ({
+    collapseButton,
+    ...props
+}: {
+    collapseButton: JSX.Element;
+    $type: "named";
+    name: "expanded";
+}) => {
     if (!audio) return <></>;
 
     return (
-        <scrollable
-            vscroll={Gtk.PolicyType.AUTOMATIC}
-            hscroll={Gtk.PolicyType.NEVER}
+        <scrolledwindow
+            vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+            hscrollbarPolicy={Gtk.PolicyType.NEVER}
+            {...props}
         >
-            <box vertical spacing={16}>
+            <box orientation={Gtk.Orientation.VERTICAL} spacing={16}>
                 <box spacing={16}>
                     {collapseButton}
                     <label
@@ -173,23 +196,23 @@ const AudioContent = (collapseButton: JSX.Element) => {
                     />
                 </box>
                 <Device
-                    devices={bind(audio, "speakers")}
+                    devices={createBinding(audio, "speakers")}
                     selectedDevice={audio.defaultSpeaker}
                     setSelectedDevice={() => {}}
                     isSpeaker
                 />
                 <Device
-                    devices={bind(audio, "microphones")}
+                    devices={createBinding(audio, "microphones")}
                     selectedDevice={audio.defaultMicrophone}
                     setSelectedDevice={() => {}}
                     isSpeaker={false}
                 />
             </box>
-        </scrollable>
+        </scrolledwindow>
     );
 };
 
-export default function Audio() {
+export default function Audio(props: Partial<JSX.IntrinsicElements["window"]>) {
     if (!audio) return <></>;
 
     return (
@@ -197,14 +220,17 @@ export default function Audio() {
             name="audio"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
             <ExpandableWindow
-                collapsed={[
-                    <VolumeSlider device={audio.defaultSpeaker} isSpeaker />,
-                    <MuteButton device={audio.defaultSpeaker} isSpeaker />,
-                ]}
+                collapsed={
+                    <>
+                        <VolumeSlider device={audio.defaultSpeaker} isSpeaker />
+                        ,
+                        <MuteButton device={audio.defaultSpeaker} isSpeaker />,
+                    </>
+                }
                 expanded={AudioContent}
             />
         </window>

@@ -1,15 +1,15 @@
-import { Binding, Variable } from "astal";
-import { Gtk, Astal } from "astal/gtk3/index";
 import Icon from "./Icon";
-import { binding } from "../lib/vars";
+import { accessor } from "../lib/vars";
+import { Accessor, createComputed, With } from "ags";
+import { Gtk } from "ags/gtk4";
 
 export interface DeviceProps {
-    title?: string | Binding<string | undefined>;
-    subtitle?: string | Binding<string | undefined>;
-    icon?: string | Binding<string | undefined>;
-    iconTooltip?: string | Binding<string | undefined>;
-    active?: boolean | Binding<boolean | undefined>;
-    activating?: boolean | Binding<boolean | undefined>;
+    title?: string | Accessor<string | undefined>;
+    subtitle?: string | Accessor<string | undefined>;
+    icon?: string | Accessor<string | undefined>;
+    iconTooltip?: string | Accessor<string | undefined>;
+    active?: boolean | Accessor<boolean | undefined>;
+    activating?: boolean | Accessor<boolean | undefined>;
 
     onPrimaryClick?(): void;
     onSecondaryClick?(): void;
@@ -25,62 +25,51 @@ export default function Device({
     onPrimaryClick = () => {},
     onSecondaryClick = () => {},
 }: DeviceProps) {
-    const titleB = binding(title);
-    const subtitleB = binding(subtitle);
-    const iconB = binding(icon);
-    const iconTooltipB = binding(iconTooltip);
-    const activeB = binding(active);
-    const activatingB = binding(activating);
+    const titleB = accessor(title);
+    const subtitleB = accessor(subtitle);
+    const iconB = accessor(icon);
+    const iconTooltipB = accessor(iconTooltip);
+    const activeB = accessor(active);
+    const activatingB = accessor(activating);
 
-    const className = Variable.derive(
+    const className = createComputed(
         [activeB, activatingB],
         (active, activating) =>
             `device ${active ? "active" : ""} ${activating ? "activating" : ""}`,
     );
 
     return (
-        <eventbox
-            cursor="pointer"
-            onClick={(self, event) =>
-                event.button === Astal.MouseButton.PRIMARY
-                    ? onPrimaryClick()
-                    : event.button === Astal.MouseButton.SECONDARY
-                      ? onSecondaryClick()
-                      : undefined
-            }
-        >
-            <box className={className()} spacing={16}>
-                {iconB.as((icon) => (
-                    <Icon
-                        visible={!!icon}
-                        label={icon ?? ""}
-                        // tooltipText={iconTooltipB}
-                    />
-                ))}
-                <box vertical valign={Gtk.Align.CENTER}>
-                    {titleB.as((title) => (
-                        <label
-                            visible={!!title}
-                            label={title ?? ""}
-                            halign={Gtk.Align.START}
-                            hexpand
-                            lines={1}
-                            wrap={false}
-                        />
-                    ))}
-                    {subtitleB.as((subtitle) => (
-                        <label
-                            visible={!!subtitle}
-                            label={subtitle ?? ""}
-                            className="secondary"
-                            halign={Gtk.Align.START}
-                            hexpand
-                            lines={1}
-                            wrap={false}
-                        />
-                    ))}
-                </box>
+        <box class={className} spacing={16}>
+            <Gtk.GestureClick button={1} onPressed={onPrimaryClick} />
+            <Gtk.GestureClick button={3} onPressed={onSecondaryClick} />
+
+            <Icon
+                visible={iconB.as((icon) => !!icon)}
+                label={iconB.as((icon) => icon ?? "")}
+                tooltipText={iconTooltipB.as((tooltip) => tooltip ?? "")}
+            />
+            <box
+                orientation={Gtk.Orientation.VERTICAL}
+                valign={Gtk.Align.CENTER}
+            >
+                <label
+                    visible={titleB.as((title) => !!title)}
+                    label={titleB.as((title) => title ?? "")}
+                    halign={Gtk.Align.START}
+                    hexpand
+                    lines={1}
+                    wrap={false}
+                />
+                <label
+                    visible={subtitleB.as((subtitle) => !!subtitle)}
+                    label={subtitleB.as((subtitle) => subtitle ?? "")}
+                    class="secondary"
+                    halign={Gtk.Align.START}
+                    hexpand
+                    lines={1}
+                    wrap={false}
+                />
             </box>
-        </eventbox>
+        </box>
     );
 }

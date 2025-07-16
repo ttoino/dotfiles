@@ -1,5 +1,6 @@
-import { ButtonProps } from "astal/gtk3/widget";
-
-export default function IconButton({ className, ...rest }: ButtonProps) {
-    return <button className={`icon ${className}`} {...rest} />;
+export default function IconButton({
+    class: className,
+    ...rest
+}: JSX.IntrinsicElements["button"]) {
+    return <button class={`icon ${className}`} {...rest} />;
 }

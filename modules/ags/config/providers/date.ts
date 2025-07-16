@@ -1,4 +1,4 @@
-import { Variable } from "astal";
+import { createPoll } from "ags/time";
 
 const FORMATTER = new Intl.DateTimeFormat([], {
     year: "2-digit",
@@ -32,4 +32,4 @@ const dateObject = () => {
     return ret;
 };
 
-export default Variable(dateObject()).poll(1000, dateObject);
+export default createPoll(dateObject(), 1000, dateObject);

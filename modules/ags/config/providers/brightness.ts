@@ -1,5 +1,7 @@
-import { exec, monitorFile, readFile } from "astal";
-import GObject, { property, register } from "astal/gobject";
+import { monitorFile, readFile } from "ags/file";
+import { getter, register, setter } from "ags/gobject";
+import { exec } from "ags/process";
+import GObject from "gi://GObject?version=2.0";
 
 const get = (args: string) => exec(`brightnessctl -m ${args}`);
 
@@ -14,10 +16,12 @@ export default class Brightness extends GObject.Object {
     #value: number;
     #max: number;
 
-    @property(Number)
+    @getter(Number)
     get percentage() {
         return this.#value / this.#max;
     }
+
+    @setter(Number)
     set percentage(percent) {
         if (percent < 0) percent = 0;
         if (percent > 1) percent = 1;

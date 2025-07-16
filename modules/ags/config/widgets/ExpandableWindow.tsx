@@ -1,72 +1,57 @@
-import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
-import { Stack, StackProps } from "astal/gtk3/widget";
+import { createState } from "ags";
 import { CHEVRON_LEFT, CHEVRON_RIGHT } from "../lib/chars";
 import IconButton from "./IconButton";
+import Gtk from "gi://Gtk?version=4.0";
 
-export interface ExpandableWindowProps extends Omit<StackProps, "children"> {
-    collapsed: JSX.Element | JSX.Element[];
-    expanded: (collapseButton: JSX.Element) => JSX.Element;
+export interface ExpandableWindowProps
+    extends Partial<Omit<JSX.IntrinsicElements["stack"], "children">> {
+    collapsed: JSX.Element;
+    expanded: (props: {
+        collapseButton: JSX.Element;
+        $type: "named";
+        name: "expanded";
+    }) => JSX.Element;
 }
 
 export default function ExpandableWindow({
-    className = "",
+    class: className = "",
     collapsed,
-    expanded,
+    expanded: Expanded,
     ...rest
 }: ExpandableWindowProps) {
-    let stack: Stack;
-
-    const expandedChild = expanded(
-        <IconButton
-            className="collapse"
-            onClicked={() => (stack.visibleChildName = "collapsed")}
-        >
-            {CHEVRON_LEFT}
-        </IconButton>,
-    );
-    expandedChild.name = "expanded";
+    const [visible, setVisible] = createState("collapsed");
 
     return (
         <stack
-            className={`expandable-window ${className}`}
+            class={visible.as(
+                (visible) => `expandable-window ${visible} ${className}`,
+            )}
             transitionType={Gtk.StackTransitionType.SLIDE_LEFT_RIGHT}
-            visibleChildName="collapsed"
-            setup={(s) => {
-                stack = s;
-
-                // bind(stack, "window").subscribe((window) => {
-                //     print("window", window);
-                //     print("window", stack.get_toplevel());
-                //     if (!window) return;
-                //     bind(window, "visible").subscribe(
-                //         (visible) => {
-                //             if (!visible) stack.visibleChildName = "collapsed";
-                //             print("window visible", visible);
-                //         }
-                //     );
-                // });
-
-                bind(stack, "visibleChildName").subscribe((visibleChild) => {
-                    for (const child of stack.get_children())
-                        stack.toggleClassName(
-                            child.name,
-                            child.name === visibleChild,
-                        );
-                });
-            }}
+            visibleChildName={visible}
             {...rest}
         >
-            <box name="collapsed" spacing={8}>
+            <box name="collapsed" spacing={8} $type="named">
                 {collapsed}
                 <IconButton
-                    className="expand"
-                    onClicked={() => (stack.visibleChildName = "expanded")}
+                    class="expand"
+                    onClicked={() => setVisible("expanded")}
                 >
                     {CHEVRON_RIGHT}
                 </IconButton>
             </box>
-            {expandedChild}
+
+            <Expanded
+                name="expanded"
+                $type="named"
+                collapseButton={
+                    <IconButton
+                        class="collapse"
+                        onClicked={() => setVisible("collapsed")}
+                    >
+                        {CHEVRON_LEFT}
+                    </IconButton>
+                }
+            />
         </stack>
     );
 }

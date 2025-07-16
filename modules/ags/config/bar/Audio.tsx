@@ -1,28 +1,28 @@
-import { Variable, bind } from "astal";
 import Wp from "gi://AstalWp";
 import { SEPARATOR, VOLUME_MUTE } from "../lib/chars";
 import { volumeRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
 import { togglePopup } from "../services/windows";
+import { createBinding, createComputed } from "ags";
 
 const audio = Wp.get_default();
 
 const icon =
     audio &&
-    Variable.derive(
+    createComputed(
         [
-            bind(audio.default_speaker, "mute"),
-            bind(audio.defaultSpeaker, "volume"),
+            createBinding(audio.default_speaker, "mute"),
+            createBinding(audio.defaultSpeaker, "volume"),
         ],
         (mute, volume) => (mute ? VOLUME_MUTE : volumeRange(volume)),
     );
 const tooltip =
     audio &&
-    Variable.derive(
+    createComputed(
         [
-            bind(audio.default_speaker, "description"),
-            bind(audio.default_speaker, "mute"),
-            bind(audio.defaultSpeaker, "volume"),
+            createBinding(audio.default_speaker, "description"),
+            createBinding(audio.default_speaker, "mute"),
+            createBinding(audio.defaultSpeaker, "volume"),
         ],
         (description, mute, volume) => {
             const parts = [description, Math.round(volume * 100) + "%"];
@@ -38,11 +38,10 @@ export default function Audio() {
 
     return (
         <IconButton
-            className="audio"
-            tooltipText={tooltip()}
+            class="audio"
+            tooltipText={tooltip}
             onClicked={() => togglePopup("audio")}
-        >
-            {icon()}
-        </IconButton>
+            label={icon}
+        />
     );
 }

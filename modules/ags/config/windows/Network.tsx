@@ -1,10 +1,10 @@
-import { bind, timeout, Variable } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
 import NetworkService from "gi://AstalNetwork";
 import Device from "../widgets/Device";
 import { wifiRange } from "../lib/icons";
-import Renderer from "../lib/Renderer";
 import { ascending, descending } from "../lib/sorting";
+import { Astal, Gtk } from "ags/gtk4";
+import { createBinding, createComputed, For } from "ags";
+import app from "ags/gtk4/app";
 
 const network = NetworkService.get_default();
 
@@ -19,7 +19,7 @@ const Ethernet = () =>
             />
             <switch
                 hexpand={false}
-                active={bind(network.wired, "state").as(
+                active={createBinding(network.wired, "state").as(
                     (state) => state === NetworkService.DeviceState.ACTIVATED,
                 )}
                 sensitive={false}
@@ -28,50 +28,43 @@ const Ethernet = () =>
     );
 
 const AccessPoint = (ap: NetworkService.AccessPoint) => {
-    const isActive = bind(network.wifi, "activeAccessPoint").as(
+    const isActive = createBinding(network.wifi, "activeAccessPoint").as(
         (active) => active === ap,
     );
 
     return (
         <Device
-            title={bind(ap, "ssid")}
-            icon={bind(ap, "strength").as(wifiRange)}
-            active={Variable.derive(
-                [isActive, bind(network.wifi, "state")],
+            title={createBinding(ap, "ssid")}
+            icon={createBinding(ap, "strength").as(wifiRange)}
+            active={createComputed(
+                [isActive, createBinding(network.wifi, "state")],
                 (active, state) =>
                     active && state === NetworkService.DeviceState.ACTIVATED,
-            )()}
-            activating={Variable.derive(
-                [isActive, bind(network.wifi, "state")],
+            )}
+            activating={createComputed(
+                [isActive, createBinding(network.wifi, "state")],
                 (active, state) =>
                     active && state !== NetworkService.DeviceState.ACTIVATED,
-            )()}
+            )}
         />
     );
 };
 
 const Wifi = () => {
-    const renderer = new Renderer<NetworkService.AccessPoint>(
-        (ap) => AccessPoint(ap),
-        {
-            initial: network.wifi.accessPoints,
-            sort: (a, b) =>
+    const aps = createBinding(network.wifi, "accessPoints").as((aps) =>
+        aps.toSorted(
+            (a, b) =>
                 descending(
                     a === network.wifi.activeAccessPoint,
                     b === network.wifi.activeAccessPoint,
                 ) ||
                 descending(a.strength, b.strength) ||
                 ascending(a.ssid ?? "", b.ssid ?? ""),
-        },
-    );
-
-    network.wifi.connect("access-point-added", (_, ap) => renderer.add(ap));
-    network.wifi.connect("access-point-removed", (_, ap) =>
-        renderer.delete(ap),
+        ),
     );
 
     return (
-        <box vertical spacing={8}>
+        <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
             <box spacing={16}>
                 <label
                     hexpand
@@ -81,35 +74,37 @@ const Wifi = () => {
                 />
                 <switch
                     hexpand={false}
-                    active={bind(network.wifi, "enabled")}
+                    active={createBinding(network.wifi, "enabled")}
                 />
             </box>
-            <box vertical spacing={8} noImplicitDestroy>
-                {bind(renderer)}
+            <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
+                <For each={aps}>{AccessPoint}</For>
             </box>
         </box>
     );
 };
 
-export default function Network() {
+export default function Network(
+    props: Partial<JSX.IntrinsicElements["window"]>,
+) {
     return (
         <window
             name="network"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
-            <scrollable
-                className="network-window info-window"
-                vscroll={Gtk.PolicyType.AUTOMATIC}
-                hscroll={Gtk.PolicyType.NEVER}
+            <scrolledwindow
+                class="network-window info-window"
+                vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+                hscrollbarPolicy={Gtk.PolicyType.NEVER}
             >
-                <box vertical spacing={16}>
+                <box orientation={Gtk.Orientation.VERTICAL} spacing={16}>
                     <Ethernet />
                     <Wifi />
                 </box>
-            </scrollable>
+            </scrolledwindow>
         </window>
     );
 }

@@ -1,51 +1,45 @@
-import { bind } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
 import { BELL, BELL_OFF, NOTIFICATION_CLEAR } from "../lib/chars";
 import Notification from "../widgets/Notification";
-import ToggleButton from "../widgets/ToggleButton";
 import NotificationsProvider from "../providers/notifications";
-import Renderer from "../lib/Renderer";
 import IconButton from "../widgets/IconButton";
 import { ascending } from "../lib/sorting";
+import { createBinding, For } from "ags";
+import { Astal, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
 const notifications = NotificationsProvider.get_default();
 
-export default function Notifications() {
-    const renderer = new Renderer<number>(
-        (id) => {
-            const notification = notifications.get(id);
-            if (notification)
-                return Notification(notification, () =>
-                    notifications.dismiss(id),
-                );
-        },
-        {
-            initial: notifications.storage,
-            sort: (a, b) =>
+export default function Notifications(
+    props: Partial<JSX.IntrinsicElements["window"]>,
+) {
+    const notificationObjects = createBinding(notifications, "storage").as(
+        (n) =>
+            n.toSorted((a, b) =>
                 ascending(
                     notifications.get(a)?.time ?? 0,
                     notifications.get(b)?.time ?? 0,
                 ),
-        },
+            ),
     );
-
-    notifications.connect("stored", (_, id) => renderer.add(id));
-    notifications.connect("dismissed", (_, id) => renderer.delete(id));
 
     return (
         <window
             name="notifications"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
-            <scrollable
-                className="notifications-window info-window"
-                hscroll={Gtk.PolicyType.NEVER}
-                vscroll={Gtk.PolicyType.AUTOMATIC}
+            <scrolledwindow
+                class="notifications-window info-window"
+                hscrollbarPolicy={Gtk.PolicyType.NEVER}
+                vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
             >
-                <box vertical spacing={8} valign={Gtk.Align.START}>
+                <box
+                    orientation={Gtk.Orientation.VERTICAL}
+                    spacing={8}
+                    valign={Gtk.Align.START}
+                >
                     <box spacing={8}>
                         <label
                             hexpand
@@ -57,28 +51,39 @@ export default function Notifications() {
                             label={NOTIFICATION_CLEAR}
                             onClicked={() => notifications.dismissAll()}
                         />
-                        <ToggleButton
-                            className="icon"
-                            active={bind(notifications, "dnd")}
-                            label={bind(notifications, "dnd").as((dnd) =>
-                                dnd ? BELL_OFF : BELL,
+                        <togglebutton
+                            class="icon"
+                            active={createBinding(notifications, "dnd")}
+                            label={createBinding(notifications, "dnd").as(
+                                (dnd) => (dnd ? BELL_OFF : BELL),
                             )}
                             onToggled={({ active }) =>
                                 (notifications.dnd = active)
                             }
                         />
                     </box>
-                    <box vertical spacing={8} noImplicitDestroy>
-                        {bind(renderer).as((v) =>
-                            v.length > 0 ? (
-                                v
-                            ) : (
-                                <label label="No notifications" />
-                            ),
-                        )}
+                    <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
+                        <For each={notificationObjects}>
+                            {(id) => {
+                                const notification = notifications.get(id);
+
+                                if (!notification) return <></>;
+
+                                return Notification(notification, () =>
+                                    notifications.dismiss(id),
+                                );
+                            }}
+                        </For>
+
+                        <label
+                            visible={notificationObjects.as(
+                                (v) => v.length === 0,
+                            )}
+                            label="No notifications"
+                        />
                     </box>
                 </box>
-            </scrollable>
+            </scrolledwindow>
         </window>
     );
 }

@@ -1,7 +1,9 @@
-import { Variable } from "astal";
-import { App, Astal, Gdk, Gtk } from "astal/gtk3";
 import Apps from "gi://AstalApps";
 import { dismissPopup } from "../services/windows";
+import { Astal, Gtk } from "ags/gtk4";
+import { createState, For } from "ags";
+import app from "ags/gtk4/app";
+import { execAsync } from "ags/process";
 
 const apps = new Apps.Apps();
 
@@ -15,22 +17,23 @@ const AppEntry = ({
     <button
         onClicked={() => {
             close();
-            // TODO: Use UWSM?
-            app.launch();
+            if (app.categories.includes("ConsoleOnly"))
+                execAsync(["uwsm", "app", "-T", app.entry]);
+            else execAsync(["uwsm", "app", app.entry]);
         }}
     >
         {app.name}
     </button>
 );
 
-export default function Run() {
+export default function Run(props: Partial<JSX.IntrinsicElements["window"]>) {
     let entry: Gtk.Entry;
-    const appList = Variable([] as Apps.Application[]);
+    const [appList, setAppList] = createState([] as Apps.Application[]);
 
     return (
         <window
             name="run"
-            className="run-window"
+            class="run-window"
             anchor={
                 Astal.WindowAnchor.BOTTOM |
                 Astal.WindowAnchor.LEFT |
@@ -40,42 +43,46 @@ export default function Run() {
             layer={Astal.Layer.OVERLAY}
             keymode={Astal.Keymode.EXCLUSIVE}
             exclusivity={Astal.Exclusivity.IGNORE}
-            visible={false}
-            application={App}
-            setup={(self) => {
+            application={app}
+            {...props}
+            $={(self) => {
                 self.connect("notify::visible", () => {
                     if (!self.visible) {
                         entry.set_text("");
-                        appList.set([]);
+                        setAppList([]);
                     }
                 });
+
+                props.$?.(self);
             }}
         >
             <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER}>
-                <box className="run-prompt" spacing={8} vertical>
+                <box
+                    class="run-prompt"
+                    spacing={8}
+                    orientation={Gtk.Orientation.VERTICAL}
+                >
                     <entry
-                        onChanged={({ text }) =>
-                            appList.set(apps.fuzzy_query(text))
+                        onNotifyText={({ text }) =>
+                            setAppList(apps.fuzzy_query(text))
                         }
-                        setup={(self) => (entry = self)}
+                        $={(self) => (entry = self)}
                     />
-                    <scrollable
-                        vscroll={Gtk.PolicyType.AUTOMATIC}
-                        hscroll={Gtk.PolicyType.NEVER}
+                    <scrolledwindow
+                        vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+                        hscrollbarPolicy={Gtk.PolicyType.NEVER}
                         vexpand
                     >
-                        <box spacing={8} vertical>
-                            {appList().as((apps) =>
-                                apps.map((app) => (
+                        <box spacing={8} orientation={Gtk.Orientation.VERTICAL}>
+                            <For each={appList}>
+                                {(app) => (
                                     <AppEntry app={app} close={dismissPopup} />
-                                )),
-                            )}
+                                )}
+                            </For>
                         </box>
-                    </scrollable>
+                    </scrolledwindow>
                 </box>
             </box>
         </window>
     );
 }
-
-export const toggleRun = () => App.toggle_window("run");

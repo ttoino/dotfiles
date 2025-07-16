@@ -1,5 +1,7 @@
-import { GObject, property, register, signal, Time, timeout } from "astal";
+import { getter, register, setter, signal } from "ags/gobject";
+import { Time, timeout } from "ags/time";
 import Notifd from "gi://AstalNotifd";
+import GObject from "gi://GObject?version=2.0";
 
 @register()
 export default class Notifications extends GObject.Object {
@@ -37,7 +39,7 @@ export default class Notifications extends GObject.Object {
 
     // Signal handlers
     #onNotified(id: number, replaced: boolean) {
-        print(`Notification ${id} notified (replaced: ${replaced})`);
+        console.debug(`Notification ${id} notified (replaced: ${replaced})`);
 
         const notification = new Notification(
             this._notifd.get_notification(id),
@@ -57,16 +59,17 @@ export default class Notifications extends GObject.Object {
     }
 
     #onResolved(id: number, reason: Notifd.ClosedReason) {
-        print(`Notification ${id} resolved: ${reason}`);
+        console.debug(`Notification ${id} resolved: ${reason}`);
 
         this.dismissed(id);
     }
 
     // Properties
-    @property(Boolean)
+    @getter(Boolean)
     get dnd() {
         return this._notifd.dontDisturb;
     }
+    @setter(Boolean)
     set dnd(value) {
         this._notifd.dontDisturb = value;
         this.notify("dnd");
@@ -99,7 +102,7 @@ export default class Notifications extends GObject.Object {
     }
 
     // Signals
-    @signal(Number)
+    @signal([Number])
     notified(id: number) {
         this._timeouts.get(id)?.cancel();
 
@@ -107,25 +110,25 @@ export default class Notifications extends GObject.Object {
 
         let timeoutMs = this.get(id)!.expireTimeout;
         if (timeoutMs <= 0) timeoutMs = 5000;
-        print(`Notification ${id} timeout: ${timeoutMs}`);
+        console.debug(`Notification ${id} timeout: ${timeoutMs}`);
         this._timeouts.set(
             id,
             timeout(timeoutMs, () => this.timedOut(id)),
         );
     }
 
-    @signal(Number)
+    @signal([Number])
     stored(id: number) {
         this._stored.add(id);
     }
 
-    @signal(Number)
+    @signal([Number])
     timedOut(id: number) {
         this._popups.delete(id);
         this._timeouts.delete(id);
     }
 
-    @signal(Number)
+    @signal([Number])
     dismissed(id: number) {
         this._popups.delete(id);
         this._timeouts.get(id)?.cancel();

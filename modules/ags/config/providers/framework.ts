@@ -1,5 +1,6 @@
-import { monitorFile, readFile } from "astal";
-import GObject, { property, register } from "astal/gobject";
+import { monitorFile, readFile } from "ags/file";
+import { getter, register } from "ags/gobject";
+import GObject from "gi://GObject?version=2.0";
 
 const privacyPath = "/sys/devices/platform/framework_laptop/framework_privacy";
 const privacyPattern = /\[(\w+)\]\s+\[(\w+)\]/;
@@ -18,12 +19,12 @@ export default class Framework extends GObject.Object {
     #cameraDisabled: boolean = false;
     #microphoneDisabled: boolean = false;
 
-    @property(Boolean)
+    @getter(Boolean)
     get cameraDisabled() {
         return this.#cameraDisabled;
     }
 
-    @property(Boolean)
+    @getter(Boolean)
     get microphoneDisabled() {
         return this.#microphoneDisabled;
     }
@@ -41,7 +42,7 @@ export default class Framework extends GObject.Object {
 
     #batteryChargeLimit: number = 0;
 
-    @property(Number)
+    @getter(Number)
     get batteryChargeLimit() {
         return this.#batteryChargeLimit;
     }

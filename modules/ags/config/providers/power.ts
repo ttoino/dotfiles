@@ -1,5 +1,6 @@
-import { exec } from "astal";
-import GObject, { register } from "astal/gobject";
+import { register } from "ags/gobject";
+import { exec } from "ags/process";
+import GObject from "gi://GObject?version=2.0";
 
 @register()
 export default class Power extends GObject.Object {

@@ -1,4 +1,3 @@
-import { bind, Variable } from "astal";
 import Hyprland from "gi://AstalHyprland";
 import {
     RADIOBOX_BLANK,
@@ -6,13 +5,17 @@ import {
     RADIOBOX_MARKED,
 } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
+import { createBinding, createComputed, For } from "ags";
 
 const hyprland = Hyprland.get_default();
 
 const WORKSPACE_COUNT = 10;
 
-const workspaces = Variable.derive(
-    [bind(hyprland, "workspaces"), bind(hyprland, "focusedMonitor")],
+const workspaces = createComputed(
+    [
+        createBinding(hyprland, "workspaces"),
+        createBinding(hyprland, "focusedMonitor"),
+    ],
     (wss, monitor) =>
         Array.from(
             { length: WORKSPACE_COUNT },
@@ -24,18 +27,17 @@ const workspaces = Variable.derive(
 
 export default function Workspaces() {
     return (
-        <box className="workspaces" spacing={4}>
-            {workspaces().as((wss) =>
-                wss.map((ws) => (
+        <box class="workspaces" spacing={4}>
+            <For each={workspaces}>
+                {(ws) => (
                     <IconButton
                         onClicked={() =>
                             hyprland.dispatch("workspace", ws.id.toString())
                         }
-                    >
-                        {Variable.derive(
+                        label={createComputed(
                             [
-                                bind(hyprland, "focusedWorkspace"),
-                                bind(ws, "clients"),
+                                createBinding(hyprland, "focusedWorkspace"),
+                                createBinding(ws, "clients"),
                             ],
                             (fw, clients) =>
                                 fw.id === ws.id
@@ -43,10 +45,10 @@ export default function Workspaces() {
                                     : clients.length > 0
                                       ? RADIOBOX_INDETERMINATE
                                       : RADIOBOX_BLANK,
-                        )()}
-                    </IconButton>
-                )),
-            )}
+                        )}
+                    />
+                )}
+            </For>
         </box>
     );
 }

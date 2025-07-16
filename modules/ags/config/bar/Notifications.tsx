@@ -1,24 +1,21 @@
-import { Variable, bind } from "astal";
 import { BELL, BELL_BADGE, BELL_OFF } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
 import { togglePopup } from "../services/windows";
 import NotificationsProvider from "../providers/notifications";
+import { createBinding, createComputed, createState } from "ags";
 
 const notifications = NotificationsProvider.get_default();
 
-const count = Variable(notifications.storage.length);
-
-notifications.connect("stored", () => count.set(notifications.storage.length));
-notifications.connect("dismissed", () =>
-    count.set(notifications.storage.length),
+const count = createBinding(notifications, "storage").as(
+    (storage) => storage.length,
 );
 
-const icon = Variable.derive(
-    [bind(notifications, "dnd"), count],
+const icon = createComputed(
+    [createBinding(notifications, "dnd"), count],
     (dnd, count) => (dnd ? BELL_OFF : count > 0 ? BELL_BADGE : BELL),
 );
-const tooltip = Variable.derive(
-    [bind(notifications, "dnd"), count],
+const tooltip = createComputed(
+    [createBinding(notifications, "dnd"), count],
     (dnd, count) =>
         dnd
             ? "Do not disturb"
@@ -30,11 +27,10 @@ const tooltip = Variable.derive(
 export default function Notifications() {
     return (
         <IconButton
-            className="notifications"
-            tooltipText={tooltip()}
+            class="notifications"
+            tooltipText={tooltip}
             onClicked={() => togglePopup("notifications")}
-        >
-            {icon()}
-        </IconButton>
+            label={icon}
+        />
     );
 }

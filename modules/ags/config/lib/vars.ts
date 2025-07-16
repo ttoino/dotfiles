@@ -1,4 +1,4 @@
-import { Binding, Variable } from "astal";
+import { Accessor, createState } from "ags";
 
-export const binding = <T>(v: T | Binding<T>): Binding<T> =>
-    v instanceof Binding ? v : Variable(v)();
+export const accessor = <T>(v: T | Accessor<T>): Accessor<T> =>
+    v instanceof Accessor ? v : createState(v)[0];

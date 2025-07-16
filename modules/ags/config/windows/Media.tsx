@@ -1,115 +1,122 @@
-import { bind, Variable } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
 import Mpris from "gi://AstalMpris";
 import { PAUSE, PLAY, SKIP_NEXT, SKIP_PREVIOUS } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
 import ScrollText from "../widgets/ScrollText";
-import Renderer from "../lib/Renderer";
 import { ascending } from "../lib/sorting";
+import { Astal, Gtk } from "ags/gtk4";
+import { createBinding, createComputed, createState, For } from "ags";
+import app from "ags/gtk4/app";
 
 const mpris = Mpris.get_default();
 
 const Player = (player: Mpris.Player, onChoose: () => void) => (
     // Can't bind to busName because the widget name should not change
-    <box name={player.busName} vertical spacing={8}>
+    <box
+        name={player.busName}
+        orientation={Gtk.Orientation.VERTICAL}
+        spacing={8}
+        $type="named"
+    >
         <button onClicked={onChoose}>
-            <ScrollText label={bind(player, "identity")} />
+            <ScrollText
+                label={createComputed(
+                    [
+                        createBinding(player, "identity"),
+                        createBinding(player, "busName"),
+                    ],
+                    (identity, busName) => identity ?? busName,
+                )}
+            />
         </button>
         <box
-            className="cover"
-            visible={bind(player, "coverArt").as((image) => !!image)}
-            css={bind(player, "coverArt").as(
+            class="cover"
+            visible={createBinding(player, "coverArt").as((image) => !!image)}
+            css={createBinding(player, "coverArt").as(
                 (image) => `background-image: url("${image}")`,
             )}
         />
-        <box vertical>
-            <ScrollText className="title" label={bind(player, "title")} />
-            <ScrollText className="artist" label={bind(player, "artist")} />
+        <box orientation={Gtk.Orientation.VERTICAL}>
+            <ScrollText class="title" label={createBinding(player, "title")} />
+            <ScrollText
+                class="artist"
+                label={createBinding(player, "artist").as((a) => a ?? "")}
+                visible={createBinding(player, "artist").as((a) => !!a)}
+            />
         </box>
         <box spacing={16} halign={Gtk.Align.CENTER}>
             <IconButton
-                className="lg"
+                class="lg"
                 label={SKIP_PREVIOUS}
                 valign={Gtk.Align.CENTER}
                 onClicked={() => player.previous()}
             />
             <IconButton
-                className="xl"
-                label={bind(player, "playbackStatus").as((status) =>
+                class="xl"
+                label={createBinding(player, "playbackStatus").as((status) =>
                     status === Mpris.PlaybackStatus.PLAYING ? PAUSE : PLAY,
                 )}
                 onClicked={() => player.play_pause()}
             />
             <IconButton
-                className="lg"
+                class="lg"
                 label={SKIP_NEXT}
                 valign={Gtk.Align.CENTER}
                 onClicked={() => player.next()}
             />
         </box>
         <slider
-            value={bind(player, "position")}
-            max={bind(player, "length")}
-            visible={bind(player, "position").as((v) => v > 0)}
-            onDragged={({ value }) => player.set_position(value)}
+            value={createBinding(player, "position")}
+            max={createBinding(player, "length")}
+            visible={createBinding(player, "length").as((v) => v > 0)}
+            onNotifyValue={({ value }) => player.set_position(value)}
         />
     </box>
 );
 
-export default function Media() {
-    let setVisible: (visible: string) => void;
+export default function Media(props: Partial<JSX.IntrinsicElements["window"]>) {
+    const [visible, setVisible] = createState("_choose");
 
-    const choiceRenderer = new Renderer<Mpris.Player>(
-        (player) => (
-            <button
-                label={bind(player, "identity")}
-                onClicked={() => setVisible(player.busName)}
-            />
+    const players = createBinding(mpris, "players").as((players) =>
+        players.toSorted(
+            (a, b) =>
+                ascending(a.identity, b.identity) ||
+                ascending(a.busName, b.busName),
         ),
-        {
-            initial: mpris.players,
-            sort: (a, b) => ascending(a.identity, b.identity),
-        },
     );
-    const playerRenderer = new Renderer<Mpris.Player>(
-        (player) => Player(player, () => setVisible("_choose")),
-        {
-            initial: mpris.players,
-            sort: (a, b) => ascending(a.identity, b.identity),
-        },
-    );
-
-    mpris.connect("player-added", (_, player) => {
-        choiceRenderer.add(player);
-        playerRenderer.add(player);
-    });
-    mpris.connect("player-closed", (_, player) => {
-        choiceRenderer.delete(player);
-        playerRenderer.delete(player);
-    });
 
     return (
         <window
             name="media"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
-            visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
             <stack
-                className="media-window info-window"
+                class="media-window info-window"
                 transitionType={Gtk.StackTransitionType.CROSSFADE}
-                noImplicitDestroy
-                setup={(stack) =>
-                    (setVisible = (visible) =>
-                        stack.set_visible_child_name(visible))
-                }
+                visibleChildName={visible}
             >
-                <box name="_choose" vertical spacing={8} noImplicitDestroy>
+                <box
+                    name="_choose"
+                    orientation={Gtk.Orientation.VERTICAL}
+                    spacing={8}
+                    $type="named"
+                >
                     <label label="Choose a player" />
-                    {bind(choiceRenderer)}
+                    <For each={players}>
+                        {(player) => (
+                            <button
+                                label={createBinding(player, "identity")}
+                                onClicked={() => setVisible(player.busName)}
+                            />
+                        )}
+                    </For>
                 </box>
-                {bind(playerRenderer)}
+
+                <For each={players}>
+                    {(player) => Player(player, () => setVisible("_choose"))}
+                </For>
             </stack>
         </window>
     );

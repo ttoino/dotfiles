@@ -1,5 +1,5 @@
+import { execAsync } from "ags/process";
 import Notifd from "gi://AstalNotifd";
-import { execAsync } from "astal";
 
 export const urgencyToString = {
     [Notifd.Urgency.LOW]: "low",

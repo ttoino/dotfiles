@@ -1,9 +1,9 @@
-import { App, Astal, Gdk, Gtk } from "astal/gtk3";
-import GtkLayerShell from "gi://GtkLayerShell";
 import { LOCK, POWER, POWER_SLEEP, RESTART, SNOWFLAKE } from "../lib/chars";
 import PowerService from "../providers/power";
 import IconButton from "../widgets/IconButton";
 import { dismissPopup } from "../services/windows";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
 const power = PowerService.get_default();
 
@@ -48,9 +48,9 @@ const actions = [
 ] as const satisfies Action[];
 
 const ActionButton = ({ name, icon, action }: Action) => (
-    <box className={name}>
+    <box class={name}>
         <IconButton
-            className="xl"
+            class="xl"
             onClicked={() => {
                 dismissPopup();
                 action();
@@ -61,11 +61,11 @@ const ActionButton = ({ name, icon, action }: Action) => (
     </box>
 );
 
-export default function Power() {
+export default function Power(props: Partial<JSX.IntrinsicElements["window"]>) {
     return (
         <window
             name="power"
-            className="power-window"
+            class="power-window"
             anchor={
                 Astal.WindowAnchor.BOTTOM |
                 Astal.WindowAnchor.LEFT |
@@ -75,32 +75,21 @@ export default function Power() {
             layer={Astal.Layer.OVERLAY}
             keymode={Astal.Keymode.EXCLUSIVE}
             exclusivity={Astal.Exclusivity.IGNORE}
-            visible={false}
-            clickThrough
-            application={App}
-            onKeyPressEvent={(self, event) => {
-                const [result, keyval] = event.get_keyval();
-                if (!result) return;
-
-                // if (keyval == Gdk.KEY_Escape) return dismissPopup();
-
-                const action = actions.find((a) => a.keybind == keyval);
-                if (action) {
-                    dismissPopup();
-                    action?.action();
-                }
-            }}
+            application={app}
+            {...props}
         >
-            <box
-                valign={Gtk.Align.CENTER}
-                halign={Gtk.Align.CENTER}
-                clickThrough
-            >
-                <box
-                    className="power-controls"
-                    spacing={16}
-                    clickThrough={false}
-                >
+            <Gtk.EventControllerKey
+                onKeyPressed={(self, key) => {
+                    const action = actions.find((a) => a.keybind == key);
+                    if (action) {
+                        dismissPopup();
+                        action?.action();
+                    }
+                }}
+            />
+
+            <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER}>
+                <box class="power-controls" spacing={16}>
                     {actions.map(ActionButton)}
                 </box>
             </box>

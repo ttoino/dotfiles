@@ -21,8 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     astal = {
-      url = "github:ttoino/astal/wifi_accesspoint_signals";
-      # url = "github:Aylur/astal";
+      url = "github:Aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
@@ -50,6 +49,7 @@
       self,
       nixpkgs,
       agenix-rekey,
+      ags,
       flake-utils,
       home-manager,
       ...
@@ -84,8 +84,24 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
+        packages.default = self.nixosConfigurations.bmo.config.system.build.isoImage;
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            # Ags
+            (ags.packages.${system}.default.override {
+              extraPackages = with ags.packages.${pkgs.system}; [
+                apps
+                battery
+                bluetooth
+                hyprland
+                mpris
+                network
+                notifd
+                powerprofiles
+                wireplumber
+              ];
+            })
             # Create secrets
             agenix-rekey.packages.${system}.default
             # Development tools

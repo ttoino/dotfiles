@@ -74,7 +74,7 @@
         owner = "mrusse";
         repo = pname;
         rev = version;
-        sha256 = "sha256-6qdkuB0JqleTq0I67UbsOdpoa8zcpD0PDiTISYQvcLQ=";
+        sha256 = "sha256-zwYwwGwIgw8LPrk04UxUW2Wl6l42mcFa1QKmYdZL0JM=";
       };
 
       propagatedBuildInputs = with prev.python3Packages; [

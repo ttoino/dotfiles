@@ -1,17 +1,17 @@
-import { Variable, bind } from "astal";
 import NetworkService from "gi://AstalNetwork";
 import { ETHERNET, SEPARATOR, WEB_OFF } from "../lib/chars";
 import { wifiRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
 import { togglePopup } from "../services/windows";
+import { createBinding, createComputed } from "ags";
 
 const network = NetworkService.get_default();
 
-const icons = Variable.derive(
+const icons = createComputed(
     [
         // bind(network.wired, "state"),
-        bind(network.wifi, "state"),
-        bind(network.wifi, "strength"),
+        createBinding(network.wifi, "state"),
+        createBinding(network.wifi, "strength"),
     ],
     (
         // wired,
@@ -25,15 +25,15 @@ const icons = Variable.derive(
             icons.push(wifiRange(wifiStrength));
         if (icons.length === 0) icons.push(WEB_OFF);
 
-        return icons;
+        return icons.join();
     },
 );
-const tooltip = Variable.derive(
+const tooltip = createComputed(
     [
         // bind(network.wired, "state"),
-        bind(network.wifi, "state"),
-        bind(network.wifi, "ssid"),
-        bind(network.wifi, "strength"),
+        createBinding(network.wifi, "state"),
+        createBinding(network.wifi, "ssid"),
+        createBinding(network.wifi, "strength"),
     ],
     (
         // wired,
@@ -56,11 +56,10 @@ const tooltip = Variable.derive(
 export default function Network() {
     return (
         <IconButton
-            className="network"
-            tooltipText={tooltip()}
+            class="network"
+            tooltipText={tooltip}
             onClicked={() => togglePopup("network")}
-        >
-            <box>{icons()}</box>
-        </IconButton>
+            label={icons}
+        />
     );
 }

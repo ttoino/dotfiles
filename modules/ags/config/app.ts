@@ -1,9 +1,9 @@
-import { App } from "astal/gtk3";
+import app from "ags/gtk4/app";
 import "./services/notifications";
 import * as windows from "./services/windows";
 import style from "./style/main.scss";
 
-App.start({
+app.start({
     css: style,
     main() {
         windows.init();

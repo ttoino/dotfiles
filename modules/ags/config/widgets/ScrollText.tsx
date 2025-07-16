@@ -1,27 +1,26 @@
-import { Gtk } from "astal/gtk3";
-import { LabelProps, ScrollableProps } from "astal/gtk3/widget";
+import { Gtk } from "ags/gtk4";
 
 export interface ScrollTextProps
-    extends Omit<ScrollableProps, "children">,
-        Pick<LabelProps, "label"> {
-    labelProps?: Omit<LabelProps, "children">;
+    extends Omit<JSX.IntrinsicElements["scrolledwindow"], "children">,
+        Pick<JSX.IntrinsicElements["label"], "label"> {
+    labelProps?: Omit<JSX.IntrinsicElements["label"], "children">;
 }
 
 export default function ScrollText({
-    className,
+    class: className,
     label,
     labelProps,
     ...rest
 }: ScrollTextProps) {
     return (
-        <scrollable
-            className={`scroll-text ${className ?? ""}`}
+        <scrolledwindow
+            class={`scroll-text ${className ?? ""}`}
             hexpand
-            hscroll={Gtk.PolicyType.AUTOMATIC}
-            vscroll={Gtk.PolicyType.NEVER}
+            hscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+            vscrollbarPolicy={Gtk.PolicyType.NEVER}
             {...rest}
         >
             <label wrap={false} lines={1} label={label} {...labelProps} />
-        </scrollable>
+        </scrolledwindow>
     );
 }

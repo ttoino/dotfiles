@@ -1,14 +1,20 @@
-import { App, Astal, Gdk } from "astal/gtk3";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
 import { dismissPopup } from "../services/windows";
-import GtkLayerShell from "gi://GtkLayerShell";
+import app from "ags/gtk4/app";
+import { Accessor } from "ags";
+import { accessor } from "../lib/vars";
 
-export default function Dismisser(monitor: Gdk.Monitor) {
+export default function Dismisser(
+    props: Partial<Omit<JSX.IntrinsicElements["window"], "gdkmonitor">> &
+        Required<Pick<JSX.IntrinsicElements["window"], "gdkmonitor">>,
+) {
     return (
         <window
-            gdkmonitor={monitor}
-            name={`dismisser-${monitor.model}`}
+            name={accessor(props.gdkmonitor).as(
+                (monitor) => `dismisser-${monitor.model}`,
+            )}
             namespace="ags-dismisser"
-            className="dismisser-window"
+            class="dismisser-window"
             anchor={
                 Astal.WindowAnchor.BOTTOM |
                 Astal.WindowAnchor.LEFT |
@@ -18,15 +24,15 @@ export default function Dismisser(monitor: Gdk.Monitor) {
             layer={Astal.Layer.TOP}
             keymode={Astal.Keymode.EXCLUSIVE}
             exclusivity={Astal.Exclusivity.IGNORE}
-            visible={false}
-            onButtonPressEvent={() => dismissPopup()}
-            onKeyPressEvent={(self, event) => {
-                const [result, keyval] = event.get_keyval();
-                if (!result) return;
-
-                if (keyval == Gdk.KEY_Escape) return dismissPopup();
-            }}
-            application={App}
-        />
+            application={app}
+            {...props}
+        >
+            <Gtk.GestureClick onPressed={() => dismissPopup()} />
+            <Gtk.EventControllerKey
+                onKeyPressed={(self, keyval) => {
+                    if (keyval === Gdk.KEY_Escape) dismissPopup();
+                }}
+            />
+        </window>
     );
 }

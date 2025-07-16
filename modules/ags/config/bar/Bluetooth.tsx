@@ -1,4 +1,3 @@
-import { Variable, bind } from "astal";
 import BluetoothService from "gi://AstalBluetooth";
 import {
     BLUETOOTH,
@@ -8,14 +7,15 @@ import {
 } from "../lib/chars";
 import IconButton from "../widgets/IconButton";
 import { togglePopup } from "../services/windows";
+import { createBinding, createComputed } from "ags";
 
 const bluetooth = BluetoothService.get_default();
 
-const connected = bind(bluetooth, "devices").as((devices) =>
+const connected = createBinding(bluetooth, "devices").as((devices) =>
     devices.filter((d) => d.connected),
 );
-const icon = Variable.derive(
-    [bind(bluetooth, "isPowered"), connected],
+const icon = createComputed(
+    [createBinding(bluetooth, "isPowered"), connected],
     (isPowered, devices) =>
         isPowered
             ? devices.length > 0
@@ -23,8 +23,8 @@ const icon = Variable.derive(
                 : BLUETOOTH
             : BLUETOOTH_OFF,
 );
-const tooltip = Variable.derive(
-    [bind(bluetooth, "isPowered"), connected],
+const tooltip = createComputed(
+    [createBinding(bluetooth, "isPowered"), connected],
     (isPowered, devices) =>
         isPowered
             ? devices.length > 0
@@ -36,11 +36,10 @@ const tooltip = Variable.derive(
 export default function Bluetooth() {
     return (
         <IconButton
-            className="bluetooth"
-            tooltipText={tooltip()}
+            class="bluetooth"
+            tooltipText={tooltip}
             onClicked={() => togglePopup("bluetooth")}
-        >
-            {icon()}
-        </IconButton>
+            label={icon}
+        />
     );
 }

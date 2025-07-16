@@ -1,24 +1,27 @@
-import { App, Astal, Gtk } from "astal/gtk3";
-import CalendarWidget from "../widgets/Calendar";
+import { Astal, Gtk } from "ags/gtk4";
+import app from "ags/gtk4/app";
 
-export default function Calendar() {
+export default function Calendar(
+    props: Partial<JSX.IntrinsicElements["window"]>,
+) {
     return (
         <window
             name="calendar"
             anchor={Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT}
             margin={16}
             visible={false}
-            application={App}
+            application={app}
+            {...props}
         >
-            <scrollable
-                className="calendar-window info-window"
-                vscroll={Gtk.PolicyType.AUTOMATIC}
-                hscroll={Gtk.PolicyType.NEVER}
+            <scrolledwindow
+                class="calendar-window info-window"
+                vscrollbarPolicy={Gtk.PolicyType.AUTOMATIC}
+                hscrollbarPolicy={Gtk.PolicyType.NEVER}
             >
-                <box vertical spacing={16}>
-                    <CalendarWidget hexpand vexpand noMonthChange />
+                <box orientation={Gtk.Orientation.VERTICAL} spacing={16}>
+                    <Gtk.Calendar hexpand vexpand />
                 </box>
-            </scrollable>
+            </scrolledwindow>
         </window>
     );
 }

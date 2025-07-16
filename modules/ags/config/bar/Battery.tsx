@@ -1,18 +1,18 @@
-import { Variable, bind } from "astal";
 import BatteryService from "gi://AstalBattery";
 import { SEPARATOR } from "../lib/chars";
 import { batteryRange } from "../lib/icons";
 import IconButton from "../widgets/IconButton";
 import { togglePopup } from "../services/windows";
+import { createBinding, createComputed } from "ags";
 
 const battery = BatteryService.get_default();
 
-const icon = Variable.derive(
-    [bind(battery, "charging"), bind(battery, "percentage")],
+const icon = createComputed(
+    [createBinding(battery, "charging"), createBinding(battery, "percentage")],
     (charging, percent) => batteryRange(charging, percent),
 );
-const tooltip = Variable.derive(
-    [bind(battery, "charging"), bind(battery, "percentage")],
+const tooltip = createComputed(
+    [createBinding(battery, "charging"), createBinding(battery, "percentage")],
     (charging, percent) => {
         const parts = [percent * 100 + "%"];
 
@@ -25,11 +25,10 @@ const tooltip = Variable.derive(
 export default function Battery() {
     return (
         <IconButton
-            className="battery"
-            tooltipText={tooltip()}
+            class="battery"
+            tooltipText={tooltip}
             onClicked={() => togglePopup("battery")}
-        >
-            {icon()}
-        </IconButton>
+            label={icon}
+        />
     );
 }
