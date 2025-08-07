@@ -227,8 +227,7 @@ export default function Audio(props: Partial<JSX.IntrinsicElements["window"]>) {
                 collapsed={
                     <>
                         <VolumeSlider device={audio.defaultSpeaker} isSpeaker />
-                        ,
-                        <MuteButton device={audio.defaultSpeaker} isSpeaker />,
+                        <MuteButton device={audio.defaultSpeaker} isSpeaker />
                     </>
                 }
                 expanded={AudioContent}
