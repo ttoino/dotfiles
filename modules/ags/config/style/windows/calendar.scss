@@ -3,41 +3,38 @@
 
 .calendar-window {
     calendar {
-        // Whole calendar
-        &.view {
-            @include t.type("label-medium");
-        }
+        @include t.type("label-medium");
 
         // Calendar header (month and year)
-        &.header {
+        header {
             @include t.type("title-large");
             color: cp.$blue;
         }
 
-        // Month and year change buttons
-        &.button {
-            background-color: lightblue;
-            color: lightblue;
-        }
+        grid {
+            label {
+                padding: 0;
+            }
 
-        // Weekday names
-        &.highlight {
-            color: cp.$teal;
-        }
+            // Weekday names
+            .day-name {
+                color: cp.$teal;
+            }
 
-        // Days from other months, no bg
-        &:indeterminate {
-            color: cp.$overlay1;
-        }
+            // Days from other months, no bg
+            .other-month {
+                color: cp.$overlay1;
+            }
 
-        // Marked days
-        &:active {
-            @include t.type("label-medium", true);
-        }
+            // Marked days
+            :selected {
+                @include t.type("label-medium", true);
+            }
 
-        // Current day
-        &:selected {
-            color: cp.$green;
+            // Current day
+            .today {
+                color: cp.$green;
+            }
         }
     }
 }
