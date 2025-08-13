@@ -1,8 +1,8 @@
 { modules, ... }:
 {
   modules = with modules; [
-    ags
     autologin
+    cake
     hypridle
     hyprland
     hyprlock

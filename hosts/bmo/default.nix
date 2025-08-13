@@ -5,8 +5,8 @@
   traits = with traits; [
     accounts
     base
-    cake
     dev
+    fiona
     gaming
     graphical
   ];

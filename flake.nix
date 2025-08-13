@@ -5,7 +5,6 @@
     ags = {
       url = "github:Aylur/ags";
       inputs = {
-        astal.follows = "astal";
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -20,8 +19,9 @@
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    astal = {
-      url = "github:Aylur/astal";
+    cake = {
+      url = "github:ttoino/cake";
+      inputs.ags.follows = "ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
@@ -49,7 +49,6 @@
       self,
       nixpkgs,
       agenix-rekey,
-      ags,
       flake-utils,
       home-manager,
       ...
@@ -88,20 +87,6 @@
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            # Ags
-            (ags.packages.${system}.default.override {
-              extraPackages = with ags.packages.${pkgs.system}; [
-                apps
-                battery
-                bluetooth
-                hyprland
-                mpris
-                network
-                notifd
-                powerprofiles
-                wireplumber
-              ];
-            })
             # Create secrets
             agenix-rekey.packages.${system}.default
             # Development tools
