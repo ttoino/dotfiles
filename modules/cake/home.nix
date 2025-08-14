@@ -27,11 +27,11 @@ in
     # with the ags daemon and not long-lived
     bind = [
       # Run menu
-      "$mainMod, D, exec, ${ags}/bin/cake toggle run"
+      "$mainMod, D, exec, ${ags}/bin/ags toggle run"
 
       # Logout menu
-      "$mainMod, Escape, exec, ${ags}/bin/cake toggle power"
-      ", XF86PowerOff, exec, ${ags}/bin/cake toggle power"
+      "$mainMod, Escape, exec, ${ags}/bin/ags toggle power"
+      ", XF86PowerOff, exec, ${ags}/bin/ags toggle power"
     ];
 
     layerrule = [
