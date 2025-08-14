@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [ inputs.nixvim.homeModules.nixvim ];
 
   # TODO
   programs.nixvim = {

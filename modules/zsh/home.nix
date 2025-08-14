@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home.shell.enableZshIntegration = true;
 
@@ -55,18 +55,19 @@
       }
     ];
 
-    initExtraFirst = ''
-      ${builtins.readFile ./functions.zsh}
-      ${builtins.readFile ./keybinds.zsh}
-      ${builtins.readFile ./opts.zsh}
-    '';
-
     completionInit = ''
       ${builtins.readFile ./completion.zsh}
     '';
 
-    initExtra = ''
-      ${builtins.readFile ./prompt.zsh}
-    '';
+    initContent = lib.mkMerge [
+      (lib.mkBefore ''
+        ${builtins.readFile ./functions.zsh}
+        ${builtins.readFile ./keybinds.zsh}
+        ${builtins.readFile ./opts.zsh}
+      '')
+      (''
+        ${builtins.readFile ./prompt.zsh}
+      '')
+    ];
   };
 }

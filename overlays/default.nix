@@ -1,6 +1,6 @@
 {...}:[
   (final: prev: {
-    mopidy-local = prev.mopidy-local.overrideAttrs (oldAttrs: {
+    mopidy-local = prev.mopidy-local.overridePythonAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-local";
@@ -11,13 +11,17 @@
   })
   
   (final: prev: {
-    mopidy-mpris = prev.mopidy-mpris.overrideAttrs (oldAttrs: {
+    mopidy-mpris = prev.mopidy-mpris.overridePythonAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-mpris";
         rev = "image-uri";
         sha256 = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
       };
+
+      dependencies = oldAttrs.dependencies ++ [
+        final.python3Packages.uritools
+      ];
     });
   })
 
@@ -32,7 +36,7 @@
         hash = "sha256-6gwS4/8c5y3fIEev4UDMPFrotSobJ0asv3VAI2tYp0Y=";
       };
 
-      propagatedBuildInputs = with prev; [
+      propagatedBuildInputs = with final; [
         mopidy
         python3Packages.pykka
       ];
@@ -57,9 +61,9 @@
           sha256 = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
         };
 
-        nativeBuildInputs = with prev'; [ setuptools-git-versioning ];
+        nativeBuildInputs = [ final'.setuptools-git-versioning ];
 
-        propagatedBuildInputs = with prev'; [ requests ];
+        propagatedBuildInputs = [ final'.requests ];
       };
     });
   })
@@ -77,7 +81,7 @@
         sha256 = "sha256-zwYwwGwIgw8LPrk04UxUW2Wl6l42mcFa1QKmYdZL0JM=";
       };
 
-      propagatedBuildInputs = with prev.python3Packages; [
+      propagatedBuildInputs = with final.python3Packages; [
         music-tag
         pyarr
         slskd-api
