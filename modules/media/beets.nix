@@ -48,9 +48,17 @@
           copy = true;
           resume = true;
           incremental = true;
+          incremental_skip_later = true;
           from_scratch = false;
           quiet = true;
           log = "/var/lib/beets/log.log";
+        };
+
+        match = {
+          preferred = {
+            media = [ "Digital Media|File" ];
+            original_year = true;
+          };
         };
 
         embedart = {
