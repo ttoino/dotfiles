@@ -18,12 +18,10 @@
   # Security
   security.polkit.enable = true;
 
-  # Locale
-  time = {
-    hardwareClockInLocalTime = true;
-    timeZone = "Europe/Lisbon";
-  };
+  # Timezone
+  services.tzupdate.enable = true;
 
+  # Locale
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
