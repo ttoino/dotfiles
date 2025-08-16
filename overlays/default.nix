@@ -28,12 +28,12 @@
   (final: prev: {
     mopidy-marceline = prev.python3Packages.buildPythonPackage rec {
       pname = "mopidy-marceline";
-      version = "0.0.3";
+      version = "0.0.4";
       format = "wheel";
 
       src = prev.fetchurl {
         url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
-        hash = "sha256-6gwS4/8c5y3fIEev4UDMPFrotSobJ0asv3VAI2tYp0Y=";
+        hash = "sha256-2noJkqJDxGWg14D3ilB7lWELyYgfaOtRJhrfNx7rsoI=";
       };
 
       propagatedBuildInputs = with final; [
@@ -78,7 +78,7 @@
         owner = "mrusse";
         repo = pname;
         rev = version;
-        sha256 = "sha256-zwYwwGwIgw8LPrk04UxUW2Wl6l42mcFa1QKmYdZL0JM=";
+        sha256 = "";
       };
 
       propagatedBuildInputs = with final.python3Packages; [

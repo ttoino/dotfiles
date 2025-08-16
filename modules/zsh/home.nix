@@ -23,7 +23,7 @@
           owner = "zdharma-continuum";
           repo = "fast-syntax-highlighting";
           rev = "master";
-          hash = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
+          hash = "sha256-ZihUL4JAVk9V+IELSakytlb24BvEEJ161CQEHZYYoSA=";
         };
       }
       {
