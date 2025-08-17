@@ -6,7 +6,7 @@
     accounts
     base
     dev
-    fiona
+    fionna
     gaming
     graphical
   ];
