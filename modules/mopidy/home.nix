@@ -27,7 +27,7 @@
       };
 
       local.media_dir = "~/Music";
-      
+
       logging.verbosity = 3;
     };
   };

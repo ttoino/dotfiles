@@ -6,21 +6,20 @@
     # Not needed because of UWSM
     systemd.enable = false;
 
-    settings =
-      ({
-        # exec-once = [ "systemctl --user start hyprpolkitagent" ];
+    settings = ({
+      # exec-once = [ "systemctl --user start hyprpolkitagent" ];
 
-        monitor = [
-          "eDP-2, preferred, auto, 1.60"
-          "desc:LG Electronics LG TV, preferred, auto-left, 1.25"
-          "desc:Samsung Electric Company LC32G5xT H4ZR703681, preferred, auto-left, 1"
-          ", preferred, auto, 1"
-        ];
-      })
-      // (import ./apps.nix)
-      // (import ./keybinds.nix)
-      // (import ./options.nix)
-      // (import ./rules.nix);
+      monitor = [
+        "eDP-2, preferred, auto, 1.60"
+        "desc:LG Electronics LG TV, preferred, auto-left, 1.25"
+        "desc:Samsung Electric Company LC32G5xT H4ZR703681, preferred, auto-left, 1"
+        ", preferred, auto, 1"
+      ];
+    })
+    // (import ./apps.nix)
+    // (import ./keybinds.nix)
+    // (import ./options.nix)
+    // (import ./rules.nix);
   };
 
   home.packages = with pkgs; [

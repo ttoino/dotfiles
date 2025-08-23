@@ -13,10 +13,17 @@
   age.secrets.lidarr-env = {
     generator = {
       dependencies = [ config.age.secrets.lidarr-api-key ];
-      script = { lib, decrypt, deps, ... }: ''
-        api_key=$(${decrypt} ${lib.escapeShellArg (builtins.elemAt deps 0).file})
-        echo "LIDARR__AUTH__APIKEY=$api_key"
-      '';
+      script =
+        {
+          lib,
+          decrypt,
+          deps,
+          ...
+        }:
+        ''
+          api_key=$(${decrypt} ${lib.escapeShellArg (builtins.elemAt deps 0).file})
+          echo "LIDARR__AUTH__APIKEY=$api_key"
+        '';
     };
     rekeyFile = ./lidarr_env.age;
     owner = "lidarr";

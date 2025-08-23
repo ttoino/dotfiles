@@ -21,9 +21,7 @@
 
   services.caddy.virtualHosts."torrents.toino.pt".extraConfig = "reverse_proxy * localhost:8112";
 
-  networking.hosts."127.0.0.1" = [
-    "torrents.toino.pt"
-  ];
+  networking.hosts."127.0.0.1" = [ "torrents.toino.pt" ];
 
   age.secrets.deluge-auth = {
     rekeyFile = ./deluge_auth.age;

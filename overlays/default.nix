@@ -19,9 +19,7 @@
         sha256 = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
       };
 
-      dependencies = oldAttrs.dependencies ++ [
-        final.python3Packages.uritools
-      ];
+      dependencies = oldAttrs.dependencies ++ [ final.python3Packages.uritools ];
     });
   })
 
@@ -41,14 +39,15 @@
         python3Packages.pykka
       ];
 
-      pythonImportsCheck = ["mopidy_marceline"];
+      pythonImportsCheck = [ "mopidy_marceline" ];
 
       doCheck = false;
     };
   })
 
   (final: prev: {
-    python3Packages = prev.python3Packages.overrideScope (final': prev': {
+    python3Packages = prev.python3Packages.overrideScope (
+      final': prev': {
       slskd-api = prev'.buildPythonPackage rec {
         pname = "slskd-api";
         version = "0.1.5";
@@ -65,7 +64,8 @@
 
         propagatedBuildInputs = [ final'.requests ];
       };
-    });
+      }
+    );
   })
 
   (final: prev: {
