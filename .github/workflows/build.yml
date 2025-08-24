@@ -1,0 +1,27 @@
+name: "Build"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build host ${{ matrix.host }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host:
+          - bmo
+          - prismo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: toino
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Build
+        run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
