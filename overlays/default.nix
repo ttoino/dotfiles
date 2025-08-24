@@ -8,7 +8,7 @@
         owner = "ttoino";
         repo = "mopidy-local";
         rev = "image-sources";
-        sha256 = "sha256-Em7Kk815lJqPrA8hFGc/q+WYA9b4XBqA6wQNO34M3C4=";
+        hash = "sha256-Em7Kk815lJqPrA8hFGc/q+WYA9b4XBqA6wQNO34M3C4=";
       };
     });
   })
@@ -19,7 +19,7 @@
         owner = "ttoino";
         repo = "mopidy-mpris";
         rev = "image-uri";
-        sha256 = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
+        hash = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
       };
 
       dependencies = oldAttrs.dependencies ++ [ final.python3Packages.uritools ];
@@ -60,7 +60,7 @@
             owner = "bigoulours";
             repo = pname;
             rev = "v${version}";
-            sha256 = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
+            hash = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
           };
 
           nativeBuildInputs = [ final'.setuptools-git-versioning ];
@@ -81,7 +81,7 @@
         owner = "mrusse";
         repo = pname;
         rev = version;
-        sha256 = "";
+        hash = "sha256-KAFfBuz2nrn2611+LMuenTJCZX9rHA07Q/TouXb7y54=";
       };
 
       propagatedBuildInputs = with final.python3Packages; [
