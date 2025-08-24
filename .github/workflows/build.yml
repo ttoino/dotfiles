@@ -15,7 +15,7 @@ jobs:
           - prismo
     steps:
       - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
+        uses: jlumbroso/free-disk-space@v1.3.1
       - name: Checkout
         uses: actions/checkout@v5
       - name: Setup nix
