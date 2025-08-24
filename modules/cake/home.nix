@@ -46,10 +46,5 @@ in
     libnotify
   ];
 
-  nix.settings = {
-    substituters = [ "https://ags.cachix.org/" ];
-    trusted-public-keys = [ "ags.cachix.org-1:naAvMrz0CuYqeyGNyLgE010iUiuf/qx6kYrUv3NwAJ8=" ];
-  };
-
   services.cliphist.enable = true;
 }
