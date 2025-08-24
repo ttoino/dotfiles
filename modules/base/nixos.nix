@@ -3,9 +3,18 @@
   # Use most recent kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix = {
-    gc.dates = "daily";
-    settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+
+    substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      "https://toino.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "toino.cachix.org-1:CYUAqEsSPuH1mEtyiqq7nGdYq7LGD9nXQdvdQbNuGR8="
+    ];
   };
 
   nixpkgs = {
