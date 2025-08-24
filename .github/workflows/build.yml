@@ -23,5 +23,6 @@ jobs:
         with:
           name: toino
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: ags,nix-community
       - name: Build
         run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
