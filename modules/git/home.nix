@@ -36,7 +36,7 @@
         owner = "ohmyzsh";
         repo = "ohmyzsh";
         rev = "master";
-        hash = "sha256-fCAwg6fzXw/mEa+xEnSCK88/ba8nR0FNY2tQ62CchbQ=";
+        hash = "sha256-F3ixcEFzJEMXppkZN70uVVmDsgiwI7iJO3B/vezGmfI=";
       };
     }
     {
