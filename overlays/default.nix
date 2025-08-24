@@ -1,4 +1,7 @@
-{...}:[
+{ inputs, ... }:
+[
+  inputs.nix-vscode-extensions.overlays.default
+
   (final: prev: {
     mopidy-local = prev.mopidy-local.overridePythonAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
@@ -9,7 +12,7 @@
       };
     });
   })
-  
+
   (final: prev: {
     mopidy-mpris = prev.mopidy-mpris.overridePythonAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
@@ -48,22 +51,22 @@
   (final: prev: {
     python3Packages = prev.python3Packages.overrideScope (
       final': prev': {
-      slskd-api = prev'.buildPythonPackage rec {
-        pname = "slskd-api";
-        version = "0.1.5";
-        pyproject = true;
+        slskd-api = prev'.buildPythonPackage rec {
+          pname = "slskd-api";
+          version = "0.1.5";
+          pyproject = true;
 
-        src = prev.fetchFromGitHub {
-          owner = "bigoulours";
-          repo = pname;
-          rev = "v${version}";
-          sha256 = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
+          src = prev.fetchFromGitHub {
+            owner = "bigoulours";
+            repo = pname;
+            rev = "v${version}";
+            sha256 = "sha256-Kyzbd8y92VFzjIp9xVbhkK9rHA/6KCCJh7kNS/MtixI=";
+          };
+
+          nativeBuildInputs = [ final'.setuptools-git-versioning ];
+
+          propagatedBuildInputs = [ final'.requests ];
         };
-
-        nativeBuildInputs = [ final'.setuptools-git-versioning ];
-
-        propagatedBuildInputs = [ final'.requests ];
-      };
       }
     );
   })
