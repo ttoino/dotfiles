@@ -13,7 +13,7 @@
     blender-hip # 3D modeling
     blueberry # Bluetooth manager
     d-spy # D-Bus inspector
-    gimp # Image editor
+    gimp3 # Image editor
     hunspell # Spell checker
     hunspellDicts.pt_PT # Portuguese spell checker
     jellyfin-media-player # Jellyfin media player
