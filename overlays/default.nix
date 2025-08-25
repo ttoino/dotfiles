@@ -3,8 +3,33 @@
   inputs.nix-vscode-extensions.overlays.default
 
   (final: prev: {
+    meterial-symbols = final.stdenvNoCC.mkDerivation (rec {
+      pname = "meterial-symbols";
+      version = "1.0.0";
+
+      src = final.fetchurl {
+        url = "https://github.com/ttoino/${pname}/releases/download/v${version}/MeterialSymbols.zip";
+        hash = "sha256-PBldiHPGtMLRnbowYmnCo45EwUCxbyYPLSw+3mL8GPQ=";
+      };
+
+      nativeBuildInputs = [ final.unzip ];
+
+      sourceRoot = ".";
+
+      installPhase = ''
+        runHook preInstall
+
+        install -Dm755 *.ttf -t "$out/share/fonts/TTF"
+        install -Dm755 *.woff2 -t "$out/share/fonts/woff2"
+
+        runHook postInstall
+      '';
+    });
+  })
+
+  (final: prev: {
     mopidy-local = prev.mopidy-local.overridePythonAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
+      src = final.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-local";
         rev = "image-sources";
@@ -15,7 +40,7 @@
 
   (final: prev: {
     mopidy-mpris = prev.mopidy-mpris.overridePythonAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
+      src = final.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-mpris";
         rev = "image-uri";
@@ -27,12 +52,12 @@
   })
 
   (final: prev: {
-    mopidy-marceline = prev.python3Packages.buildPythonPackage rec {
+    mopidy-marceline = final.python3Packages.buildPythonPackage rec {
       pname = "mopidy-marceline";
       version = "0.0.4";
       format = "wheel";
 
-      src = prev.fetchurl {
+      src = final.fetchurl {
         url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
         hash = "sha256-2noJkqJDxGWg14D3ilB7lWELyYgfaOtRJhrfNx7rsoI=";
       };
@@ -51,12 +76,12 @@
   (final: prev: {
     python3Packages = prev.python3Packages.overrideScope (
       final': prev': {
-        slskd-api = prev'.buildPythonPackage rec {
+        slskd-api = final'.buildPythonPackage rec {
           pname = "slskd-api";
           version = "0.1.5";
           pyproject = true;
 
-          src = prev.fetchFromGitHub {
+          src = final.fetchFromGitHub {
             owner = "bigoulours";
             repo = pname;
             rev = "v${version}";
@@ -72,12 +97,12 @@
   })
 
   (final: prev: {
-    soularr = prev.python3Packages.buildPythonApplication rec {
+    soularr = final.python3Packages.buildPythonApplication rec {
       pname = "soularr";
       version = "main";
       pyproject = false;
 
-      src = prev.fetchFromGitHub {
+      src = final.fetchFromGitHub {
         owner = "mrusse";
         repo = pname;
         rev = version;
