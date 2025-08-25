@@ -42,8 +42,7 @@
         yzhang.markdown-all-in-one
 
         # Python
-        eeyore.yapf
-        ms-python.pylint
+        charliermarsh.ruff
         ms-python.python
         ms-toolsai.jupyter
 
@@ -157,7 +156,7 @@
         "python.analysis.inlayHints.variableTypes" = true;
         "python.analysis.typeCheckingMode" = "standard";
         "[python]" = {
-          "editor.defaultFormatter" = "yapf";
+          "editor.defaultFormatter" = "charliermarsh.ruff";
         };
 
         # Web
