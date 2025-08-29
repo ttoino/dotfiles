@@ -139,11 +139,11 @@
         # Prettier
         "prettier.tabWidth" = 4;
         "prettier.trailingComma" = "all";
-        "[css] [github-actions-workflow] [html] [javascript] [json] [jsonc] [markdown] [scss] [svelte] [typescript] [vue] [yaml]" =
+        "[css][github-actions-workflow][html][javascript][json][jsonc][markdown][scss][svelte][typescript][typescriptreact][vue][yaml]" =
           {
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
-        "[github-actions-workflow] [yaml]" = {
+        "[github-actions-workflow][yaml]" = {
           "prettier.tabWidth" = 2;
         };
 
