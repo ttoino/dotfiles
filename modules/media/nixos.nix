@@ -10,7 +10,6 @@
     ./radarr.nix
     ./readarr.nix
     ./sonarr.nix
-    ./soularr.nix
     ./soulseek.nix
   ];
 
@@ -93,20 +92,6 @@
         group = "media";
         mode = "0775";
       };
-    };
-  };
-
-  age.secrets = {
-    lidarr-api-key = {
-      rekeyFile = ./lidarr_api_key.age;
-      owner = "media";
-      group = "media";
-    };
-    slskd-api-key = {
-      generator.script = "alnum";
-      rekeyFile = ./slskd_api_key.age;
-      owner = "media";
-      group = "media";
     };
   };
 }

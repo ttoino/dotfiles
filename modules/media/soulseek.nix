@@ -34,10 +34,18 @@ in
 
   networking.hosts."127.0.0.1" = [ "soulseek.toino.pt" ];
 
-  age.secrets.slskd-env = {
-    rekeyFile = ./slskd_env.age;
-    owner = cfg.user;
-    group = cfg.group;
+  age.secrets = {
+    slskd-env = {
+      rekeyFile = ./slskd_env.age;
+      owner = cfg.user;
+      group = cfg.group;
+    };
+    slskd-api-key = {
+      generator.script = "alnum";
+      rekeyFile = ./slskd_api_key.age;
+      owner = cfg.user;
+      group = cfg.group;
+    };
   };
 
   system.activationScripts.slskd =
