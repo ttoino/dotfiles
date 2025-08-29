@@ -5,6 +5,20 @@
   (final: prev: packages final)
 
   (final: prev: {
+    material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {
+      version = "4.0.0-unstable-2025-08-28";
+
+      src = final.fetchFromGitHub {
+        owner = "google";
+        repo = "material-design-icons";
+        rev = "f5f256f04db18b1e95fccc4195c9242da2fc941b";
+        hash = "sha256-YaWYTMZRvjbEG5lorQRa7sJh2xJtDYw1Sha4EQbp1BA=";
+        sparseCheckout = [ "variablefont" ];
+      };
+    });
+  })
+
+  (final: prev: {
     meterial-symbols = final.stdenvNoCC.mkDerivation (rec {
       pname = "meterial-symbols";
       version = "1.0.0";
