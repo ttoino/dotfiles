@@ -16,6 +16,9 @@
     (if builtins.pathExists (path + "/${name}.nix") then [ (path + "/${name}.nix") ] else [ ])
     ++ (if builtins.pathExists (path + "/${name}/default.nix") then [ (path + "/${name}") ] else [ ]);
 
+  getDirectories =
+    path: lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path);
+
   getModule =
     path:
     {
@@ -26,8 +29,12 @@
 
   getModules =
     path:
-    lib.attrsets.mapAttrs (name: value: lib.getModule (path + "/${name}")) (
-      lib.attrsets.filterAttrs (name: value: value == "directory") (builtins.readDir path)
+    lib.attrsets.mapAttrs (name: value: lib.getModule (path + "/${name}")) (lib.getDirectories path);
+
+  getPackages =
+    path: pkgs:
+    lib.attrsets.mapAttrs (name: value: import (path + "/${name}/default.nix") pkgs) (
+      lib.getDirectories path
     );
 
   joinTraits =

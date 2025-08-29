@@ -1,6 +1,8 @@
-{ inputs, ... }:
+{ inputs, packages, ... }:
 [
   inputs.nix-vscode-extensions.overlays.default
+
+  (final: prev: packages final)
 
   (final: prev: {
     meterial-symbols = final.stdenvNoCC.mkDerivation (rec {

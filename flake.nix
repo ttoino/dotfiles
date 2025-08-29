@@ -65,6 +65,7 @@
           lib
           modules
           overlays
+          packages
           traits
           ;
       };
@@ -72,6 +73,7 @@
       modules = lib.getModules ./modules;
       lib = import ./lib args;
       overlays = import ./overlays args;
+      packages = lib.getPackages ./packages;
       traits = lib.getModules ./traits;
     };
     {
@@ -88,7 +90,7 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.default = self.nixosConfigurations.bmo.config.system.build.isoImage;
+        packages = packages pkgs;
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
