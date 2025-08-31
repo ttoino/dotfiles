@@ -2,9 +2,9 @@ name: "Build"
 
 on:
   push:
+    branches: [nixos]
   pull_request:
-    branches: 
-      - nixos
+    branches: [nixos]
   workflow_dispatch:
 
 jobs:
