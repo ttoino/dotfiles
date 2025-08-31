@@ -7,7 +7,7 @@
     package = pkgs.vscodium;
 
     profiles.default = {
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = with (pkgs.forVSCodeVersion pkgs.vscodium.version).vscode-marketplace; [
         # Git
         eamodio.gitlens
         github.vscode-github-actions
@@ -43,8 +43,15 @@
 
         # Python
         charliermarsh.ruff
+        ms-python.debugpy
         ms-python.python
+        ms-python.vscode-pylance
+        ms-python.vscode-python-envs
         ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.vscode-jupyter-slideshow
 
         # Web
         bradlc.vscode-tailwindcss
@@ -67,7 +74,8 @@
         mkhl.direnv
         ms-azuretools.vscode-containers
         ms-azuretools.vscode-docker
-        ms-vscode-remote.vscode-remote-extensionpack
+        ms-vscode-remote.remote-containers
+        ms-vscode-remote.remote-ssh
         ms-vsliveshare.vsliveshare
         ritwickdey.liveserver
         streetsidesoftware.code-spell-checker
@@ -139,7 +147,7 @@
         # Prettier
         "prettier.tabWidth" = 4;
         "prettier.trailingComma" = "all";
-        "[css][github-actions-workflow][html][javascript][json][jsonc][markdown][scss][svelte][typescript][typescriptreact][vue][yaml]" =
+        "[css][github-actions-workflow][html][javascript][json][jsonc][markdown][scss][svelte][tailwindcss][typescript][typescriptreact][vue][yaml]" =
           {
             "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
@@ -164,6 +172,13 @@
         "emmet.includeLanguages" = {
           "svelte" = "html";
         };
+        "eslint.validate" = [
+          "javascript"
+          "javascriptreact"
+          "typescript"
+          "typescriptreact"
+          "svelte"
+        ];
         "javascript.inlayHints.functionLikeReturnTypes.enabled" = true;
         "javascript.inlayHints.parameterTypes.enabled" = true;
         "javascript.inlayHints.propertyDeclarationTypes.enabled" = true;
