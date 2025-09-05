@@ -16,7 +16,7 @@
         User = "beets";
         Group = "media";
         UMask = "0002";
-        ExecStart = "${pkgs.beets}/bin/beet import /data/media/music/untagged";
+        ExecStart = "${pkgs.beets}/bin/beet import --quiet /data/media/music/untagged";
         Restart = "on-failure";
       };
     };
@@ -50,15 +50,27 @@
           incremental = true;
           incremental_skip_later = true;
           from_scratch = false;
-          quiet = true;
           log = "/var/lib/beets/log.log";
         };
 
         match = {
+          max_rec = {
+            album = "medium";
+            artist = "medium";
+            missing_tracks = "medium";
+            unmatched_tracks = "medium";
+          };
           preferred = {
+            countries = [
+              "XW"
+              "US"
+              "GB|UK"
+              "KR"
+            ];
             media = [ "Digital Media|File" ];
             original_year = true;
           };
+          strong_rec_thresh = 0.6;
         };
 
         embedart = {
