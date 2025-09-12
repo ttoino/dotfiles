@@ -22,6 +22,7 @@
         james-yu.latex-workshop
         jnoortheen.nix-ide
         justusadam.language-haskell
+        llvm-vs-code-extensions.vscode-clangd
         mads-hartmann.bash-ide-vscode
         redhat.vscode-xml
         redhat.vscode-yaml
@@ -105,6 +106,7 @@
         "scm.defaultViewMode" = "tree";
 
         # Language Support
+        "clangd.path" = "${pkgs.clang-tools}/bin/clangd";
         "haskell.manageHLS" = "PATH";
         "latex-workshop.formatting.latex" = "tex-fmt";
         "latex-workshop.view.pdf.viewer" = "tab";
