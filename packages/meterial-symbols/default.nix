@@ -1,16 +1,18 @@
 {
   fetchurl,
+  lib,
   stdenvNoCC,
+
   unzip,
   ...
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "meterial-symbols";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = fetchurl {
     url = "https://github.com/ttoino/${pname}/releases/download/v${version}/MeterialSymbols.zip";
-    hash = "sha256-PBldiHPGtMLRnbowYmnCo45EwUCxbyYPLSw+3mL8GPQ=";
+    hash = "sha256-PXebetlpWpGdGnuWABa8563vecqRJZekvH8ouNdGtgs=";
   };
 
   nativeBuildInputs = [ unzip ];
@@ -25,4 +27,10 @@ stdenvNoCC.mkDerivation rec {
 
     runHook postInstall
   '';
+
+  meta = with lib; {
+    description = "Material Symbols compatible font for all your meter/progress needs!";
+    homepage = "https://meterial.toino.pt/";
+    license = licenses.asl20;
+  };
 }
