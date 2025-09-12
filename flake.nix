@@ -33,6 +33,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.51.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.flake-utils.follows = "flake-utils";
@@ -46,6 +50,10 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    shadows-plus-plus = {
+      url = "github:ttoino/shadows-plus-plus";
+      inputs.hyprland.follows = "hyprland";
     };
   };
 
@@ -90,7 +98,11 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages = packages pkgs;
+        packages =
+          (packages pkgs)
+          // (lib.attrsets.concatMapAttrs (name: config: {
+            "${name}-iso" = config.config.system.build.isoImage;
+          }) self.nixosConfigurations);
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [

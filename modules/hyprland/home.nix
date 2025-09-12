@@ -17,6 +17,10 @@
     // (import ./keybinds.nix)
     // (import ./options.nix)
     // (import ./rules.nix);
+
+    plugins = with pkgs.hyprlandPlugins; [
+      shadows-plus-plus
+    ];
   };
 
   home.packages = with pkgs; [

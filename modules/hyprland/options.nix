@@ -6,19 +6,17 @@
     kb_options = "grp:caps_toggle";
     kb_rules = "";
 
-    follow_mouse = "1";
+    follow_mouse = 1;
 
     touchpad = {
-      natural_scroll = "no";
+      natural_scroll = false;
     };
   };
 
   general = {
-    gaps_in = "8";
-    gaps_out = "16";
-    border_size = "2";
-    "col.active_border" = "$blue $green 45deg";
-    "col.inactive_border" = "$surface2";
+    gaps_in = 8;
+    gaps_out = 16;
+    border_size = 0;
 
     allow_tearing = true;
 
@@ -33,32 +31,47 @@
   };
 
   decoration = {
-    rounding = "16";
+    rounding = 16;
 
-    active_opacity = "1";
-    inactive_opacity = ".9";
-    fullscreen_opacity = "1";
+    active_opacity = 1;
+    inactive_opacity = .75;
+    fullscreen_opacity = 1;
 
     blur = {
-      enabled = "yes";
-      size = "8";
-      passes = "1";
-      new_optimizations = "on";
+      enabled = true;
+      size = 8;
+      passes = 3;
+      new_optimizations = true;
     };
 
     shadow = {
-      enabled = "yes";
-      range = "24";
-      render_power = "3";
-      color = "$crust";
+      enabled = false;
+      render_power = 1;
     };
 
-    dim_inactive = "true";
-    dim_strength = ".1";
+    dim_inactive = false;
+  };
+
+  plugin.shadows-plus-plus = {
+    add_shadows = 2;
+
+    shadow_1 = {
+      offset = "0 4";
+      blur_radius = 4;
+      spread_radius = 0;
+      color = "rgba(0,0,0,0.30)";
+    };
+
+    shadow_2 = {
+      offset = "0 8";
+      blur_radius = 12;
+      spread_radius = 6;
+      color = "rgba(0,0,0,0.15)";
+    };
   };
 
   animations = {
-    enabled = "yes";
+    enabled = true;
 
     bezier = [
       "myBezier, 0.05, 0.9, 0.1, 1.05"
@@ -68,21 +81,17 @@
     animation = [
       "windows, 1, 7, myBezier"
       "windowsOut, 1, 7, default, popin 80%"
-      "border, 1, 10, default"
-      "borderangle, 1, 100, linear, loop"
       "fade, 1, 7, default"
       "workspaces, 1, 6, default"
     ];
   };
 
   dwindle = {
-    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-    pseudotile = "yes"; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-    preserve_split = "yes"; # you probably want this
+    pseudotile = true;
+    preserve_split = true;
   };
 
   master = {
-    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
     new_status = "master";
   };
 
