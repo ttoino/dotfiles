@@ -36,14 +36,6 @@
         };
       }
       {
-        name = "zsh-fast-alias-tips";
-        src = pkgs.fetchzip {
-          url = "https://github.com/decayofmind/zsh-fast-alias-tips/releases/download/v1.0.0/zsh-fast-alias-tips_1.0.0_linux_amd64.tar.gz";
-          stripRoot = false;
-          hash = "sha256-W6LskHcJojB9eHsVJX4rbx5I9qJ4k0yKJS12FdGdTUg=";
-        };
-      }
-      {
         name = "zsh-nix-shell";
         file = "nix-shell.plugin.zsh";
         src = pkgs.fetchFromGitHub {
