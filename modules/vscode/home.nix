@@ -24,6 +24,7 @@
         justusadam.language-haskell
         llvm-vs-code-extensions.vscode-clangd
         mads-hartmann.bash-ide-vscode
+        myriad-dreamin.tinymist
         redhat.vscode-xml
         redhat.vscode-yaml
         rust-lang.rust-analyzer
@@ -75,8 +76,6 @@
         mkhl.direnv
         ms-azuretools.vscode-containers
         ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-containers
-        ms-vscode-remote.remote-ssh
         ms-vsliveshare.vsliveshare
         ritwickdey.liveserver
         streetsidesoftware.code-spell-checker
@@ -108,17 +107,18 @@
         # Language Support
         "clangd.path" = "${pkgs.clang-tools}/bin/clangd";
         "haskell.manageHLS" = "PATH";
-        "latex-workshop.formatting.latex" = "tex-fmt";
+        "latex-workshop.formatting.latex" = "${pkgs.tex-fmt}/bin/tex-fmt";
         "latex-workshop.view.pdf.viewer" = "tab";
         "markdownlint.config" = {
           "MD033" = false;
         };
         "nix.enableLanguageServer" = true;
-        "nix.formatterPath" = "nixfmt";
+        "nix.formatterPath" = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+        "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "nix.serverSettings" = {
           "nil" = {
             "formatting" = {
-              "command" = [ "nixfmt" ];
+              "command" = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
             };
           };
         };
@@ -147,6 +147,7 @@
         "terminal.integrated.enableMultiLinePasteWarning" = "never";
 
         # Prettier
+        "prettier.prettierPath" = "${pkgs.nodePackages.prettier}";
         "prettier.tabWidth" = 4;
         "prettier.trailingComma" = "all";
         "[css][github-actions-workflow][html][javascript][json][jsonc][markdown][scss][svelte][tailwindcss][typescript][typescriptreact][vue][yaml]" =
@@ -160,6 +161,7 @@
         # Python
         "jupyter.askForKernelRestart" = false;
         "python.analysis.autoFormatStrings" = true;
+        "python.analysis.diagnosticMode" = "workspace";
         "python.analysis.inlayHints.callArgumentNames" = "partial";
         "python.analysis.inlayHints.functionReturnTypes" = true;
         "python.analysis.inlayHints.pytestParameters" = true;
