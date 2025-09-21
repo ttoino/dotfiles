@@ -37,7 +37,6 @@ in
     layerrule = [
       "blur, cake-scrim"
       "order 1, cake-scrim"
-      "order 1, cake-dismisser"
     ];
   };
 

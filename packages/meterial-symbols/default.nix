@@ -8,11 +8,11 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "meterial-symbols";
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchurl {
     url = "https://github.com/ttoino/${pname}/releases/download/v${version}/MeterialSymbols.zip";
-    hash = "sha256-PXebetlpWpGdGnuWABa8563vecqRJZekvH8ouNdGtgs=";
+    hash = "sha256-/kxpmmyxstiTabedy8y3XXXTpx2/6GIESBz+Xni3NyI=";
   };
 
   nativeBuildInputs = [ unzip ];

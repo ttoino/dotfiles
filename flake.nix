@@ -108,10 +108,6 @@
           packages = with pkgs; [
             # Create secrets
             agenix-rekey.packages.${system}.default
-            # Development tools
-            nil
-            nixfmt-rfc-style
-            nodePackages.prettier
             # Wireguard
             wireguard-tools
           ];

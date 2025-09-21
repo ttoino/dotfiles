@@ -104,4 +104,12 @@
     "$mainMod, mouse:272, movewindow"
     "$mainMod, mouse:273, resizewindow"
   ];
+
+  gesture = [
+    # TODO: Not quite right
+    "3, left, workspace, r-1"
+    "3, right, workspace, r+1"
+    "3, down, close"
+    "3, up, fullscreen, 1"
+  ];
 }
