@@ -20,13 +20,13 @@
 }:
 let
   pname = "lidarr-plugins";
-  version = "2.14.1.4713";
+  version = "2.14.4.4810";
 
   src = fetchFromGitHub {
     owner = "lidarr";
     repo = "Lidarr";
-    rev = "a21a4962839961b23f11535bead9ff5a357a3e5e";
-    hash = "sha256-tk631lEblQXRkq4XYLF7rtEBud0gPY7ecDavDBBKAWI=";
+    rev = "6e5f2f6f844daadc3a9abf4955b984da87b77dde";
+    hash = "sha256-IioDoRVN3PbwDAIOxgfI+F3i4nRl8+zYB5esVTAuRgk=";
   };
 
   frontend = stdenv.mkDerivation {
