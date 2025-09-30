@@ -106,6 +106,7 @@
 
         # Language Support
         "clangd.path" = "${pkgs.clang-tools}/bin/clangd";
+        "docker.extension.enableComposeLanguageServer" = true;
         "haskell.manageHLS" = "PATH";
         "latex-workshop.formatting.latex" = "${pkgs.tex-fmt}/bin/tex-fmt";
         "latex-workshop.view.pdf.viewer" = "tab";
@@ -121,6 +122,13 @@
               "command" = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
             };
           };
+        };
+        "yaml.schemas" = {
+          "https://raw.githubusercontent.com/docker/vscode-extension/6a88caada42b57090df7ce91ec2a6561b422afe1/misc/empty.json" =
+            [
+              "compose*y*ml"
+              "docker-compose*y*ml"
+            ];
         };
         "[dockerfile]" = {
           "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
