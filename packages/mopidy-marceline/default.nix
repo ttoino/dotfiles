@@ -8,12 +8,12 @@
 }:
 python3Packages.buildPythonPackage rec {
   pname = "mopidy-marceline";
-  version = "0.0.4";
+  version = "0.0.5";
   format = "wheel";
 
   src = fetchurl {
     url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
-    hash = "sha256-2noJkqJDxGWg14D3ilB7lWELyYgfaOtRJhrfNx7rsoI=";
+    hash = "sha256-/mBGeM0dk3jk8dJWKngLX0DokJht7pE0rhrajFSWksc=";
   };
 
   propagatedBuildInputs = [
