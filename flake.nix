@@ -99,7 +99,7 @@
       in
       {
         packages =
-          (packages pkgs)
+          (packages pkgs null)
           // (lib.attrsets.concatMapAttrs (name: config: {
             "${name}-iso" = config.config.system.build.isoImage;
           }) self.nixosConfigurations);

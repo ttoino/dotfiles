@@ -1,4 +1,14 @@
 { lib, pkgs, ... }:
+let
+  package = pkgs.beets.override {
+    pluginOverrides = {
+      fetchartist = {
+        enable = true;
+        propagatedBuildInputs = [ pkgs.beetsPackages.fetchartist ];
+      };
+    };
+  };
+in
 {
   users.users.beets = {
     isSystemUser = true;
@@ -16,7 +26,7 @@
         User = "beets";
         Group = "media";
         UMask = "0002";
-        ExecStart = "${pkgs.beets}/bin/beet import --quiet /data/media/music/untagged";
+        ExecStart = "${package}/bin/beet import --quiet /data/media/music/untagged";
         Restart = "on-failure";
       };
     };
@@ -40,7 +50,9 @@
         plugins = [
           "embedart"
           "fetchart"
+          "fetchartist"
           "lastgenre"
+          "musicbrainz"
         ];
 
         import = {
@@ -70,7 +82,7 @@
             media = [ "Digital Media|File" ];
             original_year = true;
           };
-          strong_rec_thresh = 0.6;
+          strong_rec_thresh = 0.4;
         };
 
         embedart = {

@@ -25,17 +25,26 @@
       home = (lib.pathsByName path "home") ++ (lib.pathsByName path "common");
       nixos = (lib.pathsByName path "nixos") ++ (lib.pathsByName path "common");
     }
-    // (if builtins.pathExists (path + "/default.nix") then import path args else { });
+    // (lib.optionalAttrs (builtins.pathExists (path + "/default.nix")) (import path args));
 
   getModules =
     path:
     lib.attrsets.mapAttrs (name: value: lib.getModule (path + "/${name}")) (lib.getDirectories path);
 
   getPackages =
-    path: pkgs:
-    lib.attrsets.mapAttrs (name: value: import (path + "/${name}/default.nix") pkgs) (
-      lib.getDirectories path
-    );
+    path: pkgs: partialPkgs:
+    lib.attrsets.mapAttrs (
+      name: value:
+      if (builtins.pathExists (path + "/${name}/default.nix")) then
+        (import (path + "/${name}/default.nix") pkgs)
+      else
+        (
+          (lib.optionalAttrs (partialPkgs != null) partialPkgs.${name})
+          // (lib.getPackages (path + "/${name}") pkgs (
+            if partialPkgs != null then partialPkgs.${name} else null
+          ))
+        )
+    ) (lib.getDirectories path);
 
   joinTraits =
     lib.lists.foldr
