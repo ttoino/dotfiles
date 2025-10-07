@@ -5,16 +5,16 @@
   python3Packages,
   ...
 }:
-python3Packages.buildPythonApplication rec {
+python3Packages.buildPythonApplication {
   pname = "beets-fetchartist";
-  version = "24.02.29";
+  version = "25.10.07";
   pyproject = true;
 
   src = fetchFromGitHub {
     repo = "beets-fetchartist";
-    owner = "metermaid";
-    rev = "159ed5a496d347bdfdfbdddd82753a7fa19f0b48";
-    hash = "sha256-pbyXoGQIz+obA8/Wx63Y6vWL3aW1qT3Cg9n0iaplETE=";
+    owner = "ttoino";
+    rev = "d002de427f39b1bf6b7173a87c069c4a6cf9970d";
+    hash = "sha256-tRlnzLkMnL3td1L2kjUeoXPmmCStuZp49TrhmGICuTU=";
   };
 
   nativeBuildInputs = [
@@ -29,18 +29,4 @@ python3Packages.buildPythonApplication rec {
   build-system = with python3Packages; [
     setuptools
   ];
-
-  preBuild = ''
-    cat > setup.py <<EOF
-    from setuptools import setup
-
-    if __name__ == "__main__":
-        setup(
-            name="${pname}",
-            version="${version}",
-
-            packages=['beetsplug'],
-        )
-    EOF
-  '';
 }

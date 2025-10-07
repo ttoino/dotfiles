@@ -1,13 +1,6 @@
 { lib, pkgs, ... }:
 let
-  package = pkgs.beets.override {
-    pluginOverrides = {
-      fetchartist = {
-        enable = true;
-        propagatedBuildInputs = [ pkgs.beetsPackages.fetchartist ];
-      };
-    };
-  };
+  package = import ./beets-package.nix pkgs;
 in
 {
   users.users.beets = {
@@ -26,7 +19,9 @@ in
         User = "beets";
         Group = "media";
         UMask = "0002";
-        ExecStart = "${package}/bin/beet import --quiet /data/media/music/untagged";
+        ExecStartPre = "${package}/bin/beet import --quiet /data/media/music/untagged";
+        ExecStart = "${package}/bin/beet update";
+        ExecStartPost = "${package}/bin/beet fetchartist";
         Restart = "on-failure";
       };
     };
@@ -91,6 +86,10 @@ in
 
         fetchart = {
           enforce_ratio = true;
+        };
+
+        fetchartist = {
+          filename = "cover";
         };
 
         lastgenre = {
