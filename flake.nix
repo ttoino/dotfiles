@@ -108,6 +108,8 @@
           packages = with pkgs; [
             # Create secrets
             agenix-rekey.packages.${system}.default
+            # Update packages
+            nix-update
             # Wireguard
             wireguard-tools
           ];

@@ -57,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758879564,
-        "narHash": "sha256-qh5X63FN7Wm8tIOhhWD6HaDDUzKX0PRSIegZSwB2VLI=",
+        "lastModified": 1759874171,
+        "narHash": "sha256-WkgaiLFo/NbTxIzcI1LkO6KK4SfGHYY31xRjECZoXfA=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "829827d9493e8a4ce2fdba34782c61eaa20351c8",
+        "rev": "36b8334c86aaeb5a2fd7a44459cb713a652060a1",
         "type": "github"
       },
       "original": {
@@ -111,11 +111,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756474652,
-        "narHash": "sha256-iiBU6itpEqE0spXeNJ3uJTfioSyKYjt5bNepykpDXTE=",
+        "lastModified": 1759873585,
+        "narHash": "sha256-DsYbOkDXSl162XcQPxu4bknsevArxmWoqmL1qqcVNSI=",
         "owner": "aylur",
         "repo": "astal",
-        "rev": "20bd8318e4136fbd3d4eb2d64dbabc3acbc915dd",
+        "rev": "8d9ed4c624981156f52846ae58826f7c94f30546",
         "type": "github"
       },
       "original": {
@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758549459,
-        "narHash": "sha256-d4EdtBNBVHOlY38TKa4LFqgsg0wdXroHNM7EyDnD+BY=",
+        "lastModified": 1759758616,
+        "narHash": "sha256-pXXDM2UOJ2XHUD1mWuvyHYb8jvwDAQYa4nn+HQXT/0U=",
         "owner": "ttoino",
         "repo": "cake",
-        "rev": "7db34288672bf9cf5cfea0fbb707b557ad39649a",
+        "rev": "d91955eb5f60623cfbd0ee5ab22fd22fbddb7a92",
         "type": "github"
       },
       "original": {
