@@ -91,6 +91,14 @@
             presharedKeyFile = config.age.secrets.wireguard-bmo-preshared-key.path;
             allowedIPs = [ "10.0.0.2/32" ];
           }
+          {
+            publicKey = "5YQrqvKcHAgC+I1qDrPdW62GkqY1CfI7lC9gi0EiVhE=";
+            allowedIPs = [ "10.0.0.3/32" ];
+          }
+          {
+            publicKey = "jfrJuOvt1VmvgJez0tdsriIxgKEZmheZfo4UhpLf1yk=";
+            allowedIPs = [ "10.0.0.4/32" ];
+          }
         ];
       };
       wg1.configFile = config.age.secrets.mullvad-config.path;
