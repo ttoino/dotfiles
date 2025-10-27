@@ -3,13 +3,10 @@
   programs.git = {
     enable = true;
 
-    userName = "toino";
-    userEmail = "me@toino.pt";
-
     lfs.enable = true;
     maintenance.enable = true;
 
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
 
       diff = {
@@ -24,6 +21,11 @@
         kitty = {
           cmd = "kitten diff $LOCAL $REMOTE";
         };
+      };
+
+      user = {
+        name = "toino";
+        email = "me@toino.pt";
       };
     };
   };
