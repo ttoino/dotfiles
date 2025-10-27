@@ -123,6 +123,7 @@
             };
           };
         };
+        "tinymist.serverPath" = "${pkgs.tinymist}/bin/tinymist";
         "yaml.schemas" = {
           "https://raw.githubusercontent.com/docker/vscode-extension/6a88caada42b57090df7ce91ec2a6561b422afe1/misc/empty.json" =
             [
