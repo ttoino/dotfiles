@@ -45,9 +45,9 @@
 
         # Python
         charliermarsh.ruff
+        detachhead.basedpyright
         ms-python.debugpy
         ms-python.python
-        ms-python.vscode-pylance
         ms-python.vscode-python-envs
         ms-toolsai.jupyter
         ms-toolsai.jupyter-keymap
@@ -169,13 +169,8 @@
 
         # Python
         "jupyter.askForKernelRestart" = false;
-        "python.analysis.autoFormatStrings" = true;
-        "python.analysis.diagnosticMode" = "workspace";
-        "python.analysis.inlayHints.callArgumentNames" = "partial";
-        "python.analysis.inlayHints.functionReturnTypes" = true;
-        "python.analysis.inlayHints.pytestParameters" = true;
-        "python.analysis.inlayHints.variableTypes" = true;
-        "python.analysis.typeCheckingMode" = "standard";
+        "basedpyright.analysis.diagnosticMode" = "workspace";
+        "basedpyright.analysis.typeCheckingMode" = "standard";
         "[python]" = {
           "editor.defaultFormatter" = "charliermarsh.ruff";
         };
