@@ -27,7 +27,7 @@
     # cmd-polkit # TODO # Polkit agent
     brightnessctl # Screen brightness control
     grimblast # Screenshot tool
-    hyprland-qtutils # Needed by hyprland
+    hyprland-guiutils # Needed by hyprland
     hyprpicker # Color picker
     hyprpolkitagent # Remove this once cmd-polkit is implemented # Polkit agent
     playerctl # Media player control
