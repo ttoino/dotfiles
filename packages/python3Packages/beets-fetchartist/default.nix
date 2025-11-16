@@ -1,11 +1,9 @@
 {
   fetchFromGitHub,
-
-  beets,
   python3Packages,
   ...
 }:
-python3Packages.buildPythonApplication {
+python3Packages.buildPythonPackage {
   pname = "beets-fetchartist";
   version = "25.10.07";
   pyproject = true;
@@ -17,8 +15,8 @@ python3Packages.buildPythonApplication {
     hash = "sha256-tRlnzLkMnL3td1L2kjUeoXPmmCStuZp49TrhmGICuTU=";
   };
 
-  nativeBuildInputs = [
-    beets
+  nativeBuildInputs = with python3Packages; [
+    beets-minimal
   ];
 
   dependencies = with python3Packages; [

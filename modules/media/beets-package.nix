@@ -1,9 +1,9 @@
 pkgs:
-pkgs.beets.override {
+pkgs.python3Packages.beets.override {
   pluginOverrides = {
     fetchartist = {
       enable = true;
-      propagatedBuildInputs = [ pkgs.beetsPackages.fetchartist ];
+      propagatedBuildInputs = [ pkgs.python3Packages.beets-fetchartist ];
     };
   };
 }
