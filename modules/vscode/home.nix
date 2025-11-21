@@ -7,80 +7,83 @@
     package = pkgs.vscodium;
 
     profiles.default = {
-      extensions = with (pkgs.forVSCodeVersion pkgs.vscodium.version).vscode-marketplace; [
+      enableExtensionUpdateCheck = false;
+      enableUpdateCheck = false;
+
+      extensions = pkgs.nix4vscode.forVscodeVersion pkgs.vscodium.version [
         # Git
-        eamodio.gitlens
-        github.vscode-github-actions
-        github.vscode-pull-request-github
+        "eamodio.gitlens"
+        "github.vscode-github-actions"
+        "github.vscode-pull-request-github"
 
         # Language Support
-        adpyke.vscode-sql-formatter
-        bbenoist.nix
-        docker.docker
-        foxundermoon.shell-format
-        haskell.haskell
-        james-yu.latex-workshop
-        jnoortheen.nix-ide
-        justusadam.language-haskell
-        llvm-vs-code-extensions.vscode-clangd
-        mads-hartmann.bash-ide-vscode
-        myriad-dreamin.tinymist
-        redhat.vscode-xml
-        redhat.vscode-yaml
-        rust-lang.rust-analyzer
-        tamasfe.even-better-toml
-        timonwong.shellcheck
-        typescript-to-lua.vscode-typescript-to-lua
+        "adpyke.vscode-sql-formatter"
+        "bbenoist.nix"
+        "docker.docker"
+        "foxundermoon.shell-format"
+        "haskell.haskell"
+        "james-yu.latex-workshop"
+        "jnoortheen.nix-ide"
+        "justusadam.language-haskell"
+        "llvm-vs-code-extensions.vscode-clangd"
+        "mads-hartmann.bash-ide-vscode"
+        "myriad-dreamin.tinymist"
+        "redhat.vscode-xml"
+        "redhat.vscode-yaml"
+        "rust-lang.rust-analyzer"
+        "tamasfe.even-better-toml"
+        "timonwong.shellcheck"
+        "typescript-to-lua.vscode-typescript-to-lua"
 
         # Markdown
-        bierner.markdown-checkbox
-        bierner.markdown-emoji
-        bierner.markdown-footnotes
-        bierner.markdown-mermaid
-        bierner.markdown-preview-github-styles
-        bierner.markdown-yaml-preamble
-        bpruitt-goddard.mermaid-markdown-syntax-highlighting
-        davidanson.vscode-markdownlint
-        yzhang.markdown-all-in-one
+        "bierner.markdown-checkbox"
+        "bierner.markdown-emoji"
+        "bierner.markdown-footnotes"
+        "bierner.markdown-mermaid"
+        "bierner.markdown-preview-github-styles"
+        "bierner.markdown-yaml-preamble"
+        "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
+        "davidanson.vscode-markdownlint"
+        "yzhang.markdown-all-in-one"
 
         # Python
-        charliermarsh.ruff
-        detachhead.basedpyright
-        ms-python.debugpy
-        ms-python.python
-        ms-python.vscode-python-envs
-        ms-toolsai.jupyter
-        ms-toolsai.jupyter-keymap
-        ms-toolsai.jupyter-renderers
-        ms-toolsai.vscode-jupyter-cell-tags
-        ms-toolsai.vscode-jupyter-slideshow
+        "charliermarsh.ruff"
+        "detachhead.basedpyright"
+        "ms-python.debugpy"
+        "ms-python.python"
+        "ms-python.vscode-python-envs"
+        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter-keymap"
+        "ms-toolsai.jupyter-renderers"
+        "ms-toolsai.vscode-jupyter-cell-tags"
+        "ms-toolsai.vscode-jupyter-slideshow"
 
         # Web
-        bradlc.vscode-tailwindcss
-        dbaeumer.vscode-eslint
-        ecmel.vscode-html-css
-        esbenp.prettier-vscode
-        jock.svg
-        matthewpi.caddyfile-support
-        meganrogge.template-string-converter
-        pranaygp.vscode-css-peek
-        svelte.svelte-vscode
-        tobermory.es6-string-html
-        vitest.explorer
-        yoavbls.pretty-ts-errors
+        "bradlc.vscode-tailwindcss"
+        "dbaeumer.vscode-eslint"
+        "ecmel.vscode-html-css"
+        "esbenp.prettier-vscode"
+        "jock.svg"
+        "matthewpi.caddyfile-support"
+        "meganrogge.template-string-converter"
+        "pranaygp.vscode-css-peek"
+        "svelte.svelte-vscode"
+        "tobermory.es6-string-html"
+        "vitest.explorer"
+        "yoavbls.pretty-ts-errors"
 
         # Other
-        github.copilot
-        gruntfuggly.todo-tree
-        kisstkondoros.vscode-gutter-preview
-        mkhl.direnv
-        ms-azuretools.vscode-containers
-        ms-azuretools.vscode-docker
-        ms-vsliveshare.vsliveshare
-        ritwickdey.liveserver
-        streetsidesoftware.code-spell-checker
-        streetsidesoftware.code-spell-checker-portuguese
-        vscodevim.vim
+        "github.copilot"
+        "gruntfuggly.todo-tree"
+        "kisstkondoros.vscode-gutter-preview"
+        "mkhl.direnv"
+        "ms-azuretools.vscode-containers"
+        "ms-azuretools.vscode-docker"
+        "ms-vsliveshare.vsliveshare"
+        "ritwickdey.liveserver"
+        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker-portuguese"
+        "vscodevim.vim"
       ];
 
       keybindings = [ ];
