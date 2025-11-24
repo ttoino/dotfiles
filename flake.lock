@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763296365,
-        "narHash": "sha256-IS349SqYHHvzZGJgROjHjxXarcnGBdx3OzJJEsWb9mQ=",
+        "lastModified": 1763945007,
+        "narHash": "sha256-okVSOyIOv4WCki1MJ2e2lwOHo1xgrsxTSE0gUzq5Qs0=",
         "owner": "ttoino",
         "repo": "cake",
-        "rev": "18df3a505643718ea1708894eae2c39ba494abc3",
+        "rev": "82e23d9119a1c74b557802e6fe03bc82d6c27ffa",
         "type": "github"
       },
       "original": {
