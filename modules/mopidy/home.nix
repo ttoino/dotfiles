@@ -30,6 +30,7 @@ in
     enable = true;
 
     extensionPackages = with pkgs; [
+      mopidy-dynamic
       mopidy-local
       mopidy-marceline
       mopidy-mpris
