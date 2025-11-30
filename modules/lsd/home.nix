@@ -2,7 +2,7 @@
 let
   mkIcons =
     icons:
-    (lib.lists.fold (a: b: a // b) { } (
+    (lib.lists.foldr (a: b: a // b) { } (
       lib.lists.forEach icons (
         arg: lib.attrsets.genAttrs (builtins.elemAt arg 1) (_: (builtins.elemAt arg 0))
       )
