@@ -84,7 +84,6 @@
       );
     in
     (lib.nixosSystem {
-      system = host.system;
       specialArgs = args;
       modules = module.nixos ++ [
         inputs.home-manager.nixosModules.home-manager
