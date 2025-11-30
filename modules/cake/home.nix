@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 let
-  ags = inputs.ags.packages.${pkgs.system}.default;
-  cake = inputs.cake.packages.${pkgs.system}.default;
+  ags = inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  cake = inputs.cake.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   systemd.user.services.cake = {
