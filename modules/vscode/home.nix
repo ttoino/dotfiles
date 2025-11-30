@@ -111,8 +111,10 @@
         "clangd.path" = "${pkgs.clang-tools}/bin/clangd";
         "docker.extension.enableComposeLanguageServer" = true;
         "haskell.manageHLS" = "PATH";
-        "latex-workshop.formatting.latex" = "${pkgs.tex-fmt}/bin/tex-fmt";
-        "latex-workshop.view.pdf.viewer" = "tab";
+        "latex-workshop.docker.enabled" = true;
+        "latex-workshop.docker.image.latex" = "ghcr.io/xu-cheng/texlive-full";
+        "latex-workshop.formatting.latex" = "tex-fmt";
+        "latex-workshop.formatting.tex-fmt.path" = "${pkgs.tex-fmt}/bin/tex-fmt";
         "markdownlint.config" = {
           "MD033" = false;
         };
