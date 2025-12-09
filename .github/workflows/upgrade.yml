@@ -15,4 +15,4 @@ jobs:
       - name: Setup Nix
         uses: cachix/install-nix-action@v31
       - name: Upgrade dependencies
-        uses: DeterminateSystems/update-flake-lock@v27
+        uses: DeterminateSystems/update-flake-lock@v28
