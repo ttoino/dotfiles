@@ -99,6 +99,18 @@
             publicKey = "jfrJuOvt1VmvgJez0tdsriIxgKEZmheZfo4UhpLf1yk=";
             allowedIPs = [ "10.0.0.4/32" ];
           }
+          {
+            publicKey = "vFnSrY7VAi5d8QJiJlXJIXDUWK+zPJ0qGDr+uaUd5Wo=";
+            allowedIPs = [ "10.0.0.5/32" ];
+          }
+          {
+            publicKey = "jiqxW8n0zeqvh0AenIJGRep18JAJ4Xo72iP+rsU/Y3Q=";
+            allowedIPs = [ "10.0.0.6/32" ];
+          }
+          {
+            publicKey = "5yB+a8HBDpu9NngU5et3rx49hNBZWESVHuKyapvX9VA=";
+            allowedIPs = [ "10.0.0.128/32" ];
+          }
         ];
       };
       wg1.configFile = config.age.secrets.mullvad-config.path;
