@@ -128,6 +128,12 @@
             };
           };
         };
+        "rust-analyzer.rustfmt.overrideCommand" = [ "${pkgs.rustfmt}/bin/rustfmt" ];
+        "rust-analyzer.server.extraEnv" = {
+          "CARGO" = "${pkgs.cargo}/bin/cargo";
+          "RUSTC" = "${pkgs.rustc}/bin/rustc";
+        };
+        "rust-analyzer.server.path" = "${pkgs.rust-analyzer}/bin/rust-analyzer";
         "tinymist.serverPath" = "${pkgs.tinymist}/bin/tinymist";
         "yaml.schemas" = {
           "https://raw.githubusercontent.com/docker/vscode-extension/6a88caada42b57090df7ce91ec2a6561b422afe1/misc/empty.json" =
@@ -176,6 +182,7 @@
         "jupyter.askForKernelRestart" = false;
         "basedpyright.analysis.diagnosticMode" = "workspace";
         "basedpyright.analysis.typeCheckingMode" = "standard";
+        "ruff.path" = [ "${pkgs.ruff}/bin/ruff" ];
         "[python]" = {
           "editor.defaultFormatter" = "charliermarsh.ruff";
         };
