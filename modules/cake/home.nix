@@ -35,8 +35,7 @@ in
     ];
 
     layerrule = [
-      "blur, cake-scrim"
-      "order 1, cake-scrim"
+      "match:namespace cake-scrim, blur on, order 1"
     ];
   };
 
