@@ -5,8 +5,8 @@
   stdenv,
 
   curl,
-  dotnet-aspnetcore_6,
-  dotnet-sdk_6,
+  dotnet-aspnetcore_8,
+  dotnet-sdk_8,
   icu,
   libmediainfo,
   openssl,
@@ -20,13 +20,13 @@
 }:
 let
   pname = "lidarr-plugins";
-  version = "2.14.4.4810";
+  version = "3.1.1.4901";
 
   src = fetchFromGitHub {
     owner = "lidarr";
     repo = "Lidarr";
-    rev = "6e5f2f6f844daadc3a9abf4955b984da87b77dde";
-    hash = "sha256-IioDoRVN3PbwDAIOxgfI+F3i4nRl8+zYB5esVTAuRgk=";
+    rev = "0842f73cf495fe0536e07c765d6fe55b5ece0c0f";
+    hash = "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=";
   };
 
   frontend = stdenv.mkDerivation {
@@ -35,7 +35,7 @@ let
 
     yarnOfflineCache = fetchYarnDeps {
       yarnLock = src + "/yarn.lock";
-      hash = "sha256-VfzKJY9W9VhAnwgtRdjUSsDgk0NGlxSfajPoxzCTKMQ=";
+      hash = "sha256-Jq2O7gvB+PKcz6uDBMg7ox6/Bu+pikXH6JGuLfKG5fI=";
     };
 
     nativeBuildInputs = [
@@ -68,14 +68,14 @@ buildDotnetModule {
     -p:Configuration=Release
     -p:Platform=Posix
     -p:RuntimeIdentifiers=linux-x64
-    -p:TargetFramework=net6.0
+    -p:TargetFramework=net8.0
   '';
   doCheck = false;
 
   nugetDeps = ./deps.json;
 
-  dotnet-sdk = dotnet-sdk_6;
-  dotnet-runtime = dotnet-aspnetcore_6;
+  dotnet-sdk = dotnet-sdk_8;
+  dotnet-runtime = dotnet-aspnetcore_8;
   runtimeDeps = [
     curl
     icu
