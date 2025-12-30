@@ -16,8 +16,7 @@
     gimp3 # Image editor
     hunspell # Spell checker
     hunspellDicts.pt_PT # Portuguese spell checker
-    # FIXME: insecure for now, see https://github.com/NixOS/nixpkgs/issues/437865
-    # jellyfin-media-player # Jellyfin media player
+    jellyfin-desktop # Jellyfin media player
     libreoffice # Office suite
     pavucontrol # Volume control
     vesktop # Discord client
