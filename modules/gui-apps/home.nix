@@ -10,7 +10,7 @@
   };
 
   home.packages = with pkgs; [
-    blender-hip # 3D modeling
+    blender # 3D modeling
     blueberry # Bluetooth manager
     d-spy # D-Bus inspector
     gimp3 # Image editor

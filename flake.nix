@@ -33,10 +33,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.53.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix4vscode = {
       url = "github:nix-community/nix4vscode";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +48,7 @@
     };
     shadows-plus-plus = {
       url = "github:ttoino/shadows-plus-plus";
-      inputs.hyprland.follows = "hyprland";
+      inputs.hyprland.inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

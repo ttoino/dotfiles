@@ -13,6 +13,9 @@
 
   age.rekey.localStorageDir = ./secrets/nixos;
 
+  # ROCm support for blender
+  nixpkgs.config.rocmSupport = true;
+
   # Framework tools
   environment.systemPackages = with pkgs; [
     fw-ectool
