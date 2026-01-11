@@ -1,6 +1,5 @@
 { inputs, packages, ... }:
 [
-  inputs.hyprland.overlays.default
   inputs.nix4vscode.overlays.default
   inputs.shadows-plus-plus.overlays.default
 

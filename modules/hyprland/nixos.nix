@@ -4,7 +4,7 @@
     withUWSM = true;
   };
 
-  services.displayManager.defaultSession = "hyprland-uwsm";
+  services.displayManager.defaultSession = "hyprland";
 
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
