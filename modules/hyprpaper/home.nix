@@ -6,8 +6,12 @@
     enable = true;
 
     settings = {
-      preload = [ "${./wallpapers/outer-wilds-color.png}" ];
-      wallpaper = [ ",${./wallpapers/outer-wilds-color.png}" ];
+      wallpaper = {
+        monitor = "";
+        path = "${./wallpapers/outer-wilds-color.png}";
+      };
+
+      splash = false;
     };
   };
 }
