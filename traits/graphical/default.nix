@@ -8,6 +8,7 @@
     mopidy
     mpris
     proxy
+    rescrobbled
     sound
   ];
 }
