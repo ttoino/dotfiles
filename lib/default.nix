@@ -33,18 +33,9 @@
 
   getPackages =
     path: pkgs: partialPkgs:
-    lib.attrsets.mapAttrs (
-      name: value:
-      if (builtins.pathExists (path + "/${name}/default.nix")) then
-        (import (path + "/${name}/default.nix") pkgs)
-      else
-        (
-          (lib.optionalAttrs (partialPkgs != null) partialPkgs.${name})
-          // (lib.getPackages (path + "/${name}") pkgs (
-            if partialPkgs != null then partialPkgs.${name} else null
-          ))
-        )
-    ) (lib.getDirectories path);
+    lib.attrsets.mapAttrs (name: value: (pkgs.callPackage (path + "/${name}/default.nix") { })) (
+      lib.getDirectories path
+    );
 
   joinTraits =
     lib.lists.foldr
