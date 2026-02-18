@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ wireshark-qt ];
+  home.packages = with pkgs; [ wireshark ];
 }
