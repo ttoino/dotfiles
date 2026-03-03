@@ -50,4 +50,7 @@
 
   # Printing
   services.printing.enable = true;
+
+  # Nix-ld
+  programs.nix-ld.enable = true;
 }
