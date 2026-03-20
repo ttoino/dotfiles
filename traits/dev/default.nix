@@ -7,6 +7,7 @@
     docs
     git
     neovim
+    opencode
     vscode
     ssh
     wireshark
