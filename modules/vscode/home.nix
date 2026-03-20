@@ -33,6 +33,8 @@
         "rust-lang.rust-analyzer"
         "tamasfe.even-better-toml"
         "timonwong.shellcheck"
+        "theqtcompany.qt-core"
+        "theqtcompany.qt-qml"
         "typescript-to-lua.vscode-typescript-to-lua"
 
         # Markdown
@@ -128,6 +130,7 @@
             };
           };
         };
+        "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
         "rust-analyzer.rustfmt.overrideCommand" = [ "${pkgs.rustfmt}/bin/rustfmt" ];
         "rust-analyzer.server.extraEnv" = {
           "CARGO" = "${pkgs.cargo}/bin/cargo";
