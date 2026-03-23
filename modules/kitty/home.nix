@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -73,7 +74,7 @@
 
       # Scrollback
       "scrollback_lines" = "10000";
-      "scrollback_pager" = "/usr/bin/less";
+      "scrollback_pager" = "${pkgs.less}/bin/less";
       "wheel_scroll_multiplier" = "5.0";
 
       # URLs
