@@ -27,7 +27,7 @@
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     background_color = "$surface0";
-    vrr = "2";
+    vrr = 2;
   };
 
   decoration = {
