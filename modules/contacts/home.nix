@@ -19,12 +19,12 @@
         clientIdCommand = [
           "sh"
           "-c"
-          "cat ${config.age.secrets.calendar-google-client-id.path}"
+          "cat ${config.age.secrets.contacts-google-client-id.path}"
         ];
         clientSecretCommand = [
           "sh"
           "-c"
-          "cat ${config.age.secrets.calendar-google-client-secret.path}"
+          "cat ${config.age.secrets.contacts-google-client-secret.path}"
         ];
       };
 
