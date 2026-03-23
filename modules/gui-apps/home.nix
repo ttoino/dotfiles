@@ -206,7 +206,8 @@
         "application/postscript"
         "application/eps"
         "application/x-eps"
-        "image/eps;image/x-eps"
+        "image/eps"
+        "image/x-eps"
       ]);
   };
 }
