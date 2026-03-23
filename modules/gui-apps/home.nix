@@ -11,7 +11,7 @@
 
   home.packages = with pkgs; [
     blender # 3D modeling
-    blueberry # Bluetooth manager
+    blueman # Bluetooth manager
     d-spy # D-Bus inspector
     gimp3 # Image editor
     hunspell # Spell checker
