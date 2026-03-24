@@ -123,7 +123,7 @@
       "inactive_tab_font_style" = "normal";
 
       # Shell
-      "shell.close_on_child_death" = "no";
+      "close_on_child_death" = "no";
       "allow_remote_control" = "yes";
       "term" = "xterm-kitty";
     };
