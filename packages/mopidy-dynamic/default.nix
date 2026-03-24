@@ -29,6 +29,6 @@ python3Packages.buildPythonPackage rec {
   meta = with lib; {
     description = "Mopidy extension to generate playlists dynamically";
     homepage = "https://github.com/ttoino/mopidy-dynamic";
-    licenses = licenses.gpl3Plus;
+    license = licenses.gpl3Plus;
   };
 }

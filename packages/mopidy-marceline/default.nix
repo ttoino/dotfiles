@@ -28,6 +28,6 @@ python3Packages.buildPythonPackage rec {
   meta = with lib; {
     description = "Mopidy extension with stylish frontend for controlling playback and browsing";
     homepage = "https://github.com/ttoino/mopidy-marceline";
-    licenses = licenses.gpl3Plus;
+    license = licenses.gpl3Plus;
   };
 }
