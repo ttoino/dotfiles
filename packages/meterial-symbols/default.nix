@@ -22,8 +22,8 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    install -Dm755 *.ttf -t "$out/share/fonts/TTF"
-    install -Dm755 *.woff2 -t "$out/share/fonts/woff2"
+    install -Dm644 *.ttf -t "$out/share/fonts/TTF"
+    install -Dm644 *.woff2 -t "$out/share/fonts/woff2"
 
     runHook postInstall
   '';
