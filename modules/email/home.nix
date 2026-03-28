@@ -66,10 +66,9 @@
     enable = true;
 
     pythonFile = ''
-      import subprocess
-
       def get_secret(path):
-          return subprocess.check_output(f"cat {path}", shell=True).decode()
+          with open(path) as f:
+              return f.read().strip()
     '';
   };
 
@@ -78,6 +77,7 @@
       Unit = {
         Description = "offlineimap email synchronization";
         After = [ "network-online.target" ];
+        Wants = [ "network-online.target" ];
       };
 
       Service = {
