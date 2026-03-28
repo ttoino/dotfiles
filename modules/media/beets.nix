@@ -16,13 +16,14 @@ in
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
+        Type = "oneshot";
         User = "beets";
         Group = "media";
         UMask = "0002";
         ExecStartPre = "${package}/bin/beet import --quiet /data/media/music/untagged";
         ExecStart = "${package}/bin/beet update";
         ExecStartPost = "${package}/bin/beet fetchartist";
-        Restart = "on-failure";
+        TimeoutStartSec = "4h";
       };
     };
 
