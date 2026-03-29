@@ -22,7 +22,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "zdharma-continuum";
           repo = "fast-syntax-highlighting";
-          rev = "master";
+          rev = "3d574ccf48804b10dca52625df13da5edae7f553";
           hash = "sha256-ZihUL4JAVk9V+IELSakytlb24BvEEJ161CQEHZYYoSA=";
         };
       }
@@ -31,7 +31,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "ael-code";
           repo = "zsh-colored-man-pages";
-          rev = "master";
+          rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
           hash = "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
         };
       }
@@ -41,7 +41,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "chisui";
           repo = "zsh-nix-shell";
-          rev = "master";
+          rev = "82ca15e638cc208e6d8368e34a1625ed75e08f90";
           hash = "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=";
         };
       }

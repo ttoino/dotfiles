@@ -24,7 +24,7 @@
       src = final.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-local";
-        rev = "image-sources";
+        rev = "3cf3b7c14235e1618c5f1cd0e6a5c1df3fd0d2e0";
         hash = "sha256-Em7Kk815lJqPrA8hFGc/q+WYA9b4XBqA6wQNO34M3C4=";
       };
     });
@@ -35,7 +35,7 @@
       src = final.fetchFromGitHub {
         owner = "ttoino";
         repo = "mopidy-mpris";
-        rev = "image-uri";
+        rev = "c197be548a11f3efe012a705f0f906d2cc03708b";
         hash = "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=";
       };
 

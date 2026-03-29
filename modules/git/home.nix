@@ -37,8 +37,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "ohmyzsh";
         repo = "ohmyzsh";
-        rev = "master";
-        hash = "sha256-F3ixcEFzJEMXppkZN70uVVmDsgiwI7iJO3B/vezGmfI=";
+        rev = "76ffd9e22acc7f11ca501f03d6999adbdb9baa61";
+        hash = "sha256-1E/jENGDp7ZsWX5URjmD0x7ccnGbij7O0FshOS3FxRU=";
       };
     }
     {
@@ -47,8 +47,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "romkatv";
         repo = "gitstatus";
-        rev = "master";
-        hash = "sha256-MzDtVXnhSshxl+wZZbaq/UevRe6ZQWwkiPBeNqpZGOs=";
+        rev = "075baf6ecb19f58b09c9562f33c20b842e870961";
+        hash = "sha256-KkSXHzsEeFOBCYGiPV6hdWEESEEfhNXI8SFRFze7/KM=";
       };
     }
   ];
