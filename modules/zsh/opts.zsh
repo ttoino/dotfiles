@@ -1,6 +1,3 @@
-[[ -n "$_ZSH_OPTS_LOADED" ]] && return
-_ZSH_OPTS_LOADED=1
-
 # man zshoptions
 
 # Changing Directories

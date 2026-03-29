@@ -47,19 +47,8 @@
       }
     ];
 
-    completionInit = ''
-      ${builtins.readFile ./completion.zsh}
+    initContent = ''
+      ${builtins.readFile ./prompt.zsh}
     '';
-
-    initContent = lib.mkMerge [
-      (lib.mkBefore ''
-        ${builtins.readFile ./functions.zsh}
-        ${builtins.readFile ./keybinds.zsh}
-        ${builtins.readFile ./opts.zsh}
-      '')
-      (''
-        ${builtins.readFile ./prompt.zsh}
-      '')
-    ];
   };
 }
