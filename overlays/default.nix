@@ -3,7 +3,7 @@
   inputs.nix4vscode.overlays.default
   inputs.shadows-plus-plus.overlays.default
 
-  (final: prev: packages final prev)
+  (final: prev: packages final)
 
   (final: prev: {
     material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {

@@ -32,7 +32,7 @@
     lib.attrsets.mapAttrs (name: value: lib.getModule (path + "/${name}")) (lib.getDirectories path);
 
   getPackages =
-    path: pkgs: partialPkgs:
+    path: pkgs:
     lib.attrsets.mapAttrs (name: value: (pkgs.callPackage (path + "/${name}/default.nix") { })) (
       lib.getDirectories path
     );
