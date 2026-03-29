@@ -62,7 +62,7 @@
       home-manager,
       ...
     }@inputs:
-    with rec {
+    let
       args = {
         inherit
           inputs
@@ -79,7 +79,7 @@
       overlays = import ./overlays args;
       packages = lib.getPackages ./packages;
       traits = lib.getModules ./traits;
-    };
+    in
     {
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
