@@ -18,7 +18,6 @@
 
         # Language Support
         "adpyke.vscode-sql-formatter"
-        "bbenoist.nix"
         "docker.docker"
         "foxundermoon.shell-format"
         "haskell.haskell"
@@ -80,7 +79,6 @@
         "kisstkondoros.vscode-gutter-preview"
         "mkhl.direnv"
         "ms-azuretools.vscode-containers"
-        "ms-azuretools.vscode-docker"
         "ms-vsliveshare.vsliveshare"
         "ritwickdey.liveserver"
         "streetsidesoftware.code-spell-checker"
