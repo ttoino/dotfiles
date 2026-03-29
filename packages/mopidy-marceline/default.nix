@@ -16,7 +16,7 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-/mBGeM0dk3jk8dJWKngLX0DokJht7pE0rhrajFSWksc=";
   };
 
-  propagatedBuildInputs = [
+  dependencies = [
     mopidy
     python3Packages.pykka
   ];
