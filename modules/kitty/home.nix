@@ -61,8 +61,6 @@
       "bold_italic_font" = "auto";
       "font_size" = "12.0";
 
-      "adjust_line_height" = "0";
-      "adjust_column_width" = "0";
       "box_drawing_scale" = "0.001, 1, 1.5, 2";
 
       "narrow_symbols" = "U+1F0A0-U+1F0FF 1";
@@ -79,7 +77,6 @@
 
       # URLs
       "url_style" = "double";
-      "open_url_modifiers" = "ctrl+shift";
       "open_url_with" = "firefox";
       "copy_on_select" = "yes";
 
