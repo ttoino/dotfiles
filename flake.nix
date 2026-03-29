@@ -108,6 +108,8 @@
             mcp-nixos
             # Nix language server
             nixd
+            # Nix formatter
+            nixfmt
             # Update packages
             nix-update
             # Wireguard
