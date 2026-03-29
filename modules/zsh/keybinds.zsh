@@ -1,3 +1,6 @@
+[[ -n "$_ZSH_KEYBINDS_LOADED" ]] && return
+_ZSH_KEYBINDS_LOADED=1
+
 # Ctrl + arrows to go back/forward word
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word

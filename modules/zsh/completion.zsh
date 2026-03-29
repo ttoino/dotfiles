@@ -1,3 +1,6 @@
+[[ -n "$_ZSH_COMPLETION_LOADED" ]] && return
+_ZSH_COMPLETION_LOADED=1
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -6,7 +9,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt '%B%p%b'
-zstyle :compinstall filename '/etc/nixos/home/zsh/completion.zsh'
+zstyle :compinstall filename '/etc/nixos/modules/zsh/completion.zsh'
 
 autoload -Uz compinit
 compinit
