@@ -108,6 +108,14 @@
             allowedIPs = [ "10.0.0.6/32" ];
           }
           {
+            publicKey = "GCK6UlCQw58xtcrW9JTM4gLcTv2P1iHNnoOJoy25RUI=";
+            allowedIPs = [ "10.0.0.28/32" ];
+          }
+          {
+            publicKey = "wMBMd4FFgtI6G1bKhUqnTKhKMHsG9rPWJG0cIKFVkSE=";
+            allowedIPs = [ "10.0.0.82/32" ];
+          }
+          {
             publicKey = "5yB+a8HBDpu9NngU5et3rx49hNBZWESVHuKyapvX9VA=";
             allowedIPs = [ "10.0.0.128/32" ];
           }
