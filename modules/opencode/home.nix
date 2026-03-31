@@ -6,6 +6,17 @@
     web.enable = true;
 
     settings = {
+      mcp = {
+        github = {
+          enabled = false;
+          type = "remote";
+          url = "https://api.githubcopilot.com/mcp/";
+        };
+        nix = {
+          type = "local";
+          command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
+        };
+      };
       model = "opencode-go/moonshotai/kimi-k2.5";
       permission.edit = "ask";
       provider.opencode-go.options.apiKey = "{file:${
