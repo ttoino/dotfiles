@@ -3,6 +3,7 @@
   modules = with modules; [
     base
     boot
+    btrbk
     catppuccin
     cli-apps
     lsd
