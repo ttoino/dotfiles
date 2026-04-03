@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, ... }@args:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -13,7 +13,7 @@
         ", preferred, auto, 1"
       ];
     })
-    // (import ./apps.nix)
+    // (import ./apps.nix args)
     // (import ./keybinds.nix)
     // (import ./options.nix)
     // (import ./rules.nix);

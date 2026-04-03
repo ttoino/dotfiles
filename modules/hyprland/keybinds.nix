@@ -9,10 +9,10 @@
     "$mainMod SHIFT, E, exec, $editor"
     "$mainMod SHIFT, D, exec, $discord"
 
-    "$mainMod, S, exec, grimblast copy"
-    "$mainMod SHIFT, S, exec, grimblast copy area"
+    "$mainMod, S, exec, $grimblast copy"
+    "$mainMod SHIFT, S, exec, $grimblast copy area"
 
-    "$mainMod CTRL, C, exec, hyprpicker -a"
+    "$mainMod CTRL, C, exec, $hyprpicker -a"
 
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, J, togglesplit, # dwindle"
@@ -32,14 +32,14 @@
     "$mainMod SHIFT, V, movewindow, d"
 
     # Media
-    "$mainMod, Period, exec, playerctl next"
-    ", XF86AudioNext, exec, playerctl next"
-    "$mainMod, Comma, exec, playerctl previous"
-    ", XF86AudioPrev, exec, playerctl previous"
-    "$mainMod, Space, exec, playerctl play-pause"
+    "$mainMod, Period, exec, $playerctl next"
+    ", XF86AudioNext, exec, $playerctl next"
+    "$mainMod, Comma, exec, $playerctl previous"
+    ", XF86AudioPrev, exec, $playerctl previous"
+    "$mainMod, Space, exec, $playerctl play-pause"
     # These should be different, but keyboards with both are rare
-    ", XF86AudioPlay, exec, playerctl play-pause"
-    ", XF86AudioPause, exec, playerctl play-pause"
+    ", XF86AudioPlay, exec, $playerctl play-pause"
+    ", XF86AudioPause, exec, $playerctl play-pause"
 
     # Move focus with $mainMod + arrow keys
     "$mainMod, left, movefocus, l"
@@ -84,13 +84,13 @@
 
   binde = [
     # Brightness
-    ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
-    ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+    ", XF86MonBrightnessDown, exec, $brightnessctl set 10%-"
+    ", XF86MonBrightnessUp, exec, $brightnessctl set 10%+"
 
     # Audio
-    ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
-    ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
-    ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+"
+    ", XF86AudioMute, exec, $wpctl set-mute @DEFAULT_SINK@ toggle"
+    ", XF86AudioLowerVolume, exec, $wpctl set-volume @DEFAULT_SINK@ 5%-"
+    ", XF86AudioRaiseVolume, exec, $wpctl set-volume @DEFAULT_SINK@ 5%+"
 
     # Resize window with $mainMod + ctrl + arrow keys
     "$mainMod CTRL, left, resizeactive, -10 0"
