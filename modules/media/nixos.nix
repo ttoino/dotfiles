@@ -3,7 +3,7 @@
   imports = [
     ./bazarr.nix
     ./beets.nix
-    ./deluge.nix
+    ./qbittorrent.nix
     ./jellyfin.nix
     ./lidarr.nix
     ./prowlarr.nix
@@ -38,7 +38,7 @@
 
     "20-media" = {
       "/data/downloads/torrents".d = {
-        user = "deluge";
+        user = "qbittorrent";
         group = "media";
         mode = "0775";
       };

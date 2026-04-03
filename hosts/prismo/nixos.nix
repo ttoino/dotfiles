@@ -125,11 +125,8 @@
     };
   };
 
-  # Use mullvad in deluge
-  services.deluge.config = {
-    listen_interface = "10.73.3.79";
-    outgoing_interface = "wg1";
-  };
+  # Use mullvad in qbittorrent
+  services.qbittorrent.serverConfig.Preferences.Connection.Interface = "wg1";
 
   # Dynamic DNS
   services.cloudflare-dyndns.domains = [ "prismo.toino.pt" ];
