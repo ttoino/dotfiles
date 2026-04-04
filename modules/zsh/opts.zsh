@@ -29,6 +29,7 @@ setopt interactive_comments # Allow comments
 # Job Control
 
 # Prompting
+setopt prompt_subst # Perform parameter expansion in prompts
 
 # Scripts and Functions
 setopt C_PRECEDENCES # Make arithmetic evaluation more sane

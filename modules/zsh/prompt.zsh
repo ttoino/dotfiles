@@ -1,27 +1,14 @@
 # If in tty, don't use icons
 if [[ $TTY == '/dev/tty'* ]]; then
-    BRACKET='%(#.».>)'
-    NIX='nix'
-    GIT='git'
+    local BRACKET='%(#.».>)'
+    local NIX='nix'
 else
-    BRACKET='%(#.⟫.⟩)'
-    NIX='󱄅'
-    GIT='󰘬'
+    local BRACKET='%(#.⟫.⟩)'
+    local NIX='󱄅'
 fi
 
 # Add nix-shell info to right prompt
 RPROMPT='${IN_NIX_SHELL:+ %F{cyan\}'$NIX' ${NIX_SHELL_PACKAGES:+ $NIX_SHELL_PACKAGES}%f}'
-
-# Add gitstatus to right prompt
-GITSTATUS='GITSTATUS_PROMPT'
-# Remove first color code
-GITSTATUS='${'$GITSTATUS'#\%76F}'
-# Replace hardcoded colors with zsh color codes
-GITSTATUS='${'$GITSTATUS'//\%76F/%F{green\}}'
-GITSTATUS='${'$GITSTATUS'//\%178F/%F{yellow\}}'
-GITSTATUS='${'$GITSTATUS'//\%39F/%F{blue\}}'
-GITSTATUS='${'$GITSTATUS'//\%196F/%F{red\}}'
-RPROMPT+='${GITSTATUS_PROMPT:+ %F{magenta\}'$GIT'  '$GITSTATUS'}'
 
 PROMPT=''
 
@@ -56,3 +43,5 @@ precmd() {
         echo
     }
 }
+
+unset NIX BRACKET
