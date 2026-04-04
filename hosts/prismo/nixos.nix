@@ -55,9 +55,9 @@
 
   # Wireguard
   age.secrets = {
-    wireguard-private-key.rekeyFile = ../../secrets/wireguard_prismo_private_key.age;
+    wireguard-private-key.rekeyFile = ./wireguard_private_key.age;
     wireguard-bmo-preshared-key.rekeyFile = ../../secrets/wireguard_bmo_prismo_preshared_key.age;
-    mullvad-config.rekeyFile = ../../secrets/mullvad_prismo_config.age;
+    mullvad-config.rekeyFile = ./mullvad_config.age;
   };
 
   networking = {
