@@ -168,7 +168,7 @@
         "terminal.integrated.enableMultiLinePasteWarning" = "never";
 
         # Prettier
-        "prettier.prettierPath" = "${pkgs.nodePackages.prettier}/lib/node_modules/prettier";
+        "prettier.prettierPath" = "${pkgs.prettier}/lib/node_modules/prettier";
         "prettier.tabWidth" = 4;
         "prettier.trailingComma" = "all";
         "[css][github-actions-workflow][html][javascript][json][jsonc][markdown][scss][svelte][tailwindcss][typescript][typescriptreact][vue][yaml]" =
