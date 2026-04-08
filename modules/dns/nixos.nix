@@ -19,4 +19,6 @@
       ];
     };
   };
+
+  services.resolved.enable = false;
 }
