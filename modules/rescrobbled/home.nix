@@ -1,11 +1,15 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
-  services.rescrobbled.enable = true;
+  services.rescrobbled = {
+    enable = true;
 
-  systemd.user.services.rescrobbled = {
-    Service.ExecStart = lib.mkForce "/bin/sh -c 'LASTFM_KEY=$(cat ${config.age.secrets.rescrobbled-key.path}) LASTFM_SECRET=$(cat ${config.age.secrets.rescrobbled-secret.path}) exec ${lib.getExe config.services.rescrobbled.package}'";
-    Unit.After = [ "agenix.service" ];
+    settings = {
+      lastfm-key-file = config.age.secrets.rescrobbled-key.path;
+      lastfm-secret-file = config.age.secrets.rescrobbled-secret.path;
+    };
   };
+
+  systemd.user.services.rescrobbled.Unit.After = [ "agenix.service" ];
 
   age.secrets = {
     rescrobbled-key.rekeyFile = ./key.age;
