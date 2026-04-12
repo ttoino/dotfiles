@@ -42,4 +42,22 @@
       dependencies = oldAttrs.dependencies ++ [ final.python3Packages.uritools ];
     });
   })
+
+  (final: prev: {
+    rescrobbled = prev.rescrobbled.overrideAttrs (oldAttrs: rec {
+      version = "0.9.1";
+
+      src = final.fetchFromGitHub {
+        owner = "ttoino";
+        repo = "rescrobbled";
+        rev = "5c7cfe22709f56f81b078dc97b5984f602e3514e";
+        hash = "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=";
+      };
+
+      cargoDeps = final.rustPlatform.fetchCargoVendor {
+        inherit src;
+        hash = "sha256-sO5fjwjdeN/C6ZfJK0IYSSkGKbvCSvf/mZXXOkE+NLU=";
+      };
+    });
+  })
 ]
