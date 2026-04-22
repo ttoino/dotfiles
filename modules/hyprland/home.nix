@@ -9,8 +9,13 @@
     settings = ({
       # exec-once = [ "systemctl --user start hyprpolkitagent" ];
 
-      monitor = lib.mkDefault [
-        ", preferred, auto, 1"
+      monitorv2 = lib.mkDefault [
+        {
+          output = "";
+          mode = "preferred";
+          position = "auto";
+          scale = 1;
+        }
       ];
     })
     // (import ./apps.nix args)
