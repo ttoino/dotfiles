@@ -1,16 +1,16 @@
 # If in tty, don't use icons
 if [[ $TTY == '/dev/tty'* ]]; then
     local BRACKET='%(#.».>)'
+    local CLOCK='t'
     local NIX='nix'
 else
     local BRACKET='%(#.⟫.⟩)'
-    local NIX='󱄅'
+    local CLOCK=' '
+    local NIX='󱄅 '
 fi
 
-# Add nix-shell info to right prompt
-RPROMPT='${IN_NIX_SHELL:+ %F{cyan\}'$NIX' ${NIX_SHELL_PACKAGES:+ $NIX_SHELL_PACKAGES}%f}'
-
 PROMPT=''
+RPROMPT=''
 
 # Blue pwd
 PROMPT+='%F{blue}%~ '
@@ -20,8 +20,15 @@ PROMPT+='%F{blue}%~ '
 SIMPLE_PROMPT='%(?.%F{green}.%F{red}%?)'$BRACKET' '
 PROMPT+="$SIMPLE_PROMPT"
 
+# Orange command duration
+RPROMPT+='${LAST_CMD_DURATION:+ %F{red\}'$CLOCK' $LAST_CMD_DURATION}'
+
+# Cyan Nix info
+RPROMPT+='${IN_NIX_SHELL:+ %F{cyan\}'$NIX'${NIX_SHELL_PACKAGES:+ $NIX_SHELL_PACKAGES}}'
+
 # Reset color
 PROMPT+='%f'
+RPROMPT+='%f'
 
 # Simplify prompt after Enter
 simplify-prompt-accept-line() {
@@ -38,10 +45,27 @@ zle -N simplify-prompt-accept-line
 bindkey "^M" simplify-prompt-accept-line
 
 # Add line before prompt
+# Track command execution time and display if > 10s
+local _prompt_first=1
+
 precmd() {
-    precmd() {
-        echo
-    }
+    if [[ -n "$ZSH_CMD_START_TIME" ]]; then
+        local duration=$(( EPOCHSECONDS - ZSH_CMD_START_TIME ))
+        if (( duration > 10 )); then
+            LAST_CMD_DURATION="${duration}s"
+        else
+            LAST_CMD_DURATION=""
+        fi
+        unset ZSH_CMD_START_TIME
+    else
+        LAST_CMD_DURATION=""
+    fi
+
+    (( _prompt_first )) && _prompt_first=0 || echo
+}
+
+preexec() {
+    ZSH_CMD_START_TIME=$EPOCHSECONDS
 }
 
 unset NIX BRACKET
