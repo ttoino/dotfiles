@@ -19,11 +19,12 @@
           url = "https://api.githubcopilot.com/mcp/";
         };
         nix = {
+          enabled = false;
           type = "local";
           command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
         };
       };
-      model = "opencode-go/moonshotai/kimi-k2.5";
+      model = "opencode-go/moonshotai/kimi-k2.6";
       permission.edit = "ask";
       provider.opencode-go.options.apiKey = "{file:${
         builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-go-api-key.path
@@ -41,8 +42,8 @@
         cloudflare = pkgs.fetchFromGitHub {
           owner = "cloudflare";
           repo = "skills";
-          rev = "5ec03da67e230df52b698255c8e5979dc9b124b6";
-          hash = "sha256-OdUnIwWeI2FR1UrHxhkqTigWlK7LeGePF8zbdWnfnEk=";
+          rev = "0438a075b419f737eb091d1c91800b7387e3a75f";
+          hash = "sha256-dPMZCgE+nLWfZgvIKiZ33LYb2zJaunF/mv2SiCUHSNM=";
         };
       in
       {
