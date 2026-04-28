@@ -841,6 +841,30 @@
         "type": "github"
       }
     },
+    "peon-ping": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776604021,
+        "narHash": "sha256-rz+pAn2wXOqfp8Xw/X70WJYQ5/4YpI9mMdIYWdWCI34=",
+        "owner": "PeonPing",
+        "repo": "peon-ping",
+        "rev": "c1e7ad513f78af2f225568c2fdca12ebf1308216",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PeonPing",
+        "ref": "v2.22.0",
+        "repo": "peon-ping",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -903,6 +927,7 @@
         "nixos-vscode-server": "nixos-vscode-server",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "peon-ping": "peon-ping",
         "shadows-plus-plus": "shadows-plus-plus"
       }
     },

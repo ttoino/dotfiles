@@ -47,6 +47,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    peon-ping = {
+      url = "github:PeonPing/peon-ping/v2.22.0";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     shadows-plus-plus = {
       url = "github:ttoino/shadows-plus-plus";
       inputs.hyprland.inputs.nixpkgs.follows = "nixpkgs";

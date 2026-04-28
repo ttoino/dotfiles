@@ -1,5 +1,15 @@
-{ config, pkgs, ... }:
 {
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  peon-ping = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
+{
+  imports = [ inputs.peon-ping.homeManagerModules.default ];
+
   programs.opencode = {
     enable = true;
 
@@ -52,6 +62,74 @@
         skill-creator = anthropic + "/skills/skill-creator";
         wrangler = cloudflare + "/skills/wrangler";
       };
+  };
+
+  xdg.configFile."opencode/plugins/peon-ping.ts".source = pkgs.runCommand "peon-ping.ts" { } ''
+    cp ${
+      inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default
+    }/share/peon-ping/adapters/opencode/peon-ping.ts $out
+
+    sed -i '/const PEON_SH_PATHS = \[/a\  path.join(os.homedir(), ".openpeon", "peon.sh"),' $out
+  '';
+
+  programs.peon-ping = {
+    enable = true;
+    package = peon-ping;
+
+    settings = {
+      default_pack = "eve-walle";
+      volume = 0.5;
+      pack_rotation = [
+        "dva"
+        "eve-walle"
+        "glados"
+        "jarvis-mk2"
+        "minecraft-villager"
+        "ocarina_of_time"
+      ];
+    };
+
+    installPacks = [
+      "glados"
+      "ocarina_of_time"
+
+      {
+        name = "dva";
+        src = pkgs.fetchFromGitHub {
+          owner = "leo-rutter";
+          repo = "d.va-pack";
+          rev = "v1.0.0";
+          hash = "sha256-YM4ge0j0HaZl1PMtmngx4qf1fJHLmr825bweezO5ZLQ=";
+        };
+      }
+      {
+        name = "eve-walle";
+        src = pkgs.fetchFromGitHub {
+          owner = "stphnlngdncoding";
+          repo = "eve-walle";
+          rev = "v1.0.1";
+          hash = "sha256-ujwutbgkY+DxEOJQeu0APuSgVWBLJj51N3kJEE/vmfM=";
+        };
+      }
+      {
+        name = "jarvis-mk2";
+        src = pkgs.fetchFromGitHub {
+          owner = "FlynnCruse";
+          repo = "openpeon-jarvis";
+          rev = "v1.1.0";
+          hash = "sha256-SDelu1fhg2/JFKIQM4lSLevl7wMUBfuAFNOM/5gf8Mo=";
+        };
+      }
+      {
+        name = "minecraft_villager";
+        src = pkgs.fetchFromGitHub {
+          owner = "Mahamurahti";
+          repo = "openpeon-minecraft-villager";
+          rev = "v1.0.1";
+          hash = "sha256-0vyWcgbdFcFwke8zSX3GSPETRX4fufeEXE2Dmks/9YE=";
+        };
+      }
+    ];
   };
 
   age.secrets.opencode-go-api-key.rekeyFile = ./opencode_go_api_key.age;
