@@ -33,7 +33,9 @@
           "nixpkgs"
         ],
         "pre-commit-hooks": "pre-commit-hooks",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
       },
       "locked": {
         "lastModified": 1774522439,
@@ -928,7 +930,8 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "peon-ping": "peon-ping",
-        "shadows-plus-plus": "shadows-plus-plus"
+        "shadows-plus-plus": "shadows-plus-plus",
+        "treefmt-nix": "treefmt-nix"
       }
     },
     "shadows-plus-plus": {
@@ -1038,16 +1041,15 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "agenix-rekey",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1735135567,
-        "narHash": "sha256-8T3K5amndEavxnludPyfj3Z1IkcFdRpR23q+T0BVeZE=",
+        "lastModified": 1775636079,
+        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "9e09d30a644c57257715902efbb3adc56c79cf28",
+        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
         "type": "github"
       },
       "original": {

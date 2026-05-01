@@ -16,8 +16,8 @@ setopt extended_glob # Use '#', '~', and '^'
 setopt nomatch       # Print error when no match is found
 
 # History
-setopt extended_history        # Also save command timestamp
-setopt hist_find_no_dups       # Don't scroll through duplicates
+setopt extended_history  # Also save command timestamp
+setopt hist_find_no_dups # Don't scroll through duplicates
 
 # Initialisation
 

@@ -152,4 +152,3 @@ Done in `overlays/default.nix` using `overrideAttrs` or `overridePythonAttrs`.
   `DeterminateSystems/update-flake-lock`
 - **Dependabot** (`.github/dependabot.yml`): weekly GitHub Actions version updates
 - **Cachix**: binary cache `toino`, extra pull caches: `ags`, `hyprland`, `nix-community`
-

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   "$uwsm" = "${pkgs.uwsm}/bin/uwsm-app";
   "$grimblast" = "${pkgs.grimblast}/bin/grimblast";
   "$hyprpicker" = "${pkgs.hyprpicker}/bin/hyprpicker";

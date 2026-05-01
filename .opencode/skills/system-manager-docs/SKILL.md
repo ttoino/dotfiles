@@ -32,18 +32,18 @@ https://raw.githubusercontent.com/numtide/system-manager/main/docs/site/{path}.m
 
 ### Available pages
 
-| Page | Path | What it covers |
-|------|------|----------------|
-| **Module Options** | `reference/modules.md` | All configuration options: `environment.systemPackages`, `environment.etc`, `systemd.services`, `systemd.tmpfiles`, `nixpkgs.*`, `system-manager.*` |
-| **CLI Commands** | `reference/cli.md` | All subcommands: `init`, `switch`, `build`, `activate`, `deactivate`, `pre-populate`, `register`, plus flags like `--sudo` |
-| **All Options** | `reference/all-options.md` | Comprehensive option reference with types and defaults |
-| **Configuration Patterns** | `reference/configuration.md` | Project organization, multi-file setups, flakes structure |
-| **Supported Platforms** | `reference/supported-platforms.md` | Distribution compatibility (Ubuntu, NixOS, `allowAnyDistro`) |
-| **Getting Started** | `tutorials/getting-started.md` | Installation, init command, first configuration |
-| **First Service** | `tutorials/first-service.md` | Creating systemd services |
-| **Installation** | `how-to/install.md` | Installation methods |
-| **Rollback** | `how-to/rollback.md` | Rolling back changes |
-| **FAQ** | `faq.md` | Common questions and troubleshooting |
+| Page                       | Path                               | What it covers                                                                                                                                      |
+| -------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Module Options**         | `reference/modules.md`             | All configuration options: `environment.systemPackages`, `environment.etc`, `systemd.services`, `systemd.tmpfiles`, `nixpkgs.*`, `system-manager.*` |
+| **CLI Commands**           | `reference/cli.md`                 | All subcommands: `init`, `switch`, `build`, `activate`, `deactivate`, `pre-populate`, `register`, plus flags like `--sudo`                          |
+| **All Options**            | `reference/all-options.md`         | Comprehensive option reference with types and defaults                                                                                              |
+| **Configuration Patterns** | `reference/configuration.md`       | Project organization, multi-file setups, flakes structure                                                                                           |
+| **Supported Platforms**    | `reference/supported-platforms.md` | Distribution compatibility (Ubuntu, NixOS, `allowAnyDistro`)                                                                                        |
+| **Getting Started**        | `tutorials/getting-started.md`     | Installation, init command, first configuration                                                                                                     |
+| **First Service**          | `tutorials/first-service.md`       | Creating systemd services                                                                                                                           |
+| **Installation**           | `how-to/install.md`                | Installation methods                                                                                                                                |
+| **Rollback**               | `how-to/rollback.md`               | Rolling back changes                                                                                                                                |
+| **FAQ**                    | `faq.md`                           | Common questions and troubleshooting                                                                                                                |
 
 ### Example fetches
 
@@ -71,75 +71,76 @@ WebFetch https://raw.githubusercontent.com/numtide/system-manager/main/docs/site
 
 ### nixpkgs
 
-| Option | Type | Required | Description |
-|--------|------|----------|-------------|
-| `nixpkgs.hostPlatform` | string | **Yes** | Target platform (e.g., `"x86_64-linux"`) |
-| `nixpkgs.buildPlatform` | string | No | Build platform (defaults to host) |
-| `nixpkgs.overlays` | list | No | Nixpkgs overlays |
-| `nixpkgs.config` | attrset | No | Nixpkgs config (e.g., `{ allowUnfree = true; }`) |
+| Option                  | Type    | Required | Description                                      |
+| ----------------------- | ------- | -------- | ------------------------------------------------ |
+| `nixpkgs.hostPlatform`  | string  | **Yes**  | Target platform (e.g., `"x86_64-linux"`)         |
+| `nixpkgs.buildPlatform` | string  | No       | Build platform (defaults to host)                |
+| `nixpkgs.overlays`      | list    | No       | Nixpkgs overlays                                 |
+| `nixpkgs.config`        | attrset | No       | Nixpkgs config (e.g., `{ allowUnfree = true; }`) |
 
 ### environment
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `environment.systemPackages` | list of packages | Packages installed system-wide at `/run/system-manager/sw/bin/` |
-| `environment.pathsToLink` | list of strings | Paths to link from packages (default: `[ "/bin" ]`) |
-| `environment.etc` | attrset of submodules | Files under `/etc` |
+| Option                       | Type                  | Description                                                     |
+| ---------------------------- | --------------------- | --------------------------------------------------------------- |
+| `environment.systemPackages` | list of packages      | Packages installed system-wide at `/run/system-manager/sw/bin/` |
+| `environment.pathsToLink`    | list of strings       | Paths to link from packages (default: `[ "/bin" ]`)             |
+| `environment.etc`            | attrset of submodules | Files under `/etc`                                              |
 
 #### environment.etc options
 
 Each entry under `environment.etc` supports:
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `enable` | boolean | Whether to create the file |
-| `text` | string/null | File content (mutually exclusive with `source`) |
-| `source` | path | Path to source file |
-| `target` | string | Target path relative to `/etc` |
-| `mode` | string | `"symlink"` or octal mode (e.g., `"0644"`) |
-| `uid`/`gid` | integer | Numeric owner IDs (when mode is not symlink) |
-| `user`/`group` | string | Owner names (takes precedence over uid/gid) |
+| Option         | Type        | Description                                     |
+| -------------- | ----------- | ----------------------------------------------- |
+| `enable`       | boolean     | Whether to create the file                      |
+| `text`         | string/null | File content (mutually exclusive with `source`) |
+| `source`       | path        | Path to source file                             |
+| `target`       | string      | Target path relative to `/etc`                  |
+| `mode`         | string      | `"symlink"` or octal mode (e.g., `"0644"`)      |
+| `uid`/`gid`    | integer     | Numeric owner IDs (when mode is not symlink)    |
+| `user`/`group` | string      | Owner names (takes precedence over uid/gid)     |
 
 ### systemd
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `systemd.package` | package | Systemd package to use |
-| `systemd.globalEnvironment` | attrset | Environment variables for all units |
-| `systemd.services` | attrset of services | Service unit definitions |
-| `systemd.timers` | attrset of timers | Timer unit definitions |
-| `systemd.sockets` | attrset of sockets | Socket unit definitions |
-| `systemd.targets` | attrset of targets | Target unit definitions |
-| `systemd.paths` | attrset of paths | Path unit definitions |
-| `systemd.mounts` | list of mounts | Mount unit definitions |
-| `systemd.automounts` | list of automounts | Automount unit definitions |
-| `systemd.slices` | attrset of slices | Slice unit definitions |
-| `systemd.generators` | attrset of paths | Generator symlinks |
-| `systemd.shutdown` | attrset of paths | Shutdown executable symlinks |
-| `systemd.tmpfiles.rules` | list of strings | tmpfiles.d(5) rules |
-| `systemd.tmpfiles.settings` | nested attrset | Structured tmpfiles config |
-| `systemd.tmpfiles.packages` | list of packages | Packages with tmpfiles.d configs |
+| Option                      | Type                | Description                         |
+| --------------------------- | ------------------- | ----------------------------------- |
+| `systemd.package`           | package             | Systemd package to use              |
+| `systemd.globalEnvironment` | attrset             | Environment variables for all units |
+| `systemd.services`          | attrset of services | Service unit definitions            |
+| `systemd.timers`            | attrset of timers   | Timer unit definitions              |
+| `systemd.sockets`           | attrset of sockets  | Socket unit definitions             |
+| `systemd.targets`           | attrset of targets  | Target unit definitions             |
+| `systemd.paths`             | attrset of paths    | Path unit definitions               |
+| `systemd.mounts`            | list of mounts      | Mount unit definitions              |
+| `systemd.automounts`        | list of automounts  | Automount unit definitions          |
+| `systemd.slices`            | attrset of slices   | Slice unit definitions              |
+| `systemd.generators`        | attrset of paths    | Generator symlinks                  |
+| `systemd.shutdown`          | attrset of paths    | Shutdown executable symlinks        |
+| `systemd.tmpfiles.rules`    | list of strings     | tmpfiles.d(5) rules                 |
+| `systemd.tmpfiles.settings` | nested attrset      | Structured tmpfiles config          |
+| `systemd.tmpfiles.packages` | list of packages    | Packages with tmpfiles.d configs    |
 
 ### system-manager
 
-| Option | Type | Description |
-|--------|------|-------------|
+| Option                          | Type    | Description                                     |
+| ------------------------------- | ------- | ----------------------------------------------- |
 | `system-manager.allowAnyDistro` | boolean | Bypass distribution checks for untested distros |
 
 ## CLI commands
 
-| Command | Description |
-|---------|-------------|
-| `init` | Create initial configuration files (`flake.nix`, `system.nix`) |
-| `switch` | Build and activate configuration (with rollback on failure) |
-| `build` | Build configuration without activating |
-| `activate` | Activate previously built configuration |
-| `deactivate` | Remove system-manager configuration |
-| `pre-populate` | Prepare system without full activation |
-| `register` | Register system-manager as the system config manager |
-| `sudo` | Run command with elevated privileges |
+| Command        | Description                                                    |
+| -------------- | -------------------------------------------------------------- |
+| `init`         | Create initial configuration files (`flake.nix`, `system.nix`) |
+| `switch`       | Build and activate configuration (with rollback on failure)    |
+| `build`        | Build configuration without activating                         |
+| `activate`     | Activate previously built configuration                        |
+| `deactivate`   | Remove system-manager configuration                            |
+| `pre-populate` | Prepare system without full activation                         |
+| `register`     | Register system-manager as the system config manager           |
+| `sudo`         | Run command with elevated privileges                           |
 
 Common flags:
+
 - `--sudo` - Run with sudo (preserves PATH)
 - `--extra-experimental-features 'nix-command flakes'` - Enable flakes if not in nix.conf
 
@@ -213,12 +214,14 @@ Installed packages are available at `/run/system-manager/sw/bin/`, not directly 
 ### Comparison to NixOS
 
 System Manager only manages:
+
 - System packages (via `environment.systemPackages`)
 - `/etc` files
 - Systemd units (services, timers, tmpfiles, etc.)
 - Nix configuration
 
 It does NOT manage:
+
 - Kernel/bootloader
 - Filesystems
 - Users/groups (use regular system tools)

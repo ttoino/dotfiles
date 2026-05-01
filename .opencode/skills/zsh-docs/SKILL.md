@@ -27,30 +27,30 @@ https://raw.githubusercontent.com/zsh-users/zsh/master/Doc/Zsh/{file}.yo
 
 ### Available documentation files
 
-| File | What it covers |
-|------|----------------|
-| `options.yo` | All shell options (setopt/unsetopt), organized by category: Changing Directories, Completion, Expansion and Globbing, History, Input/Output, Job Control, Prompting, Scripts and Functions, etc. |
-| `builtins.yo` | All builtin commands (cd, echo, set, typeset, autoload, etc.) with full syntax and descriptions |
-| `expn.yo` | Parameter expansion, command substitution, arithmetic expansion, brace expansion, filename generation |
-| `params.yo` | Shell parameters (variables), special parameters ($@, $#, etc.), and parameter attributes |
-| `zle.yo` | Zsh Line Editor - widgets, keymaps, special variables like $KEYMAP, $ZLE_STATE |
-| `compsys.yo` | Completion system configuration, styles, functions, and completers |
-| `compwid.yo` | Completion widgets and low-level completion functions |
-| `cond.yo` | Conditional expressions ([[ ... ]]), test operators |
-| `grammar.yo` | Shell grammar, pipelines, lists, redirections |
-| `mod_complist.yo` | The zsh/complist module (menu selection) |
-| `mod_computil.yo` | The zsh/computil module (completion utilities) |
-| `mod_zutil.yo` | The zsh/zutil module (utility functions) |
-| `mod_curses.yo` | The zsh/curses module (curses bindings) |
-| `mod_termcap.yo` | The zsh/termcap module (terminal capabilities) |
-| `mod_terminfo.yo` | The zsh/terminfo module (terminfo access) |
-| `mod_regex.yo` | The zsh/regex module (PCRE regular expressions) |
-| `mod_zselect.yo` | The zsh/zselect module (file descriptor multiplexing) |
-| `mod_zpty.yo` | The zsh/zpty module (pseudo-terminals) |
-| `mod_socket.yo` | The zsh/socket module (TCP/UDP sockets) |
-| `mod_system.yo` | The zsh/system module (system calls) |
-| `mod_datetime.yo` | The zsh/datetime module (time and date) |
-| `mod_math.yo` | The zsh/math module (mathematical functions) |
+| File              | What it covers                                                                                                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `options.yo`      | All shell options (setopt/unsetopt), organized by category: Changing Directories, Completion, Expansion and Globbing, History, Input/Output, Job Control, Prompting, Scripts and Functions, etc. |
+| `builtins.yo`     | All builtin commands (cd, echo, set, typeset, autoload, etc.) with full syntax and descriptions                                                                                                  |
+| `expn.yo`         | Parameter expansion, command substitution, arithmetic expansion, brace expansion, filename generation                                                                                            |
+| `params.yo`       | Shell parameters (variables), special parameters ($@, $#, etc.), and parameter attributes                                                                                                        |
+| `zle.yo`          | Zsh Line Editor - widgets, keymaps, special variables like $KEYMAP, $ZLE_STATE                                                                                                                   |
+| `compsys.yo`      | Completion system configuration, styles, functions, and completers                                                                                                                               |
+| `compwid.yo`      | Completion widgets and low-level completion functions                                                                                                                                            |
+| `cond.yo`         | Conditional expressions ([[...]]), test operators                                                                                                                                                |
+| `grammar.yo`      | Shell grammar, pipelines, lists, redirections                                                                                                                                                    |
+| `mod_complist.yo` | The zsh/complist module (menu selection)                                                                                                                                                         |
+| `mod_computil.yo` | The zsh/computil module (completion utilities)                                                                                                                                                   |
+| `mod_zutil.yo`    | The zsh/zutil module (utility functions)                                                                                                                                                         |
+| `mod_curses.yo`   | The zsh/curses module (curses bindings)                                                                                                                                                          |
+| `mod_termcap.yo`  | The zsh/termcap module (terminal capabilities)                                                                                                                                                   |
+| `mod_terminfo.yo` | The zsh/terminfo module (terminfo access)                                                                                                                                                        |
+| `mod_regex.yo`    | The zsh/regex module (PCRE regular expressions)                                                                                                                                                  |
+| `mod_zselect.yo`  | The zsh/zselect module (file descriptor multiplexing)                                                                                                                                            |
+| `mod_zpty.yo`     | The zsh/zpty module (pseudo-terminals)                                                                                                                                                           |
+| `mod_socket.yo`   | The zsh/socket module (TCP/UDP sockets)                                                                                                                                                          |
+| `mod_system.yo`   | The zsh/system module (system calls)                                                                                                                                                             |
+| `mod_datetime.yo` | The zsh/datetime module (time and date)                                                                                                                                                          |
+| `mod_math.yo`     | The zsh/math module (mathematical functions)                                                                                                                                                     |
 
 ### Example fetches
 
@@ -98,6 +98,7 @@ The yodl format uses these markup patterns:
 ### Option documentation pattern
 
 Options are documented like this:
+
 ```
 pindex(AUTO_CD)
 pindex(NO_AUTO_CD)
@@ -107,6 +108,7 @@ Description of the option...
 ```
 
 Options often have multiple index entries:
+
 - `pindex(OPTION_NAME)` - the positive form
 - `pindex(NO_OPTION_NAME)` - the negative form
 - Short form like `pindex(AUTOCD)` - alternative spelling (no underscore)
@@ -114,6 +116,7 @@ Options often have multiple index entries:
 ### Zsh option types
 
 Options marked with:
+
 - `<D>` - Set by default in zsh emulation
 - `<C>` - Set by default in csh emulation
 - `<K>` - Set by default in ksh emulation
@@ -123,11 +126,13 @@ Options marked with:
 ### Completion system (compsys)
 
 The completion system is complex and involves:
+
 - `zstyle` configurations for completion behavior
-- Completer functions (_complete, _approximate, _correct, etc.)
+- Completer functions (\_complete, \_approximate, \_correct, etc.)
 - Style settings like `menu select`, `list-colors`, etc.
 
 Key files for completion:
+
 - `compsys.yo` - Overview and configuration
 - `compwid.yo` - Completion widgets
 - `mod_complist.yo` - Menu selection
@@ -139,7 +144,7 @@ When configuring zsh via Home Manager:
 ```nix
 programs.zsh = {
   enable = true;
-  
+
   # Options use setopt/unsetopt
   # In Nix, use boolean-like settings in initExtra:
   initExtra = ''
@@ -147,13 +152,13 @@ programs.zsh = {
     setopt AUTO_PUSHD
     unsetopt BEEP
   '';
-  
+
   # Or use the options attrset (if available in your HM version):
   # options = {
   #   AUTO_CD = true;
   #   BEEP = false;
   # };
-  
+
   # Plugins can use oh-my-zsh, prezto, or manual loading
   plugins = [
     {
@@ -167,26 +172,33 @@ programs.zsh = {
 ### Common option categories
 
 **Changing Directories:**
+
 - `AUTO_CD`, `AUTO_PUSHD`, `PUSHD_SILENT`, `CDABLE_VARS`, `CHASE_LINKS`
 
 **Completion:**
+
 - `ALWAYS_LAST_PROMPT`, `AUTO_LIST`, `AUTO_MENU`, `MENU_COMPLETE`, `GLOB_COMPLETE`
 
 **Expansion and Globbing:**
+
 - `GLOB`, `EXTENDED_GLOB`, `GLOB_DOTS`, `NULL_GLOB`, `NOMATCH`, `RC_EXPAND_PARAM`
 
 **History:**
+
 - `APPEND_HISTORY`, `EXTENDED_HISTORY`, `HIST_IGNORE_DUPS`, `HIST_IGNORE_SPACE`, `SHARE_HISTORY`
 
 **Input/Output:**
+
 - `CLOBBER`, `CORRECT`, `IGNORE_EOF`, `INTERACTIVE_COMMENTS`, `HASH_CMDS`
 
 **Scripts and Functions:**
+
 - `LOCAL_OPTIONS`, `LOCAL_TRAPS`, `FUNCTION_ARGZERO`, `WARN_CREATE_GLOBAL`
 
 ### Parameter expansion modifiers
 
 Common modifiers (in `expn.yo`):
+
 - `${var:h}` - head (dirname)
 - `${var:t}` - tail (basename)
 - `${var:r}` - remove extension

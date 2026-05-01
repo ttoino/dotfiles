@@ -1,0 +1,20 @@
+name: Format
+
+on:
+  push:
+    branches: [nixos]
+  pull_request:
+    branches: [nixos]
+  workflow_dispatch:
+
+jobs:
+  format:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Check formatting
+        run: nix fmt -- --ci

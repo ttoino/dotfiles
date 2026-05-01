@@ -26,29 +26,29 @@ https://raw.githubusercontent.com/hyprwm/hyprland-wiki/main/content/Configuring/
 
 ### Available pages
 
-| Page | What it covers |
-|------|----------------|
-| `Variables` | All config sections and their options (general, decoration, input, misc, cursor, binds, animations, group, xwayland, render, opengl, ecosystem, debug, etc.). Each option is in a table with name, description, type, and default. |
-| `Dispatchers` | All dispatcher names, descriptions, and parameter types. Includes workspace syntax, special workspaces, executing with rules, and `setprop`. |
-| `Gestures` | The `gesture` keyword syntax: `gesture = fingers, direction, action, options`. Lists available directions (`horizontal`, `vertical`, `left`, `right`, `up`, `down`, `swipe`, `pinch`, `pinchin`, `pinchout`) and actions (`dispatcher`, `workspace`, `move`, `resize`, `special`, `close`, `fullscreen`, `float`, `cursorZoom`). |
-| `Binds` | Bind syntax (`bind`, `binde`, `bindm`, `bindr`, `bindl`, etc.), submaps, global keybinds, mouse binds, and bind flags. |
-| `Keywords` | Top-level keywords (`exec-once`, `source`, `env`, `monitor`, per-device input configs, etc.). |
-| `Window-Rules` | Window rule syntax, match criteria, and all available rules (both static and dynamic effects like opacity, animation, blur, etc.). |
-| `Workspace-Rules` | Workspace rule syntax and available rules. |
-| `Animations` | Animation syntax, bezier curves, and animation tree. |
-| `Monitors` | Monitor configuration, rotation, mirroring, scaling. |
-| `Dwindle-Layout` | Dwindle layout options and dispatchers. |
-| `Master-Layout` | Master layout options and dispatchers. |
-| `Scrolling-Layout` | Scrolling layout options. |
-| `Monocle-Layout` | Monocle layout options. |
-| `Tearing` | Screen tearing configuration. |
-| `XWayland` | XWayland settings. |
-| `Permissions` | Permission control system. |
-| `Using-hyprctl` | hyprctl commands and IPC. |
-| `Environment-variables` | Environment variables for Hyprland and toolkits. |
-| `Multi-GPU` | Multi-GPU setup. |
-| `Performance` | Performance tuning tips. |
-| `Uncommon-tips-&-tricks` | Switchable layouts, per-monitor configs, etc. (URL-encode `&` as `%26` in the raw URL: `Uncommon-tips-%26-tricks.md`) |
+| Page                     | What it covers                                                                                                                                                                                                                                                                                                                   |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Variables`              | All config sections and their options (general, decoration, input, misc, cursor, binds, animations, group, xwayland, render, opengl, ecosystem, debug, etc.). Each option is in a table with name, description, type, and default.                                                                                               |
+| `Dispatchers`            | All dispatcher names, descriptions, and parameter types. Includes workspace syntax, special workspaces, executing with rules, and `setprop`.                                                                                                                                                                                     |
+| `Gestures`               | The `gesture` keyword syntax: `gesture = fingers, direction, action, options`. Lists available directions (`horizontal`, `vertical`, `left`, `right`, `up`, `down`, `swipe`, `pinch`, `pinchin`, `pinchout`) and actions (`dispatcher`, `workspace`, `move`, `resize`, `special`, `close`, `fullscreen`, `float`, `cursorZoom`). |
+| `Binds`                  | Bind syntax (`bind`, `binde`, `bindm`, `bindr`, `bindl`, etc.), submaps, global keybinds, mouse binds, and bind flags.                                                                                                                                                                                                           |
+| `Keywords`               | Top-level keywords (`exec-once`, `source`, `env`, `monitor`, per-device input configs, etc.).                                                                                                                                                                                                                                    |
+| `Window-Rules`           | Window rule syntax, match criteria, and all available rules (both static and dynamic effects like opacity, animation, blur, etc.).                                                                                                                                                                                               |
+| `Workspace-Rules`        | Workspace rule syntax and available rules.                                                                                                                                                                                                                                                                                       |
+| `Animations`             | Animation syntax, bezier curves, and animation tree.                                                                                                                                                                                                                                                                             |
+| `Monitors`               | Monitor configuration, rotation, mirroring, scaling.                                                                                                                                                                                                                                                                             |
+| `Dwindle-Layout`         | Dwindle layout options and dispatchers.                                                                                                                                                                                                                                                                                          |
+| `Master-Layout`          | Master layout options and dispatchers.                                                                                                                                                                                                                                                                                           |
+| `Scrolling-Layout`       | Scrolling layout options.                                                                                                                                                                                                                                                                                                        |
+| `Monocle-Layout`         | Monocle layout options.                                                                                                                                                                                                                                                                                                          |
+| `Tearing`                | Screen tearing configuration.                                                                                                                                                                                                                                                                                                    |
+| `XWayland`               | XWayland settings.                                                                                                                                                                                                                                                                                                               |
+| `Permissions`            | Permission control system.                                                                                                                                                                                                                                                                                                       |
+| `Using-hyprctl`          | hyprctl commands and IPC.                                                                                                                                                                                                                                                                                                        |
+| `Environment-variables`  | Environment variables for Hyprland and toolkits.                                                                                                                                                                                                                                                                                 |
+| `Multi-GPU`              | Multi-GPU setup.                                                                                                                                                                                                                                                                                                                 |
+| `Performance`            | Performance tuning tips.                                                                                                                                                                                                                                                                                                         |
+| `Uncommon-tips-&-tricks` | Switchable layouts, per-monitor configs, etc. (URL-encode `&` as `%26` in the raw URL: `Uncommon-tips-%26-tricks.md`)                                                                                                                                                                                                            |
 
 ### Example fetches
 
@@ -83,15 +83,15 @@ Each section has a table of options.
 
 ### Variable types
 
-| Type | Meaning |
-|------|---------|
-| `int` | integer (not a string — don't quote it in Nix) |
-| `bool` | `true`/`false` |
-| `float` | floating point |
-| `color` | `rgba(...)`, `rgb(...)`, or legacy `0xAARRGGBB` |
-| `vec2` | two floats separated by space |
-| `str` | a string |
-| `gradient` | `color color ... [angle]` |
+| Type       | Meaning                                         |
+| ---------- | ----------------------------------------------- |
+| `int`      | integer (not a string — don't quote it in Nix)  |
+| `bool`     | `true`/`false`                                  |
+| `float`    | floating point                                  |
+| `color`    | `rgba(...)`, `rgb(...)`, or legacy `0xAARRGGBB` |
+| `vec2`     | two floats separated by space                   |
+| `str`      | a string                                        |
+| `gradient` | `color color ... [angle]`                       |
 
 ### NixOS Home Manager considerations
 

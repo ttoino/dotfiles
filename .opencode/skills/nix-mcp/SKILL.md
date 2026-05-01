@@ -26,41 +26,41 @@ Use the `nix_nix` tool with the appropriate `action` and `source` parameters.
 
 ### Available actions
 
-| Action | Description | Best for |
-|--------|-------------|----------|
-| `search` | Search for packages/options | Finding packages by keyword |
-| `info` | Get detailed info about a specific item | Package details, option docs |
-| `stats` | Get statistics about a source | Overview of available data |
-| `options` | List or search options (Home Manager/Darwin/nixvim only) | Config validation |
-| `channels` | List available channels | Finding channel names |
-| `flake-inputs` | Read flake.lock or specific inputs | Dependency inspection |
-| `cache` | Check binary cache for packages | Verifying cache availability |
+| Action         | Description                                              | Best for                     |
+| -------------- | -------------------------------------------------------- | ---------------------------- |
+| `search`       | Search for packages/options                              | Finding packages by keyword  |
+| `info`         | Get detailed info about a specific item                  | Package details, option docs |
+| `stats`        | Get statistics about a source                            | Overview of available data   |
+| `options`      | List or search options (Home Manager/Darwin/nixvim only) | Config validation            |
+| `channels`     | List available channels                                  | Finding channel names        |
+| `flake-inputs` | Read flake.lock or specific inputs                       | Dependency inspection        |
+| `cache`        | Check binary cache for packages                          | Verifying cache availability |
 
 ### Available sources
 
-| Source | What it covers | Actions supported |
-|--------|----------------|-------------------|
-| `nixos` | NixOS packages and options | search, info, stats, channels |
-| `home-manager` | Home Manager packages and options | search, info, stats, options, channels |
-| `darwin` | nix-darwin options | options |
-| `flakes` | Nix flakes ecosystem | info |
-| `flakehub` | FlakeHub packages | search, info, stats |
-| `nixvim` | Nixvim options | options |
-| `wiki` | NixOS Wiki | search, info |
-| `nix-dev` | nix.dev documentation | search, info |
-| `noogle` | Nix function documentation (Noogle) | search, info |
-| `nixhub` | NixHub package versions | search, info |
+| Source         | What it covers                      | Actions supported                      |
+| -------------- | ----------------------------------- | -------------------------------------- |
+| `nixos`        | NixOS packages and options          | search, info, stats, channels          |
+| `home-manager` | Home Manager packages and options   | search, info, stats, options, channels |
+| `darwin`       | nix-darwin options                  | options                                |
+| `flakes`       | Nix flakes ecosystem                | info                                   |
+| `flakehub`     | FlakeHub packages                   | search, info, stats                    |
+| `nixvim`       | Nixvim options                      | options                                |
+| `wiki`         | NixOS Wiki                          | search, info                           |
+| `nix-dev`      | nix.dev documentation               | search, info                           |
+| `noogle`       | Nix function documentation (Noogle) | search, info                           |
+| `nixhub`       | NixHub package versions             | search, info                           |
 
 ### Common parameters
 
-| Parameter | Description | Example |
-|-----------|-------------|---------|
-| `query` | Search term, package name, or option path | `"git"`, `"services.nginx"` |
-| `action` | The action to perform (see table above) | `"search"`, `"options"` |
-| `source` | Which source to query (see table above) | `"nixos"`, `"home-manager"` |
-| `type` | For `nixos`/`home-manager`: `packages`, `options`, `programs` | `"packages"` |
-| `channel` | Channel to use (`unstable` or `stable`) | `"unstable"` |
-| `limit` | Max results to return (1-100, default 20) | `50` |
+| Parameter | Description                                                   | Example                     |
+| --------- | ------------------------------------------------------------- | --------------------------- |
+| `query`   | Search term, package name, or option path                     | `"git"`, `"services.nginx"` |
+| `action`  | The action to perform (see table above)                       | `"search"`, `"options"`     |
+| `source`  | Which source to query (see table above)                       | `"nixos"`, `"home-manager"` |
+| `type`    | For `nixos`/`home-manager`: `packages`, `options`, `programs` | `"packages"`                |
+| `channel` | Channel to use (`unstable` or `stable`)                       | `"unstable"`                |
+| `limit`   | Max results to return (1-100, default 20)                     | `50`                        |
 
 ## Example queries
 
@@ -133,6 +133,7 @@ This returns available versions from NixHub.io.
 ### Option browsing limitations
 
 The `options` action is **only** available for:
+
 - `home-manager`
 - `darwin` (nix-darwin)
 - `nixvim`
@@ -148,6 +149,7 @@ For NixOS options, use `action: "info"` with `type: "options"` instead.
 ### Result interpretation
 
 Search results typically include:
+
 - **Package name** - The attribute path (e.g., `nixpkgs.git`)
 - **Version** - Package version
 - **Description** - Brief description
@@ -155,6 +157,7 @@ Search results typically include:
 - **Homepage** - Project URL
 
 Option results include:
+
 - **Option path** - Full option name
 - **Type** - Option type (bool, string, int, etc.)
 - **Default** - Default value
@@ -163,16 +166,19 @@ Option results include:
 ### Common patterns
 
 **Verifying a configuration option exists:**
+
 ```
 action: "options", source: "home-manager", query: "programs.kitty.settings"
 ```
 
 **Finding packages by function:**
+
 ```
 action: "search", source: "nixos", query: "pdf", type: "packages"
 ```
 
 **Checking if an option is valid in Home Manager:**
+
 ```
 action: "options", source: "home-manager", query: "nix.gc"
 ```

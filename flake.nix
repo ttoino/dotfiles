@@ -14,6 +14,7 @@
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
     cake = {
       url = "github:ttoino/cake";
@@ -56,6 +57,10 @@
       url = "github:ttoino/shadows-plus-plus";
       inputs.hyprland.inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -65,6 +70,7 @@
       agenix-rekey,
       flake-utils,
       home-manager,
+      treefmt-nix,
       ...
     }@inputs:
     let
@@ -97,8 +103,11 @@
       system:
       let
         pkgs = import nixpkgs { inherit system overlays; };
+        treefmt = (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
       in
       {
+        formatter = treefmt;
+
         packages =
           (packages pkgs)
           // (lib.attrsets.concatMapAttrs (name: config: {
@@ -113,8 +122,8 @@
             mcp-nixos
             # Nix language server
             nixd
-            # Nix formatter
-            nixfmt
+            # Formatter
+            treefmt
             # Update packages
             nix-update
             # Update sources

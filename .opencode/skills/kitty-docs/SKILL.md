@@ -34,6 +34,7 @@ than reading it end-to-end. Search for the option name (e.g. `close_on_child_dea
 to find its definition quickly.
 
 Key patterns to search for:
+
 - `opt('option_name'` -- current option definition
 - `add_deprecation(` -- deprecated options listed near top of file
 - `choices=` -- valid values for enum-style options
@@ -48,24 +49,24 @@ protocols, and guides:
 https://raw.githubusercontent.com/kovidgoyal/kitty/master/docs/{file}.rst
 ```
 
-| File | What it covers |
-|------|----------------|
-| `conf.rst` | Config file overview (includes generated `conf-kitty.rst` at build time) |
-| `actions.rst` | All mappable keyboard/mouse actions |
-| `mapping.rst` | Keybind and mouse mapping syntax |
-| `layouts.rst` | Window layout system (splits, tabs, stacks, etc.) |
-| `remote-control.rst` | Remote control protocol and `allow_remote_control` usage |
-| `shell-integration.rst` | Shell integration features and configuration |
-| `launch.rst` | Launch command syntax for opening windows/tabs |
-| `sessions.rst` | Session file format |
-| `faq.rst` | Frequently asked questions |
-| `changelog.rst` | Full changelog (very large ~213KB, search for specific versions) |
-| `overview.rst` | Feature overview |
-| `open_actions.rst` | File/URL open actions |
-| `kittens_intro.rst` | Kittens (extensions) introduction |
-| `clipboard.rst` | Clipboard protocol |
-| `keyboard-protocol.rst` | Keyboard protocol |
-| `graphics-protocol.rst` | Graphics/image protocol |
+| File                    | What it covers                                                           |
+| ----------------------- | ------------------------------------------------------------------------ |
+| `conf.rst`              | Config file overview (includes generated `conf-kitty.rst` at build time) |
+| `actions.rst`           | All mappable keyboard/mouse actions                                      |
+| `mapping.rst`           | Keybind and mouse mapping syntax                                         |
+| `layouts.rst`           | Window layout system (splits, tabs, stacks, etc.)                        |
+| `remote-control.rst`    | Remote control protocol and `allow_remote_control` usage                 |
+| `shell-integration.rst` | Shell integration features and configuration                             |
+| `launch.rst`            | Launch command syntax for opening windows/tabs                           |
+| `sessions.rst`          | Session file format                                                      |
+| `faq.rst`               | Frequently asked questions                                               |
+| `changelog.rst`         | Full changelog (very large ~213KB, search for specific versions)         |
+| `overview.rst`          | Feature overview                                                         |
+| `open_actions.rst`      | File/URL open actions                                                    |
+| `kittens_intro.rst`     | Kittens (extensions) introduction                                        |
+| `clipboard.rst`         | Clipboard protocol                                                       |
+| `keyboard-protocol.rst` | Keyboard protocol                                                        |
+| `graphics-protocol.rst` | Graphics/image protocol                                                  |
 
 The `docs/kittens/` subdirectory has per-kitten docs (e.g. `ssh.rst`, `diff.rst`).
 

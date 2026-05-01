@@ -49,9 +49,9 @@ bindkey "^M" simplify-prompt-accept-line
 local _prompt_first=1
 
 precmd() {
-    if [[ -n "$ZSH_CMD_START_TIME" ]]; then
-        local duration=$(( EPOCHSECONDS - ZSH_CMD_START_TIME ))
-        if (( duration > 10 )); then
+    if [[ -n $ZSH_CMD_START_TIME ]]; then
+        local duration=$((EPOCHSECONDS - ZSH_CMD_START_TIME))
+        if ((duration > 10)); then
             LAST_CMD_DURATION="${duration}s"
         else
             LAST_CMD_DURATION=""
@@ -61,7 +61,7 @@ precmd() {
         LAST_CMD_DURATION=""
     fi
 
-    (( _prompt_first )) && _prompt_first=0 || echo
+    ((_prompt_first)) && _prompt_first=0 || echo
 }
 
 preexec() {
