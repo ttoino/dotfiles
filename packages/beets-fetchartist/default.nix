@@ -1,19 +1,11 @@
 {
-  fetchFromGitHub,
   python3Packages,
+  sources,
   ...
 }:
 python3Packages.buildPythonPackage {
-  pname = "beets-fetchartist";
-  version = "25.10.07";
+  inherit (sources.beets-fetchartist) pname version src;
   pyproject = true;
-
-  src = fetchFromGitHub {
-    repo = "beets-fetchartist";
-    owner = "ttoino";
-    rev = "d002de427f39b1bf6b7173a87c069c4a6cf9970d";
-    hash = "sha256-tRlnzLkMnL3td1L2kjUeoXPmmCStuZp49TrhmGICuTU=";
-  };
 
   nativeBuildInputs = with python3Packages; [
     beets-minimal

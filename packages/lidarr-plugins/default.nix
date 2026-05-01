@@ -1,6 +1,5 @@
 {
   buildDotnetModule,
-  fetchFromGitHub,
   fetchYarnDeps,
   stdenv,
 
@@ -16,18 +15,12 @@
   yarnBuildHook,
   yarnConfigHook,
   nodejs,
+  sources,
   ...
 }:
 let
-  pname = "lidarr-plugins";
+  inherit (sources.lidarr-plugins) pname src;
   version = "3.1.1.4901";
-
-  src = fetchFromGitHub {
-    owner = "lidarr";
-    repo = "Lidarr";
-    rev = "0842f73cf495fe0536e07c765d6fe55b5ece0c0f";
-    hash = "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=";
-  };
 
   frontend = stdenv.mkDerivation {
     pname = "${pname}-frontend";

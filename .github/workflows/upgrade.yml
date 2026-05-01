@@ -14,7 +14,32 @@ jobs:
         uses: actions/checkout@v6
       - name: Setup Nix
         uses: cachix/install-nix-action@v31
+      - name: Update sources
+        run: nix run nixpkgs#nvfetcher -- --config nvfetcher.toml --build-dir _sources --commit-changes --changelog /tmp/nvfetcher-changelog.txt
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+      - name: Read nvfetcher changelog
+        id: nvfetcher-changelog
+        run: |
+          if [ -f /tmp/nvfetcher-changelog.txt ]; then
+            echo "body<<EOF" >> "$GITHUB_OUTPUT"
+            cat /tmp/nvfetcher-changelog.txt >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          fi
       - name: Upgrade dependencies
         uses: DeterminateSystems/update-flake-lock@v28
         with:
           token: ${{ secrets.GH_TOKEN }}
+          pr-body: |
+            Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
+
+            ## Source updates
+
+            ${{ steps.nvfetcher-changelog.outputs.body }}
+
+            ## Flake lock changes
+
+            {{ env.GIT_COMMIT_MESSAGE }}

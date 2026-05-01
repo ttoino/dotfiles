@@ -117,6 +117,8 @@
             nixfmt
             # Update packages
             nix-update
+            # Update sources
+            nvfetcher
             # Wireguard
             wireguard-tools
           ];

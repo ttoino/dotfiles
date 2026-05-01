@@ -1,20 +1,14 @@
 {
-  fetchurl,
   lib,
   python3Packages,
+  sources,
 
   mopidy,
   ...
 }:
-python3Packages.buildPythonPackage rec {
-  pname = "mopidy-dynamic";
-  version = "1.0.0";
+python3Packages.buildPythonPackage {
+  inherit (sources.mopidy-dynamic) pname version src;
   format = "wheel";
-
-  src = fetchurl {
-    url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Dynamic/mopidy_dynamic-${version}-py3-none-any.whl";
-    hash = "sha256-kcUZpLg3/nhcWN5Y91umD1yON1j0Y/arMr2J2gGNGBY=";
-  };
 
   dependencies = [
     mopidy

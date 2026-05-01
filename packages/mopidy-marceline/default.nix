@@ -1,20 +1,14 @@
 {
-  fetchurl,
   lib,
   python3Packages,
+  sources,
 
   mopidy,
   ...
 }:
-python3Packages.buildPythonPackage rec {
-  pname = "mopidy-marceline";
-  version = "0.0.5";
+python3Packages.buildPythonPackage {
+  inherit (sources.mopidy-marceline) pname version src;
   format = "wheel";
-
-  src = fetchurl {
-    url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-${version}-py3-none-any.whl";
-    hash = "sha256-/mBGeM0dk3jk8dJWKngLX0DokJht7pE0rhrajFSWksc=";
-  };
 
   dependencies = [
     mopidy

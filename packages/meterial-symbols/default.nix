@@ -1,19 +1,13 @@
 {
-  fetchurl,
   lib,
   stdenvNoCC,
+  sources,
 
   unzip,
   ...
 }:
-stdenvNoCC.mkDerivation rec {
-  pname = "meterial-symbols";
-  version = "1.3.0";
-
-  src = fetchurl {
-    url = "https://github.com/ttoino/${pname}/releases/download/v${version}/MeterialSymbols.zip";
-    hash = "sha256-Du2eGckhC6lJpAhebBbAINST1OIDCn3biU/LYx+eVxU=";
-  };
+stdenvNoCC.mkDerivation {
+  inherit (sources.meterial-symbols) pname version src;
 
   nativeBuildInputs = [ unzip ];
 

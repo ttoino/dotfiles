@@ -1,0 +1,388 @@
+{
+    "anthropic-skills": {
+        "cargoLock": null,
+        "date": "2026-04-23",
+        "extract": null,
+        "name": "anthropic-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "anthropics",
+            "repo": "skills",
+            "rev": "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9",
+            "sha256": "sha256-xFsg66TCtKzSgRIW6Ab771FWEIhei3jPgfE4byMiB44=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9"
+    },
+    "beets-fetchartist": {
+        "cargoLock": null,
+        "date": "2025-10-07",
+        "extract": null,
+        "name": "beets-fetchartist",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ttoino",
+            "repo": "beets-fetchartist",
+            "rev": "d002de427f39b1bf6b7173a87c069c4a6cf9970d",
+            "sha256": "sha256-tRlnzLkMnL3td1L2kjUeoXPmmCStuZp49TrhmGICuTU=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "d002de427f39b1bf6b7173a87c069c4a6cf9970d"
+    },
+    "cloudflare-skills": {
+        "cargoLock": null,
+        "date": "2026-04-27",
+        "extract": null,
+        "name": "cloudflare-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "cloudflare",
+            "repo": "skills",
+            "rev": "7c449def4e0c63daa27212d853094e4c8e37bbe8",
+            "sha256": "sha256-XyzegovaXDtWY3z4t0D4wEc0rD4880GrP9/iMCjxqcs=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "7c449def4e0c63daa27212d853094e4c8e37bbe8"
+    },
+    "lidarr-plugins": {
+        "cargoLock": null,
+        "date": "2026-01-18",
+        "extract": null,
+        "name": "lidarr-plugins",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "lidarr",
+            "repo": "Lidarr",
+            "rev": "0842f73cf495fe0536e07c765d6fe55b5ece0c0f",
+            "sha256": "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "0842f73cf495fe0536e07c765d6fe55b5ece0c0f"
+    },
+    "meterial-symbols": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "meterial-symbols",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Du2eGckhC6lJpAhebBbAINST1OIDCn3biU/LYx+eVxU=",
+            "type": "url",
+            "url": "https://github.com/ttoino/meterial-symbols/releases/download/v1.3.0/MeterialSymbols.zip"
+        },
+        "version": "v1.3.0"
+    },
+    "mopidy-dynamic": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "mopidy-dynamic",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-kcUZpLg3/nhcWN5Y91umD1yON1j0Y/arMr2J2gGNGBY=",
+            "type": "url",
+            "url": "https://files.pythonhosted.org/packages/py3/M/Mopidy-Dynamic/mopidy_dynamic-1.0.0-py3-none-any.whl"
+        },
+        "version": "1.0.0"
+    },
+    "mopidy-local": {
+        "cargoLock": null,
+        "date": "2025-03-27",
+        "extract": null,
+        "name": "mopidy-local",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ttoino",
+            "repo": "mopidy-local",
+            "rev": "3cf3b7c14235e1618c5f1cd0e6a5c1df3fd0d2e0",
+            "sha256": "sha256-Em7Kk815lJqPrA8hFGc/q+WYA9b4XBqA6wQNO34M3C4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "3cf3b7c14235e1618c5f1cd0e6a5c1df3fd0d2e0"
+    },
+    "mopidy-marceline": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "mopidy-marceline",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-/mBGeM0dk3jk8dJWKngLX0DokJht7pE0rhrajFSWksc=",
+            "type": "url",
+            "url": "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-0.0.5-py3-none-any.whl"
+        },
+        "version": "0.0.5"
+    },
+    "mopidy-mpris": {
+        "cargoLock": null,
+        "date": "2025-05-19",
+        "extract": null,
+        "name": "mopidy-mpris",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ttoino",
+            "repo": "mopidy-mpris",
+            "rev": "c197be548a11f3efe012a705f0f906d2cc03708b",
+            "sha256": "sha256-zrRJ4hS2bSNxjeEF4OnjOeXKsnY7V0Y6iKlUws+JjoY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "c197be548a11f3efe012a705f0f906d2cc03708b"
+    },
+    "ohmyzsh": {
+        "cargoLock": null,
+        "date": "2026-04-30",
+        "extract": null,
+        "name": "ohmyzsh",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ohmyzsh",
+            "repo": "ohmyzsh",
+            "rev": "e7aa0c56e68348afefdd6af4c5bdb314a2bd6640",
+            "sha256": "sha256-m81bwO/bw5+grt9q8cGLzSJzk1ajJSCAkLpB6DjzuDo=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "e7aa0c56e68348afefdd6af4c5bdb314a2bd6640"
+    },
+    "peon-dva": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "peon-dva",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "leo-rutter",
+            "repo": "d.va-pack",
+            "rev": "v1.0.0",
+            "sha256": "sha256-YM4ge0j0HaZl1PMtmngx4qf1fJHLmr825bweezO5ZLQ=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.0.0"
+    },
+    "peon-eve-walle": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "peon-eve-walle",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "stphnlngdncoding",
+            "repo": "eve-walle",
+            "rev": "v1.0.1",
+            "sha256": "sha256-ujwutbgkY+DxEOJQeu0APuSgVWBLJj51N3kJEE/vmfM=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.0.1"
+    },
+    "peon-jarvis-mk2": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "peon-jarvis-mk2",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "FlynnCruse",
+            "repo": "openpeon-jarvis",
+            "rev": "v1.1.0",
+            "sha256": "sha256-SDelu1fhg2/JFKIQM4lSLevl7wMUBfuAFNOM/5gf8Mo=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.1.0"
+    },
+    "peon-minecraft-villager": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "peon-minecraft-villager",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "Mahamurahti",
+            "repo": "openpeon-minecraft-villager",
+            "rev": "v1.0.1",
+            "sha256": "sha256-0vyWcgbdFcFwke8zSX3GSPETRX4fufeEXE2Dmks/9YE=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.0.1"
+    },
+    "rescrobbled": {
+        "cargoLock": {
+            "Cargo.lock": [
+                "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=/Cargo.lock",
+                {}
+            ]
+        },
+        "date": "2026-04-11",
+        "extract": null,
+        "name": "rescrobbled",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ttoino",
+            "repo": "rescrobbled",
+            "rev": "5c7cfe22709f56f81b078dc97b5984f602e3514e",
+            "sha256": "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "5c7cfe22709f56f81b078dc97b5984f602e3514e"
+    },
+    "zsh-colored-man-pages": {
+        "cargoLock": null,
+        "date": "2019-04-02",
+        "extract": null,
+        "name": "zsh-colored-man-pages",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ael-code",
+            "repo": "zsh-colored-man-pages",
+            "rev": "57bdda68e52a09075352b18fa3ca21abd31df4cb",
+            "sha256": "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "57bdda68e52a09075352b18fa3ca21abd31df4cb"
+    },
+    "zsh-fast-syntax-highlighting": {
+        "cargoLock": null,
+        "date": "2025-07-16",
+        "extract": null,
+        "name": "zsh-fast-syntax-highlighting",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "zdharma-continuum",
+            "repo": "fast-syntax-highlighting",
+            "rev": "3d574ccf48804b10dca52625df13da5edae7f553",
+            "sha256": "sha256-ZihUL4JAVk9V+IELSakytlb24BvEEJ161CQEHZYYoSA=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "3d574ccf48804b10dca52625df13da5edae7f553"
+    },
+    "zsh-gitstatus": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zsh-gitstatus",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "romkatv",
+            "repo": "gitstatus",
+            "rev": "v1.5.5",
+            "sha256": "sha256-b+9bwJ87VV6rbOPobkwMkDXGH34STjYPlt8wCRR5tEc=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.5.5"
+    },
+    "zsh-nix-shell": {
+        "cargoLock": null,
+        "date": "2023-12-31",
+        "extract": null,
+        "name": "zsh-nix-shell",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "chisui",
+            "repo": "zsh-nix-shell",
+            "rev": "82ca15e638cc208e6d8368e34a1625ed75e08f90",
+            "sha256": "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "82ca15e638cc208e6d8368e34a1625ed75e08f90"
+    }
+}

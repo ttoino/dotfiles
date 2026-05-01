@@ -1,0 +1,81 @@
+[anthropic-skills]
+src.git = "https://github.com/anthropics/skills"
+fetch.github = "anthropics/skills"
+
+[beets-fetchartist]
+src.git = "https://github.com/ttoino/beets-fetchartist"
+fetch.github = "ttoino/beets-fetchartist"
+
+[cloudflare-skills]
+src.git = "https://github.com/cloudflare/skills"
+fetch.github = "cloudflare/skills"
+
+[lidarr-plugins]
+src.git = "https://github.com/lidarr/Lidarr"
+src.branch = "plugins"
+fetch.github = "lidarr/Lidarr"
+pinned = true
+
+[meterial-symbols]
+src.github = "ttoino/meterial-symbols"
+fetch.url = "https://github.com/ttoino/meterial-symbols/releases/download/$ver/MeterialSymbols.zip"
+
+[mopidy-dynamic]
+src.pypi = "Mopidy-Dynamic"
+fetch.url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Dynamic/mopidy_dynamic-$ver-py3-none-any.whl"
+
+[mopidy-local]
+src.git = "https://github.com/ttoino/mopidy-local"
+src.branch = "image-sources"
+fetch.github = "ttoino/mopidy-local"
+
+[mopidy-marceline]
+src.pypi = "Mopidy-Marceline"
+fetch.url = "https://files.pythonhosted.org/packages/py3/M/Mopidy-Marceline/mopidy_marceline-$ver-py3-none-any.whl"
+
+[mopidy-mpris]
+src.git = "https://github.com/ttoino/mopidy-mpris"
+src.branch = "image-uri"
+fetch.github = "ttoino/mopidy-mpris"
+
+[ohmyzsh]
+src.git = "https://github.com/ohmyzsh/ohmyzsh"
+fetch.github = "ohmyzsh/ohmyzsh"
+
+[rescrobbled]
+src.git = "https://github.com/ttoino/rescrobbled"
+src.branch = "shellexpand"
+fetch.github = "ttoino/rescrobbled"
+cargo_lock = ["Cargo.lock"]
+
+[peon-dva]
+src.github_tag = "leo-rutter/d.va-pack"
+fetch.github = "leo-rutter/d.va-pack"
+
+[peon-eve-walle]
+src.github_tag = "stphnlngdncoding/eve-walle"
+fetch.github = "stphnlngdncoding/eve-walle"
+
+[peon-jarvis-mk2]
+src.github_tag = "FlynnCruse/openpeon-jarvis"
+fetch.github = "FlynnCruse/openpeon-jarvis"
+
+[peon-minecraft-villager]
+src.github_tag = "Mahamurahti/openpeon-minecraft-villager"
+fetch.github = "Mahamurahti/openpeon-minecraft-villager"
+
+[zsh-colored-man-pages]
+src.git = "https://github.com/ael-code/zsh-colored-man-pages"
+fetch.github = "ael-code/zsh-colored-man-pages"
+
+[zsh-fast-syntax-highlighting]
+src.git = "https://github.com/zdharma-continuum/fast-syntax-highlighting"
+fetch.github = "zdharma-continuum/fast-syntax-highlighting"
+
+[zsh-nix-shell]
+src.git = "https://github.com/chisui/zsh-nix-shell"
+fetch.github = "chisui/zsh-nix-shell"
+
+[zsh-gitstatus]
+src.github = "romkatv/gitstatus"
+fetch.github = "romkatv/gitstatus"

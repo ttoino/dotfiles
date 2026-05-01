@@ -43,18 +43,8 @@ in
 
     skills =
       let
-        anthropic = pkgs.fetchFromGitHub {
-          owner = "anthropics";
-          repo = "skills";
-          rev = "98669c11ca63e9c81c11501e1437e5c47b556621";
-          hash = "sha256-w//9LB1OVG9jlllY+VDse7Js0dn5x6Ys2vPuQACKsTM=";
-        };
-        cloudflare = pkgs.fetchFromGitHub {
-          owner = "cloudflare";
-          repo = "skills";
-          rev = "0438a075b419f737eb091d1c91800b7387e3a75f";
-          hash = "sha256-dPMZCgE+nLWfZgvIKiZ33LYb2zJaunF/mv2SiCUHSNM=";
-        };
+        anthropic = pkgs.sources.anthropic-skills.src;
+        cloudflare = pkgs.sources.cloudflare-skills.src;
       in
       {
         cloudflare = cloudflare + "/skills/cloudflare";
@@ -95,39 +85,19 @@ in
 
       {
         name = "dva";
-        src = pkgs.fetchFromGitHub {
-          owner = "leo-rutter";
-          repo = "d.va-pack";
-          rev = "v1.0.0";
-          hash = "sha256-YM4ge0j0HaZl1PMtmngx4qf1fJHLmr825bweezO5ZLQ=";
-        };
+        src = pkgs.sources.peon-dva.src;
       }
       {
         name = "eve-walle";
-        src = pkgs.fetchFromGitHub {
-          owner = "stphnlngdncoding";
-          repo = "eve-walle";
-          rev = "v1.0.1";
-          hash = "sha256-ujwutbgkY+DxEOJQeu0APuSgVWBLJj51N3kJEE/vmfM=";
-        };
+        src = pkgs.sources.peon-eve-walle.src;
       }
       {
         name = "jarvis-mk2";
-        src = pkgs.fetchFromGitHub {
-          owner = "FlynnCruse";
-          repo = "openpeon-jarvis";
-          rev = "v1.1.0";
-          hash = "sha256-SDelu1fhg2/JFKIQM4lSLevl7wMUBfuAFNOM/5gf8Mo=";
-        };
+        src = pkgs.sources.peon-jarvis-mk2.src;
       }
       {
         name = "minecraft_villager";
-        src = pkgs.fetchFromGitHub {
-          owner = "Mahamurahti";
-          repo = "openpeon-minecraft-villager";
-          rev = "v1.0.1";
-          hash = "sha256-0vyWcgbdFcFwke8zSX3GSPETRX4fufeEXE2Dmks/9YE=";
-        };
+        src = pkgs.sources.peon-minecraft-villager.src;
       }
     ];
   };
