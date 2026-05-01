@@ -30,6 +30,17 @@
     };
     date = "2025-10-07";
   };
+  caddy-cloudflare = {
+    pname = "caddy-cloudflare";
+    version = "v0.2.4";
+    src = fetchFromGitHub {
+      owner = "caddy-dns";
+      repo = "cloudflare";
+      rev = "v0.2.4";
+      fetchSubmodules = false;
+      sha256 = "sha256-0Csi6WmyoGj7bXeo2Lrnwr0SCoV6c/niymtOp5DdiT4=";
+    };
+  };
   cloudflare-skills = {
     pname = "cloudflare-skills";
     version = "7c449def4e0c63daa27212d853094e4c8e37bbe8";
@@ -52,7 +63,7 @@
       fetchSubmodules = false;
       sha256 = "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=";
     };
-    date = "2026-01-18";
+    date = "2025-12-28";
   };
   meterial-symbols = {
     pname = "meterial-symbols";

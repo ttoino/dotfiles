@@ -6,6 +6,10 @@ fetch.github = "anthropics/skills"
 src.git = "https://github.com/ttoino/beets-fetchartist"
 fetch.github = "ttoino/beets-fetchartist"
 
+[caddy-cloudflare]
+src.github_tag = "caddy-dns/cloudflare"
+fetch.github = "caddy-dns/cloudflare"
+
 [cloudflare-skills]
 src.git = "https://github.com/cloudflare/skills"
 fetch.github = "cloudflare/skills"

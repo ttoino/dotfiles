@@ -41,6 +41,27 @@
         },
         "version": "d002de427f39b1bf6b7173a87c069c4a6cf9970d"
     },
+    "caddy-cloudflare": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "caddy-cloudflare",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "caddy-dns",
+            "repo": "cloudflare",
+            "rev": "v0.2.4",
+            "sha256": "sha256-0Csi6WmyoGj7bXeo2Lrnwr0SCoV6c/niymtOp5DdiT4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.2.4"
+    },
     "cloudflare-skills": {
         "cargoLock": null,
         "date": "2026-04-27",
@@ -64,11 +85,11 @@
     },
     "lidarr-plugins": {
         "cargoLock": null,
-        "date": "2026-01-18",
+        "date": "2025-12-28",
         "extract": null,
         "name": "lidarr-plugins",
         "passthru": null,
-        "pinned": false,
+        "pinned": true,
         "src": {
             "deepClone": false,
             "fetchSubmodules": false,
