@@ -26,7 +26,13 @@ in
         github = {
           enabled = false;
           type = "remote";
-          url = "https://api.githubcopilot.com/mcp/";
+          url = "https://api.githubcopilot.com/mcp";
+        };
+        material = {
+          enabled = false;
+          type = "remote";
+          url = "https://material.mcp.toino.pt/mcp";
+          timeout = 600000;
         };
         nix = {
           enabled = false;
