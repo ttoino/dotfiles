@@ -42,20 +42,10 @@
     wireguard-nm-env = {
       rekeyFile = ./wireguard_nm_env.age;
       generator = {
+        script = "env";
         dependencies = {
           inherit (config.age.secrets) wireguard-private-key wireguard-prismo-preshared-key;
         };
-        script =
-          {
-            lib,
-            decrypt,
-            deps,
-            ...
-          }:
-          ''
-            printf 'WIREGUARD_PRIVATE_KEY=%s\n' "$(${decrypt} ${lib.escapeShellArg deps.wireguard-private-key.file} | tr -d '\n')"
-            printf 'WIREGUARD_PSK=%s\n' "$(${decrypt} ${lib.escapeShellArg deps.wireguard-prismo-preshared-key.file} | tr -d '\n')"
-          '';
       };
     };
   };
@@ -82,7 +72,7 @@
         endpoint = "prismo.toino.pt:51820";
         allowed-ips = "10.0.0.1/24;";
         persistent-keepalive = 60;
-        preshared-key = "$WIREGUARD_PSK";
+        preshared-key = "$WIREGUARD_PRISMO_PRESHARED_KEY";
         preshared-key-flags = 0;
       };
     };

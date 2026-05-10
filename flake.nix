@@ -118,8 +118,6 @@
           packages = with pkgs; [
             # Create secrets
             agenix-rekey.packages.${system}.default
-            # MCP server
-            mcp-nixos
             # Nix language server
             nixd
             # Formatter
