@@ -74,15 +74,21 @@
     enabled = true;
 
     bezier = [
-      "myBezier, 0.05, 0.9, 0.1, 1.05"
+      "m3-expressive-spatial-fast, 0.42, 1.67, 0.21, 0.90"
+      "m3-expressive-spatial-default, 0.38, 1.21, 0.22, 1.00"
+      "m3-expressive-spatial-slow, 0.39, 1.29, 0.35, 0.98"
+      "m3-expressive-effects-slow, 0.34, 0.88, 0.34, 1.00"
       "linear, 0, 0, 1, 1"
     ];
 
     animation = [
-      "windows, 1, 7, myBezier"
-      "windowsOut, 1, 7, default, popin 80%"
-      "fade, 1, 7, default"
-      "workspaces, 1, 6, default"
+      "windows, 1, 5.0, m3-expressive-spatial-default, popin"
+      "windowsOut, 1, 3.5, m3-expressive-spatial-fast, popin 80%"
+      "windowsMove, 1, 5.0, m3-expressive-spatial-default, slide"
+      "fade, 1, 3.0, m3-expressive-effects-slow"
+      "workspaces, 1, 6.5, m3-expressive-spatial-slow, slide"
+      "layers, 1, 5.0, m3-expressive-spatial-default, fade"
+      "monitorAdded, 1, 6.5, m3-expressive-spatial-slow"
     ];
   };
 
