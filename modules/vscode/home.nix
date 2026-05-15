@@ -60,6 +60,7 @@
         "ms-toolsai.vscode-jupyter-slideshow"
 
         # Web
+        "arktypeio.arkdark"
         "bradlc.vscode-tailwindcss"
         "dbaeumer.vscode-eslint"
         "ecmel.vscode-html-css"
@@ -74,7 +75,6 @@
         "yoavbls.pretty-ts-errors"
 
         # Other
-        "github.copilot"
         "gruntfuggly.todo-tree"
         "kisstkondoros.vscode-gutter-preview"
         "mkhl.direnv"
