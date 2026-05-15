@@ -8,7 +8,6 @@
     ./lidarr.nix
     ./prowlarr.nix
     ./radarr.nix
-    ./readarr.nix
     ./sonarr.nix
     ./soulseek.nix
   ];
@@ -48,11 +47,6 @@
         mode = "0775";
       };
 
-      "/data/media/books".d = {
-        user = "readarr";
-        group = "media";
-        mode = "0775";
-      };
       "/data/media/movies".d = {
         user = "radarr";
         group = "media";
