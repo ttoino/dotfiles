@@ -41,6 +41,10 @@
           AllowedIPs = [ "10.0.0.28/32" ];
         }
         {
+          PublicKey = "IFvz+3gt/abw1GcBVQR/xRaGietx5vAraJVwqUxA6xs=";
+          AllowedIPs = [ "10.0.0.67/32" ];
+        }
+        {
           PublicKey = "wMBMd4FFgtI6G1bKhUqnTKhKMHsG9rPWJG0cIKFVkSE=";
           AllowedIPs = [ "10.0.0.82/32" ];
         }
