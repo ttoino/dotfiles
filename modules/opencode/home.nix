@@ -12,6 +12,7 @@ in
 
   programs.opencode = {
     enable = true;
+    context = ./AGENTS.md;
 
     web = {
       enable = true;
