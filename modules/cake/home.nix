@@ -22,24 +22,24 @@ in
     };
   };
 
-  wayland.windowManager.hyprland.settings = {
-    # It's okay to not use UWSM because these are just quickly interacting
-    # with the ags daemon and not long-lived
-    bind = [
-      # Run menu
-      "$mainMod, D, exec, ${ags}/bin/ags toggle run"
+  wayland.windowManager.hyprland.extraLuaFiles."06-cake".content =
+    # lua
+    ''
+      local mainMod = "SUPER"
 
-      # Logout menu
-      "$mainMod, Escape, exec, ${ags}/bin/ags toggle power"
-      ", XF86PowerOff, exec, ${ags}/bin/ags toggle power"
-    ];
+      -- It's okay to not use UWSM because these are just quickly interacting
+      -- with the ags daemon and not long-lived
+      hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("${ags}/bin/ags toggle run"))
 
-    layerrule = [
-      "match:namespace cake-scrim, blur on, order 1"
-    ];
-  };
+      -- Logout menu
+      hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("${ags}/bin/ags toggle power"))
+      hl.bind("XF86PowerOff", hl.dsp.exec_cmd("${ags}/bin/ags toggle power"), { locked = true })
+
+      hl.layer_rule({ match = { namespace = "cake-scrim" }, blur = true, order = 1 })
+    '';
 
   home.packages = with pkgs; [
+    ags
     cliphist
     libnotify
   ];

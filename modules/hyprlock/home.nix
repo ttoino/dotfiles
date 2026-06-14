@@ -13,5 +13,11 @@
     };
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "hyprlock" ];
+  wayland.windowManager.hyprland.extraLuaFiles."07-hyprlock-autostart".content =
+    # lua
+    ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("hyprlock")
+      end)
+    '';
 }

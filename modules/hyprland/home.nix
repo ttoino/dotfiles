@@ -1,31 +1,60 @@
-{ lib, pkgs, ... }@args:
+{ pkgs, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
 
     # Not needed because of UWSM
     systemd.enable = false;
 
-    settings = ({
-      # exec-once = [ "systemctl --user start hyprpolkitagent" ];
-
-      monitorv2 = lib.mkDefault [
-        {
-          output = "";
-          mode = "preferred";
-          position = "auto";
-          scale = 1;
-        }
-      ];
-    })
-    // (import ./apps.nix args)
-    // (import ./keybinds.nix)
-    // (import ./options.nix)
-    // (import ./rules.nix);
-
     plugins = with pkgs.hyprlandPlugins; [
       shadows-plus-plus
     ];
+
+    extraLuaFiles = {
+      "00-options" = ./lua/options.lua;
+      "01-animations" = ./lua/animations.lua;
+      "02-apps" = {
+        content =
+          # lua
+          ''
+            local M = {}
+
+            M.uwsm = "${pkgs.uwsm}/bin/uwsm-app"
+            M.grimblast = "${pkgs.grimblast}/bin/grimblast"
+            M.hyprpicker = "${pkgs.hyprpicker}/bin/hyprpicker"
+            M.playerctl = "${pkgs.playerctl}/bin/playerctl"
+            M.brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl"
+            M.wpctl = "${pkgs.wireplumber}/bin/wpctl"
+
+            M.launch = M.uwsm .. " --"
+            M.terminal = M.uwsm .. " -T --"
+
+            M.browser = M.launch .. " firefox.desktop"
+            M.secondary_browser = M.launch .. " chromium-browser.desktop"
+            M.file_explorer = M.terminal .. " yazi.desktop"
+            M.editor = M.terminal .. " nvim.desktop"
+            M.discord = M.launch .. " vesktop.desktop"
+
+            M.grimblast_copy = M.grimblast .. " copy"
+            M.grimblast_copy_area = M.grimblast .. " copy area"
+            M.hyprpicker_cmd = M.hyprpicker .. " -a"
+            M.playerctl_next = M.playerctl .. " next"
+            M.playerctl_previous = M.playerctl .. " previous"
+            M.playerctl_play_pause = M.playerctl .. " play-pause"
+            M.brightnessctl_down = M.brightnessctl .. " set 10%-"
+            M.brightnessctl_up = M.brightnessctl .. " set 10%+"
+            M.wpctl_mute = M.wpctl .. " set-mute @DEFAULT_SINK@ toggle"
+            M.wpctl_vol_down = M.wpctl .. " set-volume @DEFAULT_SINK@ 5%-"
+            M.wpctl_vol_up = M.wpctl .. " set-volume @DEFAULT_SINK@ 5%+"
+
+            return M
+          '';
+      };
+      "03-keybinds" = ./lua/keybinds.lua;
+      "04-rules" = ./lua/rules.lua;
+      "08-plugins" = ./lua/plugins.lua;
+    };
   };
 
   home.packages = with pkgs; [
