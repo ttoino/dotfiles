@@ -26,16 +26,11 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pin())
 
--- PiP video setup
+-- Toggle PiP mode on the active window
 hl.bind(mainMod .. " + SHIFT + V", function()
-    hl.dispatch(hl.dsp.window.float({ action = "set" }))
-    hl.dispatch(hl.dsp.window.pin())
-    hl.dispatch(hl.dsp.window.set_prop({ prop = "opaque", value = "toggle" }))
-    hl.dispatch(
-        hl.dsp.window.resize({ x = "25%", y = "25%", relative = false })
-    )
-    hl.dispatch(hl.dsp.window.move({ direction = "r" }))
-    hl.dispatch(hl.dsp.window.move({ direction = "d" }))
+    hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+    hl.dispatch(hl.dsp.window.pin({ action = "toggle" }))
+    hl.dispatch(hl.dsp.window.tag({ tag = "pip" }))
 end)
 
 -- Media

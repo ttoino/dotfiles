@@ -50,11 +50,8 @@ local function isPip(window)
     return false
 end
 
-hl.on("window.open", function(window)
-    ---@cast window HL.Window
-    if not isPip(window) then
-        return
-    end
+---@param window HL.Window
+local function applyPipLayout(window)
     local monitor = window.monitor
     if not monitor then
         return
@@ -68,6 +65,13 @@ hl.on("window.open", function(window)
     hl.dispatch(
         hl.dsp.window.move({ x = x, y = y, relative = false, window = window })
     )
+end
+
+hl.on("window.update_rules", function(window)
+    ---@cast window HL.Window
+    if isPip(window) then
+        applyPipLayout(window)
+    end
 end)
 
 -- Shimeji
