@@ -30,6 +30,7 @@
         "redhat.vscode-xml"
         "redhat.vscode-yaml"
         "rust-lang.rust-analyzer"
+        "sumneko.lua"
         "tamasfe.even-better-toml"
         "timonwong.shellcheck"
         "theqtcompany.qt-core"
@@ -115,6 +116,7 @@
         "latex-workshop.docker.image.latex" = "ghcr.io/xu-cheng/texlive-full";
         "latex-workshop.formatting.latex" = "tex-fmt";
         "latex-workshop.formatting.tex-fmt.path" = "${pkgs.tex-fmt}/bin/tex-fmt";
+        "Lua.misc.executablePath" = "${pkgs.lua-language-server}/bin/lua-language-server";
         "markdownlint.config" = {
           "MD033" = false;
         };

@@ -22,6 +22,9 @@ local MARGIN = 16
 local FRACTION = 0.25
 local ASPECT_RATIO = 16 / 9
 
+---@param monitor HL.Monitor
+---@return number width
+---@return number height
 local function pipLayout(monitor)
     local maxWidth, maxHeight =
         monitor.width * FRACTION, monitor.height * FRACTION
@@ -31,11 +34,15 @@ local function pipLayout(monitor)
     return maxWidth, maxWidth / ASPECT_RATIO
 end
 
+---@param window HL.Window|nil
+---@return boolean
 local function isPip(window)
     if not window or not window.tags then
         return false
     end
-    for _, tag in ipairs(window.tags) do
+    local tags = window.tags
+    ---@cast tags string[]
+    for _, tag in ipairs(tags) do
         if tag == "pip" or tag == "pip*" then
             return true
         end
@@ -44,6 +51,7 @@ local function isPip(window)
 end
 
 hl.on("window.open", function(window)
+    ---@cast window HL.Window
     if not isPip(window) then
         return
     end
