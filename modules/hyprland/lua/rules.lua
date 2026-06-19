@@ -5,13 +5,11 @@ hl.window_rule({ match = { tag = "game" }, immediate = true })
 
 -- PiP
 hl.window_rule({ match = { title = "discord\\.com/popout" }, tag = "+pip" })
-hl.window_rule({ match = { title = "Picture%-in%-Picture" }, tag = "+pip" })
+hl.window_rule({ match = { title = "Picture-in-Picture" }, tag = "+pip" })
 hl.window_rule({
     match = { tag = "pip" },
     float = true,
     keep_aspect_ratio = true,
-    move = { "monitor_w-window_w-16", "monitor_h-window_h-16" },
-    size = { "monitor_w*0.25", "monitor_h*0.25" },
     no_initial_focus = true,
     pin = true,
     opacity = "1",
@@ -19,6 +17,50 @@ hl.window_rule({
     no_dim = true,
     opaque = true,
 })
+
+local MARGIN = 16
+local FRACTION = 0.25
+local ASPECT_RATIO = 16 / 9
+
+local function pipLayout(monitor)
+    local maxWidth, maxHeight =
+        monitor.width * FRACTION, monitor.height * FRACTION
+    if maxWidth / maxHeight > ASPECT_RATIO then
+        return maxHeight * ASPECT_RATIO, maxHeight
+    end
+    return maxWidth, maxWidth / ASPECT_RATIO
+end
+
+local function isPip(window)
+    if not window or not window.tags then
+        return false
+    end
+    for _, tag in ipairs(window.tags) do
+        if tag == "pip" or tag == "pip*" then
+            return true
+        end
+    end
+    return false
+end
+
+hl.on("window.open", function(window)
+    if not isPip(window) then
+        return
+    end
+    local monitor = window.monitor
+    if not monitor then
+        return
+    end
+    local width, height = pipLayout(monitor)
+    local x = monitor.x + monitor.width - width - MARGIN
+    local y = monitor.y + monitor.height - height - MARGIN
+    hl.dispatch(
+        hl.dsp.window.resize({ x = width, y = height, window = window })
+    )
+    hl.dispatch(
+        hl.dsp.window.move({ x = x, y = y, relative = false, window = window })
+    )
+end)
 
 -- Shimeji
 hl.window_rule({ match = { title = "oneko" }, tag = "+shimeji" })
