@@ -23,4 +23,22 @@
 
   # Dynamic DNS
   services.cloudflare-dyndns.domains = [ "prismo.toino.pt" ];
+
+  # Syncthing (music sync to bmo)
+  services.syncthing = {
+    enable = true;
+    group = "media";
+
+    settings = {
+      devices.bmo = {
+        id = "GGIKOQX-EN7XCQN-27LPG56-HBDHZJH-O2V5KIE-KHYKULF-ABAY5PV-5ATL7QB";
+        addresses = [ "tcp://10.0.0.2:22000" ];
+      };
+      folders.music = {
+        path = "/data/media/music/tagged";
+        devices = [ "bmo" ];
+        type = "sendonly";
+      };
+    };
+  };
 }

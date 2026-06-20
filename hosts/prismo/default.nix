@@ -1,9 +1,9 @@
-{ traits, ... }:
+{ modules, traits, ... }:
 {
   traits = with traits; [
     base
     server
   ];
 
-  modules = [ ];
+  modules = with modules; [ syncthing ];
 }

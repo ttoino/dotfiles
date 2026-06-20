@@ -13,5 +13,6 @@
     battery
     fprint
     mullvad
+    syncthing
   ];
 }
