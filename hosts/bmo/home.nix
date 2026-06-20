@@ -21,5 +21,27 @@
       };
     };
   };
-}
 
+  # Trigger mopidy-scan after syncthing finishes syncing
+  systemd.user.services.mopidy-scan-trigger = {
+    Unit = {
+      Description = "Trigger mopidy local scan after syncthing sync";
+      After = [ "syncthing.service" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writers.writePython3 "mopidy-scan-trigger" { } (
+        builtins.readFile ./mopidy_scan_trigger.py
+      )}";
+    };
+  };
+
+  systemd.user.timers.mopidy-scan-trigger = {
+    Timer = {
+      OnBootSec = "2min";
+      OnUnitActiveSec = "1min";
+      Unit = "mopidy-scan-trigger.service";
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
+}

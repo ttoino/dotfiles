@@ -6,6 +6,15 @@
 
     prettier.enable = true;
 
+    ruff-check = {
+      enable = true;
+      extendSelect = [ "I" ];
+    };
+    ruff-format = {
+      enable = true;
+      lineLength = 79;
+    };
+
     shfmt = {
       enable = true;
       indent_size = 4;
