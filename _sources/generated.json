@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-06-09",
+        "date": "2026-06-27",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "57546260929473d4e0d1c1bb75297be2fdfa1949",
-            "sha256": "sha256-1D9otXxDvmKASBu/vtAEWv6kE+U+jG4OxZpRLZbGEF0=",
+            "rev": "35414756ca55738e050562e272a6bbc6273aa926",
+            "sha256": "sha256-7JB/zj2rBFdvbbFuGIFDXnm1TN26E67fRO1deQvzs34=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "57546260929473d4e0d1c1bb75297be2fdfa1949"
+        "version": "35414756ca55738e050562e272a6bbc6273aa926"
     },
     "beets-fetchartist": {
         "cargoLock": null,
@@ -64,7 +64,7 @@
     },
     "cloudflare-skills": {
         "cargoLock": null,
-        "date": "2026-06-17",
+        "date": "2026-06-22",
         "extract": null,
         "name": "cloudflare-skills",
         "passthru": null,
@@ -76,12 +76,12 @@
             "name": null,
             "owner": "cloudflare",
             "repo": "skills",
-            "rev": "ffcc622bf112eccc49c4b433faa5dd28e9ede2ea",
-            "sha256": "sha256-Aw2mJ1m9xQVaZ8RBTRJtWoiSq4GCbkils04zNPUYP5g=",
+            "rev": "27ce0c0e159225caa7ed30ebefd4107aa6c52497",
+            "sha256": "sha256-Ub6JaF9r4UzGRurJl73YVCx7fIl6RvG2pyNP+Y7NbQI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "ffcc622bf112eccc49c4b433faa5dd28e9ede2ea"
+        "version": "27ce0c0e159225caa7ed30ebefd4107aa6c52497"
     },
     "lidarr-plugins": {
         "cargoLock": null,
@@ -193,7 +193,7 @@
     },
     "ohmyzsh": {
         "cargoLock": null,
-        "date": "2026-06-15",
+        "date": "2026-06-26",
         "extract": null,
         "name": "ohmyzsh",
         "passthru": null,
@@ -205,12 +205,12 @@
             "name": null,
             "owner": "ohmyzsh",
             "repo": "ohmyzsh",
-            "rev": "df34d2b8d575777465aed8ae9b7cd90d63fdcd6e",
-            "sha256": "sha256-dXDvwLOnRuW+PFEu8njdeblp4psW7/P3Au7MKit3fgo=",
+            "rev": "d2379b2701df66a36b217a7707e77f8029a99814",
+            "sha256": "sha256-bYwe90XNgMAO+sy6I/QDwUAjg6wQJ83gp3LVNt/Q42s=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "df34d2b8d575777465aed8ae9b7cd90d63fdcd6e"
+        "version": "d2379b2701df66a36b217a7707e77f8029a99814"
     },
     "peon-dva": {
         "cargoLock": null,
