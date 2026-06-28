@@ -25,9 +25,16 @@ local ASPECT_RATIO = 16 / 9
 ---@param monitor HL.Monitor
 ---@return number width
 ---@return number height
+local function scaleOf(monitor)
+    local scale = monitor.scale or 1
+    if scale <= 0 then scale = 1 end
+    return scale
+end
+
 local function pipLayout(monitor)
-    local maxWidth, maxHeight =
-        monitor.width * FRACTION, monitor.height * FRACTION
+    local scale = scaleOf(monitor)
+    local logW, logH = monitor.width / scale, monitor.height / scale
+    local maxWidth, maxHeight = logW * FRACTION, logH * FRACTION
     if maxWidth / maxHeight > ASPECT_RATIO then
         return maxHeight * ASPECT_RATIO, maxHeight
     end
@@ -57,8 +64,10 @@ local function applyPipLayout(window)
         return
     end
     local width, height = pipLayout(monitor)
-    local x = monitor.x + monitor.width - width - MARGIN
-    local y = monitor.y + monitor.height - height - MARGIN
+    local scale = scaleOf(monitor)
+    local logW, logH = monitor.width / scale, monitor.height / scale
+    local x = monitor.x + logW - width - MARGIN
+    local y = monitor.y + logH - height - MARGIN
     hl.dispatch(
         hl.dsp.window.resize({ x = width, y = height, window = window })
     )
