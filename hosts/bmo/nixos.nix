@@ -31,9 +31,6 @@
     efiDeviceHandle = "FS0";
   };
 
-  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "24.05";
-
   # Wireguard
   age.secrets = {
     wireguard-private-key.rekeyFile = ./wireguard_private_key.age;
