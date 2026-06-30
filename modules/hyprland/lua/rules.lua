@@ -27,7 +27,9 @@ local ASPECT_RATIO = 16 / 9
 ---@return number height
 local function scaleOf(monitor)
     local scale = monitor.scale or 1
-    if scale <= 0 then scale = 1 end
+    if scale <= 0 then
+        scale = 1
+    end
     return scale
 end
 

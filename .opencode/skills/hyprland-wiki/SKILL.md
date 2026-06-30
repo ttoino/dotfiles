@@ -44,36 +44,36 @@ as `%20`.
 
 ### Available pages
 
-| Page                                              | What it covers                                                                                                                                                                                                  |
-| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Start`                                           | Lua config overview, `require()`/error behavior, LSP stub setup, multi-file config. Read this first when scripting.                                                                                            |
-| `Example-configurations`                          | Link to the example `hyprland.lua`.                                                                                                                                                                             |
-| `Basics/Variables`                                | All config sections and their options (general, decoration, input, misc, cursor, binds, animations, group, xwayland, render, opengl, ecosystem, debug, layout, quirks). Each option: name, description, type, default. |
-| `Basics/Dispatchers`                              | All `hl.dsp.*` dispatchers and their parameter shapes. Includes workspace selectors, special workspaces, executing with rules, and `set_prop`.                                                                 |
-| `Basics/Monitors`                                 | `hl.monitor()` spec, positioning, scaling, mirroring, rotation, color management, reserved areas.                                                                                                             |
-| `Basics/Window-Rules`                             | `hl.window_rule()` syntax, match props, static/dynamic effects, tags, `group` options, layer rules via `hl.layer_rule()`.                                                                                      |
-| `Basics/Workspace-Rules`                          | `hl.workspace_rule()` syntax, workspace selectors, and available rules (gaps, border, layout, persistence, on_created_empty).                                                                                  |
-| `Basics/Binds`                                    | `hl.bind()` syntax, submaps, global/dbus keybinds, mouse binds, bind flags, switchable keyboard layouts.                                                                                                       |
-| `Basics/Autostart`                                | `exec-once` equivalent and startup ordering.                                                                                                                                                                    |
-| `Advanced and Cool/Gestures`                      | `hl.gesture({ fingers, direction, action, ... })` syntax. Lists available directions and actions.                                                                                                              |
-| `Advanced and Cool/Animations`                    | `hl.animation()`/`hl.curve()` syntax and the animation tree.                                                                                                                                                    |
-| `Advanced and Cool/Expanding-functionality`       | **Lua scripting reference**: full `hl.on()` event table, convenience functions (`hl.get_*`), `hl.timer()`, dynamic config mutation, prop refresh. Read this when writing logic, not just static config.       |
-| `Advanced and Cool/Using-hyprctl`                 | `hyprctl` commands: `eval`, `repl`, `dispatch`, `setprop`, `notify`, info commands, `monitors`/`clients`/`layers` dumps, flags. Essential for live probing.                                                    |
-| `Advanced and Cool/Devices`                       | Per-device input config via `hl.device()`.                                                                                                                                                                      |
-| `Advanced and Cool/Environment-variables`         | Environment variables for Hyprland and toolkits.                                                                                                                                                               |
-| `Advanced and Cool/Multi-GPU`                     | Multi-GPU setup.                                                                                                                                                                                                |
-| `Advanced and Cool/Permissions`                   | Permission control system via `hl.permission()`.                                                                                                                                                               |
-| `Advanced and Cool/Performance`                   | Performance tuning tips.                                                                                                                                                                                        |
-| `Advanced and Cool/Tearing`                       | Screen tearing configuration.                                                                                                                                                                                   |
-| `Advanced and Cool/XWayland`                      | XWayland settings.                                                                                                                                                                                              |
-| `Advanced and Cool/Uncommon-tips-and-tricks`      | Switchable layouts, per-monitor configs, etc. (no `&` in the filename).                                                                                                                                          |
-| `Advanced and Cool/Notifications`                 | `hl.notification.create()` and the notification system.                                                                                                                                                         |
-| `Advanced and Cool/Virtual-GPU`                  | Virtual GPU config.                                                                                                                                                                                            |
-| `Layouts/Dwindle-Layout`                          | Dwindle layout options and dispatchers.                                                                                                                                                                        |
-| `Layouts/Master-Layout`                           | Master layout options and dispatchers.                                                                                                                                                                          |
-| `Layouts/Scrolling-Layout`                        | Scrolling layout options.                                                                                                                                                                                       |
-| `Layouts/Monocle-Layout`                           | Monocle layout options.                                                                                                                                                                                         |
-| `Layouts/Custom-Layouts`                          | Custom layouts via `hl.layout.register()`.                                                                                                                                                                     |
+| Page                                         | What it covers                                                                                                                                                                                                         |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Start`                                      | Lua config overview, `require()`/error behavior, LSP stub setup, multi-file config. Read this first when scripting.                                                                                                    |
+| `Example-configurations`                     | Link to the example `hyprland.lua`.                                                                                                                                                                                    |
+| `Basics/Variables`                           | All config sections and their options (general, decoration, input, misc, cursor, binds, animations, group, xwayland, render, opengl, ecosystem, debug, layout, quirks). Each option: name, description, type, default. |
+| `Basics/Dispatchers`                         | All `hl.dsp.*` dispatchers and their parameter shapes. Includes workspace selectors, special workspaces, executing with rules, and `set_prop`.                                                                         |
+| `Basics/Monitors`                            | `hl.monitor()` spec, positioning, scaling, mirroring, rotation, color management, reserved areas.                                                                                                                      |
+| `Basics/Window-Rules`                        | `hl.window_rule()` syntax, match props, static/dynamic effects, tags, `group` options, layer rules via `hl.layer_rule()`.                                                                                              |
+| `Basics/Workspace-Rules`                     | `hl.workspace_rule()` syntax, workspace selectors, and available rules (gaps, border, layout, persistence, on_created_empty).                                                                                          |
+| `Basics/Binds`                               | `hl.bind()` syntax, submaps, global/dbus keybinds, mouse binds, bind flags, switchable keyboard layouts.                                                                                                               |
+| `Basics/Autostart`                           | `exec-once` equivalent and startup ordering.                                                                                                                                                                           |
+| `Advanced and Cool/Gestures`                 | `hl.gesture({ fingers, direction, action, ... })` syntax. Lists available directions and actions.                                                                                                                      |
+| `Advanced and Cool/Animations`               | `hl.animation()`/`hl.curve()` syntax and the animation tree.                                                                                                                                                           |
+| `Advanced and Cool/Expanding-functionality`  | **Lua scripting reference**: full `hl.on()` event table, convenience functions (`hl.get_*`), `hl.timer()`, dynamic config mutation, prop refresh. Read this when writing logic, not just static config.                |
+| `Advanced and Cool/Using-hyprctl`            | `hyprctl` commands: `eval`, `repl`, `dispatch`, `setprop`, `notify`, info commands, `monitors`/`clients`/`layers` dumps, flags. Essential for live probing.                                                            |
+| `Advanced and Cool/Devices`                  | Per-device input config via `hl.device()`.                                                                                                                                                                             |
+| `Advanced and Cool/Environment-variables`    | Environment variables for Hyprland and toolkits.                                                                                                                                                                       |
+| `Advanced and Cool/Multi-GPU`                | Multi-GPU setup.                                                                                                                                                                                                       |
+| `Advanced and Cool/Permissions`              | Permission control system via `hl.permission()`.                                                                                                                                                                       |
+| `Advanced and Cool/Performance`              | Performance tuning tips.                                                                                                                                                                                               |
+| `Advanced and Cool/Tearing`                  | Screen tearing configuration.                                                                                                                                                                                          |
+| `Advanced and Cool/XWayland`                 | XWayland settings.                                                                                                                                                                                                     |
+| `Advanced and Cool/Uncommon-tips-and-tricks` | Switchable layouts, per-monitor configs, etc. (no `&` in the filename).                                                                                                                                                |
+| `Advanced and Cool/Notifications`            | `hl.notification.create()` and the notification system.                                                                                                                                                                |
+| `Advanced and Cool/Virtual-GPU`              | Virtual GPU config.                                                                                                                                                                                                    |
+| `Layouts/Dwindle-Layout`                     | Dwindle layout options and dispatchers.                                                                                                                                                                                |
+| `Layouts/Master-Layout`                      | Master layout options and dispatchers.                                                                                                                                                                                 |
+| `Layouts/Scrolling-Layout`                   | Scrolling layout options.                                                                                                                                                                                              |
+| `Layouts/Monocle-Layout`                     | Monocle layout options.                                                                                                                                                                                                |
+| `Layouts/Custom-Layouts`                     | Custom layouts via `hl.layout.register()`.                                                                                                                                                                             |
 
 Other top-level wiki areas (`content/IPC`, `content/Nix`, `content/Nvidia`,
 `content/Plugins`, `content/Useful Utilities`, `content/FAQ`) exist but are
@@ -191,22 +191,22 @@ scaled laptop screen but fine on the external monitor" symptom).
 
 ### Core lua entry points
 
-| Call                                   | Purpose                                                            |
-| -------------------------------------- | ----------------------------------------------------------------- |
-| `hl.config({ section = { opt = v } })` | set config options (merge; can be called repeatedly)              |
-| `hl.monitor({ output, mode, ... })`   | configure a monitor                                               |
-| `hl.window_rule({ match = {...}, ... })`   | declare a window rule (returns a handle with `set_enabled`)    |
-| `hl.workspace_rule({ workspace, ... })`   | declare a workspace rule                                       |
-| `hl.layer_rule({ match = {...}, ... })`   | declare a layer rule (returns a handle)                        |
-| `hl.bind("mods+key", dispatcher_or_fn, opts?)` | register a keybind                                         |
-| `hl.on("event.name", function(...) ...)`    | subscribe to an event (full list in Expanding-functionality)  |
-| `hl.dispatch(dispatcher)`               | invoke a dispatcher returned by `hl.dsp.*`                        |
-| `hl.dsp.<ns>.<method>({ ... })`         | build a dispatcher (window/workspace/group/cursor/...)            |
-| `hl.gesture({ fingers, direction, action, ... })` | register a touchpad gesture                              |
-| `hl.device({ name, ... })`              | per-device input config                                           |
-| `hl.timer(fn, { timeout, type })`       | spawn a timer (handle has `set_enabled`/`is_enabled`)             |
-| `hl.layout.register(name, provider)`    | register a custom layout                                          |
-| `hl.notification.create({ text, timeout, icon? })` | show a notification                                      |
+| Call                                               | Purpose                                                      |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| `hl.config({ section = { opt = v } })`             | set config options (merge; can be called repeatedly)         |
+| `hl.monitor({ output, mode, ... })`                | configure a monitor                                          |
+| `hl.window_rule({ match = {...}, ... })`           | declare a window rule (returns a handle with `set_enabled`)  |
+| `hl.workspace_rule({ workspace, ... })`            | declare a workspace rule                                     |
+| `hl.layer_rule({ match = {...}, ... })`            | declare a layer rule (returns a handle)                      |
+| `hl.bind("mods+key", dispatcher_or_fn, opts?)`     | register a keybind                                           |
+| `hl.on("event.name", function(...) ...)`           | subscribe to an event (full list in Expanding-functionality) |
+| `hl.dispatch(dispatcher)`                          | invoke a dispatcher returned by `hl.dsp.*`                   |
+| `hl.dsp.<ns>.<method>({ ... })`                    | build a dispatcher (window/workspace/group/cursor/...)       |
+| `hl.gesture({ fingers, direction, action, ... })`  | register a touchpad gesture                                  |
+| `hl.device({ name, ... })`                         | per-device input config                                      |
+| `hl.timer(fn, { timeout, type })`                  | spawn a timer (handle has `set_enabled`/`is_enabled`)        |
+| `hl.layout.register(name, provider)`               | register a custom layout                                     |
+| `hl.notification.create({ text, timeout, icon? })` | show a notification                                          |
 
 Convenience getters: `hl.get_active_window/monitor/workspace`,
 `hl.get_windows/workspaces/monitors/layers`, `hl.get_window/monitor/workspace(selector)`,
@@ -223,17 +223,17 @@ section has a table of options with columns: name, description, type, default.
 
 ### Variable types
 
-| Type        | Meaning                                                                 |
-| ----------- | ----------------------------------------------------------------------- |
-| `int`       | integer (not a string — don't quote it in Nix)                          |
-| `bool`      | `true`/`false`                                                          |
-| `float`     | floating point                                                          |
-| `color`     | `"#rgb"/"#rrggbb"/"#rrggbbaa"`, `"rgba(...)"/"rgb(...)"`, or legacy `0xAARRGGBB` |
-| `vec2`      | table `{ x, y }` (lua) / two floats separated by space (hyprlang)       |
-| `str`       | a string                                                                |
-| `gradient`  | a color, or `{ colors = {...}, angle? = n }`                            |
-| `font_weight` | int 100–1000 or preset (`"thin"`, `"normal"`, `"bold"`, ...)           |
-| `css_gaps`  | int, or `{ top?, left?, right?, bottom? }`                              |
+| Type          | Meaning                                                                          |
+| ------------- | -------------------------------------------------------------------------------- |
+| `int`         | integer (not a string — don't quote it in Nix)                                   |
+| `bool`        | `true`/`false`                                                                   |
+| `float`       | floating point                                                                   |
+| `color`       | `"#rgb"/"#rrggbb"/"#rrggbbaa"`, `"rgba(...)"/"rgb(...)"`, or legacy `0xAARRGGBB` |
+| `vec2`        | table `{ x, y }` (lua) / two floats separated by space (hyprlang)                |
+| `str`         | a string                                                                         |
+| `gradient`    | a color, or `{ colors = {...}, angle? = n }`                                     |
+| `font_weight` | int 100–1000 or preset (`"thin"`, `"normal"`, `"bold"`, ...)                     |
+| `css_gaps`    | int, or `{ top?, left?, right?, bottom? }`                                       |
 
 ### NixOS Home Manager considerations
 
