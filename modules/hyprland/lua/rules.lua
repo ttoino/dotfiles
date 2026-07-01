@@ -23,8 +23,6 @@ local FRACTION = 0.25
 local ASPECT_RATIO = 16 / 9
 
 ---@param monitor HL.Monitor
----@return number width
----@return number height
 local function scaleOf(monitor)
     local scale = monitor.scale or 1
     if scale <= 0 then
@@ -33,6 +31,9 @@ local function scaleOf(monitor)
     return scale
 end
 
+---@param monitor HL.Monitor
+---@return number width
+---@return number height
 local function pipLayout(monitor)
     local scale = scaleOf(monitor)
     local logW, logH = monitor.width / scale, monitor.height / scale
@@ -44,7 +45,6 @@ local function pipLayout(monitor)
 end
 
 ---@param window HL.Window|nil
----@return boolean
 local function isPip(window)
     if not window or not window.tags then
         return false

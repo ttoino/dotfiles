@@ -53,6 +53,7 @@
       };
       "03-keybinds" = ./lua/keybinds.lua;
       "04-rules" = ./lua/rules.lua;
+      "05-monitors" = ./lua/monitors.lua;
       "08-plugins" = ./lua/plugins.lua;
     };
   };

@@ -139,6 +139,37 @@ planned improvements.
 
 Done in `overlays/default.nix` using `overrideAttrs` or `overridePythonAttrs`.
 
+## Lua Code Style
+
+Applies to Hyprland config under `modules/<name>/lua/` and `hosts/<name>/monitors.lua`.
+
+### Type Annotations
+
+Annotate functions with **lua-language-server** annotations — Hyprland ships `hl.meta`
+stubs and Home Manager wires them via `.luarc.json`.
+
+- `---@param name Type` — annotate parameters, especially compositor types (`HL.Monitor`,
+  `HL.Window`, `HL.Workspace`, `HL.LayerSurface`)
+- `---@return Type` / `---@return Type name` — only when the return type is **not**
+  inferable from the function body
+- `---@cast var Type` — narrow inside loops
+- Optional types via union with `|nil` (e.g. `HL.Window|nil`)
+
+```lua
+---@param monitor HL.Monitor
+local function isPanel(monitor)
+    return monitor.name:sub(1, #PANEL_PREFIX) == PANEL_PREFIX
+end
+```
+
+### Conventions
+
+- `local M = {}` ... `return M` for modules required via `require("name")`
+- 4-space indentation, opening brace on the same line as the call/table
+- Inline `#` comments for non-obvious decisions, sparingly
+- Compositor state goes through `hl.*` APIs (`config`, `dispatch`, `get_*`, `on`,
+  `timer`, `monitor`); prefer an event source (e.g. acpid) over polling `/proc`
+
 ## Git Conventions
 
 - **Main branch**: `nixos` (not `main` or `master`)

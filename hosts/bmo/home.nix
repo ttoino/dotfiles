@@ -2,7 +2,7 @@
 {
   age.rekey.localStorageDir = ./secrets/home;
 
-  wayland.windowManager.hyprland.extraLuaFiles."05-monitors".content = ./monitors.lua;
+  wayland.windowManager.hyprland.extraLuaFiles."09-monitors".content = ./monitors.lua;
 
   # Syncthing (music sync from prismo)
   services.syncthing = {
