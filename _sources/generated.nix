@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "35414756ca55738e050562e272a6bbc6273aa926";
+    version = "9d2f1ae187231d8199c64b5b762e1bdf2244733d";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "35414756ca55738e050562e272a6bbc6273aa926";
+      rev = "9d2f1ae187231d8199c64b5b762e1bdf2244733d";
       fetchSubmodules = false;
-      sha256 = "sha256-7JB/zj2rBFdvbbFuGIFDXnm1TN26E67fRO1deQvzs34=";
+      sha256 = "sha256-U7Nt1xrFOSOEm4vuWmy4pVsEyvv+Hj4sv8yXOofmwAw=";
     };
-    date = "2026-06-27";
+    date = "2026-07-01";
   };
   beets-fetchartist = {
     pname = "beets-fetchartist";
@@ -115,15 +115,15 @@
   };
   ohmyzsh = {
     pname = "ohmyzsh";
-    version = "d2379b2701df66a36b217a7707e77f8029a99814";
+    version = "ff2f16e8df7386d7198009566aef09cbbc0c8212";
     src = fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "d2379b2701df66a36b217a7707e77f8029a99814";
+      rev = "ff2f16e8df7386d7198009566aef09cbbc0c8212";
       fetchSubmodules = false;
-      sha256 = "sha256-bYwe90XNgMAO+sy6I/QDwUAjg6wQJ83gp3LVNt/Q42s=";
+      sha256 = "sha256-uEfVfVtmTnq+cApJkwYFFR9s737M+SUJEZwsjzXRzfw=";
     };
-    date = "2026-06-26";
+    date = "2026-07-01";
   };
   peon-dva = {
     pname = "peon-dva";
