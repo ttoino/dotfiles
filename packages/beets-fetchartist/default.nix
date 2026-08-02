@@ -6,6 +6,7 @@
 python3Packages.buildPythonPackage {
   inherit (sources.beets-fetchartist) pname version src;
   pyproject = true;
+  dontCheckPythonMetadata = true;
 
   nativeBuildInputs = with python3Packages; [
     beets-minimal
