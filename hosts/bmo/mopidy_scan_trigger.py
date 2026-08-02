@@ -44,7 +44,7 @@ def main() -> None:
         with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read())
         current_state = data.get("state", IDLE)
-    except Exception:
+    except (OSError, ValueError):
         sys.exit(0)
 
     STATE_DIR.mkdir(parents=True, exist_ok=True)
