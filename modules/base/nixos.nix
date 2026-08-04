@@ -1,4 +1,9 @@
-{ overlays, pkgs, ... }:
+{
+  lib,
+  overlays,
+  pkgs,
+  ...
+}:
 {
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "24.05";
@@ -35,7 +40,7 @@
   security.polkit.enable = true;
 
   # Timezone
-  services.tzupdate.enable = true;
+  time.timeZone = lib.mkDefault "Europe/Lisbon";
 
   # Locale
   i18n = {

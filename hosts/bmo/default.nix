@@ -10,6 +10,7 @@
   ];
 
   modules = with modules; [
+    automatic-timezone
     battery
     fprint
     mullvad
