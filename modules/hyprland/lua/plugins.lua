@@ -1,8 +1,8 @@
 hl.on("config.reloaded", function()
-    if hl.plugin["shadows-plus-plus"] ~= nil then
+    if hl.plugin.shadows_plus_plus ~= nil then
         hl.config({
             plugin = {
-                ["shadows-plus-plus"] = {
+                shadows_plus_plus = {
                     add_shadows = 2,
 
                     shadow_1 = {
