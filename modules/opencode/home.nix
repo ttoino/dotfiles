@@ -41,11 +41,20 @@ in
           command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
         };
       };
-      model = "opencode-go/moonshotai/kimi-k2.6";
+      model = "opencode-go/moonshotai/kimi-k2.7-code";
       permission.edit = "ask";
-      provider.opencode-go.options.apiKey = "{file:${
-        builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-go-api-key.path
-      }}";
+      provider = {
+        cloudflare-ai-gateway.options = {
+          accountId = "e024e5a1e487a3d3a07815b431986107";
+          gatewayId = "opencode";
+          apiKey = "{file:${
+            builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-cf-ai-gw-api-key.path
+          }}";
+        };
+        opencode-go.options.apiKey = "{file:${
+          builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-go-api-key.path
+        }}";
+      };
     };
 
     skills =
@@ -109,5 +118,8 @@ in
     ];
   };
 
-  age.secrets.opencode-go-api-key.rekeyFile = ./opencode_go_api_key.age;
+  age.secrets = {
+    opencode-cf-ai-gw-api-key.rekeyFile = ./cf_ai_gw_api_key.age;
+    opencode-go-api-key.rekeyFile = ./opencode_go_api_key.age;
+  };
 }
