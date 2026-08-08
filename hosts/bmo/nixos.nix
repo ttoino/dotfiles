@@ -60,6 +60,7 @@
       ipv4 = {
         address1 = "10.0.0.2/24";
         dns = "10.0.0.1;";
+        dns-search = "toino.pt;";
         method = "manual";
         never-default = "true";
       };
