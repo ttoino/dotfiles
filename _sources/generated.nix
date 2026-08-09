@@ -169,24 +169,6 @@
       sha256 = "sha256-0vyWcgbdFcFwke8zSX3GSPETRX4fufeEXE2Dmks/9YE=";
     };
   };
-  rescrobbled = {
-    pname = "rescrobbled";
-    version = "5c7cfe22709f56f81b078dc97b5984f602e3514e";
-    src = fetchFromGitHub {
-      owner = "ttoino";
-      repo = "rescrobbled";
-      rev = "5c7cfe22709f56f81b078dc97b5984f602e3514e";
-      fetchSubmodules = false;
-      sha256 = "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=";
-    };
-    cargoLock."Cargo.lock" = {
-      lockFile = ./. + "/sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=/Cargo.lock";
-      outputHashes = {
-        
-      };
-    };
-    date = "2026-04-11";
-  };
   zsh-colored-man-pages = {
     pname = "zsh-colored-man-pages";
     version = "57bdda68e52a09075352b18fa3ca21abd31df4cb";

@@ -296,32 +296,6 @@
         },
         "version": "v1.0.1"
     },
-    "rescrobbled": {
-        "cargoLock": {
-            "Cargo.lock": [
-                "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=/Cargo.lock",
-                {}
-            ]
-        },
-        "date": "2026-04-11",
-        "extract": null,
-        "name": "rescrobbled",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "ttoino",
-            "repo": "rescrobbled",
-            "rev": "5c7cfe22709f56f81b078dc97b5984f602e3514e",
-            "sha256": "sha256-5pA0UxVs4paiseTEpN8Vkh1tt0FvzsIrEfE9QCuxhII=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "5c7cfe22709f56f81b078dc97b5984f602e3514e"
-    },
     "zsh-colored-man-pages": {
         "cargoLock": null,
         "date": "2019-04-02",

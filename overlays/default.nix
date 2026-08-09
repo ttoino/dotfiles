@@ -24,10 +24,5 @@
 
       dependencies = oldAttrs.dependencies ++ [ final.python3Packages.uritools ];
     });
-
-    rescrobbled = prev.rescrobbled.overrideAttrs (oldAttrs: {
-      inherit (final.sources.rescrobbled) version src;
-      cargoDeps = final.rustPlatform.importCargoLock final.sources.rescrobbled.cargoLock."Cargo.lock";
-    });
   })
 ]

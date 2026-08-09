@@ -46,12 +46,6 @@ fetch.github = "ttoino/mopidy-mpris"
 src.git = "https://github.com/ohmyzsh/ohmyzsh"
 fetch.github = "ohmyzsh/ohmyzsh"
 
-[rescrobbled]
-src.git = "https://github.com/ttoino/rescrobbled"
-src.branch = "shellexpand"
-fetch.github = "ttoino/rescrobbled"
-cargo_lock = ["Cargo.lock"]
-
 [peon-dva]
 src.github_tag = "leo-rutter/d.va-pack"
 fetch.github = "leo-rutter/d.va-pack"
