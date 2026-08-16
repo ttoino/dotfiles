@@ -1,5 +1,7 @@
 require("05-monitors").setup({
     laptop = "eDP-2",
+    modeNormal = "preferred",
+    modePowerSaver = "2560x1600@60",
     scaleSolo = 1.3333,
     scaleDocked = 1,
 })

@@ -1,7 +1,8 @@
 local M = {}
 
 ---@alias LidState "open" | "close"
----@alias Config { laptop: string, scaleSolo: number, scaleDocked: number }
+---@alias PowerProfile "power-saver" | "balanced" | "performance"
+---@alias Config { laptop: string, modeNormal: string, modePowerSaver: string, scaleSolo: number, scaleDocked: number }
 
 ---@type Config | nil
 local config
@@ -9,13 +10,51 @@ local config
 ---@type LidState
 local lidState = "open"
 
+---@type PowerProfile
+local powerProfile = "balanced"
+
+---@return PowerProfile
+local function getPowerProfile()
+    local handle = io.popen("powerprofilesctl get 2>/dev/null")
+    if not handle then
+        return "balanced"
+    end
+    local result = handle:read("*a"):gsub("%s+", "")
+    handle:close()
+    if
+        result == "power-saver"
+        or result == "balanced"
+        or result == "performance"
+    then
+        return result
+    end
+    return "balanced"
+end
+
+---@return LidState
+local function getLidState()
+    local handle = io.popen("cat /proc/acpi/button/lid/*/state 2>/dev/null")
+    if not handle then
+        return "open"
+    end
+    local result = handle:read("*a"):lower()
+    handle:close()
+    if result:match("closed") then
+        return "close"
+    end
+    return "open"
+end
+
 ---@param opts Config
 function M.setup(opts)
     config = opts
 
-    M.applyScale()
-    hl.on("monitor.added", M.applyScale)
-    hl.on("monitor.removed", M.applyScale)
+    powerProfile = getPowerProfile()
+    lidState = getLidState()
+
+    M.apply()
+    hl.on("monitor.added", M.apply)
+    hl.on("monitor.removed", M.apply)
 end
 
 function M.hasExternal()
@@ -31,7 +70,7 @@ function M.hasExternal()
     return false
 end
 
-function M.applyScale()
+function M.apply()
     if config == nil then
         return
     end
@@ -46,11 +85,19 @@ function M.applyScale()
         hl.monitor({
             output = config.laptop,
             disabled = false,
-            mode = "preferred",
+            mode = powerProfile == "power-saver" and config.modePowerSaver
+                or config.modeNormal,
             position = "auto",
             scale = M.hasExternal() and config.scaleDocked or config.scaleSolo,
         })
     end
+end
+
+---@param profile PowerProfile
+function M.handleProfileChange(profile)
+    powerProfile = profile
+
+    M.apply()
 end
 
 ---@param state LidState
@@ -64,7 +111,7 @@ function M.handleLidEvent(state)
     end
     lidState = state
 
-    M.applyScale()
+    M.apply()
 end
 
 return M
