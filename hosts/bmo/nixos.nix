@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -26,10 +27,15 @@
   services.fwupd.enable = true;
 
   # Dual boot
-  boot.loader.systemd-boot.windows.windows = {
-    title = "Windows";
-    efiDeviceHandle = "FS0";
-  };
+  boot.loader.grub.extraEntries = lib.mkBefore ''
+    menuentry "Windows" --class windows11 {
+      insmod part_gpt
+      insmod fat
+      insmod chain
+      search --no-floppy --fs-uuid --set=root BABE-DAE8
+      chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+    }
+  '';
 
   # Wireguard
   age.secrets = {

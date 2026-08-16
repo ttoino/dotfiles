@@ -4,10 +4,15 @@
     loader = {
       efi.canTouchEfiVariables = true;
 
-      systemd-boot = {
+      grub = {
         enable = true;
-        editor = false;
-        edk2-uefi-shell.enable = true;
+        efiSupport = true;
+        device = "nodev";
+        extraEntries = ''
+          menuentry "UEFI Firmware Settings" --class efi {
+            fwsetup
+          }
+        '';
       };
     };
 
