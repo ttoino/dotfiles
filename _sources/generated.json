@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-08-07",
+        "date": "2026-08-21",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "f17010c9bb483898c1d9c9f42dde2b3a98889434",
-            "sha256": "sha256-vTqAu8eRY+8ymbf065SWHHjNX/li3SOR+sWq1npteTM=",
+            "rev": "3b3fad96af16a10759d930941b4520ba0c40edae",
+            "sha256": "sha256-nVid8vENmLDh7ffDqh+bJbEWtXcVltA0qa2rItmniZM=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f17010c9bb483898c1d9c9f42dde2b3a98889434"
+        "version": "3b3fad96af16a10759d930941b4520ba0c40edae"
     },
     "beets-fetchartist": {
         "cargoLock": null,
@@ -193,7 +193,7 @@
     },
     "ohmyzsh": {
         "cargoLock": null,
-        "date": "2026-08-08",
+        "date": "2026-08-22",
         "extract": null,
         "name": "ohmyzsh",
         "passthru": null,
@@ -205,12 +205,12 @@
             "name": null,
             "owner": "ohmyzsh",
             "repo": "ohmyzsh",
-            "rev": "99aaf58d007f1378d1e0609bcd9baf8abbbaf327",
-            "sha256": "sha256-3MJSxtYIsEubPNOZpHUZp1kh8OufEGxnzFSJOYn4PcI=",
+            "rev": "830a5bcfd29fd577fdcd5f3b8e98cbaf973421fa",
+            "sha256": "sha256-F03wB9+qw3bhMprzwsXo163Zf4ERcAzFtsrpwGCrrOU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "99aaf58d007f1378d1e0609bcd9baf8abbbaf327"
+        "version": "830a5bcfd29fd577fdcd5f3b8e98cbaf973421fa"
     },
     "peon-dva": {
         "cargoLock": null,
