@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "3b3fad96af16a10759d930941b4520ba0c40edae";
+    version = "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "3b3fad96af16a10759d930941b4520ba0c40edae";
+      rev = "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f";
       fetchSubmodules = false;
-      sha256 = "sha256-nVid8vENmLDh7ffDqh+bJbEWtXcVltA0qa2rItmniZM=";
+      sha256 = "sha256-sjgPv9tZZVTXPxZWaCOc7JwFceNn3C1ghy8mSHqgqB8=";
     };
-    date = "2026-08-21";
+    date = "2026-09-03";
   };
   beets-fetchartist = {
     pname = "beets-fetchartist";
@@ -43,15 +43,15 @@
   };
   cloudflare-skills = {
     pname = "cloudflare-skills";
-    version = "f96bff754e428838818017f75817f0f9428acd48";
+    version = "d924cd8f59e75e08fd3dd52843bb2776de35c77e";
     src = fetchFromGitHub {
       owner = "cloudflare";
       repo = "skills";
-      rev = "f96bff754e428838818017f75817f0f9428acd48";
+      rev = "d924cd8f59e75e08fd3dd52843bb2776de35c77e";
       fetchSubmodules = false;
-      sha256 = "sha256-r8HeH9XWV9qhbMq3fPASNfT5Y1mrfsgBI5STiUi/LVA=";
+      sha256 = "sha256-DdIutn1688pRbzl+tOHpbyChfw1cyCyng+FqJk6P85s=";
     };
-    date = "2026-08-07";
+    date = "2026-09-05";
   };
   lidarr-plugins = {
     pname = "lidarr-plugins";
@@ -115,15 +115,15 @@
   };
   ohmyzsh = {
     pname = "ohmyzsh";
-    version = "830a5bcfd29fd577fdcd5f3b8e98cbaf973421fa";
+    version = "8a5b3930889ea9b99450e600b5b5e00d0170cc09";
     src = fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "830a5bcfd29fd577fdcd5f3b8e98cbaf973421fa";
+      rev = "8a5b3930889ea9b99450e600b5b5e00d0170cc09";
       fetchSubmodules = false;
-      sha256 = "sha256-F03wB9+qw3bhMprzwsXo163Zf4ERcAzFtsrpwGCrrOU=";
+      sha256 = "sha256-b6MYs8bA/ZEYwuJQKO1AypqhI6WMP6wVHu6UqNh+mbM=";
     };
-    date = "2026-08-22";
+    date = "2026-09-05";
   };
   peon-dva = {
     pname = "peon-dva";
@@ -183,15 +183,15 @@
   };
   zsh-fast-syntax-highlighting = {
     pname = "zsh-fast-syntax-highlighting";
-    version = "3d574ccf48804b10dca52625df13da5edae7f553";
+    version = "4672ad5dd9ad68a7effc1476d65afb7c584ce2b3";
     src = fetchFromGitHub {
       owner = "zdharma-continuum";
       repo = "fast-syntax-highlighting";
-      rev = "3d574ccf48804b10dca52625df13da5edae7f553";
+      rev = "4672ad5dd9ad68a7effc1476d65afb7c584ce2b3";
       fetchSubmodules = false;
-      sha256 = "sha256-ZihUL4JAVk9V+IELSakytlb24BvEEJ161CQEHZYYoSA=";
+      sha256 = "sha256-gXTJv+k4OSgwiM7vy91v7tLLHre0f5XeSor3n/b2euI=";
     };
-    date = "2025-07-16";
+    date = "2026-08-31";
   };
   zsh-gitstatus = {
     pname = "zsh-gitstatus";
