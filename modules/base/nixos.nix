@@ -12,7 +12,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nix.settings = {
-    experimental-features = "nix-command flakes";
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
 
     substituters = [
       "https://nix-community.cachix.org"
