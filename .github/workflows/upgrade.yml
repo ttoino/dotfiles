@@ -33,7 +33,7 @@ jobs:
             echo "EOF" >> "$GITHUB_OUTPUT"
           fi
       - name: Upgrade dependencies
-        uses: DeterminateSystems/update-flake-lock@v28
+        uses: DeterminateSystems/update-flake-lock@v29
         with:
           token: ${{ secrets.GH_TOKEN }}
           pr-body: |
