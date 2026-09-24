@@ -4,15 +4,19 @@
     enable = true;
 
     settings = {
-      lastfm-key-file = config.age.secrets.rescrobbled-key.path;
-      lastfm-secret-file = config.age.secrets.rescrobbled-secret.path;
+      lastfm-key-file = config.age.secrets.rescrobbled-lastfm-key.path;
+      lastfm-secret-file = config.age.secrets.rescrobbled-lastfm-secret.path;
+
+      listenbrainz-token-file = config.age.secrets.rescrobbled-listenbrainz-token.path;
     };
   };
 
   systemd.user.services.rescrobbled.Unit.After = [ "agenix.service" ];
 
   age.secrets = {
-    rescrobbled-key.rekeyFile = ./key.age;
-    rescrobbled-secret.rekeyFile = ./secret.age;
+    rescrobbled-lastfm-key.rekeyFile = ./lastfm-key.age;
+    rescrobbled-lastfm-secret.rekeyFile = ./lastfm-secret.age;
+
+    rescrobbled-listenbrainz-token.rekeyFile = ./listenbrainz-token.age;
   };
 }
