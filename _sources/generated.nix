@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "34040c9c568585f6929bedeaad110ad08f079624";
+    version = "33375500bcea98d610eb30ce10ac4e59b89c390d";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "34040c9c568585f6929bedeaad110ad08f079624";
+      rev = "33375500bcea98d610eb30ce10ac4e59b89c390d";
       fetchSubmodules = false;
-      sha256 = "sha256-tI4bTTBfI1ylltklGyiyA7pLoKXEWtrT6lrmwrpLbCw=";
+      sha256 = "sha256-xUs7UX8pOcZwR0okaSbI/f8EE5F4Zi/BUd+nIZNafPc=";
     };
-    date = "2026-09-10";
+    date = "2026-09-24";
   };
   beets-fetchartist = {
     pname = "beets-fetchartist";
@@ -43,15 +43,15 @@
   };
   cloudflare-skills = {
     pname = "cloudflare-skills";
-    version = "b052c32bab7dd493513260228a36c88294f343f1";
+    version = "626547c06881a20b3322bdc2ed6e6451b33a4fb6";
     src = fetchFromGitHub {
       owner = "cloudflare";
       repo = "skills";
-      rev = "b052c32bab7dd493513260228a36c88294f343f1";
+      rev = "626547c06881a20b3322bdc2ed6e6451b33a4fb6";
       fetchSubmodules = false;
-      sha256 = "sha256-eObCxuhTN/mujcUpIzGlX62M5ocFgrUUwEWSrHMbcf8=";
+      sha256 = "sha256-Lb01y94HkR1mmyhpPldlYAnGsr1QA3w+6XODDoRGvI4=";
     };
-    date = "2026-09-07";
+    date = "2026-09-26";
   };
   lidarr-plugins = {
     pname = "lidarr-plugins";
@@ -115,15 +115,15 @@
   };
   ohmyzsh = {
     pname = "ohmyzsh";
-    version = "157eb033f2a527021aac18c1f5850bbe3e3d223c";
+    version = "74965c96098134b192f00084f966b4b02438a739";
     src = fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "157eb033f2a527021aac18c1f5850bbe3e3d223c";
+      rev = "74965c96098134b192f00084f966b4b02438a739";
       fetchSubmodules = false;
-      sha256 = "sha256-zd8iscZnQ7qg//Am2A6bpfXHWDmgCumB99Q+VFJqSzk=";
+      sha256 = "sha256-ZC69pI5AV1QZcn1pAvfx4N9UuOjjYzz7wCNnCta6gNY=";
     };
-    date = "2026-09-19";
+    date = "2026-09-22";
   };
   peon-dva = {
     pname = "peon-dva";
