@@ -2,6 +2,7 @@
 {
   programs = {
     bat.enable = true; # Cat clone
+    gh.enable = true; # Github
     htop.enable = true; # Process manager
     ripgrep.enable = true; # Grep clone
 
