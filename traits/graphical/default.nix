@@ -1,6 +1,7 @@
 { modules, ... }:
 {
   modules = with modules; [
+    cursor
     fonts
     gdm
     gui-apps
@@ -10,5 +11,6 @@
     proxy
     rescrobbled
     sound
+    theming
   ];
 }
