@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         host:
-          - bmo
+          - finn
           - prismo
     steps:
       - name: Free disk space
