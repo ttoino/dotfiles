@@ -12,6 +12,9 @@
     ./hardware.nix
   ];
 
+  # Build aarch64 systems (e.g. the Nintendo Switch) locally via QEMU
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   age.rekey.localStorageDir = ./secrets/nixos;
 
   # ROCm support for blender
