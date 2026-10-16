@@ -15,9 +15,9 @@
       };
       wireguardPeers = [
         {
-          # bmo
+          # finn
           PublicKey = "ygEXoVSG/qpGsdW2sZgtCFPX6xNELkfskv6UqQ6o+Wo=";
-          PresharedKeyFile = config.age.secrets.wireguard-bmo-preshared-key.path;
+          PresharedKeyFile = config.age.secrets.wireguard-finn-preshared-key.path;
           AllowedIPs = [ "10.0.0.2/32" ];
         }
         {
@@ -123,8 +123,8 @@
       owner = "systemd-network";
       group = "systemd-network";
     };
-    wireguard-bmo-preshared-key = {
-      rekeyFile = ../../secrets/wireguard_bmo_prismo_preshared_key.age;
+    wireguard-finn-preshared-key = {
+      rekeyFile = ../../secrets/wireguard_finn_prismo_preshared_key.age;
       mode = "640";
       owner = "systemd-network";
       group = "systemd-network";

@@ -3,7 +3,7 @@
 **Main mod = <kbd>❖</kbd>** (Super). Config lives in `modules/hyprland/lua/` (Lua via
 Home Manager's `hl.*` API): `00-options`, `01-animations`, `02-apps`, `03-keybinds`,
 `04-rules`, `08-plugins` (+ host `05-monitors`, `06-cake`, `07-hyprlock-autostart`).
-Launched through **UWSM**; `hyprland` is the default session on `bmo`. Apps run via
+Launched through **UWSM**; `hyprland` is the default session on `finn`. Apps run via
 `uwsm-app` so each lands in its own systemd scope.
 
 ## Launchers & Apps
@@ -131,7 +131,7 @@ monitor hotplug.
 `NIXOS_OZONE_WL=1`, `ELECTRON_OZONE_PLATFORM_HINT=wayland`, `PROTON_ENABLE_HDR=1`,
 `PROTON_ENABLE_WAYLAND=1`.
 
-## Monitors (bmo)
+## Monitors (finn)
 
 - Laptop `eDP-2` auto-scales: **1.3333 solo**, **1 docked** (swaps on hotplug).
 - Known externals (Samsung G5, LG Ultragear+) → preferred, `auto-left`, scale 1, 10-bit. Unknown monitors → preferred, scale 1.
