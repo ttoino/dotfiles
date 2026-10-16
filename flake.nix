@@ -53,6 +53,10 @@
       url = "github:ttoino/shadows-plus-plus";
       inputs.hyprland.inputs.nixpkgs.follows = "nixpkgs";
     };
+    switchroot-nixos = {
+      url = "github:WiiPlayer2/switchroot-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
