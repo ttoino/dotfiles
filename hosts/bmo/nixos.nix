@@ -1,5 +1,7 @@
 { pkgs, lib, ... }:
 {
+  age.rekey.localStorageDir = ./secrets/nixos;
+
   nixpkgs = {
     system = "aarch64-linux";
     config.allowUnfreePredicate =
