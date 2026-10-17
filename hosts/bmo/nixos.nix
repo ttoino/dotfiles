@@ -11,7 +11,12 @@
 
   # The base trait enables GRUB + latest kernel; the Switch needs U-Boot + L4T kernel
   boot.loader.grub.enable = lib.mkForce false;
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_4_9-l4t.cross-compiled;
+  boot.kernelPackages = lib.mkForce (
+    if pkgs.stdenv.buildPlatform.isAarch64 then
+      pkgs.linuxPackages_4_9-l4t
+    else
+      pkgs.linuxPackages_4_9-l4t.cross-compiled
+  );
 
   age.rekey.localStorageDir = ./secrets/nixos;
 
