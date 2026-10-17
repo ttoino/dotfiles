@@ -3,7 +3,8 @@
 ## Overview
 
 This is a **NixOS Flake-based dotfiles repository** managing full system configurations
-for two NixOS machines (`finn` — laptop, `prismo` — server) using a modular architecture
+for three NixOS machines (`finn` — laptop, `prismo` — server, `bmo` — Nintendo Switch)
+using a modular architecture
 built on **Nix Flakes + Home Manager**. The primary language is **Nix**; there is no
 traditional build system, test suite, or linter — everything is declarative.
 
@@ -13,9 +14,10 @@ traditional build system, test suite, or linter — everything is declarative.
 # Build a specific host (CI uses this)
 nix build .#nixosConfigurations.finn.config.system.build.toplevel
 nix build .#nixosConfigurations.prismo.config.system.build.toplevel
+nix build .#nixosConfigurations.bmo.config.system.build.toplevel
 
 # Deploy to the current machine
-sudo nixos-rebuild switch --flake .#<host>    # host = finn | prismo
+sudo nixos-rebuild switch --flake .#<host>    # host = finn | prismo | bmo
 sudo nixos-rebuild test --flake .#<host>      # test without switching boot entry
 
 # Validate the flake (evaluates all outputs, catches syntax/eval errors)
@@ -66,7 +68,8 @@ secrets/               # Top-level encrypted secrets
   (Home Manager), `common.nix` (shared), and optionally `default.nix` for extra attrs.
 - `lib/default.nix` wires everything via `makeHosts`, `joinTraits`, `joinModules`.
 - **Hosts**: `finn` (Framework 16 laptop — traits: accounts, base, dev, fionna, gaming,
-  graphical) and `prismo` (Intel+Nvidia server — traits: base, server).
+  graphical), `prismo` (Intel+Nvidia server — traits: base, server), and `bmo` (Nintendo
+  Switch — traits: base, dev).
 
 ## Nix Code Style
 

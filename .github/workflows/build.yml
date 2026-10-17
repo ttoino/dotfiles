@@ -10,13 +10,17 @@ on:
 jobs:
   build:
     name: Build host ${{ matrix.host }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
       matrix:
-        host:
-          - finn
-          - prismo
+        include:
+          - host: finn
+            runner: ubuntu-latest
+          - host: prismo
+            runner: ubuntu-latest
+          - host: bmo
+            runner: ubuntu-latest
     steps:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@v2.0.0
