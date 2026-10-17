@@ -20,7 +20,7 @@ jobs:
           - host: prismo
             runner: ubuntu-latest
           - host: bmo
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-latest
     steps:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@v2.0.0
