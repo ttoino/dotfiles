@@ -1,31 +1,35 @@
 { lib, pkgs, ... }:
 {
-  programs.git = {
-    enable = true;
+  programs = {
+    gh.enable = true;
 
-    lfs.enable = true;
-    maintenance.enable = true;
+    git = {
+      enable = true;
 
-    settings = {
-      init.defaultBranch = "main";
+      lfs.enable = true;
+      maintenance.enable = true;
 
-      diff = {
-        tool = "kitty";
-        guitool = "kitty";
-      };
+      settings = {
+        init.defaultBranch = "main";
 
-      difftool = {
-        prompt = false;
-        trustExitCode = true;
-
-        kitty = {
-          cmd = "kitten diff $LOCAL $REMOTE";
+        diff = {
+          tool = "kitty";
+          guitool = "kitty";
         };
-      };
 
-      user = {
-        name = "toino";
-        email = "me@toino.pt";
+        difftool = {
+          prompt = false;
+          trustExitCode = true;
+
+          kitty = {
+            cmd = "kitten diff $LOCAL $REMOTE";
+          };
+        };
+
+        user = {
+          name = "toino";
+          email = "me@toino.pt";
+        };
       };
     };
   };

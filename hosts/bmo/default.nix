@@ -6,7 +6,6 @@
 {
   traits = with traits; [
     base
-    dev
   ];
 
   modules = [ ];
