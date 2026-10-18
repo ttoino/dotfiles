@@ -13,7 +13,7 @@
       in
       lib.concatStrings (
         lib.mapAttrsToList (name: dep: ''
-          printf '%s=%s\n' ${lib.escapeShellArg (envName name)} "$(${decrypt} ${lib.escapeShellArg dep.file} | tr -d '\n')"
+          printf '%s="%s"\n' ${lib.escapeShellArg (envName name)} "$(${decrypt} ${lib.escapeShellArg dep.file} | tr -d '\n')"
         '') deps
       );
   };

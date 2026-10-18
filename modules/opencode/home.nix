@@ -1,11 +1,16 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
 let
   peon-ping = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+  toOpencodeEnvPath = secret: "{file:${builtins.replaceStrings [ "\${" ] [ "{env:" ] secret.path}}";
+  toSystemdRuntimePath =
+    secret: builtins.replaceStrings [ "\${XDG_RUNTIME_DIR}" ] [ "%t" ] secret.path;
 in
 {
   imports = [ inputs.peon-ping.homeManagerModules.default ];
@@ -21,6 +26,7 @@ in
         "--port=9090"
         "--hostname=0.0.0.0"
       ];
+      environmentFile = null;
     };
 
     settings = {
@@ -49,13 +55,9 @@ in
         cloudflare-ai-gateway.options = {
           accountId = "e024e5a1e487a3d3a07815b431986107";
           gatewayId = "opencode";
-          apiKey = "{file:${
-            builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-cf-ai-gw-api-key.path
-          }}";
+          apiKey = toOpencodeEnvPath config.age.secrets.opencode-cf-ai-gw-api-key;
         };
-        opencode-go.options.apiKey = "{file:${
-          builtins.replaceStrings [ "\${" ] [ "{env:" ] config.age.secrets.opencode-go-api-key.path
-        }}";
+        opencode-go.options.apiKey = toOpencodeEnvPath config.age.secrets.opencode-go-api-key;
       };
     };
 
@@ -72,12 +74,26 @@ in
       };
   };
 
+  systemd.user.services.opencode-web.Service.EnvironmentFile =
+    toSystemdRuntimePath config.age.secrets.opencode-server-env;
+
   xdg.configFile."opencode/plugins/peon-ping.ts".source = pkgs.runCommand "peon-ping.ts" { } ''
     cp ${
       inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default
     }/share/peon-ping/adapters/opencode/peon-ping.ts $out
 
     sed -i '/const PEON_SH_PATHS = \[/a\  path.join(os.homedir(), ".openpeon", "peon.sh"),' $out
+  '';
+
+  programs.zsh.initContent = lib.mkAfter ''
+    opencode() {
+      if [[ $# -eq 0 ]]; then
+        OPENCODE_SERVER_PASSWORD=$(cat ${config.age.secrets.opencode-server-password.path}) \
+          command opencode attach http://localhost:9090
+      else
+        command opencode "$@"
+      fi
+    }
   '';
 
   programs.peon-ping = {
@@ -123,5 +139,17 @@ in
   age.secrets = {
     opencode-cf-ai-gw-api-key.rekeyFile = ./cf_ai_gw_api_key.age;
     opencode-go-api-key.rekeyFile = ./opencode_go_api_key.age;
+
+    opencode-server-password.rekeyFile = ./opencode_server_password.age;
+
+    opencode-server-env = {
+      rekeyFile = ./opencode_server_env.age;
+      generator = {
+        dependencies = {
+          inherit (config.age.secrets) opencode-server-password;
+        };
+        script = "env";
+      };
+    };
   };
 }
