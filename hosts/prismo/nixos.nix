@@ -10,7 +10,10 @@
     ./network.nix
   ];
 
-  age.rekey.localStorageDir = ./secrets/nixos;
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmCkKvcUqrjZsUp/PrN2iNVJ4NYBBeOMRQWmQ+GYvNn root@nixos";
+    localStorageDir = ./secrets/nixos;
+  };
 
   # The open source driver does not support Maxwell GPUs.
   hardware.nvidia.open = false;

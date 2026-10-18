@@ -7,6 +7,7 @@
       grub = {
         enable = true;
         efiSupport = true;
+        configurationLimit = 5;
         device = "nodev";
         extraEntries = ''
           menuentry "UEFI Firmware Settings" --class efi {

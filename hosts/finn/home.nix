@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  age.rekey.localStorageDir = ./secrets/home;
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8sBfh3Y90/+Za1gdqVIMyhT3+QwkCOugIVRBkmoWiJ me@toino.pt";
+    localStorageDir = ./secrets/home;
+  };
 
   wayland.windowManager.hyprland.extraLuaFiles."09-monitors".content = ./monitors.lua;
 

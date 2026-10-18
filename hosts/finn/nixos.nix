@@ -12,7 +12,10 @@
     ./hardware.nix
   ];
 
-  age.rekey.localStorageDir = ./secrets/nixos;
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOZ9mQgp3rD+KKGz9sMvzVEIzIFEng7es16TwDYyD+E9 root@nixos";
+    localStorageDir = ./secrets/nixos;
+  };
 
   # ROCm support for blender
   nixpkgs.config.rocmSupport = true;

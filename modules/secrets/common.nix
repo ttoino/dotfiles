@@ -1,8 +1,10 @@
 { lib, ... }:
 {
   age = {
-    identityPaths = [ "/home/toino/.ssh/id_ed25519" ];
-    rekey.storageMode = "local";
+    rekey = {
+      storageMode = "local";
+      masterIdentities = [ "/home/toino/.ssh/id_ed25519" ];
+    };
 
     generators.env =
       { decrypt, deps, ... }:
