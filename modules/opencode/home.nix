@@ -13,6 +13,7 @@ in
   programs.opencode = {
     enable = true;
     context = ./AGENTS.md;
+    extraPackages = with pkgs; [ systemd ];
 
     web = {
       enable = true;
@@ -43,6 +44,7 @@ in
       };
       model = "opencode-go/moonshotai/kimi-k2.7-code";
       permission.edit = "ask";
+      plugin = [ "opencode-sleep-inhibitor" ];
       provider = {
         cloudflare-ai-gateway.options = {
           accountId = "e024e5a1e487a3d3a07815b431986107";
