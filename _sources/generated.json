@@ -64,7 +64,7 @@
     },
     "cloudflare-skills": {
         "cargoLock": null,
-        "date": "2026-10-10",
+        "date": "2026-10-15",
         "extract": null,
         "name": "cloudflare-skills",
         "passthru": null,
@@ -76,12 +76,12 @@
             "name": null,
             "owner": "cloudflare",
             "repo": "skills",
-            "rev": "c430dd965cea3a8faf0ef035e3b3d73b38518081",
-            "sha256": "sha256-V/U2Xp1YpnxZXNtSBzPqJ466Tptiltc0+izRIi3JBZo=",
+            "rev": "86505e44f87d801aa1864a3c4109e9a8ae5c409f",
+            "sha256": "sha256-lfrCyTZwnkjW6xn8lpxSw/jyHTZI7YuZIEO+QDDrBIk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "c430dd965cea3a8faf0ef035e3b3d73b38518081"
+        "version": "86505e44f87d801aa1864a3c4109e9a8ae5c409f"
     },
     "lidarr-plugins": {
         "cargoLock": null,
@@ -193,7 +193,7 @@
     },
     "ohmyzsh": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "extract": null,
         "name": "ohmyzsh",
         "passthru": null,
@@ -205,12 +205,12 @@
             "name": null,
             "owner": "ohmyzsh",
             "repo": "ohmyzsh",
-            "rev": "42a4ccb1b14dbeffe81259105a5243b4f4cb618e",
-            "sha256": "sha256-uH64MqoZDdxMiwpvp//mTgaLTpr3NntwYk3ERM3IqFg=",
+            "rev": "964ddf789b022b6958b27d02d7fa54f552de21e9",
+            "sha256": "sha256-RG32nAZOP7nLNSy+OFIB2C15tpx/x9KN9QQVqck57Ow=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "42a4ccb1b14dbeffe81259105a5243b4f4cb618e"
+        "version": "964ddf789b022b6958b27d02d7fa54f552de21e9"
     },
     "peon-dva": {
         "cargoLock": null,

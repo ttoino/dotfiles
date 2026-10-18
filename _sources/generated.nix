@@ -43,15 +43,15 @@
   };
   cloudflare-skills = {
     pname = "cloudflare-skills";
-    version = "c430dd965cea3a8faf0ef035e3b3d73b38518081";
+    version = "86505e44f87d801aa1864a3c4109e9a8ae5c409f";
     src = fetchFromGitHub {
       owner = "cloudflare";
       repo = "skills";
-      rev = "c430dd965cea3a8faf0ef035e3b3d73b38518081";
+      rev = "86505e44f87d801aa1864a3c4109e9a8ae5c409f";
       fetchSubmodules = false;
-      sha256 = "sha256-V/U2Xp1YpnxZXNtSBzPqJ466Tptiltc0+izRIi3JBZo=";
+      sha256 = "sha256-lfrCyTZwnkjW6xn8lpxSw/jyHTZI7YuZIEO+QDDrBIk=";
     };
-    date = "2026-10-10";
+    date = "2026-10-15";
   };
   lidarr-plugins = {
     pname = "lidarr-plugins";
@@ -115,15 +115,15 @@
   };
   ohmyzsh = {
     pname = "ohmyzsh";
-    version = "42a4ccb1b14dbeffe81259105a5243b4f4cb618e";
+    version = "964ddf789b022b6958b27d02d7fa54f552de21e9";
     src = fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "42a4ccb1b14dbeffe81259105a5243b4f4cb618e";
+      rev = "964ddf789b022b6958b27d02d7fa54f552de21e9";
       fetchSubmodules = false;
-      sha256 = "sha256-uH64MqoZDdxMiwpvp//mTgaLTpr3NntwYk3ERM3IqFg=";
+      sha256 = "sha256-RG32nAZOP7nLNSy+OFIB2C15tpx/x9KN9QQVqck57Ow=";
     };
-    date = "2026-10-09";
+    date = "2026-10-13";
   };
   peon-dva = {
     pname = "peon-dva";
