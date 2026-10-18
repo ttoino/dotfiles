@@ -103,11 +103,7 @@
       {
         formatter = treefmt;
 
-        packages =
-          (packages pkgs)
-          // (lib.attrsets.concatMapAttrs (name: config: {
-            "${name}-iso" = config.config.system.build.isoImage;
-          }) self.nixosConfigurations);
+        packages = packages pkgs;
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
