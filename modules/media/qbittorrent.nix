@@ -26,7 +26,10 @@
     };
   };
 
-  services.caddy.virtualHosts."torrents.toino.pt".extraConfig = "reverse_proxy * localhost:6969";
+  services.caddy.virtualHosts."torrents.toino.pt".extraConfig = ''
+    import private
+    reverse_proxy * localhost:6969
+  '';
 
   networking.hosts."127.0.0.1" = [ "torrents.toino.pt" ];
 }

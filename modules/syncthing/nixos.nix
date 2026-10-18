@@ -9,6 +9,7 @@
   };
 
   services.caddy.virtualHosts."sync.toino.pt".extraConfig = ''
+    import private
     reverse_proxy * localhost:8384 {
       header_up Host localhost
     }

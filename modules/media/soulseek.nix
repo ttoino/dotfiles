@@ -24,7 +24,10 @@ in
 
   systemd.services.slskd.serviceConfig.UMask = "0002";
 
-  services.caddy.virtualHosts."soulseek.toino.pt".extraConfig = "reverse_proxy * localhost:5030";
+  services.caddy.virtualHosts."soulseek.toino.pt".extraConfig = ''
+    import private
+    reverse_proxy * localhost:5030
+  '';
 
   networking.hosts."127.0.0.1" = [ "soulseek.toino.pt" ];
 
