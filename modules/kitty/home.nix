@@ -121,7 +121,7 @@
 
       # Shell
       "close_on_child_death" = "no";
-      "allow_remote_control" = "yes";
+      "allow_remote_control" = "socket-only";
       "term" = "xterm-kitty";
     };
   };
