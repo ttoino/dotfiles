@@ -1,10 +1,10 @@
-{ ... }:
+{ username, ... }:
 {
   services = {
-    displayManager.autoLogin.user = "toino";
+    displayManager.autoLogin.user = username;
 
     getty = {
-      autologinUser = "toino";
+      autologinUser = username;
       autologinOnce = true;
     };
   };

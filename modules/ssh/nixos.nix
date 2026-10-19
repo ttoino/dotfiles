@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   services.openssh = {
     enable = true;
@@ -6,11 +6,11 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [ "toino" ];
+      AllowUsers = [ username ];
     };
   };
 
-  users.users.toino.openssh.authorizedKeys.keys = [
+  users.users.${username}.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8sBfh3Y90/+Za1gdqVIMyhT3+QwkCOugIVRBkmoWiJ me@toino.pt"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvn9lWmKiowT079oVpMC5rsA1m7QqvMDlg7dynabwxC JuiceSSH"
   ];

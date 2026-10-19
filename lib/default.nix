@@ -73,9 +73,13 @@
         ++ trait.modules
         ++ host.modules
       );
+      hostUsername = host.username or args.username;
+      hostArgs = args // {
+        username = hostUsername;
+      };
     in
     (lib.nixosSystem {
-      specialArgs = args;
+      specialArgs = hostArgs;
       modules = module.nixos ++ [
         inputs.home-manager.nixosModules.home-manager
         {
@@ -85,8 +89,8 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = builtins.removeAttrs args [ "lib" ];
-            users.toino.imports = module.home;
+            extraSpecialArgs = builtins.removeAttrs hostArgs [ "lib" ];
+            users.${hostUsername}.imports = module.home;
           };
         }
       ];

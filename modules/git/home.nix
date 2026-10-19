@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  username,
+  ...
+}:
 {
   programs.git = {
     enable = true;
@@ -24,7 +29,7 @@
       };
 
       user = {
-        name = "toino";
+        name = username;
         email = "me@toino.pt";
       };
     };

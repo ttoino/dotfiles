@@ -2,6 +2,7 @@
   lib,
   overlays,
   pkgs,
+  username,
   ...
 }:
 {
@@ -29,7 +30,7 @@
       "https://nix-community.cachix.org"
       "https://toino.cachix.org"
     ];
-    trusted-users = [ "toino" ];
+    trusted-users = [ username ];
   };
 
   nixpkgs = {

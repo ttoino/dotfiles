@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL8sBfh3Y90/+Za1gdqVIMyhT3+QwkCOugIVRBkmoWiJ me@toino.pt";
@@ -16,7 +16,7 @@
         addresses = [ "tcp://10.0.0.1:22000" ];
       };
       folders.music = {
-        path = "/home/toino/Music";
+        path = "/home/${username}/Music";
         devices = [ "prismo" ];
         type = "receiveonly";
       };

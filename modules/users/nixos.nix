@@ -1,10 +1,10 @@
-{ ... }:
+{ username, ... }:
 {
   users.groups = {
     config = { };
   };
 
-  users.users.toino = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Toino";
     extraGroups = [

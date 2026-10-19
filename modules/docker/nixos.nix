@@ -1,3 +1,4 @@
+{ username, ... }:
 {
   virtualisation.docker = {
     enable = true;
@@ -10,5 +11,5 @@
     };
   };
 
-  users.users.toino.extraGroups = [ "docker" ];
+  users.users.${username}.extraGroups = [ "docker" ];
 }

@@ -78,6 +78,8 @@
           packages
           traits
           ;
+
+        username = "toino";
       };
       hosts = lib.getModules ./hosts;
       modules = lib.getModules ./modules;
