@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [nixos]
+  pull_request:
+    branches: [nixos]
+  workflow_dispatch:
+
+jobs:
+  discover:
+    name: Discover hosts
+    runs-on: ubuntu-latest
+    outputs:
+      hosts: ${{ steps.hosts.outputs.hosts }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Discover hosts
+        id: hosts
+        run: |
+          hosts=$(nix eval --json .#nixosConfigurations --apply builtins.attrNames)
+          echo "hosts=$hosts" >> "$GITHUB_OUTPUT"
+
+  format:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Check formatting
+        run: nix fmt -- --ci
+
+  flake-check:
+    name: Flake check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: toino
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: ags,hyprland,nix-community
+      - name: Check flake
+        run: nix flake check
+
+  build:
+    name: Build host ${{ matrix.host }}
+    needs: [format, flake-check, discover]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        host: ${{ fromJson(needs.discover.outputs.hosts) }}
+    steps:
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@v2.0.0
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: toino
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          extraPullNames: ags,hyprland,nix-community
+      - name: Build
+        run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
