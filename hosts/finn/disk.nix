@@ -28,28 +28,45 @@
               label = "swap";
               size = "64G";
               content = {
-                type = "swap";
-                resumeDevice = true;
+                type = "luks";
+                name = "cryptswap";
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = [ "tpm2-device=auto" ];
+                };
+                content = {
+                  type = "swap";
+                  resumeDevice = true;
+                  randomEncryption = false;
+                };
               };
             };
             nixos = {
               label = "nixos";
               size = "100%";
               content = {
-                type = "btrfs";
-                mountpoint = "/";
-                extraArgs = [ "-f" ];
-                subvolumes = {
-                  "/home" = {
-                    mountOptions = [ "compress=zstd:2" ];
-                    mountpoint = "/home";
-                  };
-                  "/nix" = {
-                    mountOptions = [
-                      "compress=zstd:2"
-                      "noatime"
-                    ];
-                    mountpoint = "/nix";
+                type = "luks";
+                name = "cryptroot";
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = [ "tpm2-device=auto" ];
+                };
+                content = {
+                  type = "btrfs";
+                  mountpoint = "/";
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "/home" = {
+                      mountOptions = [ "compress=zstd:2" ];
+                      mountpoint = "/home";
+                    };
+                    "/nix" = {
+                      mountOptions = [
+                        "compress=zstd:2"
+                        "noatime"
+                      ];
+                      mountpoint = "/nix";
+                    };
                   };
                 };
               };

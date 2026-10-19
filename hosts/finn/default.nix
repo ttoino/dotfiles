@@ -1,5 +1,7 @@
 { modules, traits, ... }:
 {
+  boot.initrd.systemd.enable = true;
+
   traits = with traits; [
     accounts
     base
