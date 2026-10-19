@@ -89,12 +89,16 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = builtins.removeAttrs hostArgs [ "lib" ];
+            extraSpecialArgs = (builtins.removeAttrs hostArgs [ "lib" ]) // {
+              hostLib = hostArgs.lib;
+            };
             users.${hostUsername}.imports = module.home;
           };
         }
       ];
     })
   );
+
+  icons = import ./icons.nix;
 }
 // inputs.nixpkgs.lib

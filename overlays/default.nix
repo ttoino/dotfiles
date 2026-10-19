@@ -32,5 +32,9 @@
         }
       );
     };
+
+    lsd = prev.lsd.overrideAttrs (oldAttrs: {
+      patches = (oldAttrs.patches or [ ]) ++ [ ../patches/lsd/skip-default-icons.patch ];
+    });
   })
 ]

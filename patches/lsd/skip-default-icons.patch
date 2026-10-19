@@ -1,0 +1,82 @@
+--- a/src/theme/icon.rs
++++ b/src/theme/icon.rs
+@@ -108,6 +108,58 @@
+     }
+ }
+ 
++#[derive(Debug, Deserialize, Default, PartialEq, Eq)]
++#[serde(rename_all = "kebab-case")]
++#[serde(deny_unknown_fields)]
++pub struct CustomByType {
++    pub dir: String,
++    pub file: String,
++    pub pipe: String,
++    pub socket: String,
++    pub executable: String,
++    pub device_char: String,
++    pub device_block: String,
++    pub special: String,
++    pub symlink_dir: String,
++    pub symlink_file: String,
++}
++
++impl From<CustomByType> for ByType {
++    fn from(custom: CustomByType) -> Self {
++        ByType {
++            dir: custom.dir,
++            file: custom.file,
++            pipe: custom.pipe,
++            socket: custom.socket,
++            executable: custom.executable,
++            device_char: custom.device_char,
++            device_block: custom.device_block,
++            special: custom.special,
++            symlink_dir: custom.symlink_dir,
++            symlink_file: custom.symlink_file,
++        }
++    }
++}
++
++#[derive(Debug, Deserialize, Default, PartialEq, Eq)]
++#[serde(rename_all = "kebab-case")]
++#[serde(deny_unknown_fields)]
++pub struct CustomIconTheme {
++    pub name: HashMap<String, String>,
++    pub extension: HashMap<String, String>,
++    pub filetype: CustomByType,
++}
++
++impl From<CustomIconTheme> for IconTheme {
++    fn from(custom: CustomIconTheme) -> Self {
++        IconTheme {
++            name: custom.name,
++            extension: custom.extension,
++            filetype: custom.filetype.into(),
++        }
++    }
++}
++
+ impl IconTheme {
+     pub fn unicode() -> Self {
+         IconTheme {
+--- a/src/icon.rs
++++ b/src/icon.rs
+@@ -1,6 +1,6 @@
+ use crate::flags::{IconOption, IconTheme as FlagTheme};
+ use crate::meta::{FileType, Name};
+-use crate::theme::{Theme, icon::IconTheme};
++use crate::theme::{Theme, icon::{CustomIconTheme, IconTheme}};
+ 
+ pub struct Icons {
+     icon_separator: String,
+@@ -16,8 +16,8 @@
+         let icon_theme = match (tty, when, theme) {
+             (_, IconOption::Never, _) | (false, IconOption::Auto, _) => None,
+             (_, _, FlagTheme::Fancy) => {
+-                if let Ok(t) = Theme::from_path::<IconTheme>("icons") {
+-                    Some(t)
++                if let Ok(t) = Theme::from_path::<CustomIconTheme>("icons") {
++                    Some(t.into())
+                 } else {
+                     Some(IconTheme::default())
+                 }
