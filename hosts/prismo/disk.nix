@@ -6,7 +6,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/disk/by-id/ata-KINGSTON_SUV400S37240G_50026B7765001371";
         content = {
           type = "gpt";
           partitions = {
@@ -59,7 +59,7 @@
       };
       secondary = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/ata-WDC_WD10EZRZ-00HTKB0_WD-WCC4J2FC37V6";
         content = {
           type = "gpt";
           partitions = {

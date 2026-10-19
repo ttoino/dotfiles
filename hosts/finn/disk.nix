@@ -6,7 +6,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme1n1";
+        device = "/dev/disk/by-id/nvme-WD_BLACK_SN850X_1000GB_23392J805753";
         content = {
           type = "gpt";
           partitions = {
@@ -59,7 +59,7 @@
       };
       secondary = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-WD_BLACK_SN770M_1TB_233101400798";
         content = {
           type = "gpt";
           partitions = {
