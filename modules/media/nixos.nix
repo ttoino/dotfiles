@@ -88,4 +88,19 @@
       };
     };
   };
+
+  age.secrets = {
+    media-username = {
+      rekeyFile = ./media_username.age;
+      owner = "media";
+      group = "media";
+      mode = "0440";
+    };
+    media-password = {
+      rekeyFile = ./media_password.age;
+      owner = "media";
+      group = "media";
+      mode = "0440";
+    };
+  };
 }
