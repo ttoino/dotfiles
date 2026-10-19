@@ -8,6 +8,7 @@
     kitty
     mopidy
     mpris
+    printing
     proxy
     rescrobbled
     sound
