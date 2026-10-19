@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -83,17 +82,6 @@ in
     }/share/peon-ping/adapters/opencode/peon-ping.ts $out
 
     sed -i '/const PEON_SH_PATHS = \[/a\  path.join(os.homedir(), ".openpeon", "peon.sh"),' $out
-  '';
-
-  programs.zsh.initContent = lib.mkAfter ''
-    opencode() {
-      if [[ $# -eq 0 ]]; then
-        OPENCODE_SERVER_PASSWORD=$(cat ${config.age.secrets.opencode-server-password.path}) \
-          command opencode attach http://localhost:9090
-      else
-        command opencode "$@"
-      fi
-    }
   '';
 
   programs.peon-ping = {
