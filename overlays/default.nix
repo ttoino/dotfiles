@@ -24,5 +24,13 @@
 
       dependencies = oldAttrs.dependencies ++ [ final.python3Packages.uritools ];
     });
+
+    mcp-nixos = prev.mcp-nixos.override {
+      python3Packages = prev.python3Packages.overrideScope (
+        final: prev: {
+          mcp = final.mcp_1;
+        }
+      );
+    };
   })
 ]
