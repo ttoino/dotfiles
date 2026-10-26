@@ -193,7 +193,7 @@
     },
     "ohmyzsh": {
         "cargoLock": null,
-        "date": "2026-10-13",
+        "date": "2026-10-21",
         "extract": null,
         "name": "ohmyzsh",
         "passthru": null,
@@ -205,12 +205,12 @@
             "name": null,
             "owner": "ohmyzsh",
             "repo": "ohmyzsh",
-            "rev": "964ddf789b022b6958b27d02d7fa54f552de21e9",
-            "sha256": "sha256-RG32nAZOP7nLNSy+OFIB2C15tpx/x9KN9QQVqck57Ow=",
+            "rev": "2100c630ba4bd67bb48802c3e7da893a4fdaa1a0",
+            "sha256": "sha256-Y6S7urrtsdUN7A7lgWF2FkIWZpA1HNkjf1eWwfkjzUQ=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "964ddf789b022b6958b27d02d7fa54f552de21e9"
+        "version": "2100c630ba4bd67bb48802c3e7da893a4fdaa1a0"
     },
     "peon-dva": {
         "cargoLock": null,
