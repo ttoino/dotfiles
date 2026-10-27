@@ -12,37 +12,107 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
       - name: Setup Nix
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             nix-path = nixpkgs=channel:nixos-unstable
-      - name: Update sources
-        run: nix run nixpkgs#nvfetcher -- --config nvfetcher.toml --build-dir _sources --commit-changes --changelog /tmp/nvfetcher-changelog.txt
-        env:
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_NAME: github-actions[bot]
-          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
-      - name: Read nvfetcher changelog
-        id: nvfetcher-changelog
+
+      - name: Configure git
         run: |
-          if [ -f /tmp/nvfetcher-changelog.txt ]; then
-            echo "body<<EOF" >> "$GITHUB_OUTPUT"
-            cat /tmp/nvfetcher-changelog.txt >> "$GITHUB_OUTPUT"
-            echo "EOF" >> "$GITHUB_OUTPUT"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update sources
+        id: source-updates
+        run: |
+          nix run nixpkgs#nvfetcher -- --config nvfetcher.toml --build-dir _sources --changelog /tmp/nvfetcher-changelog.txt
+          if git diff --quiet HEAD -- _sources/generated.nix _sources/generated.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          git add _sources/generated.nix _sources/generated.json
+          git commit -m "Update sources"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
       - name: Upgrade dependencies
-        uses: DeterminateSystems/update-flake-lock@v29
+        id: flake-update
+        run: |
+          nix flake update 2>&1 | tee /tmp/flake-update-output.txt
+          if git diff --quiet HEAD -- flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add flake.lock
+          git commit -m "Update flake.lock"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Update caddy plugin hash
+        id: caddy-hash
+        run: |
+          set +e
+          output=$(nix build --no-link --json .#packages.x86_64-linux.caddy-cloudflare 2>&1 >/dev/null)
+          exit_code=$?
+          set -e
+
+          if [[ $exit_code -eq 0 ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          new_hash=$(echo "$output" | grep -oE 'sha256-[A-Za-z0-9+/=]+' | tail -n1 || true)
+
+          if [[ -z $new_hash ]]; then
+            echo "Caddy build failed, but no new hash was reported" >&2
+            echo "$output" >&2
+            exit 1
+          fi
+
+          sed -i "s|hash = \"sha256-[^\"]*\"|hash = \"${new_hash}\"|" packages/caddy-cloudflare/default.nix
+          nix fmt packages/caddy-cloudflare/default.nix
+
+          git add packages/caddy-cloudflare/default.nix
+          git commit -m "Update caddy plugin hash"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build PR body
+        run: |
+          body_file=/tmp/pr-body.txt
+          {
+            if [[ "${{ steps.source-updates.outputs.changed }}" == "true" ]]; then
+              echo "## Source updates"
+              echo ""
+              echo '```text'
+              cat /tmp/nvfetcher-changelog.txt
+              echo '```'
+              echo ""
+            fi
+            if [[ "${{ steps.flake-update.outputs.changed }}" == "true" ]]; then
+              echo "## Flake lock changes"
+              echo ""
+              echo '```text'
+              cat /tmp/flake-update-output.txt
+              echo '```'
+              echo ""
+            fi
+            if [[ "${{ steps.caddy-hash.outputs.changed }}" == "true" ]]; then
+              echo "## Caddy plugin hash"
+              echo ""
+              echo '```diff'
+              git diff HEAD~1 -- packages/caddy-cloudflare/default.nix
+              echo '```'
+            fi
+          } > "$body_file"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GH_TOKEN }}
-          pr-body: |
-            Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
-
-            ## Source updates
-
-            ${{ steps.nvfetcher-changelog.outputs.body }}
-
-            ## Flake lock changes
-
-            {{ env.GIT_COMMIT_MESSAGE }}
+          branch: upgrade-dependencies
+          base: nixos
+          delete-branch: true
+          title: Upgrade dependencies
+          body-path: /tmp/pr-body.txt
