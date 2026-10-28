@@ -44,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     peon-ping = {
-      url = "github:PeonPing/peon-ping/v2.22.0";
+      url = "github:PeonPing/peon-ping";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };

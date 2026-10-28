@@ -2,7 +2,7 @@
 {
   services.caddy.virtualHosts."opencode.toino.pt".extraConfig = ''
     import private
-    reverse_proxy * localhost:9090
+    reverse_proxy * localhost:49374
   '';
 
   networking.hosts."127.0.0.1" = [ "opencode.toino.pt" ];
