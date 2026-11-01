@@ -71,7 +71,7 @@ in
         cloudflare-ai-gateway.settings = {
           accountId = "e024e5a1e487a3d3a07815b431986107";
           gatewayId = "opencode";
-          apiKey = toOpencodeEnvPath config.age.secrets.opencode-cf-ai-gw-api-key;
+          gatewayApiKey = toOpencodeEnvPath config.age.secrets.opencode-cf-ai-gw-api-key;
         };
 
         opencode-go.settings.apiKey = toOpencodeEnvPath config.age.secrets.opencode-go-api-key;
