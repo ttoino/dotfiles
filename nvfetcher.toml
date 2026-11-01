@@ -20,6 +20,10 @@ src.branch = "plugins"
 fetch.github = "lidarr/Lidarr"
 pinned = true
 
+[mattpocock-skills]
+src.git = "https://github.com/mattpocock/skills"
+fetch.github = "mattpocock/skills"
+
 [meterial-symbols]
 src.github = "ttoino/meterial-symbols"
 fetch.url = "https://github.com/ttoino/meterial-symbols/releases/download/$ver/MeterialSymbols.zip"
