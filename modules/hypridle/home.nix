@@ -7,8 +7,8 @@ let
   systemctl = "${pkgs.systemd}/bin/systemctl";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   hyprctl = "${pkgs.hyprland}/bin/hyprctl";
-  dpmsOn = "${hyprctl} dispatch hl.dsp.dpms(\"on\")";
-  dpmsOff = "${hyprctl} dispatch hl.dsp.dpms(\"off\")";
+  dpmsOn = "${hyprctl} dispatch 'hl.dsp.dpms({ action = \"enable\" })'";
+  dpmsOff = "${hyprctl} dispatch 'hl.dsp.dpms({ action = \"disable\" })'";
 in
 {
   home.packages = [ pkgs.hypridle ];
