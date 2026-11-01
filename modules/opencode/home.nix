@@ -81,12 +81,23 @@ in
         let
           anthropic = pkgs.sources.anthropic-skills.src;
           cloudflare = pkgs.sources.cloudflare-skills.src;
+          mattpocock = pkgs.sources.mattpocock-skills.src;
         in
         [
           "${cloudflare}/skills/cloudflare"
+          "${cloudflare}/skills/cf-cli"
+          "${cloudflare}/skills/wrangler"
+
           "${anthropic}/skills/frontend-design"
           "${anthropic}/skills/skill-creator"
-          "${cloudflare}/skills/wrangler"
+
+          "${mattpocock}/skills/engineering/code-review"
+          "${mattpocock}/skills/engineering/codebase-design"
+          "${mattpocock}/skills/engineering/prototype"
+          "${mattpocock}/skills/engineering/research"
+          "${mattpocock}/skills/engineering/tdd"
+          "${mattpocock}/skills/productivity/grilling"
+          "${mattpocock}/skills/productivity/writing-for-agents"
         ];
     };
   };

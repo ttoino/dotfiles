@@ -65,6 +65,18 @@
     };
     date = "2025-12-28";
   };
+  mattpocock-skills = {
+    pname = "mattpocock-skills";
+    version = "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d";
+    src = fetchFromGitHub {
+      owner = "mattpocock";
+      repo = "skills";
+      rev = "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d";
+      fetchSubmodules = false;
+      sha256 = "sha256-3vhd77xfZjKUYJsIwPFevIZPUAzUgZXr0RYj5NQrBwk=";
+    };
+    date = "2026-10-31";
+  };
   meterial-symbols = {
     pname = "meterial-symbols";
     version = "v1.3.0";
