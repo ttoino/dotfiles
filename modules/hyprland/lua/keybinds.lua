@@ -1,4 +1,5 @@
 local apps = require("02-apps")
+local rules = require("04-rules")
 
 local mainMod = "SUPER"
 
@@ -65,11 +66,21 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
 
--- Move window
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
+-- Move window (or move PiP to an edge when focused)
+local function bindMoveOrPip(direction)
+    hl.bind(mainMod .. " + SHIFT + " .. direction, function()
+        local window = hl.get_active_window()
+        if rules.isPip(window) then
+            rules.movePip(direction)
+        else
+            hl.dispatch(hl.dsp.window.move({ direction }))
+        end
+    end)
+end
+bindMoveOrPip("left")
+bindMoveOrPip("right")
+bindMoveOrPip("up")
+bindMoveOrPip("down")
 
 -- Switch workspaces
 for i = 1, 10 do

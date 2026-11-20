@@ -29,23 +29,27 @@ Launched through **UWSM**; `hyprland` is the default session on `finn`. Apps run
 
 ## Window management
 
-| Key                                                  | Action                               |
-| ---------------------------------------------------- | ------------------------------------ |
-| <kbd>❖</kbd>&thinsp;<kbd>C</kbd>                     | Close window                         |
-| <kbd>❖</kbd>&thinsp;<kbd>F</kbd>                     | Fullscreen                           |
-| <kbd>❖</kbd>&thinsp;<kbd>M</kbd>                     | Maximize                             |
-| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>F</kbd> | Toggle float                         |
-| <kbd>❖</kbd>&thinsp;<kbd>P</kbd>                     | Pseudo (dwindle)                     |
-| <kbd>❖</kbd>&thinsp;<kbd>J</kbd>                     | Toggle split (dwindle)               |
-| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>P</kbd> | Pin window                           |
-| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>V</kbd> | Toggle PiP (float + pin + tag `pip`) |
+| Key                                                  | Action                                 |
+| ---------------------------------------------------- | -------------------------------------- |
+| <kbd>❖</kbd>&thinsp;<kbd>C</kbd>                     | Close window                           |
+| <kbd>❖</kbd>&thinsp;<kbd>F</kbd>                     | Fullscreen                             |
+| <kbd>❖</kbd>&thinsp;<kbd>M</kbd>                     | Maximize                               |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>F</kbd> | Toggle float                           |
+| <kbd>❖</kbd>&thinsp;<kbd>P</kbd>                     | Pseudo (dwindle)                       |
+| <kbd>❖</kbd>&thinsp;<kbd>J</kbd>                     | Toggle split (dwindle)                 |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>P</kbd> | Pin window                             |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>V</kbd> | Toggle PiP (float + pin + tag `pip`)   |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>←</kbd> | Move PiP to left edge (when focused)   |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>→</kbd> | Move PiP to right edge (when focused)  |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>↑</kbd> | Move PiP to top edge (when focused)    |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>↓</kbd> | Move PiP to bottom edge (when focused) |
 
 ## Focus & Move
 
-| Key                                                        | Action      |
-| ---------------------------------------------------------- | ----------- |
-| <kbd>❖</kbd>&thinsp;<kbd>←/→/↑/↓</kbd>                     | Move focus  |
-| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>←/→/↑/↓</kbd> | Move window |
+| Key                                                        | Action                                       |
+| ---------------------------------------------------------- | -------------------------------------------- |
+| <kbd>❖</kbd>&thinsp;<kbd>←/→/↑/↓</kbd>                     | Move focus                                   |
+| <kbd>❖</kbd>&thinsp;<kbd>⇧</kbd>&thinsp;<kbd>←/→/↑/↓</kbd> | Move window (sets PiP edge when PiP focused) |
 
 ## Resize (repeating)
 
@@ -110,7 +114,7 @@ monitor hotplug.
 ## Window rules (rules.lua)
 
 - **Games** — `steam_app_*` and Minecraft → tagged `game`, `immediate` (bypass idle for tearing).
-- **PiP** — Discord popout & "Picture-in-Picture" → tagged `pip`: float, pinned, opaque, no blur/dim, keep aspect. Auto-placed bottom-right at 25% of monitor (16:9, 16px margin).
+- **PiP** — Discord popout & "Picture-in-Picture" → tagged `pip`: float, pinned, opaque, no blur/dim, keep aspect. Auto-placed at 25% of monitor (16:9, 16px margin); corner is adjustable with `❖⇧arrow` while a PiP window is focused.
 - **Shimeji** — `oneko` → float, no focus/blur/shadow, no border.
 
 ## Plugins
