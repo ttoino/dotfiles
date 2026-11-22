@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064";
+    version = "e4bb5d960d87126ff3b3a8af1a104b7db67560ba";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "1780c5e5a552fd4d1c9d6a7b0cab26b0c2bef064";
+      rev = "e4bb5d960d87126ff3b3a8af1a104b7db67560ba";
       fetchSubmodules = false;
-      sha256 = "sha256-pEKTL8YlOAem5QfNzLkjJaEDTp7PhtG/uyzjPzOL7Jo=";
+      sha256 = "sha256-Gr9LatjawHHK9uKpoclWoiDHZ0NTpP3/4Pmeatl8p/Q=";
     };
-    date = "2026-11-14";
+    date = "2026-11-16";
   };
   beets-fetchartist = {
     pname = "beets-fetchartist";
@@ -43,15 +43,15 @@
   };
   cloudflare-skills = {
     pname = "cloudflare-skills";
-    version = "cbf893b954222276bf1af57e5f23379231e0efb9";
+    version = "5108325ecceabc899c761e07aa617b09c02445ee";
     src = fetchFromGitHub {
       owner = "cloudflare";
       repo = "skills";
-      rev = "cbf893b954222276bf1af57e5f23379231e0efb9";
+      rev = "5108325ecceabc899c761e07aa617b09c02445ee";
       fetchSubmodules = false;
-      sha256 = "sha256-m/2XzXQ6/gGzeWrdFsnUy7OjHAvKb+a0Q4NjZ868Bdc=";
+      sha256 = "sha256-A3tzJg4lXaQz4RN0d+N/nKwNm4DqUzG1S0w5l6FKWCg=";
     };
-    date = "2026-11-10";
+    date = "2026-11-17";
   };
   lidarr-plugins = {
     pname = "lidarr-plugins";
@@ -67,15 +67,15 @@
   };
   mattpocock-skills = {
     pname = "mattpocock-skills";
-    version = "5863806dd4e15c63174bee4e7515a4256792ecfa";
+    version = "abeeaf95660ba9e8b7c753eb38f441ca707a8823";
     src = fetchFromGitHub {
       owner = "mattpocock";
       repo = "skills";
-      rev = "5863806dd4e15c63174bee4e7515a4256792ecfa";
+      rev = "abeeaf95660ba9e8b7c753eb38f441ca707a8823";
       fetchSubmodules = false;
-      sha256 = "sha256-AYSRCvBL8TDDdW3rgKu2T7gl4YYDoDId0jYbabEFyfs=";
+      sha256 = "sha256-fc5+qmchp1IQ/rQP1olWKC1eC4VdYhaB7YYzC3+JBe0=";
     };
-    date = "2026-11-12";
+    date = "2026-11-19";
   };
   meterial-symbols = {
     pname = "meterial-symbols";
@@ -127,15 +127,15 @@
   };
   ohmyzsh = {
     pname = "ohmyzsh";
-    version = "6010fb6260f359e71d99ba25f05f9215809b3ed2";
+    version = "c0140703a53eb0d22be44f7bac318d0baacc927c";
     src = fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "6010fb6260f359e71d99ba25f05f9215809b3ed2";
+      rev = "c0140703a53eb0d22be44f7bac318d0baacc927c";
       fetchSubmodules = false;
-      sha256 = "sha256-c9JLbCQ6uzew9itwyXTNW4lAP96hBe45AIdtJ6BjppY=";
+      sha256 = "sha256-UYJTlDS0bZvr2YPQ+fQHrOTvcwAfnlEjTyl3dU8G4dU=";
     };
-    date = "2026-11-09";
+    date = "2026-11-16";
   };
   peon-dva = {
     pname = "peon-dva";
