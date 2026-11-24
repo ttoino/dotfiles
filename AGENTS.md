@@ -63,7 +63,9 @@ secrets/               # Top-level encrypted secrets
 - **Hosts** (`hosts/<name>/default.nix`): declare `traits` and extra `modules` lists.
 - **Traits** (`traits/<name>/default.nix`): declare a `modules` list grouping modules.
 - **Modules** (`modules/<name>/`): contain `nixos.nix` (system-level), `home.nix`
-  (Home Manager), `common.nix` (shared), and optionally `default.nix` for extra attrs.
+  (Home Manager), and optionally `default.nix` for extra attrs. Settings shared by
+  both go in `common.nix`, which `nixos.nix` and `home.nix` import explicitly
+  (`imports = [ ./common.nix ];`) where it applies.
 - `lib/default.nix` wires everything via `makeHosts`, `joinTraits`, `joinModules`.
 - **Hosts**: `finn` (Framework 16 laptop — traits: accounts, base, dev, fionna, gaming,
   graphical) and `prismo` (Intel+Nvidia server — traits: base, server).

@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./common.nix ];
+
   users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
 

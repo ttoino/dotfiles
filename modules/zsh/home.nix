@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  imports = [ ./common.nix ];
+
   home.shell.enableZshIntegration = true;
 
   programs.zsh = {

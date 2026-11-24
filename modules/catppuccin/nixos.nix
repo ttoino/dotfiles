@@ -1,4 +1,7 @@
 { inputs, ... }:
 {
-  imports = [ inputs.catppuccin.nixosModules.catppuccin ];
+  imports = [
+    ./common.nix
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
 }

@@ -6,6 +6,8 @@
   ...
 }:
 {
+  imports = [ ./common.nix ];
+
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "26.05";
 

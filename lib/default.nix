@@ -22,8 +22,8 @@
   getModule =
     path:
     {
-      home = (lib.pathsByName path "home") ++ (lib.pathsByName path "common");
-      nixos = (lib.pathsByName path "nixos") ++ (lib.pathsByName path "common");
+      home = lib.pathsByName path "home";
+      nixos = lib.pathsByName path "nixos";
     }
     // (lib.optionalAttrs (builtins.pathExists (path + "/default.nix")) (import path args));
 
