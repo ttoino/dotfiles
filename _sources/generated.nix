@@ -137,50 +137,6 @@
     };
     date = "2026-11-16";
   };
-  peon-dva = {
-    pname = "peon-dva";
-    version = "v1.0.0";
-    src = fetchFromGitHub {
-      owner = "leo-rutter";
-      repo = "d.va-pack";
-      rev = "v1.0.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-YM4ge0j0HaZl1PMtmngx4qf1fJHLmr825bweezO5ZLQ=";
-    };
-  };
-  peon-eve-walle = {
-    pname = "peon-eve-walle";
-    version = "v1.0.1";
-    src = fetchFromGitHub {
-      owner = "stphnlngdncoding";
-      repo = "eve-walle";
-      rev = "v1.0.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-ujwutbgkY+DxEOJQeu0APuSgVWBLJj51N3kJEE/vmfM=";
-    };
-  };
-  peon-jarvis-mk2 = {
-    pname = "peon-jarvis-mk2";
-    version = "v1.1.0";
-    src = fetchFromGitHub {
-      owner = "FlynnCruse";
-      repo = "openpeon-jarvis";
-      rev = "v1.1.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-SDelu1fhg2/JFKIQM4lSLevl7wMUBfuAFNOM/5gf8Mo=";
-    };
-  };
-  peon-minecraft-villager = {
-    pname = "peon-minecraft-villager";
-    version = "v1.0.1";
-    src = fetchFromGitHub {
-      owner = "Mahamurahti";
-      repo = "openpeon-minecraft-villager";
-      rev = "v1.0.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-0vyWcgbdFcFwke8zSX3GSPETRX4fufeEXE2Dmks/9YE=";
-    };
-  };
   zsh-colored-man-pages = {
     pname = "zsh-colored-man-pages";
     version = "57bdda68e52a09075352b18fa3ca21abd31df4cb";

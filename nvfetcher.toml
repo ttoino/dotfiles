@@ -50,22 +50,6 @@ fetch.github = "ttoino/mopidy-mpris"
 src.git = "https://github.com/ohmyzsh/ohmyzsh"
 fetch.github = "ohmyzsh/ohmyzsh"
 
-[peon-dva]
-src.github_tag = "leo-rutter/d.va-pack"
-fetch.github = "leo-rutter/d.va-pack"
-
-[peon-eve-walle]
-src.github_tag = "stphnlngdncoding/eve-walle"
-fetch.github = "stphnlngdncoding/eve-walle"
-
-[peon-jarvis-mk2]
-src.github_tag = "FlynnCruse/openpeon-jarvis"
-fetch.github = "FlynnCruse/openpeon-jarvis"
-
-[peon-minecraft-villager]
-src.github_tag = "Mahamurahti/openpeon-minecraft-villager"
-fetch.github = "Mahamurahti/openpeon-minecraft-villager"
-
 [zsh-colored-man-pages]
 src.git = "https://github.com/ael-code/zsh-colored-man-pages"
 fetch.github = "ael-code/zsh-colored-man-pages"

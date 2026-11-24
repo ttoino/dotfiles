@@ -863,29 +863,6 @@
         "type": "github"
       }
     },
-    "peon-ping": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1794008656,
-        "narHash": "sha256-2pxmbGhW57it8mqRJqIfItcYuUR0fPu6VOm3mOHgPno=",
-        "owner": "PeonPing",
-        "repo": "peon-ping",
-        "rev": "c9e8dadaede5a303209d2ef7180f46f0e18ce5ac",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PeonPing",
-        "repo": "peon-ping",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -947,7 +924,6 @@
         "nixos-vscode-server": "nixos-vscode-server",
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
-        "peon-ping": "peon-ping",
         "shadows-plus-plus": "shadows-plus-plus",
         "treefmt-nix": "treefmt-nix"
       }

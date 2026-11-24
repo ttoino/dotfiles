@@ -43,11 +43,6 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    peon-ping = {
-      url = "github:PeonPing/peon-ping";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     shadows-plus-plus = {
       url = "github:ttoino/shadows-plus-plus";
       inputs.hyprland.inputs.nixpkgs.follows = "nixpkgs";

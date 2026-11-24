@@ -1,32 +1,21 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
 let
-  peon-ping = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-  peon-ping-opencode-plugin = pkgs.runCommand "peon-ping-opencode-plugin" { } ''
-        mkdir -p $out/share/opencode/plugins/peon-ping
-        cp -r ${peon-ping}/share/peon-ping/adapters/opencode/* $out/share/opencode/plugins/peon-ping/
-        ln -s peon-ping.ts $out/share/opencode/plugins/peon-ping/index.ts
-
-        sed -i '/^function setTabTitle/,/^}/c\
-    function setTabTitle(title: string): void {\
-      return\
-    }' $out/share/opencode/plugins/peon-ping/peon-ping.ts
-  '';
-
   toOpencodeEnvPath = secret: "{file:${builtins.replaceStrings [ "\${" ] [ "{env:" ] secret.path}}";
 in
 {
-  imports = [ inputs.peon-ping.homeManagerModules.default ];
-
   programs.opencode = {
     enable = true;
     context = ./AGENTS.md;
     extraPackages = with pkgs; [ systemd ];
+
+    cli.attention = {
+      notifications = true;
+      sound = true;
+    };
 
     settings = {
       mcp = {
@@ -62,10 +51,7 @@ in
 
       model = "opencode-go/kimi-k2.7-code";
 
-      plugins = [
-        "opencode-sleep-inhibitor"
-        "${peon-ping-opencode-plugin}/share/opencode/plugins/peon-ping"
-      ];
+      plugins = [ "opencode-sleep-inhibitor" ];
 
       providers = {
         cloudflare-ai-gateway.settings = {
@@ -128,46 +114,6 @@ in
       Restart = "on-failure";
     };
     Install.WantedBy = [ "default.target" ];
-  };
-
-  programs.peon-ping = {
-    enable = true;
-    package = peon-ping;
-
-    settings = {
-      default_pack = "eve-walle";
-      volume = 0.5;
-      pack_rotation = [
-        "dva"
-        "eve-walle"
-        "glados"
-        "jarvis-mk2"
-        "minecraft-villager"
-        "ocarina_of_time"
-      ];
-    };
-
-    installPacks = [
-      "glados"
-      "ocarina_of_time"
-
-      {
-        name = "dva";
-        src = pkgs.sources.peon-dva.src;
-      }
-      {
-        name = "eve-walle";
-        src = pkgs.sources.peon-eve-walle.src;
-      }
-      {
-        name = "jarvis-mk2";
-        src = pkgs.sources.peon-jarvis-mk2.src;
-      }
-      {
-        name = "minecraft_villager";
-        src = pkgs.sources.peon-minecraft-villager.src;
-      }
-    ];
   };
 
   age.secrets = {
