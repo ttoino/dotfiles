@@ -53,18 +53,6 @@
     };
     date = "2026-11-17";
   };
-  lidarr-plugins = {
-    pname = "lidarr-plugins";
-    version = "0842f73cf495fe0536e07c765d6fe55b5ece0c0f";
-    src = fetchFromGitHub {
-      owner = "lidarr";
-      repo = "Lidarr";
-      rev = "0842f73cf495fe0536e07c765d6fe55b5ece0c0f";
-      fetchSubmodules = false;
-      sha256 = "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=";
-    };
-    date = "2025-12-28";
-  };
   mattpocock-skills = {
     pname = "mattpocock-skills";
     version = "abeeaf95660ba9e8b7c753eb38f441ca707a8823";

@@ -83,27 +83,6 @@
         },
         "version": "5108325ecceabc899c761e07aa617b09c02445ee"
     },
-    "lidarr-plugins": {
-        "cargoLock": null,
-        "date": "2025-12-28",
-        "extract": null,
-        "name": "lidarr-plugins",
-        "passthru": null,
-        "pinned": true,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "lidarr",
-            "repo": "Lidarr",
-            "rev": "0842f73cf495fe0536e07c765d6fe55b5ece0c0f",
-            "sha256": "sha256-iRUXWJD8oQ/eWfwR0TvC2NA5JWNqW61x9uORlAHz/jk=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "0842f73cf495fe0536e07c765d6fe55b5ece0c0f"
-    },
     "mattpocock-skills": {
         "cargoLock": null,
         "date": "2026-11-19",

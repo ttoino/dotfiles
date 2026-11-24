@@ -1,7 +1,5 @@
-{ pkgs, ... }:
 {
   services.lidarr = {
-    package = pkgs.lidarr-plugins;
     enable = true;
     group = "media";
   };

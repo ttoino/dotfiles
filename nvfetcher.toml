@@ -14,12 +14,6 @@ fetch.github = "caddy-dns/cloudflare"
 src.git = "https://github.com/cloudflare/skills"
 fetch.github = "cloudflare/skills"
 
-[lidarr-plugins]
-src.git = "https://github.com/lidarr/Lidarr"
-src.branch = "plugins"
-fetch.github = "lidarr/Lidarr"
-pinned = true
-
 [mattpocock-skills]
 src.git = "https://github.com/mattpocock/skills"
 fetch.github = "mattpocock/skills"
