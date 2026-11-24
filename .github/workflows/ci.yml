@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Discover hosts
         id: hosts
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Check formatting
         run: nix fmt -- --ci
 
@@ -42,7 +42,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Setup cachix
         uses: cachix/cachix-action@v17
         with:
@@ -66,7 +66,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup nix
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v32
       - name: Setup cachix
         uses: cachix/cachix-action@v17
         with:
