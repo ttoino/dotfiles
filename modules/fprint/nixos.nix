@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.fprintd.enable = true;
 }

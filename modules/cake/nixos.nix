@@ -1,4 +1,3 @@
-{ ... }:
 {
   nix.settings = {
     substituters = [ "https://ags.cachix.org/" ];

@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.btrbk = {
     instances.btrbk = {

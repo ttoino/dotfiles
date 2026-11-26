@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./bazarr.nix

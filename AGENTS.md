@@ -111,9 +111,11 @@ length limit of **80 characters**.
 
 ### Module Function Signatures
 
-Always use destructured attrsets with ellipsis: `{ pkgs, lib, ... }:`. Only destructure
-parameters the module actually uses. The `args` attrset includes `inputs`, `lib`,
-`modules`, `overlays`, `packages`, `traits`.
+Omit the function header and write a plain attribute set when a NixOS or Home Manager
+module does not use any module arguments (avoid useless `{ ... }:` headers). When
+arguments are needed, use destructured attrsets with ellipsis: `{ pkgs, lib, ... }:`,
+only destructuring parameters the module actually uses. The `args` attrset includes
+`inputs`, `lib`, `modules`, `overlays`, `packages`, `traits`.
 
 ### Attribute Sets and Lists
 

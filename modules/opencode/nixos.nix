@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.caddy.virtualHosts."opencode.toino.pt".extraConfig = ''
     import private
