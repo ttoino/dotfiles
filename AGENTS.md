@@ -49,26 +49,58 @@ Use the `agenix-rekey` CLI (available in the dev shell). Never commit plaintext 
 ```
 flake.nix              # Entry point — declares inputs and outputs
 flake.lock             # Pinned dependency versions
-lib/default.nix        # Helper functions: makeHosts, getModules, joinTraits, etc.
+lib/default.nix        # nixpkgs' lib, plus makeFlake and icons
+lib/make-flake.nix     # makeFlake, which builds the flake from these directories
 hosts/<name>/          # Per-host config (default.nix selects traits + extra modules)
 traits/<name>/         # Composable feature groups (default.nix selects modules)
 modules/<name>/        # Individual config units (nixos.nix / home.nix / common.nix)
 packages/<name>/       # Custom Nix package derivations
+shells/<name>/         # devShells; shells/default is `nix develop`
 overlays/default.nix   # Nixpkgs overlays and package overrides
 secrets/               # Top-level encrypted secrets
 ```
 
 ### Wiring: Host → Traits → Modules
 
-- **Hosts** (`hosts/<name>/default.nix`): declare `traits` and extra `modules` lists.
+- **Hosts** (`hosts/<name>/default.nix`): declare the `username`, `traits` and
+  extra `modules` lists.
 - **Traits** (`traits/<name>/default.nix`): declare a `modules` list grouping modules.
 - **Modules** (`modules/<name>/`): contain `nixos.nix` (system-level), `home.nix`
   (Home Manager), and optionally `default.nix` for extra attrs. Settings shared by
   both go in `common.nix`, which `nixos.nix` and `home.nix` import explicitly
   (`imports = [ ./common.nix ];`) where it applies.
-- `lib/default.nix` wires everything via `makeHosts`, `joinTraits`, `joinModules`.
+- `lib.makeFlake` wires everything: it reads these directories and builds the hosts.
+- Modules get the host's name as `host`, along with `username`, `inputs`, `modules`,
+  `traits`, `overlays` and `packages`.
+- The `base` module connects the `home.nix` files to Home Manager, so every host
+  needs the `base` trait.
 - **Hosts**: `finn` (Framework 16 laptop — traits: accounts, base, dev, fionna, gaming,
   graphical) and `prismo` (Intel+Nvidia server — traits: base, server).
+
+### Layers
+
+`lib.makeFlake` builds a flake out of **layers**, base first. A layer is a flake or a
+directory with this repository's layout. This flake is a single layer
+(`lib.makeFlake [ self ]`); another flake builds its own hosts on top of it by taking
+it as an input:
+
+```nix
+outputs = { self, public, ... }: public.lib.makeFlake [ public self ];
+```
+
+- A module or trait defined in more than one layer is **extended** by the later
+  layers: their files (and a trait's `modules`) are added to the earlier ones. Generic
+  modules hold the enables and settings anyone would use; a later layer adds the
+  values specific to someone, under the same name.
+- `packages/` and `shells/` of every layer are merged; a name defined in two layers is
+  an error. `overlays/default.nix` of every layer is applied in layer order.
+- `hosts/` only comes from the last layer.
+- The formatter comes from the base layer's `treefmt.nix`.
+- Modules get the inputs of every flake layer; `inputs.self` is the last flake layer.
+- `makeFlake` returns `lib`, `nixosConfigurations`, `agenix-rekey`, `packages`,
+  `devShells` and `formatter`.
+- Nothing in an earlier layer may refer to a later one. When a later layer needs to
+  plug in, add a generic option or module to the earlier one instead.
 
 ## Nix Code Style
 
@@ -122,7 +154,7 @@ settings = (import ./options.nix) // (import ./keybinds.nix) // (import ./rules.
 ### Naming Conventions
 
 - **Module directories**: `kebab-case` (e.g. `cli-apps`, `gui-apps`, `dynamic-dns`)
-- **Nix variables/functions**: `camelCase` (e.g. `getModules`, `joinTraits`, `makeHosts`)
+- **Nix variables/functions**: `camelCase` (e.g. `getModules`, `mergeLayers`, `makeFlake`)
 - **Nix attribute paths**: follow nixpkgs/Home Manager conventions (e.g. `programs.git.enable`)
 
 ### Priority and Merging

@@ -1,4 +1,5 @@
 {
+  host,
   lib,
   overlays,
   pkgs,
@@ -6,7 +7,12 @@
   ...
 }:
 {
-  imports = [ ./common.nix ];
+  imports = [
+    ./common.nix
+    ./home-manager.nix
+  ];
+
+  networking.hostName = host;
 
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "26.05";

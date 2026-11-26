@@ -28,7 +28,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,70 +53,6 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      agenix-rekey,
-      flake-utils,
-      home-manager,
-      treefmt-nix,
-      ...
-    }@inputs:
-    let
-      args = {
-        inherit
-          inputs
-          lib
-          modules
-          overlays
-          packages
-          traits
-          ;
-
-        username = "toino";
-      };
-      hosts = lib.getModules ./hosts;
-      modules = lib.getModules ./modules;
-      lib = import ./lib args;
-      overlays = import ./overlays args;
-      packages = lib.getPackages ./packages;
-      traits = lib.getModules ./traits;
-    in
-    {
-      agenix-rekey = agenix-rekey.configure {
-        userFlake = self;
-        nixosConfigurations = self.nixosConfigurations;
-      };
-
-      nixosConfigurations = lib.makeHosts hosts;
-    }
-    // (flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system overlays; };
-        treefmt = (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
-      in
-      {
-        formatter = treefmt;
-
-        packages = packages pkgs;
-
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            # Create secrets
-            agenix-rekey.packages.${system}.default
-            # Nix language server
-            nixd
-            # Formatter
-            treefmt
-            # Update packages
-            nix-update
-            # Update sources
-            nvfetcher
-            # Wireguard
-            wireguard-tools
-          ];
-        };
-      }
-    ));
+    { self, nixpkgs, ... }:
+    (import ./lib { inherit (nixpkgs) lib; }).makeFlake [ self ];
 }

@@ -1,5 +1,6 @@
 { inputs, packages, ... }:
 [
+  inputs.agenix-rekey.overlays.default
   inputs.nix4vscode.overlays.default
   inputs.shadows-plus-plus.overlays.default
 
